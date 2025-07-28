@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0143f12e-6d0a-4cd9-911f-c92571cd117d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://www.fel.mx/WSTimbrado33/WSCFDI33.svc?WSDL" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WSCFDI334.xsd" MetadataType="Schema" ID="6b6554cd-6028-4321-9940-ebc7e6f77ef3" SourceId="1" SourceUrl="http://www.fel.mx/WSTimbrado33/WSCFDI33.svc?xsd=xsd2" />
+    <MetadataFile FileName="WSCFDI3341.xsd" MetadataType="Schema" ID="35fc5766-7d1c-41b7-9b63-2f79d5687357" SourceId="1" SourceUrl="http://www.fel.mx/WSTimbrado33/WSCFDI33.svc?xsd=xsd0" />
+    <MetadataFile FileName="WSCFDI3342.xsd" MetadataType="Schema" ID="39461a42-5d5b-46b6-8e00-b97d3feafdd2" SourceId="1" SourceUrl="http://www.fel.mx/WSTimbrado33/WSCFDI33.svc?xsd=xsd1" />
+    <MetadataFile FileName="WSCFDI331.wsdl" MetadataType="Wsdl" ID="571f1d96-8653-4f6f-aa67-7f8c9703f394" SourceId="1" SourceUrl="https://www.fel.mx/WSTimbrado33/WSCFDI33.svc?WSDL" />
+    <MetadataFile FileName="WSCFDI3343.xsd" MetadataType="Schema" ID="e543125d-0b30-4d52-8c7a-6d69c973f297" SourceId="1" SourceUrl="http://www.fel.mx/WSTimbrado33/WSCFDI33.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

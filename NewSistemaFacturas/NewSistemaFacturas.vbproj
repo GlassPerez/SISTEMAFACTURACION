@@ -1,0 +1,1012 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FDB6538B-DE53-4C76-B317-C2A30C633BA1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>NewSistemaFacturas.My.MyApplication</StartupObject>
+    <RootNamespace>NewSistemaFacturas</RootNamespace>
+    <AssemblyName>NewSistemaFacturas</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>NewSistemaFacturas.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>NewSistemaFacturas.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.VSDesigner, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=x86" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2, Version=11.2.0.1, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v15.1.Core, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.Charts.v15.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v15.1, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.Data.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Office.v15.1.Core, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.Office.v15.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v15.1.Core, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.PivotGrid.v15.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.Printing.v15.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v15.1.Core, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.RichEdit.v15.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v15.1.Core, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.Sparkline.v15.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v15.1, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraCharts.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGauges.v15.1.Core, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraGauges.v15.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v15.1, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraReports.v15.1.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader.DataSet, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.DataSet.3.6.0\lib\net35\ExcelDataReader.DataSet.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Excel.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics2.Shared.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics2.Win.Misc.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics2.Win.UltraWinEditors.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics2.Win.UltraWinGrid.ExcelExport.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics2.Win.UltraWinGrid.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics2.Win.UltraWinSchedule.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics2.Win.UltraWinStatusBar.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics2.Win.UltraWinTabControl.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics2.Win.UltraWinToolbars.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics2.Win.v8.3, Version=8.3.20083.1009, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="N400.Componentes.CFDI, Version=3.3.0.19, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\N400.Componentes.CFDI.dll</HintPath>
+    </Reference>
+    <Reference Include="N400.Componentes.CFDI.Complemento, Version=3.3.0.9, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\N400.Componentes.CFDI.Complemento.dll</HintPath>
+    </Reference>
+    <Reference Include="N400.Componentes.CFDI.PAC, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\N400.Componentes.CFDI.PAC.dll</HintPath>
+    </Reference>
+    <Reference Include="N400.Componentes.CFDI.PDF, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\N400.Componentes.CFDI.PDF.dll</HintPath>
+    </Reference>
+    <Reference Include="N400.Componentes.CFDI.Retenciones, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\N400.Componentes.CFDI.Retenciones.dll</HintPath>
+    </Reference>
+    <Reference Include="N400.Framework, Version=1.1.2.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\N400.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="N400.QR, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\N400.QR.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="CrystalDecisions.CrystalReports.Engine" />
+    <Import Include="CrystalDecisions.ReportSource" />
+    <Import Include="CrystalDecisions.Shared" />
+    <Import Include="CrystalDecisions.Windows.Forms" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Arrendamiento\frmArrendamiento.Designer.vb">
+      <DependentUpon>frmArrendamiento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Arrendamiento\frmArrendamiento.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clases\aletras.vb" />
+    <Compile Include="Clases\Funciones.vb" />
+    <Compile Include="Clases\Module1.vb" />
+    <Compile Include="Clases\Procedures.vb" />
+    <Compile Include="Clases\VarGlobales.vb" />
+    <Compile Include="FacturasBoutique\frmBorraVentas.Designer.vb">
+      <DependentUpon>frmBorraVentas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmBorraVentas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmCancelarTicket.Designer.vb">
+      <DependentUpon>frmCancelarTicket.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmCancelarTicket.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmGlobalBoutv2.Designer.vb">
+      <DependentUpon>frmGlobalBoutv2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmGlobalBoutv2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmPreparaInfo.Designer.vb">
+      <DependentUpon>frmPreparaInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmPreparaInfo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\CancelaFacturasXArchivo.Designer.vb">
+      <DependentUpon>CancelaFacturasXArchivo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\CancelaFacturasXArchivo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\CreaPDF.Designer.vb">
+      <DependentUpon>CreaPDF.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\CreaPDF.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmComplementoPagos20.Designer.vb">
+      <DependentUpon>frmComplementoPagos20.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmComplementoPagos20.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmCompPagos.Designer.vb">
+      <DependentUpon>frmCompPagos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmCompPagos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmGlobal.Designer.vb">
+      <DependentUpon>frmGlobal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmGlobal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmGlobalBoscoCredito.Designer.vb">
+      <DependentUpon>frmGlobalBoscoCredito.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmGlobalBoscoCredito.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDF\Pagos.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pagos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PDF\ComPago.Designer.vb">
+      <DependentUpon>ComPago.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PDF\ComPago.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDF\CRGlobalNut.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRGlobalNut.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PDF\CRNotaGlobalNut.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRNotaGlobalNut.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FacturaCafeterias\frmClienteCafeteria.Designer.vb">
+      <DependentUpon>frmClienteCafeteria.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturaCafeterias\frmClienteCafeteria.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturaNutrisa\frmEnvioCierreNutrisa.Designer.vb">
+      <DependentUpon>frmEnvioCierreNutrisa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturaNutrisa\frmEnvioCierreNutrisa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturaNutrisa\frmFacClienteNutrisa.Designer.vb">
+      <DependentUpon>frmFacClienteNutrisa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturaNutrisa\frmFacClienteNutrisa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasBosco\frmBoscoCorreo.Designer.vb">
+      <DependentUpon>frmBoscoCorreo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBosco\frmBoscoCorreo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasBosco\frmBoscoReimpresion.Designer.vb">
+      <DependentUpon>frmBoscoReimpresion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBosco\frmBoscoReimpresion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasBosco\frmBosFacClientes.Designer.vb">
+      <DependentUpon>frmBosFacClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBosco\frmBosFacClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasBosco\frmClientesBosco.Designer.vb">
+      <DependentUpon>frmClientesBosco.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBosco\frmClientesBosco.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasBosco\frmNotaCreditoBosco.Designer.vb">
+      <DependentUpon>frmNotaCreditoBosco.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBosco\frmNotaCreditoBosco.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmBoutiqueCorreo.Designer.vb">
+      <DependentUpon>frmBoutiqueCorreo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmBoutiqueCorreo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmBoutiqueReimpresion.Designer.vb">
+      <DependentUpon>frmBoutiqueReimpresion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmBoutiqueReimpresion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmClientesBoutique.Designer.vb">
+      <DependentUpon>frmClientesBoutique.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmClientesBoutique.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmComplementoPagoBoutique.Designer.vb">
+      <DependentUpon>frmComplementoPagoBoutique.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmComplementoPagoBoutique.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmFacClientes.Designer.vb">
+      <DependentUpon>frmFacClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmFacClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmNotaCreditoBoutique.Designer.vb">
+      <DependentUpon>frmNotaCreditoBoutique.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmNotaCreditoBoutique.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmNotaCreditoDetalleBoutique.Designer.vb">
+      <DependentUpon>frmNotaCreditoDetalleBoutique.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmNotaCreditoDetalleBoutique.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmPagosBoutique.Designer.vb">
+      <DependentUpon>frmPagosBoutique.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmPagosBoutique.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmNotaCreditoOficinasBosco.Designer.vb">
+      <DependentUpon>frmNotaCreditoOficinasBosco.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmNotaCreditoOficinasBosco.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDF\Arrenda.Designer.vb">
+      <DependentUpon>Arrenda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PDF\Arrenda.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDF\concepto.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>concepto.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PDF\Conceptos.Designer.vb">
+      <DependentUpon>Conceptos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PDF\Conceptos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDF\Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PDF\Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDF\Formulaio.Designer.vb">
+      <DependentUpon>Formulaio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PDF\Formulaio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDF\GArrenda.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GArrenda.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PDF\Global.Designer.vb">
+      <DependentUpon>Global.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PDF\Global.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDF\Global40.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global40.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PDF\GlobalNut.Designer.vb">
+      <DependentUpon>GlobalNut.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PDF\GlobalNut.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDF\GNotaNut.Designer.vb">
+      <DependentUpon>GNotaNut.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PDF\GNotaNut.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sat\frmRegimenFiscal.Designer.vb">
+      <DependentUpon>frmRegimenFiscal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Sat\frmRegimenFiscal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmUUIDBoutiqueDetalle.Designer.vb">
+      <DependentUpon>frmUUIDBoutiqueDetalle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmUUIDBoutiqueDetalle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmComplementoPagos.Designer.vb">
+      <DependentUpon>frmComplementoPagos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmComplementoPagos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmConceptosBosco.Designer.vb">
+      <DependentUpon>frmConceptosBosco.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmConceptosBosco.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmConceptosBoutique.Designer.vb">
+      <DependentUpon>frmConceptosBoutique.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmConceptosBoutique.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmDevolucionBosco.Designer.vb">
+      <DependentUpon>frmDevolucionBosco.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmDevolucionBosco.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmGlobalBosco.Designer.vb">
+      <DependentUpon>frmGlobalBosco.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmGlobalBosco.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmGlobalBoutiqueV2.Designer.vb">
+      <DependentUpon>frmGlobalBoutiqueV2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmGlobalBoutiqueV2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmGlobalNutrisa.Designer.vb">
+      <DependentUpon>frmGlobalNutrisa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmGlobalNutrisa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmHonorarios.Designer.vb">
+      <DependentUpon>frmHonorarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmHonorarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmImportarNutrisa.Designer.vb">
+      <DependentUpon>frmImportarNutrisa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmImportarNutrisa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmNotaCreditoDetalleBosco.Designer.vb">
+      <DependentUpon>frmNotaCreditoDetalleBosco.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmNotaCreditoDetalleBosco.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmPagos.Designer.vb">
+      <DependentUpon>frmPagos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmPagos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmRepeco.Designer.vb">
+      <DependentUpon>frmRepeco.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmRepeco.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmUUIDBosco.Designer.vb">
+      <DependentUpon>frmUUIDBosco.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmUUIDBosco.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmUUIDBoscoDetalle.Designer.vb">
+      <DependentUpon>frmUUIDBoscoDetalle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmUUIDBoscoDetalle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDF\DataSetFac.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetFac.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PDF\DataSetFac.vb">
+      <DependentUpon>DataSetFac.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PDF\factura40.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>factura40.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PDF\GFactura.Designer.vb">
+      <DependentUpon>GFactura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PDF\GFactura.vb" />
+    <Compile Include="PDF\GNota.Designer.vb">
+      <DependentUpon>GNota.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PDF\GNota.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDF\NotaCredito.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NotaCredito.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Principal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Principal.Designer.vb">
+      <DependentUpon>Principal.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Sat\satUsoCFDI.Designer.vb">
+      <DependentUpon>satUsoCFDI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Sat\satUsoCFDI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sat\satUsoCFDIBosco.Designer.vb">
+      <DependentUpon>satUsoCFDIBosco.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Sat\satUsoCFDIBosco.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service References\fel\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Arrendamiento\frmArrendamiento.resx">
+      <DependentUpon>frmArrendamiento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBoutique\frmBorraVentas.resx">
+      <DependentUpon>frmBorraVentas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBoutique\frmCancelarTicket.resx">
+      <DependentUpon>frmCancelarTicket.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBoutique\frmGlobalBoutv2.resx">
+      <DependentUpon>frmGlobalBoutv2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBoutique\frmPreparaInfo.resx">
+      <DependentUpon>frmPreparaInfo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\CancelaFacturasXArchivo.resx">
+      <DependentUpon>CancelaFacturasXArchivo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\CreaPDF.resx">
+      <DependentUpon>CreaPDF.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmComplementoPagos20.resx">
+      <DependentUpon>frmComplementoPagos20.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmCompPagos.resx">
+      <DependentUpon>frmCompPagos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmGlobal.resx">
+      <DependentUpon>frmGlobal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmGlobalBoscoCredito.resx">
+      <DependentUpon>frmGlobalBoscoCredito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\Pagos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Pagos.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\ComPago.resx">
+      <DependentUpon>ComPago.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\CRGlobalNut.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRGlobalNut.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\CRNotaGlobalNut.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRNotaGlobalNut.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturaCafeterias\frmClienteCafeteria.resx">
+      <DependentUpon>frmClienteCafeteria.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturaNutrisa\frmEnvioCierreNutrisa.resx">
+      <DependentUpon>frmEnvioCierreNutrisa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturaNutrisa\frmFacClienteNutrisa.resx">
+      <DependentUpon>frmFacClienteNutrisa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBosco\frmBoscoCorreo.resx">
+      <DependentUpon>frmBoscoCorreo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBosco\frmBoscoReimpresion.resx">
+      <DependentUpon>frmBoscoReimpresion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBosco\frmBosFacClientes.resx">
+      <DependentUpon>frmBosFacClientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBosco\frmClientesBosco.resx">
+      <DependentUpon>frmClientesBosco.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBosco\frmNotaCreditoBosco.resx">
+      <DependentUpon>frmNotaCreditoBosco.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBoutique\frmBoutiqueCorreo.resx">
+      <DependentUpon>frmBoutiqueCorreo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBoutique\frmBoutiqueReimpresion.resx">
+      <DependentUpon>frmBoutiqueReimpresion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBoutique\frmClientesBoutique.resx">
+      <DependentUpon>frmClientesBoutique.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBoutique\frmComplementoPagoBoutique.resx">
+      <DependentUpon>frmComplementoPagoBoutique.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBoutique\frmFacClientes.resx">
+      <DependentUpon>frmFacClientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBoutique\frmNotaCreditoBoutique.resx">
+      <DependentUpon>frmNotaCreditoBoutique.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBoutique\frmNotaCreditoDetalleBoutique.resx">
+      <DependentUpon>frmNotaCreditoDetalleBoutique.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBoutique\frmPagosBoutique.resx">
+      <DependentUpon>frmPagosBoutique.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmNotaCreditoOficinasBosco.resx">
+      <DependentUpon>frmNotaCreditoOficinasBosco.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\Arrenda.resx">
+      <DependentUpon>Arrenda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\concepto.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>concepto.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\Conceptos.resx">
+      <DependentUpon>Conceptos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\GArrenda.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>GArrenda.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\Global.resx">
+      <DependentUpon>Global.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\Global40.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Global40.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\GlobalNut.resx">
+      <DependentUpon>GlobalNut.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\GNotaNut.resx">
+      <DependentUpon>GNotaNut.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sat\frmRegimenFiscal.resx">
+      <DependentUpon>frmRegimenFiscal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBoutique\frmUUIDBoutiqueDetalle.resx">
+      <DependentUpon>frmUUIDBoutiqueDetalle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmComplementoPagos.resx">
+      <DependentUpon>frmComplementoPagos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmConceptosBosco.resx">
+      <DependentUpon>frmConceptosBosco.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmConceptosBoutique.resx">
+      <DependentUpon>frmConceptosBoutique.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmDevolucionBosco.resx">
+      <DependentUpon>frmDevolucionBosco.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmGlobalBosco.resx">
+      <DependentUpon>frmGlobalBosco.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmGlobalBoutiqueV2.resx">
+      <DependentUpon>frmGlobalBoutiqueV2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmGlobalNutrisa.resx">
+      <DependentUpon>frmGlobalNutrisa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmHonorarios.resx">
+      <DependentUpon>frmHonorarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmImportarNutrisa.resx">
+      <DependentUpon>frmImportarNutrisa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmNotaCreditoDetalleBosco.resx">
+      <DependentUpon>frmNotaCreditoDetalleBosco.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmPagos.resx">
+      <DependentUpon>frmPagos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmRepeco.resx">
+      <DependentUpon>frmRepeco.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmUUIDBosco.resx">
+      <DependentUpon>frmUUIDBosco.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmUUIDBoscoDetalle.resx">
+      <DependentUpon>frmUUIDBoscoDetalle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\factura40.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>factura40.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\GFactura.resx">
+      <DependentUpon>GFactura.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\GNota.resx">
+      <DependentUpon>GNota.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\NotaCredito.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>NotaCredito.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Principal.resx">
+      <DependentUpon>Principal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sat\satUsoCFDI.resx">
+      <DependentUpon>satUsoCFDI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sat\satUsoCFDIBosco.resx">
+      <DependentUpon>satUsoCFDIBosco.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="PDF\DataSetFac.xsc">
+      <DependentUpon>DataSetFac.xsd</DependentUpon>
+    </None>
+    <None Include="PDF\DataSetFac.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetFac.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="PDF\DataSetFac.xss">
+      <DependentUpon>DataSetFac.xsd</DependentUpon>
+    </None>
+    <None Include="Service References\fel\NewSistemaFacturas.fel.RespuestaCancelacion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fel\NewSistemaFacturas.fel.RespuestaCancelacionAsincrona.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fel\NewSistemaFacturas.fel.RespuestaCreditos.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fel\NewSistemaFacturas.fel.RespuestaEstatusCancelacionAsincrona.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fel\NewSistemaFacturas.fel.RespuestaReporte.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fel\NewSistemaFacturas.fel.RespuestaTFD33.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\fel\WSCFDI331.wsdl" />
+    <None Include="Service References\fel\WSCFDI334.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\fel\WSCFDI3341.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\fel\WSCFDI3342.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\fel\WSCFDI3343.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\fel\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\fel\configuration.svcinfo" />
+    <None Include="Service References\fel\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\fel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Imagenes\cancelarticket_2.jpg" />
+    <Content Include="Ionic.Zip.Reduced.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="My Project\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="CRREPORTSOURCEBRIDGELib">
+      <Guid>{80F19574-9245-4DFA-A0A6-8A21874282D3}</Guid>
+      <VersionMajor>13</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CrystalReportsCommonObjectModelLib">
+      <Guid>{FDB9B69E-BA79-4B13-9E96-8373AF162AEA}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CrystalReportsCubeDefModelLib">
+      <Guid>{44AD71D4-4905-491D-B179-B5D91EB57374}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CrystalReportsDataDefModelLib">
+      <Guid>{9B2F3E7B-8D45-47E8-95D3-3A9C1B22437F}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CrystalReportViewerExportLib">
+      <Guid>{5C21A516-C6AC-42F2-A7B7-846FFE1B122A}</Guid>
+      <VersionMajor>13</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
