@@ -90,6 +90,9 @@ Public Class frmGlobalBoutv2
         va = 0
         va2 = 0
         Application.DoEvents()
+        'Dim Total = 1001151
+        'Dim cantl As String
+        'cantl = Letras(Total)
     End Sub
 
     Private Sub grbTienda_ValueChanged(sender As Object, e As EventArgs) Handles grbTienda.ValueChanged
@@ -725,7 +728,6 @@ Public Class frmGlobalBoutv2
             'En la siguiente línea es necesario incluir la Clave de Integración que se proporciona en la Guía de Implementación (Menú "Ayuda" de su Oficina Virtual).
             'EasyOne_SetInvoiceOneFachadaInfoPrueba(p, "RHUUMRGL", "RHUUMRGL")
             'EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
-
 
             'EasyOne_SetInvoiceOneFachadaInfoPrueba(p, invoice, invoice)
             EasyOne_SetInvoiceOneFachadaInfo(p, invoice, invoice)

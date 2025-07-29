@@ -109,75 +109,159 @@
                                     palabras = palabras & "veinte "
                                     flag = "S"
                                 Else
-                                    palabras = palabras & "veinti"
-                                    flag = "N"
+                                    If Mid(entero, num + 1, 1) = "1" Then
+                                        palabras = palabras & "veinti"
+                                        flag = "U"
+                                    Else
+                                        palabras = palabras & "veinti"
+                                        flag = "N"
+                                    End If
                                 End If
                             Case "3"
                                 If Mid(entero, num + 1, 1) = "0" Then
                                     palabras = palabras & "treinta "
                                     flag = "S"
                                 Else
-                                    palabras = palabras & "treinta y "
-                                    flag = "N"
+                                    If Mid(entero, num + 1, 1) = "1" Then
+                                        palabras = palabras & "treinta y "
+                                        flag = "U"
+                                    Else
+                                        palabras = palabras & "treinta y "
+                                        flag = "N"
+                                    End If
                                 End If
                             Case "4"
                                 If Mid(entero, num + 1, 1) = "0" Then
                                     palabras = palabras & "cuarenta "
                                     flag = "S"
                                 Else
-                                    palabras = palabras & "cuarenta y "
-                                    flag = "N"
+                                    If Mid(entero, num + 1, 1) = "1" Then
+                                        palabras = palabras & "cuarenta y "
+                                        flag = "U"
+                                    Else
+                                        palabras = palabras & "cuarenta y "
+                                        flag = "N"
+                                    End If
                                 End If
                             Case "5"
                                 If Mid(entero, num + 1, 1) = "0" Then
                                     palabras = palabras & "cincuenta "
                                     flag = "S"
                                 Else
-                                    palabras = palabras & "cincuenta y "
-                                    flag = "N"
+                                    If Mid(entero, num + 1, 1) = "1" Then
+                                        palabras = palabras & "cincuenta y "
+                                        flag = "U"
+                                    Else
+                                        palabras = palabras & "cincuenta y "
+                                        flag = "N"
+                                    End If
                                 End If
                             Case "6"
                                 If Mid(entero, num + 1, 1) = "0" Then
                                     palabras = palabras & "sesenta "
                                     flag = "S"
                                 Else
-                                    palabras = palabras & "sesenta y "
-                                    flag = "N"
+                                    If Mid(entero, num + 1, 1) = "1" Then
+                                        palabras = palabras & "sesenta y "
+                                        flag = "U"
+                                    Else
+                                        palabras = palabras & "sesenta y "
+                                        flag = "N"
+                                    End If
                                 End If
                             Case "7"
                                 If Mid(entero, num + 1, 1) = "0" Then
                                     palabras = palabras & "setenta "
                                     flag = "S"
                                 Else
-                                    palabras = palabras & "setenta y "
-                                    flag = "N"
+                                    If Mid(entero, num + 1, 1) = "1" Then
+                                        palabras = palabras & "setenta y "
+                                        flag = "U"
+                                    Else
+                                        palabras = palabras & "setenta y "
+                                        flag = "N"
+                                    End If
                                 End If
                             Case "8"
                                 If Mid(entero, num + 1, 1) = "0" Then
                                     palabras = palabras & "ochenta "
                                     flag = "S"
                                 Else
-                                    palabras = palabras & "ochenta y "
-                                    flag = "N"
+                                    If Mid(entero, num + 1, 1) = "1" Then
+                                        palabras = palabras & "ochenta y "
+                                        flag = "U"
+                                    Else
+                                        palabras = palabras & "ochenta y "
+                                        flag = "N"
+                                    End If
                                 End If
                             Case "9"
                                 If Mid(entero, num + 1, 1) = "0" Then
                                     palabras = palabras & "noventa "
                                     flag = "S"
                                 Else
-                                    palabras = palabras & "noventa y "
-                                    flag = "N"
+                                    If Mid(entero, num + 1, 1) = "1" Then
+                                        palabras = palabras & "noventa y "
+                                        flag = "U"
+                                    Else
+                                        palabras = palabras & "noventa y "
+                                        flag = "N"
+                                    End If
                                 End If
                         End Select
-                    Case 1, 4, 7
+                    Case 1, 7
                         '*********Asigna las palabras para las unidades*********
                         Select Case Mid(entero, num, 1)
                             Case "1"
                                 If flag = "N" Then
                                     If y = 1 Then
-                                        palabras = palabras & "un "
-                                    Else
                                         palabras = palabras & "uno "
+                                    Else
+                                        palabras = palabras & "un "
+                                    End If
+                                Else
+                                    If flag = "U" Then
+                                        If y = 1 Then
+                                            palabras = palabras & "un "
+                                        Else
+                                            palabras = palabras & "un "
+                                        End If
+                                    End If
+                                End If
+                            Case "2"
+                                If flag = "N" Then palabras = palabras & "dos "
+                            Case "3"
+                                If flag = "N" Then palabras = palabras & "tres "
+                            Case "4"
+                                If flag = "N" Then palabras = palabras & "cuatro "
+                            Case "5"
+                                If flag = "N" Then palabras = palabras & "cinco "
+                            Case "6"
+                                If flag = "N" Then palabras = palabras & "seis "
+                            Case "7"
+                                If flag = "N" Then palabras = palabras & "siete "
+                            Case "8"
+                                If flag = "N" Then palabras = palabras & "ocho "
+                            Case "9"
+                                If flag = "N" Then palabras = palabras & "nueve "
+                        End Select
+
+                    Case 4
+                        Select Case Mid(entero, num, 1)
+                            Case "1"
+                                If flag = "N" Then
+                                    If y = 1 Then
+                                        palabras = palabras & "uno "
+                                    Else
+                                        palabras = palabras & ""
+                                    End If
+                                Else
+                                    If flag = "U" Then
+                                        If y = 1 Then
+                                            palabras = palabras & "un "
+                                        Else
+                                            palabras = palabras & "un "
+                                        End If
                                     End If
                                 End If
                             Case "2"
