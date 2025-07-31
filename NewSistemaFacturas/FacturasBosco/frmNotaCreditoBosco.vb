@@ -568,6 +568,7 @@ Public Class frmNotaCreditoBosco
                     resultadoXML2 = EasyOne_LeeResultado(pN, 11)
                     Console.WriteLine(resultadoXML2)
                     MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
+                    btnGenerarFactura.Visible = True
                 End If 'Cierra generacion del XML
             Else
                 MsgBox("Los datos de facturacion del cliente NO estan completos, favor de actualizar en catalogo de clientes.")

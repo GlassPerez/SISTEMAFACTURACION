@@ -830,7 +830,7 @@ Public Class frmGlobalBoutiqueV2
                         dev = Devoluciones.Value
                         NotaCredito(freal, TRfc, TRFiscal, Directorios, CerFactura, Key, Pwd, uuid, TCp)
                     End If
-
+                    btnGenerarFactura.Visible = True
                     ''''''nuevoooooooooooooooooooooooooooooooooooooooooo
                 Else
                     MsgBox("Archivo XML no es una factura version 4.0")

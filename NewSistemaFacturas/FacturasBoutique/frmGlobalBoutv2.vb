@@ -750,6 +750,7 @@ Public Class frmGlobalBoutv2
                     resultadoXML2 = EasyOne_LeeResultado(p, 11)
                     MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
                     MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
+                    btnGenerarFactura.Visible = True
                 End If
             Else
                 MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Information).ToString()
@@ -951,10 +952,10 @@ Public Class frmGlobalBoutv2
 
                         Application.DoEvents()
                         smtp.Send(correo)
-                        MsgBox("La factura se envío correctamente", MsgBoxStyle.Information, "Facturación .. ")
-
-                        ''''''nuevoooooooooooooooooooooooooooooooooooooooooo
-                    Else
+                    MsgBox("La factura se envío correctamente", MsgBoxStyle.Information, "Facturación .. ")
+                    btnGenerarFactura.Visible = True
+                    ''''''nuevoooooooooooooooooooooooooooooooooooooooooo
+                Else
                         MsgBox("Archivo XML no es una factura version 4.0")
                     End If
 

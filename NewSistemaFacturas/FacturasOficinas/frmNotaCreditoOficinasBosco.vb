@@ -759,6 +759,7 @@ Public Class frmNotaCreditoOficinasBosco
                             resultadoXML2 = EasyOne_LeeResultado(pN, 11)
                             MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
                             MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL" & " " & " No. de Veces de Timbrado " & va2, MsgBoxStyle.Critical).ToString()
+                            btnFacturar.Visible = True
                         End If
                     Else
                         MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va2, MsgBoxStyle.Information).ToString()
@@ -924,6 +925,7 @@ Public Class frmNotaCreditoOficinasBosco
 
                             CargaGridConceptos()
                             inicializa_cliente()
+                            btnFacturar.Visible = True
                         Else
                             MsgBox("Archivo XML no es una factura version 4.0")
                         End If

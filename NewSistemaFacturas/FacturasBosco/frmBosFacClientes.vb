@@ -946,6 +946,7 @@ Public Class frmBosFacClientes
                                     MsgBox("La factura se envío correctamente", MsgBoxStyle.Information, "Facturación .. ")
                                     BorrarRegistro()
                                     DatClientes()
+                                    btnFacturar.Visible = True
                                 Else
                                     MsgBox("Archivo XML no es una factura version 4.0")
                                 End If 'Cierra validación de operación exitosa
