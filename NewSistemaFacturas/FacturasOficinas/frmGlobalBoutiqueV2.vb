@@ -831,6 +831,7 @@ Public Class frmGlobalBoutiqueV2
                         NotaCredito(freal, TRfc, TRFiscal, Directorios, CerFactura, Key, Pwd, uuid, TCp)
                     End If
                     btnGenerarFactura.Visible = True
+                    va = 0
                     ''''''nuevoooooooooooooooooooooooooooooooooooooooooo
                 Else
                     MsgBox("Archivo XML no es una factura version 4.0")
@@ -1221,6 +1222,7 @@ Public Class frmGlobalBoutiqueV2
                 Catch ex As Exception
                     MsgBox(ex.ToString)
                 End Try
+                va2 = 0
                 '''''nuevoooooooooooooooooooooooooooooooooooooooooo
             Else
                 MsgBox("Archivo XML no es una factura version 4.0")

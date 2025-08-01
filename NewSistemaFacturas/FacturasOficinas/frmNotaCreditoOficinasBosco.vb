@@ -926,6 +926,7 @@ Public Class frmNotaCreditoOficinasBosco
                             CargaGridConceptos()
                             inicializa_cliente()
                             btnFacturar.Visible = True
+                            va2 = 0
                         Else
                             MsgBox("Archivo XML no es una factura version 4.0")
                         End If

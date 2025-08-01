@@ -1162,6 +1162,7 @@ Public Class frmFacClienteNutrisa
                     DatClientes()
                     CargaListaNotas()
                     btnFacturar.Visible = True
+                    va = 0
                 Else
                     MsgBox("Archivo XML no es una factura version 4.0")
                 End If

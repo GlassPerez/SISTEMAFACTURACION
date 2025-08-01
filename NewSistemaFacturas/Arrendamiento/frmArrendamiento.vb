@@ -834,7 +834,7 @@ Public Class frmArrendamiento
                                         'PDF(archivoPDF)
                                         upb.Value = 0
                                         CargaGridConceptos()
-
+                                        va = 0
                                     Else
                                         MsgBox("Archivo XML no es una factura version 4.0")
                                     End If 'Valida si existe el archivo XML 

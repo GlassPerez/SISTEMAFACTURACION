@@ -835,6 +835,7 @@ Public Class frmGlobalNutrisa
                         End If
                         BorrarRegistro()
                         btnFacturar.Visible = True
+                        va = 0
                     Else
                         MsgBox("Archivo XML no es una factura version 4.0")
                     End If 'Cierra validacion de timbrado de pac
@@ -1302,6 +1303,7 @@ Public Class frmGlobalNutrisa
                 Catch ex As Exception
                     MsgBox(ex.ToString)
                 End Try
+                va2 = 0
                 '''''nuevoooooooooooooooooooooooooooooooooooooooooo
             Else
                 MsgBox("Archivo XML no es una factura version 4.0")

@@ -846,6 +846,7 @@ Public Class frmCompPagos
                 Application.DoEvents()
                 Inicializa()
                 btnAplicarPago.Visible = True
+                va = 0
             Else
                 MsgBox("Archivo XML no es una factura version 4.0")
             End If 'Cierra validación de operación exitosa

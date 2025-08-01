@@ -909,7 +909,7 @@ Public Class frmConceptosBosco
                             BorrarRegistro()
                             DatClientes()
                             CargaGridConceptos()
-
+                            va = 0
                         Else
                             MsgBox("Archivo XML no es una factura version 4.0")
                         End If 'Cierra validacion del PAC

@@ -839,6 +839,7 @@ Public Class frmGlobalBoscoCredito
 
                         BorrarRegistro()
                         btnGenerarFactura.Visible = True
+                        va = 0
                     Else
                         MsgBox("Archivo XML no es una factura version 4.0")
                     End If
@@ -1248,6 +1249,7 @@ Public Class frmGlobalBoscoCredito
                 Catch ex As Exception
                     MsgBox(ex.ToString)
                 End Try
+                va2 = 0
                 '''''nuevoooooooooooooooooooooooooooooooooooooooooo
             Else
                 MsgBox("Archivo XML no es una factura version 4.0")

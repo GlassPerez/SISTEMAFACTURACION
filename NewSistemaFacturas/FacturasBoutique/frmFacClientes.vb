@@ -992,6 +992,7 @@ Public Class frmFacClientes
                                     BorrarRegistro()
                                     DatClientes()
                                     btnFacturar.Visible = True
+                                    'va = 0
                                     'PDF(archivoPDF)
                                 Else
                                     MsgBox("Archivo XML no es una factura version 4.0")
