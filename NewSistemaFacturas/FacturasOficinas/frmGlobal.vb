@@ -249,7 +249,8 @@ Public Class frmGlobal
             f1 = txtFechaVenta.Text.ToString.Substring(0, 2)
             f2 = txtFechaVenta.Text.ToString.Substring(3, 2)
             f3 = txtFechaVenta.Text.ToString.Substring(6, 4)
-            hr = Now.ToLocalTime.ToString.Substring(11, 8)
+            'hr = Now.ToLocalTime.ToString.Substring(11, 8)
+            FeReg = txtFechaVenta.Text.ToString.Substring(6, 4) & f2 & f1
 
             Application.DoEvents()
             TRazonSocial = Tabla.Rows(0).Item("trSocial").ToString
@@ -266,7 +267,7 @@ Public Class frmGlobal
             Dim CarpSucursal = Tabla.Rows(0).Item("sCsuc").ToString
             Dim rutlogo As String = Trim(Tabla.Rows(0).Item("rutLogo").ToString) '"\\172.16.150.24\c\inetpub\wwwroot\sistemafac\Tiendas\Povisa\Formatos\FactCliente\RecursosCFD33\LOGO.png" 
             Dim descreg As String = Trim(Tabla.Rows(0).Item("sRFiscal").ToString)
-            Dim FeReg As String = txtFechaVenta.Text.ToString.Substring(6, 4) & f2 & f1
+
             'Dim FechaFactura As DateTime = Now
             'Dim FechaHora As String = FechaFactura.ToString.Substring(10, 10)
 
@@ -496,13 +497,7 @@ Public Class frmGlobal
 
             Dim ValorTicket As String = Cadena
 
-            'Dim f1, f2, f3, freal, FeReg, hr As String
-            'f1 = Today.ToString.Substring(0, 2)
-            'f2 = Today.ToString.Substring(3, 2)
-            'f3 = Today.ToString.Substring(6, 4)
-            'hr = Now.ToLocalTime.ToString.Substring(11, 8)
             freal = f3 & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr
-            FeReg = Today.ToString.Substring(6, 4) & f2 & f1
             If des = 0 Then
                 EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, "01", "", Format((Subt), "######.00"), "", "MXN", "1", Format((Total), "######.00"), "I", "PUE", TCp, "")
             Else
@@ -518,9 +513,9 @@ Public Class frmGlobal
             EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
 
             upb.Value += 20  'Suma 30
-            Dim x As Integer = EasyOne_FirmaComprobante(p, CerFactura, Key, Pwd)
+            Dim x As Integer = EasyOne_FirmaComprobante(p, "", "", "")
             Application.DoEvents()
-
+            ''ESTA VERSION NO SE OCUPA
             If x = 0 Then
                 Application.DoEvents()
 

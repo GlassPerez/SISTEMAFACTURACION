@@ -31,6 +31,8 @@ Public Class frmCompPagos
     Dim Mes As Integer = 0
     Dim tablaFacturas As Data.DataTable
     Dim va As Integer
+    Dim hra As String
+    Dim seriee, folio As String
 #End Region
 
 #Region "DatosEmisor"
@@ -647,10 +649,11 @@ Public Class frmCompPagos
         'datos del pago
         Dim fechapag, hr, fpag As String
         fpag = Now
-        hr = Now.ToLocalTime.ToString.Substring(11, 8)
-        fechapag = Now.ToString.Substring(6, 4) & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr 'AddDays(-1).ToString("yyyy-MM-ddTHH:mm:ss")
+        'hr = Now.ToLocalTime.ToString.Substring(11, 8)
+        'fechapag = Now.ToString.Substring(6, 4) & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr 'AddDays(-1).ToString("yyyy-MM-ddTHH:mm:ss")
 
-        EasyOne_cfdi33_SetComprobante(c, serie, NumPago, fechapag, "", "", 0, "", "XXX", "", 0, "P", "", lugarPago, "")
+        'EasyOne_cfdi33_SetComprobante(c, serie, NumPago, fechapag, "", "", 0, "", "XXX", "", 0, "P", "", lugarPago, "")
+
 
         ''Informacion Global de totales del Pago - Aqui se debe registrar la suma de todos los importes y bases de todos los pagos
         'TotalRetencionesIVA, TotalRetencionesISR, TotalRetencionesIEPS, TotalTrasladosBaseIVA16, TotalTrasladosImpuestoIVA16, TotalTrasladosBaseIVA8, TotalTrasladosImpuestoIVA8, TotalTrasladosBaseIVA0, TotalTrasladosImpuestoIVA0, TotalTrasladosBaseIVAExento, MontoTotalPagos
@@ -678,24 +681,48 @@ Public Class frmCompPagos
         RFacImpresas = Directorios & "\" & FechaFactura.ToString.Substring(6, 4) & "\" & FechaFactura.ToString.Substring(3, 2)
 
         ''Dim motor As New CFDI33.MotorCFDI(CerFactura, Key, Pwd, RFacImpresas)
-        'EasyOne_SetInvoiceOneFachadaInfoPrueba(c, "RHUUMRGL", "RHUUMRGL")
-        EasyOne_SetInvoiceOneFachadaInfo(c, "RHUUMRGL", "RHUUMRGL")
+        ''EasyOne_SetInvoiceOneFachadaInfoPrueba(c, "RHUUMRGL", "RHUUMRGL")
+        'EasyOne_SetInvoiceOneFachadaInfo(c, "RHUUMRGL", "RHUUMRGL")
 
         'Timbra XML, que se encuentra en variable P
         Dim x As Integer = 99
         If va = 0 Then
-            x = EasyOne_FirmaComprobante(p, CerFactura, Key, Pwd)
-            If x = 0 Then
-                va += 1
+            hr = Now.ToLocalTime.ToString.Substring(11, 8)
+
+            If hra <> "" Then
+                MsgBox("Intenta tmbrar nuevamente pero con otra hora !!!" & " " & " 1er hora " & hra & "   2da hora " & hr, MsgBoxStyle.Information).ToString()
+                hr = hra
+            End If
+
+            fechapag = Now.ToString.Substring(6, 4) & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr 'AddDays(-1).ToString("yyyy-MM-ddTHH:mm:ss")
+
+            If (seriee = "" And folio = "") Or (seriee <> serie And folio <> NumPago) Then
+
+                EasyOne_cfdi33_SetComprobante(c, serie, NumPago, fechapag, "", "", 0, "", "XXX", "", 0, "P", "", lugarPago, "")
+
+                ''Dim motor As New CFDI33.MotorCFDI(CerFactura, Key, Pwd, RFacImpresas)
+                'EasyOne_SetInvoiceOneFachadaInfoPrueba(c, "RHUUMRGL", "RHUUMRGL")
+                EasyOne_SetInvoiceOneFachadaInfo(c, "RHUUMRGL", "RHUUMRGL")
+
+                x = EasyOne_FirmaComprobante(p, CerFactura, Key, Pwd)
+                If x = 0 Then
+                    va += 1
+                    hra = hr
+                    seriee = serie
+                    folio = NumPago
+                Else
+                    Dim resultadoXML2 As String = [String].Empty
+                    resultadoXML2 = EasyOne_LeeResultado(p, 11)
+                    MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
+                    MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL  No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
+                    btnAplicarPago.Visible = True
+                    hra = hr
+                End If
             Else
-                Dim resultadoXML2 As String = [String].Empty
-                resultadoXML2 = EasyOne_LeeResultado(p, 11)
-                MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
-                btnAplicarPago.Visible = True
+                MsgBox("Intenta tmbrar nuevamente con el mismo FILO Y SERIE !!! Serie: " & seriee & "   Folio: " & folio, MsgBoxStyle.Information).ToString()
             End If
         Else
-            MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Information).ToString()
+            MsgBox("Archivo ya Timbrado !!!  No. de Veces de Timbrado " & va, MsgBoxStyle.Information).ToString()
         End If
 
         If x = 0 And va = 1 Then

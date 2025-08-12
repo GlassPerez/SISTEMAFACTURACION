@@ -27,7 +27,7 @@ Public Class frmNotaCreditoBosco
     Dim Transaccion As Integer
     Dim FecFactura As String
     Dim Cid As Integer
-
+    Dim hra As String
     Dim Timbrado As Boolean = False
     Dim contador As Integer = 0
     Dim Cadena As String
@@ -35,6 +35,7 @@ Public Class frmNotaCreditoBosco
     Dim ExisteClave As String
     Dim NumPiezas As Integer
     Dim FechaBusqueda As String
+    Dim serieNC, folioNC As String
 #End Region
 
 #Region "sat"
@@ -403,17 +404,13 @@ Public Class frmNotaCreditoBosco
                 Dim total As Double = 0
                 total = Format((Pu + iv), "###,###.00")
 
-                Dim f1, f2, f3, freal, FeReg, hr As String
+                Dim freal, hr As String
                 Dim fechaventa As DateTime = Now.Date
-
-                f1 = fechaventa.ToString.Substring(0, 2)
-                f2 = fechaventa.ToString.Substring(3, 2)
-                f3 = fechaventa.ToString.Substring(6, 4)
                 hr = Now.ToLocalTime.ToString.Substring(11, 8)
-                freal = f3 & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr
+                REM freal = f3 & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr
                 'freal = "2023" & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr
                 'Llenamos la sección del comprobante (2)
-                EasyOne_cfdi33_SetComprobante(pN, n_serie, n_notacredito, freal, formpg, "", Pu.ToString, "", "MXN", TipoCambio, total.ToString, tipcom, metpg, n_LExpedicion, "")
+                REM EasyOne_cfdi33_SetComprobante(pN, n_serie, n_notacredito, freal, formpg, "", Pu.ToString, "", "MXN", TipoCambio, total.ToString, tipcom, metpg, n_LExpedicion, "")
 
                 Impuesto = "002"
                 TasaOCuota = "0.160000"
@@ -435,23 +432,45 @@ Public Class frmNotaCreditoBosco
                 cantl = Letras(total)
                 Fila("Ncantidadl") = cantl
 
-                'EasyOne_SetInvoiceOneFachadaInfoPrueba(pN, "RHUUMRGL", "RHUUMRGL") 'PARA PRUEBA
-                EasyOne_SetInvoiceOneFachadaInfo(pN, "RHUUMRGL", "RHUUMRGL")
+                REM'EasyOne_SetInvoiceOneFachadaInfoPrueba(pN, "RHUUMRGL", "RHUUMRGL") 'PARA PRUEBA
+                REM EasyOne_SetInvoiceOneFachadaInfo(pN, "RHUUMRGL", "RHUUMRGL")
 
                 'Timbra XML, que se encuentra en variable P
                 Dim nc As Integer = 99
                 If va2 = 0 Then
-                    nc = EasyOne_FirmaComprobante(pN, CerFactura, Key, Pwd)
-                    If nc = 0 Then
-                        va2 += 1
+                    hr = Now.ToLocalTime.ToString.Substring(11, 8)
+
+                    If hra <> "" Then
+                        MsgBox("Intenta tmbrar nuevamente pero con otra hora !!! 1er hora " & hra & "   2da hora " & hr, MsgBoxStyle.Information).ToString()
+                        hr = hra
+                    End If
+
+                    freal = Now.Date.ToString.Substring(6, 4) & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr
+                    If (serieNC = "" And folioNC = "") Or (n_serie <> serieNC And n_notacredito <> folioNC) Then
+                        'Llenamos la sección del comprobante (2)
+                        EasyOne_cfdi33_SetComprobante(pN, n_serie, n_notacredito, freal, formpg, "", Pu.ToString, "", "MXN", TipoCambio, total.ToString, tipcom, metpg, n_LExpedicion, "")
+
+                        'EasyOne_SetInvoiceOneFachadaInfoPrueba(pN, "RHUUMRGL", "RHUUMRGL") 'PARA PRUEBA
+                        EasyOne_SetInvoiceOneFachadaInfo(pN, "RHUUMRGL", "RHUUMRGL")
+
+                        nc = EasyOne_FirmaComprobante(pN, CerFactura, Key, Pwd)
+                        If nc = 0 Then
+                            va2 += 1
+                            hra = hr
+                            serieNC = n_serie
+                            folioNC = n_notacredito
+                        Else
+                            Dim resultadoXML2 As String = [String].Empty
+                            resultadoXML2 = EasyOne_LeeResultado(pN, 11)
+                            MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
+                            MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL No. de Veces de Timbrado " & va2, MsgBoxStyle.Critical).ToString()
+                            hra = hr
+                        End If
                     Else
-                        Dim resultadoXML2 As String = [String].Empty
-                        resultadoXML2 = EasyOne_LeeResultado(pN, 11)
-                        MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                        MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL" & " " & " No. de Veces de Timbrado " & va2, MsgBoxStyle.Critical).ToString()
+                        MsgBox("Intenta tmbrar nuevamente la Nota de crédito con el mismo FOLIO Y SERIE !!! Serie: " & serieNC & "   Folio: " & folioNC, MsgBoxStyle.Information).ToString()
                     End If
                 Else
-                    MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va2, MsgBoxStyle.Information).ToString()
+                    MsgBox("Archivo ya Timbrado !!! No. de Veces de Timbrado " & va2, MsgBoxStyle.Information).ToString()
                 End If
                 Application.DoEvents()
 

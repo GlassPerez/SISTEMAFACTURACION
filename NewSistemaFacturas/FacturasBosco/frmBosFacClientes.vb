@@ -27,6 +27,8 @@ Public Class frmBosFacClientes
     Dim Cadena As String
     Dim ExisteClave As String
     Dim va As Integer
+    Dim hra As String
+    Dim serie, folio As String
 #End Region
 
 #Region "PDF"
@@ -701,13 +703,13 @@ Public Class frmBosFacClientes
                             Dim ValorTicket As String = Cadena
                             NoCuenta = txtNumCuenta.Text
 
-                            Dim f1, f2, f3, freal, FeReg, hr As String
-                            f1 = txtFechaVenta.Text.ToString.Substring(0, 2)
-                            f2 = txtFechaVenta.Text.ToString.Substring(3, 2)
-                            f3 = txtFechaVenta.Text.ToString.Substring(6, 4)
-                            hr = Now.ToLocalTime.ToString.Substring(11, 8)
-                            freal = f3 & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr
-                            FeReg = txtFechaVenta.Text.ToString.Substring(6, 4) & f2 & f1
+                            Dim freal, hr As String
+                            ''f1 = txtFechaVenta.Text.ToString.Substring(0, 2)
+                            ''f2 = txtFechaVenta.Text.ToString.Substring(3, 2)
+                            ''f3 = txtFechaVenta.Text.ToString.Substring(6, 4)
+                            'hr = Now.ToLocalTime.ToString.Substring(11, 8)
+                            'freal = f3 & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr
+                            ''FeReg = txtFechaVenta.Text.ToString.Substring(6, 4) & f2 & f1
 
                             Dim metpg As String
                             Dim tipcom As String
@@ -722,12 +724,12 @@ Public Class frmBosFacClientes
                             desc2 = Descue.Replace(",", "")
 
                             Dim TipoCambio As Int16 = 1
-                            'Llenamos la sección del comprobante
-                            If desc2 = ".00" Or desc2 = "" Then
-                                EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, formpg, "", Format((Subt), "######.00"), "", "MXN", TipoCambio, Format((Total), "######.00"), tipcom, metpg, TCp, "")
-                            Else
-                                EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, formpg, "", Format((Subt), "######.00"), Format((des), "######.00"), "MXN", TipoCambio, Format((Total), "######.00"), tipcom, metpg, TCp, "")
-                            End If
+                            ''Llenamos la sección del comprobante
+                            ''If desc2 = ".00" Or desc2 = "" Then
+                            ''    EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, formpg, "", Format((Subt), "######.00"), "", "MXN", TipoCambio, Format((Total), "######.00"), tipcom, metpg, TCp, "")
+                            ''Else
+                            ''    EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, formpg, "", Format((Subt), "######.00"), Format((des), "######.00"), "MXN", TipoCambio, Format((Total), "######.00"), tipcom, metpg, TCp, "")
+                            ''End If
 
                             Fila("metpago") = metpg
                             If tipcom = "I" Then
@@ -737,10 +739,10 @@ Public Class frmBosFacClientes
                             End If
                             Fila("formpago") = FormPago 'fp
 
-                            'Enviamos el CFDI al metodo de PRUEBAS
-                            'En la siguiente línea es necesario incluir la Clave de Integración que se proporciona en la Guía de Implementación (Menú "Ayuda" de su Oficina Virtual).
-                            'EasyOne_SetInvoiceOneFachadaInfoPrueba(p, "RHUUMRGL", "RHUUMRGL") 'PARA PRUEBAS
-                            EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
+                            ''Enviamos el CFDI al metodo de PRUEBAS
+                            ''En la siguiente línea es necesario incluir la Clave de Integración que se proporciona en la Guía de Implementación (Menú "Ayuda" de su Oficina Virtual).
+                            ''EasyOne_SetInvoiceOneFachadaInfoPrueba(p, "RHUUMRGL", "RHUUMRGL") 'PARA PRUEBAS
+                            'EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
                             Application.DoEvents()
                             upb.Value += 20  'Suma 30
                             'Dim resultado As CFDI.CFDI33.ResultadoProceso = motorcfdi.GenerarArchivosPAC(True, False)
@@ -748,17 +750,45 @@ Public Class frmBosFacClientes
                             'Timbra XML, que se encuentra en variable P
                             Dim x As Integer = 99
                             If va = 0 Then
-                                x = EasyOne_FirmaComprobante(p, CerFactura, Key, Pwd)
-                                If x = 0 Then
-                                    va += 1
+                                hr = Now.ToLocalTime.ToString.Substring(11, 8)
+
+                                If hra <> "" Then
+                                    'MsgBox("Intenta tmbrar nuevamente pero con otra hora !!!" & " " & " 1er hora " & hra & "   2da hora " & hr, MsgBoxStyle.Information).ToString()
+                                    hr = hra
+                                End If
+
+                                freal = Now.Date.ToString.Substring(6, 4) & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr
+                                If (serie = "" And folio = "") Or (serie <> txtSerie.Text And folio <> txtFactura.Text) Then
+                                    'Llenamos la sección del comprobante
+                                    If desc2 = ".00" Or desc2 = "" Then
+                                        EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, formpg, "", Format((Subt), "######.00"), "", "MXN", TipoCambio, Format((Total), "######.00"), tipcom, metpg, TCp, "")
+                                    Else
+                                        EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, formpg, "", Format((Subt), "######.00"), Format((des), "######.00"), "MXN", TipoCambio, Format((Total), "######.00"), tipcom, metpg, TCp, "")
+                                    End If
+
+                                    'Enviamos el CFDI al metodo de PRUEBAS
+                                    'En la siguiente línea es necesario incluir la Clave de Integración que se proporciona en la Guía de Implementación (Menú "Ayuda" de su Oficina Virtual).
+                                    'EasyOne_SetInvoiceOneFachadaInfoPrueba(p, "RHUUMRGL", "RHUUMRGL") 'PARA PRUEBAS
+                                    EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
+
+                                    x = EasyOne_FirmaComprobante(p, CerFactura, Key, Pwd)
+                                    If x = 0 Then
+                                        va += 1
+                                        hra = hr
+                                        serie = txtSerie.Text
+                                        folio = txtFactura.Text
+                                    Else
+                                        Dim resultadoXML2 As String = [String].Empty
+                                        resultadoXML2 = EasyOne_LeeResultado(p, 11)
+                                        MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
+                                        MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL  No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
+                                        hra = hr
+                                    End If
                                 Else
-                                    Dim resultadoXML2 As String = [String].Empty
-                                    resultadoXML2 = EasyOne_LeeResultado(p, 11)
-                                    MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                                    MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
+                                    MsgBox("Intenta tmbrar nuevamente con el mismo FILO Y SERIE !!! Serie: " & serie & "   Folio: " & folio, MsgBoxStyle.Information).ToString()
                                 End If
                             Else
-                                MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Information).ToString()
+                                MsgBox("Archivo ya Timbrado !!! No. de Veces de Timbrado " & va, MsgBoxStyle.Information).ToString()
                             End If
 
                             'Si el resultado es 0 = El CFDI se procesó correctamente

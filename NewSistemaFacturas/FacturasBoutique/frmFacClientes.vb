@@ -30,6 +30,8 @@ Public Class frmFacClientes
     Dim FechaFactura As String
     Dim va As Integer
     Private clickCount As Integer = 0
+    Dim hra As String
+    Dim serie, folio As String
 #End Region
 
 #Region "PDF"
@@ -751,14 +753,14 @@ Public Class frmFacClientes
                             Dim ValorTicket As String = Cadena
                             NoCuenta = txtNumCuenta.Text
 
-                            Dim f1, f2, f3, freal, FeReg, hr As String
-                            f1 = txtFechaVenta.Text.ToString.Substring(0, 2)
-                            f2 = txtFechaVenta.Text.ToString.Substring(3, 2)
-                            f3 = txtFechaVenta.Text.ToString.Substring(6, 4)
-                            hr = Now.ToLocalTime.ToString.Substring(11, 8)
-                            freal = Now & "T" & hr
-                            freal = Now.ToString.Substring(6, 4) & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr 'f3 & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr
-                            FeReg = txtFechaVenta.Text.ToString.Substring(6, 4) & f2 & f1
+                            Dim freal, hr As String
+                            'f1 = txtFechaVenta.Text.ToString.Substring(0, 2)
+                            'f2 = txtFechaVenta.Text.ToString.Substring(3, 2)
+                            'f3 = txtFechaVenta.Text.ToString.Substring(6, 4)
+                            'hr = Now.ToLocalTime.ToString.Substring(11, 8)
+                            'freal = Now & "T" & hr
+                            'freal = Now.ToString.Substring(6, 4) & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr 'f3 & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr
+                            'FeReg = txtFechaVenta.Text.ToString.Substring(6, 4) & f2 & f1
 
                             Dim metpg As String
                             Dim tipcom As String
@@ -772,12 +774,12 @@ Public Class frmFacClientes
                             Descue = Format(des, "###,###.00")
                             desc2 = Descue.Replace(",", "")
 
-                            'Llenamos la sección del comprobante
-                            If desc2 = ".00" Or desc2 = "" Then
-                                EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, formpg, "", Format((Subt), "######.00"), "", "MXN", TipoCambio, Format((Total), "######.00"), tipcom, metpg, TCp, "")
-                            Else
-                                EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, formpg, "", Format((Subt), "######.00"), Format((des), "######.00"), "MXN", TipoCambio, Format((Total), "######.00"), tipcom, metpg, TCp, "")
-                            End If
+                            ''Llenamos la sección del comprobante
+                            'If desc2 = ".00" Or desc2 = "" Then
+                            '    EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, formpg, "", Format((Subt), "######.00"), "", "MXN", TipoCambio, Format((Total), "######.00"), tipcom, metpg, TCp, "")
+                            'Else
+                            '    EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, formpg, "", Format((Subt), "######.00"), Format((des), "######.00"), "MXN", TipoCambio, Format((Total), "######.00"), tipcom, metpg, TCp, "")
+                            'End If
 
                             Fila("metpago") = metpg
                             If tipcom = "I" Then
@@ -792,10 +794,10 @@ Public Class frmFacClientes
                             'EasyOne_SetInvoiceOneFachadaInfoPrueba(p, "RHUUMRGL", "RHUUMRGL")
                             'EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
 
-                            'EasyOne_SetInvoiceOneFachadaInfoPrueba(p, invoice, invoice)
-                            EasyOne_SetInvoiceOneFachadaInfo(p, invoice, invoice)
+                            ''EasyOne_SetInvoiceOneFachadaInfoPrueba(p, invoice, invoice)
+                            'EasyOne_SetInvoiceOneFachadaInfo(p, invoice, invoice)
 
-                                Application.DoEvents()
+                            Application.DoEvents()
                             upb.Value += 30  'Suma 40
 
                             'En la siguiente línea se deben colocar los nombres de los archivos de certificado de sellos del Emisor.
@@ -804,18 +806,44 @@ Public Class frmFacClientes
                             'Timbra XML, que se encuentra en variable P
                             Dim x As Integer = 99
                             If va = 0 Then
-                                x = EasyOne_FirmaComprobante(p, CerFactura, Key, Pwd)
-                                If x = 0 Then
-                                    va += 1
+                                hr = Now.ToLocalTime.ToString.Substring(11, 8)
+
+                                If hra <> "" Then
+                                    MsgBox("Intenta tmbrar nuevamente pero con otra hora !!!" & " " & " 1er hora " & hra & "   2da hora " & hr, MsgBoxStyle.Information).ToString()
+                                    hr = hra
+                                End If
+
+                                freal = Now.Date.ToString.Substring(6, 4) & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr
+                                If (serie = "" And folio = "") Or (serie <> txtSerie.Text And folio <> txtFactura.Text) Then
+                                    'Llenamos la sección del comprobante
+                                    If desc2 = ".00" Or desc2 = "" Then
+                                        EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, formpg, "", Format((Subt), "######.00"), "", "MXN", TipoCambio, Format((Total), "######.00"), tipcom, metpg, TCp, "")
+                                    Else
+                                        EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, formpg, "", Format((Subt), "######.00"), Format((des), "######.00"), "MXN", TipoCambio, Format((Total), "######.00"), tipcom, metpg, TCp, "")
+                                    End If
+
+                                    'EasyOne_SetInvoiceOneFachadaInfoPrueba(p, invoice, invoice)
+                                    EasyOne_SetInvoiceOneFachadaInfo(p, invoice, invoice)
+
+                                    x = EasyOne_FirmaComprobante(p, CerFactura, Key, Pwd)
+                                    If x = 0 Then
+                                        va += 1
+                                        hra = hr
+                                        serie = txtSerie.Text
+                                        folio = txtFactura.Text
+                                    Else
+                                        Dim resultadoXML2 As String = [String].Empty
+                                        resultadoXML2 = EasyOne_LeeResultado(p, 11)
+                                        MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
+                                        MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
+                                        btnFacturar.Visible = True
+                                        hra = hr
+                                    End If
                                 Else
-                                    Dim resultadoXML2 As String = [String].Empty
-                                    resultadoXML2 = EasyOne_LeeResultado(p, 11)
-                                    MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                                    MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
-                                    btnFacturar.Visible = True
+                                    MsgBox("Intenta tmbrar nuevamente con el mismo FILO Y SERIE !!! Serie: " & serie & "   Folio: " & folio, MsgBoxStyle.Information).ToString()
                                 End If
                             Else
-                                MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Information).ToString()
+                                    MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Information).ToString()
                             End If
 
                             'If Not resultado.Errores Then
@@ -893,7 +921,7 @@ Public Class frmFacClientes
                                     fecha2 = Now.Date.ToString.Substring(3, 2)
                                     fecha3 = Now.Date.ToString.Substring(6, 4)
                                     fechareal = fecha1 & "/" & fecha2 & "/" & fecha3
-                                    FeRegistro = Now.Date.ToString.Substring(6, 4) & fecha2 & fecha1
+                                    FeRegistro = txtFechaVenta.Text.ToString.Substring(6, 4) & txtFechaVenta.Text.ToString.Substring(3, 2) & txtFechaVenta.Text.ToString.Substring(0, 2) 'Now.Date.ToString.Substring(6, 4) & fecha2 & fecha1
                                     PorIva = 16.0
 
                                     upb.Value += 10 'Suma 60 

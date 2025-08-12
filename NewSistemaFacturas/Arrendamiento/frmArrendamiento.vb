@@ -35,7 +35,7 @@ Public Class frmArrendamiento
     Dim ttotal As Double = 0
     Dim tSubtotal As Double = 0
     Dim tIva As Double = 0
-
+    Dim hra As String
     Dim RF As String
     Dim RFD As String
     Dim cCP As String
@@ -597,13 +597,9 @@ Public Class frmArrendamiento
                                 cantletra = Letras(Total)
                                 Fila("cantidadl") = cantletra
 
-                                Dim f1, f2, f3, freal, FeReg, hr As String
-                                f1 = Today.ToString.Substring(0, 2)
-                                f2 = Today.ToString.Substring(3, 2)
-                                f3 = Today.ToString.Substring(6, 4)
-                                hr = Now.ToLocalTime.ToString.Substring(11, 8)
-                                freal = Now.Date.ToString.Substring(6, 4) & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr
-                                FeReg = Today.ToString.Substring(6, 4) & f2 & f1
+                                Dim freal, hr As String
+                                'hr = Now.ToLocalTime.ToString.Substring(11, 8)
+                                'freal = Now.Date.ToString.Substring(6, 4) & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr
 
                                 If TextBox2.Text.Trim = "04" Then
                                     EasyOne_cfdi33_SetCfdiRelacionados(p, "04")
@@ -620,7 +616,7 @@ Public Class frmArrendamiento
                                     Fila("UUID2Rel") = TextBox3.Text.Trim.ToUpper '"374887F7-5AC2-4EDF-B191-A49A0F4A0A77"
                                 End If
 
-                                EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, grbformaPago.Value, "", Format((sb), "######.00"), "", "MXN", "1", Format((Total), "######.00"), "I", grbPagos.Value, TCp, "")
+                                'EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, grbformaPago.Value, "", Format((sb), "######.00"), "", "MXN", "1", Format((Total), "######.00"), "I", grbPagos.Value, TCp, "")
 
                                 upb.Value += 10 'Suma 40
 
@@ -628,23 +624,41 @@ Public Class frmArrendamiento
                                 Fila("tipocomp") = "I - Ingreso"
                                 Fila("formpago") = fp
 
-                                'Enviamos el CFDI al metodo de PRUEBAS
-                                'En la siguiente línea es necesario incluir la Clave de Integración que se proporciona en la Guía de Implementación (Menú "Ayuda" de su Oficina Virtual).
-                                'EasyOne_SetInvoiceOneFachadaInfoPrueba(p, "RHUUMRGL", "RHUUMRGL") 'PARA PRUEBAS
-                                EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
+                                ''Enviamos el CFDI al metodo de PRUEBAS
+                                ''En la siguiente línea es necesario incluir la Clave de Integración que se proporciona en la Guía de Implementación (Menú "Ayuda" de su Oficina Virtual).
+                                ''EasyOne_SetInvoiceOneFachadaInfoPrueba(p, "RHUUMRGL", "RHUUMRGL") 'PARA PRUEBAS
+                                'EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
 
                                 Application.DoEvents()
                                 'Timbra XML, que se encuentra en variable P
                                 Dim x As Integer = 99
                                 If va = 0 Then
+                                    hr = Now.ToLocalTime.ToString.Substring(11, 8)
+
+                                    If hra <> "" Then
+                                        MsgBox("Intenta tmbrar nuevamente pero con otra hora !!!" & " " & " 1er hora " & hra & "   2da hora " & hr, MsgBoxStyle.Information).ToString()
+                                        hr = hra
+                                    End If
+
+                                    freal = Now.Date.ToString.Substring(6, 4) & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr
+
+                                    EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, grbformaPago.Value, "", Format((sb), "######.00"), "", "MXN", "1", Format((Total), "######.00"), "I", grbPagos.Value, TCp, "")
+
+                                    'Enviamos el CFDI al metodo de PRUEBAS
+                                    'En la siguiente línea es necesario incluir la Clave de Integración que se proporciona en la Guía de Implementación (Menú "Ayuda" de su Oficina Virtual).
+                                    'EasyOne_SetInvoiceOneFachadaInfoPrueba(p, "RHUUMRGL", "RHUUMRGL") 'PARA PRUEBAS
+                                    EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
+
                                     x = EasyOne_FirmaComprobante(p, CerFactura, Key, Pwd)
                                     If x = 0 Then
                                         va += 1
+                                        hra = hr
                                     Else
                                         Dim resultadoXML2 As String = [String].Empty
                                         resultadoXML2 = EasyOne_LeeResultado(p, 11)
                                         MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
                                         MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
+                                        hra = hr
                                     End If
                                 Else
                                     MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Information).ToString()
