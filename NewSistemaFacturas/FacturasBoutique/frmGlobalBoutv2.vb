@@ -413,7 +413,7 @@ Public Class frmGlobalBoutv2
     End Sub
 
     Private Sub btnGenerarFactura_Click_1(sender As Object, e As EventArgs) Handles btnGenerarFactura.Click
-        'Shell("C:\aplicacion\appcliente.exe")
+
         If Me.Total.Value <> 0 Then
             btnGenerarFactura.Visible = False
             Factura()
@@ -747,7 +747,7 @@ Public Class frmGlobalBoutv2
                 hr = Now.ToLocalTime.ToString.Substring(11, 8)
 
                 If hra <> "" Then
-                    MsgBox("Intenta tmbrar nuevamente pero con otra hora !!! 1er hora " & hra & "   2da hora " & hr, MsgBoxStyle.Information).ToString()
+                    'MsgBox("Intenta tmbrar nuevamente pero con otra hora !!! 1er hora " & hra & "   2da hora " & hr, MsgBoxStyle.Information).ToString()
                     hr = hra
                 End If
 
@@ -987,13 +987,13 @@ Public Class frmGlobalBoutv2
 
 
                     ''''''''
-                    '''
 
                     'Ejecuta el archivo .exe especificado
-
-                    Shell("C:\aplicacion\appcliente.exe") ' ejecutable de Gonzalez para seguimiento de facturacion
-
-                    ''''''''''''''
+                    Try
+                        Shell("C:\aplicacion\appcliente.exe") ' ejecutable de Gonzalez para seguimiento de facturacion
+                    Catch ex As Exception
+                        MessageBox.Show("Error al ejecutar el archivo Appcliente.exe: " & ex.Message)
+                    End Try
                     MsgBox("La factura se envío correctamente", MsgBoxStyle.Information, "Facturación .. ")
                     btnGenerarFactura.Visible = True
                     ''''''nuevoooooooooooooooooooooooooooooooooooooooooo

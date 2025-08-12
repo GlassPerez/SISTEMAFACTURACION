@@ -809,7 +809,7 @@ Public Class frmFacClientes
                                 hr = Now.ToLocalTime.ToString.Substring(11, 8)
 
                                 If hra <> "" Then
-                                    MsgBox("Intenta tmbrar nuevamente pero con otra hora !!!" & " " & " 1er hora " & hra & "   2da hora " & hr, MsgBoxStyle.Information).ToString()
+                                    MsgBox("Intenta tmbrar nuevamente pero con otra hora !!! 1er hora " & hra & "   2da hora " & hr, MsgBoxStyle.Information).ToString()
                                     hr = hra
                                 End If
 
@@ -835,7 +835,7 @@ Public Class frmFacClientes
                                         Dim resultadoXML2 As String = [String].Empty
                                         resultadoXML2 = EasyOne_LeeResultado(p, 11)
                                         MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                                        MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
+                                        MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL  No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
                                         btnFacturar.Visible = True
                                         hra = hr
                                     End If
@@ -843,7 +843,7 @@ Public Class frmFacClientes
                                     MsgBox("Intenta tmbrar nuevamente con el mismo FILO Y SERIE !!! Serie: " & serie & "   Folio: " & folio, MsgBoxStyle.Information).ToString()
                                 End If
                             Else
-                                    MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Information).ToString()
+                                MsgBox("Archivo ya Timbrado !!! No. de Veces de Timbrado " & va, MsgBoxStyle.Information).ToString()
                             End If
 
                             'If Not resultado.Errores Then
