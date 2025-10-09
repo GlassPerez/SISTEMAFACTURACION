@@ -15,6 +15,7 @@ Imports System.Xml.XPath
 
 Imports CrystalDecisions.Shared
 Imports CrystalDecisions.CrystalReports.Engine
+Imports System.Threading
 
 Public Class frmGlobalBosco
 
@@ -145,10 +146,10 @@ Public Class frmGlobalBosco
 
     Private Sub InicializaGrid()
         Ugr.DataSource = Nothing
-        objpro.LLenaGrid(Ugr, "select '' as codsat, '' as vdclvUni, vdClaPro as ClaveInterno, vdDescri as Descripcion, " & _
-                                  " vdCant as Cantidad, vdUnidad as Unidad, vdPreUni as PrecioUnitario, vdIva as Iva, " & _
-                                   " vdDesc1 as Desc1, vdDesc2 as Desc2, vdPreTot as Importe from bgxfacelec.ventadet " & _
-                                   " where vdfolio = " & grbTienda.Value & " and sid = " & grbSucursal.Value & " and vdtm = 'G' and " & _
+        objpro.LLenaGrid(Ugr, "select '' as codsat, '' as vdclvUni, vdClaPro as ClaveInterno, vdDescri as Descripcion, " &
+                                  " vdCant as Cantidad, vdUnidad as Unidad, vdPreUni as PrecioUnitario, vdIva as Iva, " &
+                                   " vdDesc1 as Desc1, vdDesc2 as Desc2, vdPreTot as Importe from bgxfacelec.ventadet " &
+                                   " where vdfolio = " & grbTienda.Value & " and sid = " & grbSucursal.Value & " and vdtm = 'G' and " &
                                    " vdterm = 0 and vdfecha = '0' ", "ventadet", As400)
         Ugr.DataBind()
     End Sub
@@ -252,9 +253,9 @@ Public Class frmGlobalBosco
                     'Devolucion
                 Else
                     MsgBox("Ya Facturado ..", MsgBoxStyle.Information, "Facturación .. ")
-            End If
-        Else
-            MsgBox("No hay datos con la fecha seleccionada, Informar a sistemas ..", MsgBoxStyle.Information, "Facturación .. ")
+                End If
+            Else
+                MsgBox("No hay datos con la fecha seleccionada, Informar a sistemas ..", MsgBoxStyle.Information, "Facturación .. ")
             End If
         Else
             MsgBox("Aun no carga los dias de ventas ", MsgBoxStyle.Information, "Facturación")
@@ -263,10 +264,10 @@ Public Class frmGlobalBosco
 
     Private Sub CargaGridInicio(ByVal FechaVenta As String)
         Application.DoEvents()
-        DatGrid = objpro.ObtenDatos(" select vdcodsat as codsat, vdclvuni as vdclvUni, vdClaPro as ClaveInterno, vdDescri as Descripcion, " & _
-                                    " vdCant as Cantidad, vdPreUni as PrecioUnitario, vdIva as Iva, " & _
-                                    " vdDesc1 as Desc1, vdDesc2 as Desc2, vdPreTot as Importe from bgxfacelec.ventadet " & _
-                                    " where vdfolio = " & grbTienda.Value & " and sid = " & grbSucursal.Value & " and vdtm = 'G' and " & _
+        DatGrid = objpro.ObtenDatos(" select vdcodsat as codsat, vdclvuni as vdclvUni, vdClaPro as ClaveInterno, vdDescri as Descripcion, " &
+                                    " vdCant as Cantidad, vdPreUni as PrecioUnitario, vdIva as Iva, " &
+                                    " vdDesc1 as Desc1, vdDesc2 as Desc2, vdPreTot as Importe from bgxfacelec.ventadet " &
+                                    " where vdfolio = " & grbTienda.Value & " and sid = " & grbSucursal.Value & " and vdtm = 'G' and " &
                                     " vdterm = " & Terminal & " and vdfecha = '" & FechaVenta & "' ", As400).Tables(0)
         Application.DoEvents()
         If DatGrid.Rows.Count <> 0 Then
@@ -288,8 +289,8 @@ Public Class frmGlobalBosco
                     Borrar = Borrar.Replace("  ", " ")
                 End While
 
-                FormatoGrid(codsat, r("vdclvUni").ToString, r("ClaveInterno").ToString, Borrar, _
-                            r("Cantidad").ToString, "PZA", PU, r("Iva").ToString, _
+                FormatoGrid(codsat, r("vdclvUni").ToString, r("ClaveInterno").ToString, Borrar,
+                            r("Cantidad").ToString, "PZA", PU, r("Iva").ToString,
                             r("Desc1").ToString, r("Desc2").ToString, r("Importe").ToString)
                 Me.Importe.Value += (r("Importe").ToString)
                 'Me.Descuento.Value += descuento
@@ -304,15 +305,15 @@ Public Class frmGlobalBosco
         End If
     End Sub
 
-    Private Sub FormatoGrid(codSat As String, cvlUni As String, ClaveInterno As String, Descripcion As String, _
-                                Cantidad As Integer, Unidad As String, PrecioUnitario As Double, Iva As Double, _
+    Private Sub FormatoGrid(codSat As String, cvlUni As String, ClaveInterno As String, Descripcion As String,
+                                Cantidad As Integer, Unidad As String, PrecioUnitario As Double, Iva As Double,
                                 Desc1 As Double, Desc2 As Double, Importe As Double)
         Ugr.Rows.Band.AddNew()
         ColocarArticulo(Ugr.Rows.Count - 1, codSat, cvlUni, ClaveInterno, Descripcion, Cantidad, Unidad, PrecioUnitario, Iva, Desc1, Desc2, Importe)
     End Sub
 
-    Private Sub ColocarArticulo(ByVal Renglon As Integer, codSat As String, cvlUni As String, ClaveInterno As String, Descripcion As String, _
-                                Cantidad As Integer, Unidad As String, PrecioUnitario As Double, Iva As Double, _
+    Private Sub ColocarArticulo(ByVal Renglon As Integer, codSat As String, cvlUni As String, ClaveInterno As String, Descripcion As String,
+                                Cantidad As Integer, Unidad As String, PrecioUnitario As Double, Iva As Double,
                                 Desc1 As Double, Desc2 As Double, Importe As Double)
         With Ugr
             .Rows(Renglon).Cells("CodSat").Value = codSat
@@ -702,17 +703,17 @@ Public Class frmGlobalBosco
                         EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
 
                         x = EasyOne_FirmaComprobante(p, CerFactura, Key, Pwd)
+                        Thread.Sleep(10000) 'espera por 10 segundos
                         If x = 0 Then
                             va += 1
                             hra = hr
                             serie = txtSerie
                             folio = txtFactura
                         Else
+                            btnGenerarFactura.Visible = True
                             Dim resultadoXML2 As String = [String].Empty
                             resultadoXML2 = EasyOne_LeeResultado(p, 11)
                             MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                            MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL  No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
-                            btnGenerarFactura.Visible = True
                             hra = hr
                         End If
                     Else
@@ -1171,7 +1172,7 @@ Public Class frmGlobalBosco
                 MsgBox("Intenta tmbrar nuevamente la Nota de crédito con el mismo FOLIO Y SERIE !!! Serie: " & serieNC & "   Folio: " & folioNC, MsgBoxStyle.Information).ToString()
             End If
         Else
-                MsgBox("Archivo ya Timbrado !!! No. de Veces de Timbrado " & va2, MsgBoxStyle.Information).ToString()
+            MsgBox("Archivo ya Timbrado !!! No. de Veces de Timbrado " & va2, MsgBoxStyle.Information).ToString()
         End If
 
         'Obtención del resultado de la solicitud
@@ -1316,7 +1317,7 @@ Public Class frmGlobalBosco
         Descuento.Value = "0.0"
         Subtotal.Value = "0.0"
         Iva.Value = "0.0"
-        Total.Value = "0.0"        
+        Total.Value = "0.0"
     End Sub
 
     Private Sub limpiar()
@@ -1341,7 +1342,7 @@ Public Class frmGlobalBosco
     Private Sub grbTienda_InitializeLayout(sender As Object, e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) Handles grbTienda.InitializeLayout
         e.Layout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ResizeAllColumns
         With grbTienda
-            .DisplayLayout.Bands(0).Columns(0).Hidden = True            
+            .DisplayLayout.Bands(0).Columns(0).Hidden = True
         End With
     End Sub
 

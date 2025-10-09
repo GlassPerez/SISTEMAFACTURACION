@@ -15,7 +15,7 @@ Imports System.Xml.XPath
 
 Imports CrystalDecisions.Shared
 Imports CrystalDecisions.CrystalReports.Engine
-
+Imports System.Threading
 
 Public Class frmGlobalBoscoCredito
 
@@ -706,17 +706,17 @@ Public Class frmGlobalBoscoCredito
                         EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
 
                         x = EasyOne_FirmaComprobante(p, CerFactura, Key, Pwd)
+                        Thread.Sleep(10000) 'espera por 10 segundos
                         If x = 0 Then
                             va += 1
                             hra = hr
                             serie = txtSerie
                             folio = txtFactura
                         Else
+                            btnGenerarFactura.Visible = True
                             Dim resultadoXML2 As String = [String].Empty
                             resultadoXML2 = EasyOne_LeeResultado(p, 11)
                             MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                            MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
-                            btnGenerarFactura.Visible = True
                             hra = hr
                         End If
                     Else
@@ -1175,7 +1175,7 @@ Public Class frmGlobalBoscoCredito
                 MsgBox("Intenta tmbrar nuevamente la Nota de crédito con el mismo FOLIO Y SERIE !!! Serie: " & serieNC & "   Folio: " & folioNC, MsgBoxStyle.Information).ToString()
             End If
         Else
-                MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va2, MsgBoxStyle.Information).ToString()
+            MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va2, MsgBoxStyle.Information).ToString()
         End If
 
         'Obtención del resultado de la solicitud

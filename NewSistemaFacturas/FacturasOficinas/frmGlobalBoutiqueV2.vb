@@ -15,6 +15,7 @@ Imports System.Xml.XPath
 
 Imports CrystalDecisions.Shared
 Imports CrystalDecisions.CrystalReports.Engine
+Imports System.Threading
 
 Public Class frmGlobalBoutiqueV2
 
@@ -696,16 +697,17 @@ Public Class frmGlobalBoutiqueV2
                     EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
 
                     x = EasyOne_FirmaComprobante(p, CerFactura, Key, Pwd)
+                    Thread.Sleep(10000) 'espera por 10 segundos
                     If x = 0 Then
                         va += 1
                         hra = hr
                         serie = txtSerie
                         folio = txtFactura
                     Else
+                        btnGenerarFactura.Visible = True
                         Dim resultadoXML2 As String = [String].Empty
                         resultadoXML2 = EasyOne_LeeResultado(p, 11)
                         MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                        MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL  No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
                         hra = hr
                     End If
                 Else
@@ -1153,6 +1155,7 @@ Public Class frmGlobalBoutiqueV2
                 EasyOne_SetInvoiceOneFachadaInfo(pN, "RHUUMRGL", "RHUUMRGL")
 
                 nc = EasyOne_FirmaComprobante(pN, cer, key, psw)
+                Thread.Sleep(10000) 'espera por 10 segundos
                 If nc = 0 Then
                     va2 += 1
                     serieNC = n_serie
@@ -1160,8 +1163,7 @@ Public Class frmGlobalBoutiqueV2
                 Else
                     Dim resultadoXML2 As String = [String].Empty
                     resultadoXML2 = EasyOne_LeeResultado(pN, 11)
-                    MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                    MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL  No. de Veces de Timbrado " & va2, MsgBoxStyle.Critical).ToString()
+                    MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación Nota de Credito.. ")
                 End If
             Else
                 MsgBox("Intenta tmbrar nuevamente la Nota de crédito con el mismo FOLIO Y SERIE !!! Serie: " & serieNC & "   Folio: " & folioNC, MsgBoxStyle.Information).ToString()

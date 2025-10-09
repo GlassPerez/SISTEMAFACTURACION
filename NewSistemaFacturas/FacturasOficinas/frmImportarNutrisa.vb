@@ -181,12 +181,12 @@ Public Class frmImportarNutrisa
                                     'unidad = Cadenalinea(5)
                                     'End If
                                     If Cadenalinea(4) <> "APERTURA-CIERRE DE TIENDA" Then
-                                        objpro.Indicacion("insert into nutrisa(ClaveSucursal,NoTicket,FechaTicket,ClaveProducto,idRegistro,DescripcionProducto,UnidadMedida, " & _
-                                                          "Cantidad,PrecioVenta,DV_Subtotal,DV_Descuento,DV_Subtotacondescuento,ProdExento, " & _
-                                                          "ieps8,ieps25,ImportePeso,Iva,porcIva,DV_Total,Tipo_Factura,clavesat) " & _
-                                                          "values(" & Cadenalinea(0) & ", " & Cadenalinea(1) & ", '" & Cadenalinea(2).ToString.Substring(0, 10) & "', '" & Cadenalinea(3) & "'," & NumReg & ", '" & Cadenalinea(4) & "', '" & unidad & "', " & _
-                                                          "" & Cadenalinea(6) & "," & Cadenalinea(7) & "," & Cadenalinea(8) & "," & Cadenalinea(9) & "," & Cadenalinea(10) & ",'" & Cadenalinea(11) & "', " & _
-                                                          "" & Cadenalinea(12) & ", " & Cadenalinea(13) & ", " & Cadenalinea(14) & "," & Cadenalinea(15) & ", " & Cadenalinea(16) & "," & Cadenalinea(17) & ",'" & Cadenalinea(18) & "', '" & Cadenalinea(19) & "')", Motor)
+                                        objpro.Indicacion("insert into nutrisa(ClaveSucursal,NoTicket,FechaTicket,ClaveProducto,idRegistro,DescripcionProducto,UnidadMedida, " &
+                                                          "Cantidad,PrecioVenta,DV_Subtotal,DV_Descuento,DV_Subtotacondescuento,ProdExento, " &
+                                                          "ieps8,ieps25,ImportePeso,Iva,porcIva,DV_Total,Tipo_Factura,clavesat) " &
+                                                          "values(" & Cadenalinea(0) & ", " & Cadenalinea(1) & ", '" & Cadenalinea(2).ToString.Substring(0, 10) & "', '" & Cadenalinea(3) & "'," & NumReg & ", '" & Cadenalinea(4) & "', '" & unidad & "', " &
+                                                          "" & Cadenalinea(6) & "," & Cadenalinea(7) & "," & Cadenalinea(8) & "," & Cadenalinea(9) & "," & Cadenalinea(10) & ",'" & Cadenalinea(11) & "', " &
+                                                          "" & Cadenalinea(12) & ", " & Cadenalinea(13) & ", " & Cadenalinea(14) & "," & Cadenalinea(15) & ", " & Cadenalinea(16) & "," & Cadenalinea(17) & ",'" & Cadenalinea(19) & "', '" & Cadenalinea(20) & "')", Motor)
                                     End If
                                 End If
                                 REM ColocarArticulo(NumReg, Cadenalinea(2), Cadenalinea(1), Cadenalinea(3), Cadenalinea(4), Cadenalinea(6), Cadenalinea(5), FormatCurrency(Cadenalinea(15)), FormatCurrency(Cadenalinea(7)), FormatCurrency(Cadenalinea(9)), FormatCurrency(Cadenalinea(17)))

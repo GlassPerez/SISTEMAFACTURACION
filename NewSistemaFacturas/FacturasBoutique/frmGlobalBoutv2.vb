@@ -15,6 +15,8 @@ Imports System.Xml.XPath
 
 Imports CrystalDecisions.Shared
 Imports CrystalDecisions.CrystalReports.Engine
+Imports System.Threading
+
 Public Class frmGlobalBoutv2
 #Region "Clases"
     Dim objpro As New Procedures
@@ -43,6 +45,7 @@ Public Class frmGlobalBoutv2
     Dim NoCuenta, invoice As String
     Dim DesRegimen As String
     Dim Cadena As String
+    Dim Cadena2 As String
     Dim e_uuid As String
     Dim PorIVa As Double
     Dim DescDEV As Double
@@ -69,6 +72,11 @@ Public Class frmGlobalBoutv2
 #Region "Email"
     Dim DirEmail As String
     Dim PwdEmail As String
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs)
+
+    End Sub
+
     Dim Pop As String
     Dim PuertoPop As String
 
@@ -643,6 +651,7 @@ Public Class frmGlobalBoutv2
             impof = Format((Importe.Value / 1.16), "######.00")
             descuf = Format((Descuento.Value / 1.16), "######.00")
 
+
             If Descuento.Value <> 0 Then
                 EasyOne_cfdi33_AddConcepto(p, "01010101", "", "1", "ACT", "", "Venta", Format(impof, "######.00"), Format(impof, "######.00"), Format(descuf, "######.00"))
             Else
@@ -747,7 +756,7 @@ Public Class frmGlobalBoutv2
                 hr = Now.ToLocalTime.ToString.Substring(11, 8)
 
                 If hra <> "" Then
-                    'MsgBox("Intenta tmbrar nuevamente pero con otra hora !!! 1er hora " & hra & "   2da hora " & hr, MsgBoxStyle.Information).ToString()
+                    MsgBox("Intenta tmbrar nuevamente pero con otra hora !!! 1er hora " & hra & "   2da hora " & hr, MsgBoxStyle.Information).ToString()
                     hr = hra
                 End If
 
@@ -763,27 +772,29 @@ Public Class frmGlobalBoutv2
 
                     'EasyOne_SetInvoiceOneFachadaInfoPrueba(p, invoice, invoice)
                     EasyOne_SetInvoiceOneFachadaInfo(p, invoice, invoice)
-                    Application.DoEvents()
+                    'Application.DoEvents()
                     upb.Value += 30  'Suma 40
 
                     x = EasyOne_FirmaComprobante(p, CerFactura, Key, Pwd)
+                    Thread.Sleep(10000) 'espera por 10 segundos
                     If x = 0 Then
                         va += 1
                         hra = hr
                         serie = txtSerie
                         folio = txtFactura
                     Else
+                        btnGenerarFactura.Visible = True
                         Dim resultadoXML2 As String = [String].Empty
                         resultadoXML2 = EasyOne_LeeResultado(p, 11)
                         MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                        MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
-                        btnGenerarFactura.Visible = True
                         hra = hr
                     End If
                 Else
+                    btnGenerarFactura.Visible = True
                     MsgBox("Intenta tmbrar nuevamente con el mismo FILO Y SERIE !!! Serie: " & serie & "   Folio: " & folio, MsgBoxStyle.Information).ToString()
                 End If
             Else
+                btnGenerarFactura.Visible = True
                 MsgBox("Archivo ya Timbrado !!! No. de Veces de Timbrado " & va, MsgBoxStyle.Information).ToString()
             End If
 
@@ -812,7 +823,6 @@ Public Class frmGlobalBoutv2
                 Dim sellocfd As String
                 Dim nocert As String
 
-                Dim nav As XPathNavigator
                 Dim documento As XmlDocument = New XmlDocument()
                 Dim VarManager As XmlNamespaceManager = New XmlNamespaceManager(documento.NameTable)
                 documento.Load(Trim(RFacImpresas & "\" & Trim(TRfc) & "-" & txtSerie & "-" & txtFactura & "-" & FeReg & ".xml"))
@@ -1004,14 +1014,14 @@ Public Class frmGlobalBoutv2
             Else
                 'En caso de error mostrar el detalle.
                 Dim resultadoXML2 As String = [String].Empty
-                    resultadoXML2 = EasyOne_LeeResultado(p, 11)
-                    Console.WriteLine(resultadoXML2)
-                    MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                    btnGenerarFactura.Visible = True
-                End If
-
-            Else
+                resultadoXML2 = EasyOne_LeeResultado(p, 11)
+                Console.WriteLine(resultadoXML2)
+                MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
                 btnGenerarFactura.Visible = True
+            End If
+
+        Else
+            btnGenerarFactura.Visible = True
         End If 'Cierra validación en la pregunta del msgbox
         'Else
         '    MsgBox("No hay registros para facturar.. ", MsgBoxStyle.Information, "Facturación")
@@ -1241,12 +1251,12 @@ Public Class frmGlobalBoutv2
 
         'If Iva.Value <> 0 Then
         bas = Format(Pu, "###,###.00")
-            Imp = Format((Pu * 0.16), "###,###.00")
-            iv += Imp
-            Impu = "002"
-            ToC = "0.160000"
-            TFac = "Tasa"
-            EasyOne_cfdi33_AddTraslado(pN, bas.ToString, Impu.ToString, TFac.ToString, ToC.ToString, Imp.ToString)
+        Imp = Format((Pu * 0.16), "###,###.00")
+        iv += Imp
+        Impu = "002"
+        ToC = "0.160000"
+        TFac = "Tasa"
+        EasyOne_cfdi33_AddTraslado(pN, bas.ToString, Impu.ToString, TFac.ToString, ToC.ToString, Imp.ToString)
         'End If
 
         Dim total As Double = 0
@@ -1284,6 +1294,7 @@ Public Class frmGlobalBoutv2
                 EasyOne_SetInvoiceOneFachadaInfo(pN, invoice, invoice)
 
                 nc = EasyOne_FirmaComprobante(pN, cer, key, psw)
+                Thread.Sleep(10000) 'espera por 10 segundos
                 If nc = 0 Then
                     va2 += 1
                     serieNC = n_serie
@@ -1292,7 +1303,7 @@ Public Class frmGlobalBoutv2
                     Dim resultadoXML2 As String = [String].Empty
                     resultadoXML2 = EasyOne_LeeResultado(pN, 11)
                     MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                    MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL No. de Veces de Timbrado " & va2, MsgBoxStyle.Critical).ToString()
+                    'MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL No. de Veces de Timbrado " & va2, MsgBoxStyle.Critical).ToString()
                 End If
             Else
                 MsgBox("Intenta tmbrar nuevamente la Nota de crédito con el mismo FOLIO Y SERIE !!! Serie: " & serieNC & "   Folio: " & folioNC, MsgBoxStyle.Information).ToString()

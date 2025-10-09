@@ -12,6 +12,7 @@ Imports System.Runtime.InteropServices
 Imports System.Text
 Imports System.Threading.Tasks
 Imports System.Xml.XPath
+Imports System.Threading
 
 Public Class frmGlobalNutrisa
 
@@ -717,24 +718,24 @@ Public Class frmGlobalNutrisa
                         EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
 
                         x = EasyOne_FirmaComprobante(p, CerFactura, Key, Pwd)
+                        Thread.Sleep(10000) 'espera por 10 segundos
                         If x = 0 Then
                             va += 1
                             hra = hr
                             serie = txtSerie
                             folio = txtFactura
                         Else
+                            btnFacturar.Visible = True
                             Dim resultadoXML2 As String = [String].Empty
                             resultadoXML2 = EasyOne_LeeResultado(p, 11)
                             MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                            MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
-                            btnFacturar.Visible = True
                             hra = hr
                         End If
                     Else
                         MsgBox("Intenta tmbrar nuevamente con el mismo FILO Y SERIE !!! Serie: " & serie & "   Folio: " & folio, MsgBoxStyle.Information).ToString()
                     End If
                 Else
-                        MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Information).ToString()
+                    MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Information).ToString()
                 End If
 
                 'Si el resultado es 0 = El CFDI se procesó correctamente
@@ -1235,6 +1236,7 @@ Public Class frmGlobalNutrisa
                 EasyOne_SetInvoiceOneFachadaInfo(pN, "RHUUMRGL", "RHUUMRGL")
 
                 nc = EasyOne_FirmaComprobante(pN, cer, key, psw)
+                Thread.Sleep(10000) 'espera por 10 segundos
                 If nc = 0 Then
                     va2 += 1
                     serieNC = n_serie
@@ -1242,14 +1244,13 @@ Public Class frmGlobalNutrisa
                 Else
                     Dim resultadoXML2 As String = [String].Empty
                     resultadoXML2 = EasyOne_LeeResultado(pN, 11)
-                    MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                    MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL" & " " & " No. de Veces de Timbrado " & va2, MsgBoxStyle.Critical).ToString()
+                    MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación Nota de Credito.. ")
                 End If
             Else
                 MsgBox("Intenta tmbrar nuevamente la Nota de crédito con el mismo FOLIO Y SERIE !!! Serie: " & serieNC & "   Folio: " & folioNC, MsgBoxStyle.Information).ToString()
             End If
         Else
-                MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va2, MsgBoxStyle.Information).ToString()
+            MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va2, MsgBoxStyle.Information).ToString()
         End If
 
 

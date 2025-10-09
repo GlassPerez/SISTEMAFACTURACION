@@ -7,6 +7,7 @@ Imports N400.QR
 Imports System.IO
 Imports System.Xml
 Imports System.Xml.XPath
+Imports System.Threading
 
 Public Class frmNotaCreditoOficinasBosco
 #Region "Clases"
@@ -297,8 +298,8 @@ Public Class frmNotaCreditoOficinasBosco
                             If txtclvUsoCfdi.Text <> "" Then
                                 'If RF.Trim <> "" Then
                                 If ((RF Is Nothing) OrElse (RF Is DBNull.Value)) Then
-                                        MsgBox("Regimen Fiscal no puede ir vacio", MsgBoxStyle.Information, "Facturación")
-                                    Else
+                                    MsgBox("Regimen Fiscal no puede ir vacio", MsgBoxStyle.Information, "Facturación")
+                                Else
                                     If cCP.ToString <> "0" Or cCP.ToString.Trim <> "" Then
                                         'TablaTienda = objpro.ObtenDatos("SELECT * FROM bgxfacelec.CatTien as Tienda left join bgxfacelec.Catsucu as Sucursal on Tienda.Tid = Sucursal.Tid Where Tienda.tid = " & Me.grbTienda.Value & " AND Sucursal.sid = " & Me.grbSucursalUUID.Value & " ", As400).Tables(0)
                                         Tabla = objpro.ObtenDatos("SELECT * FROM bgxfacelec.CatTien as Tienda left join bgxfacelec.Catsucu as Sucursal on Tienda.Tid = Sucursal.Tid Where Tienda.tid = " & Me.grbTienda.Value & " AND Sucursal.sid = " & Me.grbSucursalUUID.Value & " ", As400).Tables(0)
@@ -307,12 +308,12 @@ Public Class frmNotaCreditoOficinasBosco
                                         txtSerie.Text = objpro.Dato("seserie", "bgxfacelec.serie", "sId = " & grbSucursalUUID.Value & " and Tid = " & grbTienda.Value & " and seTipo = '" & TIP & "' and SEAMOAP = " & cmbperiodo.SelectedItem & " and seEstat = 1", As400)
                                     Else
                                         MsgBox("Código Postal no puede ir vacio", MsgBoxStyle.Information, "Facturación")
-                                        End If
                                     End If
-                                    'Else
-                                    '    MsgBox("Regimen Fiscal no puede ir vacio", MsgBoxStyle.Information, "Facturación")
-                                    'End If
-                                Else
+                                End If
+                                'Else
+                                '    MsgBox("Regimen Fiscal no puede ir vacio", MsgBoxStyle.Information, "Facturación")
+                                'End If
+                            Else
                                 MsgBox("Uso del CFDI", MsgBoxStyle.Information, "Facturación")
                             End If
                         Else
@@ -773,24 +774,24 @@ Public Class frmNotaCreditoOficinasBosco
                             EasyOne_SetInvoiceOneFachadaInfo(pN, "RHUUMRGL", "RHUUMRGL")
 
                             nc = EasyOne_FirmaComprobante(pN, CerFactura, Key, Pwd)
+                            Thread.Sleep(10000) 'espera por 10 segundos
                             If nc = 0 Then
                                 va2 += 1
                                 hra = hr
                                 serie = txtSerie.Text
                                 folio = txtFactura.Text
                             Else
+                                btnFacturar.Visible = True
                                 Dim resultadoXML2 As String = [String].Empty
                                 resultadoXML2 = EasyOne_LeeResultado(pN, 11)
                                 MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                                MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL" & " " & " No. de Veces de Timbrado " & va2, MsgBoxStyle.Critical).ToString()
-                                btnFacturar.Visible = True
                                 hra = hr
                             End If
                         Else
                             MsgBox("Intenta tmbrar nuevamente con el mismo FILO Y SERIE !!! Serie: " & serie & "   Folio: " & folio, MsgBoxStyle.Information).ToString()
                         End If
                     Else
-                            MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va2, MsgBoxStyle.Information).ToString()
+                        MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va2, MsgBoxStyle.Information).ToString()
                     End If
 
                     upb.Value += 30  'Suma 40

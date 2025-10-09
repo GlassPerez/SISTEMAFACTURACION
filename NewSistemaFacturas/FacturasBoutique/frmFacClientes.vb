@@ -10,6 +10,8 @@ Imports System.Xml.XPath
 
 Imports CrystalDecisions.Shared
 Imports CrystalDecisions.CrystalReports.Engine
+Imports System.Threading
+
 Public Class frmFacClientes
 
 #Region "Clases"
@@ -24,7 +26,7 @@ Public Class frmFacClientes
     Dim Transaccion As Integer
     Dim Timbrado As Boolean = False
     Dim FolioFinal
-    Dim Cadena As String    
+    Dim Cadena As String
     Dim ExisteClave As String
     Dim PorIva As Double
     Dim FechaFactura As String
@@ -809,7 +811,7 @@ Public Class frmFacClientes
                                 hr = Now.ToLocalTime.ToString.Substring(11, 8)
 
                                 If hra <> "" Then
-                                    MsgBox("Intenta tmbrar nuevamente pero con otra hora !!! 1er hora " & hra & "   2da hora " & hr, MsgBoxStyle.Information).ToString()
+                                    'MsgBox("Intenta tmbrar nuevamente pero con otra hora !!! 1er hora " & hra & "   2da hora " & hr, MsgBoxStyle.Information).ToString()
                                     hr = hra
                                 End If
 
@@ -824,7 +826,7 @@ Public Class frmFacClientes
 
                                     'EasyOne_SetInvoiceOneFachadaInfoPrueba(p, invoice, invoice)
                                     EasyOne_SetInvoiceOneFachadaInfo(p, invoice, invoice)
-
+                                    Thread.Sleep(10000) 'espera por 10 segundos
                                     x = EasyOne_FirmaComprobante(p, CerFactura, Key, Pwd)
                                     If x = 0 Then
                                         va += 1
@@ -832,17 +834,19 @@ Public Class frmFacClientes
                                         serie = txtSerie.Text
                                         folio = txtFactura.Text
                                     Else
+                                        btnFacturar.Visible = True
                                         Dim resultadoXML2 As String = [String].Empty
                                         resultadoXML2 = EasyOne_LeeResultado(p, 11)
                                         MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                                        MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL  No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
-                                        btnFacturar.Visible = True
+                                        'MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL  No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
                                         hra = hr
                                     End If
                                 Else
+                                    btnFacturar.Visible = True
                                     MsgBox("Intenta tmbrar nuevamente con el mismo FILO Y SERIE !!! Serie: " & serie & "   Folio: " & folio, MsgBoxStyle.Information).ToString()
                                 End If
                             Else
+                                btnFacturar.Visible = True
                                 MsgBox("Archivo ya Timbrado !!! No. de Veces de Timbrado " & va, MsgBoxStyle.Information).ToString()
                             End If
 

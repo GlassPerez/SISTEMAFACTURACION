@@ -7,6 +7,7 @@ Imports N400.QR
 Imports System.IO
 Imports System.Xml
 Imports System.Xml.XPath
+Imports System.Threading
 
 Public Class frmConceptosBoutique
 
@@ -702,24 +703,24 @@ Public Class frmConceptosBoutique
                         EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
 
                         x = EasyOne_FirmaComprobante(p, CerFactura, Key, Pwd)
+                        Thread.Sleep(10000) 'espera por 10 segundos
                         If x = 0 Then
                             va += 1
                             hra = hr
                             serie = txtSerie.Text
                             folio = txtFactura.Text
                         Else
+                            btnFacturar.Visible = True
                             Dim resultadoXML2 As String = [String].Empty
                             resultadoXML2 = EasyOne_LeeResultado(p, 11)
                             MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                            MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
-                            btnFacturar.Visible = True
                             hra = hr
                         End If
                     Else
                         MsgBox("Intenta tmbrar nuevamente con el mismo FILO Y SERIE !!! Serie: " & serie & "   Folio: " & folio, MsgBoxStyle.Information).ToString()
                     End If
                 Else
-                        MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Information).ToString()
+                    MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Information).ToString()
                 End If
 
                 'Si el resultado es 0 = El CFDI se procesó correctamente

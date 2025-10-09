@@ -7,6 +7,7 @@ Imports N400.Framework
 Imports N400.QR
 Imports System.IO
 Imports System.Xml
+Imports System.Threading
 
 Public Class frmCompPagos
 #Region "Clases"
@@ -321,13 +322,16 @@ Public Class frmCompPagos
                         Pago()
                     Else
                         MsgBox("Falta seleccionar Razon Social receptor .. ", MsgBoxStyle.Information, "Facturación .. ")
+                        btnAplicarPago.Visible = True
                     End If
                 Else
                     MsgBox("Falta seleccionar rfc receptor .. ", MsgBoxStyle.Information, "Facturación .. ")
+                    btnAplicarPago.Visible = True
                 End If
             End If
         Else
             MsgBox("Importe a aplicar no puede ser menor o igual a cero ", MsgBoxStyle.Information, "Facturación")
+            btnAplicarPago.Visible = True
         End If
     End Sub
 
@@ -690,7 +694,7 @@ Public Class frmCompPagos
             hr = Now.ToLocalTime.ToString.Substring(11, 8)
 
             If hra <> "" Then
-                MsgBox("Intenta tmbrar nuevamente pero con otra hora !!!" & " " & " 1er hora " & hra & "   2da hora " & hr, MsgBoxStyle.Information).ToString()
+                'MsgBox("Intenta tmbrar nuevamente pero con otra hora !!!" & " " & " 1er hora " & hra & "   2da hora " & hr, MsgBoxStyle.Information).ToString()
                 hr = hra
             End If
 
@@ -705,17 +709,17 @@ Public Class frmCompPagos
                 EasyOne_SetInvoiceOneFachadaInfo(c, "RHUUMRGL", "RHUUMRGL")
 
                 x = EasyOne_FirmaComprobante(p, CerFactura, Key, Pwd)
+                Thread.Sleep(10000) 'espera por 10 segundos
                 If x = 0 Then
                     va += 1
                     hra = hr
                     seriee = serie
                     folio = NumPago
                 Else
+                    btnAplicarPago.Visible = True
                     Dim resultadoXML2 As String = [String].Empty
                     resultadoXML2 = EasyOne_LeeResultado(p, 11)
                     MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                    MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL  No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
-                    btnAplicarPago.Visible = True
                     hra = hr
                 End If
             Else

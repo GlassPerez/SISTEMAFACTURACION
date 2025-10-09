@@ -9,6 +9,7 @@ Imports System.Xml
 Imports System.Xml.XPath
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
+Imports System.Threading
 
 Public Class frmBosFacClientes
 
@@ -770,7 +771,7 @@ Public Class frmBosFacClientes
                                     'En la siguiente línea es necesario incluir la Clave de Integración que se proporciona en la Guía de Implementación (Menú "Ayuda" de su Oficina Virtual).
                                     'EasyOne_SetInvoiceOneFachadaInfoPrueba(p, "RHUUMRGL", "RHUUMRGL") 'PARA PRUEBAS
                                     EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
-
+                                    Thread.Sleep(10000) 'espera por 10 segundos
                                     x = EasyOne_FirmaComprobante(p, CerFactura, Key, Pwd)
                                     If x = 0 Then
                                         va += 1
@@ -778,16 +779,19 @@ Public Class frmBosFacClientes
                                         serie = txtSerie.Text
                                         folio = txtFactura.Text
                                     Else
+                                        btnFacturar.Visible = True
                                         Dim resultadoXML2 As String = [String].Empty
                                         resultadoXML2 = EasyOne_LeeResultado(p, 11)
                                         MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                                        MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL  No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
+                                        '¿MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL  No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
                                         hra = hr
                                     End If
                                 Else
+                                    btnFacturar.Visible = True
                                     MsgBox("Intenta tmbrar nuevamente con el mismo FILO Y SERIE !!! Serie: " & serie & "   Folio: " & folio, MsgBoxStyle.Information).ToString()
                                 End If
                             Else
+                                btnFacturar.Visible = True
                                 MsgBox("Archivo ya Timbrado !!! No. de Veces de Timbrado " & va, MsgBoxStyle.Information).ToString()
                             End If
 

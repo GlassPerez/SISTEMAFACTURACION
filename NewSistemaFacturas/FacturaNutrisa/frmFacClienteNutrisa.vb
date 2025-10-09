@@ -317,17 +317,17 @@ Public Class frmFacClienteNutrisa
                             'Importe = Cadenalinea(10) REM DV_Subtotacondescuento()
 
                             Dim impu As Double = 0
-                            Select Case Cadenalinea(18)
+                            Select Case Cadenalinea(19)
                                 Case "Iva Tasa16"
                                     impu = Cadenalinea(15)
                                 Case "Iva Tasa0"
                                     impu = 0
                                 Case "IEPS"
-                                    impu = Cadenalinea(12)                                
+                                    impu = Cadenalinea(12)
                             End Select
 
 
-                            FormatoGrid(Cadenalinea(3), Cadenalinea(19), Cadenalinea(4), Cadenalinea(6), Cadenalinea(5), FormatCurrency(impu), FormatCurrency(Cadenalinea(8)), FormatCurrency(Cadenalinea(7)), FormatCurrency(Cadenalinea(9)), FormatCurrency(Cadenalinea(10)), Cadenalinea(18))
+                            FormatoGrid(Cadenalinea(3), Cadenalinea(20), Cadenalinea(4), Cadenalinea(6), Cadenalinea(5), FormatCurrency(impu), FormatCurrency(Cadenalinea(8)), FormatCurrency(Cadenalinea(7)), FormatCurrency(Cadenalinea(9)), FormatCurrency(Cadenalinea(10)), Cadenalinea(19))
                             Application.DoEvents()
 
                             REM Carga Grid
@@ -822,7 +822,7 @@ Public Class frmFacClienteNutrisa
                     'With c.Conceptos(i).Impuestos.Traslados(0)
                     'Se debe de agregar si el concepto es Objeto de impuesto
                     EasyOne_cfdi33_SetConcepto40(p, "02")
-                    Select Case Me.UgrTicket.Rows(i).Cells("tipo_factura").Value
+                    Select Case Me.UgrTicket.Rows(i).Cells("tipo_factura").Value.ToString.Trim
                         Case "Iva Tasa16"
                             Imp = 0
                             If (Format(CDbl(Me.UgrTicket.Rows(i).Cells("Importe").Value), "###,###.00") - Format(CDbl(Me.UgrTicket.Rows(i).Cells("Descu").Value), "###,###.00")) <> 0 Then

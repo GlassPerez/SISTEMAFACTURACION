@@ -7,6 +7,7 @@ Imports N400.QR
 Imports System.IO
 Imports System.Xml
 Imports System.Xml.XPath
+Imports System.Threading
 
 Public Class frmHonorarios
 
@@ -717,7 +718,7 @@ Public Class frmHonorarios
                             hr = Now.ToLocalTime.ToString.Substring(11, 8)
 
                             If hra <> "" Then
-                                MsgBox("Intenta tmbrar nuevamente pero con otra hora !!!" & " " & " 1er hora " & hra & "   2da hora " & hr, MsgBoxStyle.Information).ToString()
+                                'MsgBox("Intenta tmbrar nuevamente pero con otra hora !!!" & " " & " 1er hora " & hra & "   2da hora " & hr, MsgBoxStyle.Information).ToString()
                                 hr = hra
                             End If
 
@@ -733,17 +734,17 @@ Public Class frmHonorarios
                                 EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
 
                                 x = EasyOne_FirmaComprobante(p, CerFactura, Key, Pwd)
+                                Thread.Sleep(10000) 'espera por 10 segundos
                                 If x = 0 Then
                                     va += 1
                                     hra = hr
                                     serie = txtSerie.Text
                                     folio = txtFactura.Text
                                 Else
+                                    btnFacturar.Visible = True
                                     Dim resultadoXML2 As String = [String].Empty
                                     resultadoXML2 = EasyOne_LeeResultado(p, 11)
                                     MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                                    MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
-                                    btnFacturar.Visible = True
                                     hra = hr
                                 End If
                             Else
