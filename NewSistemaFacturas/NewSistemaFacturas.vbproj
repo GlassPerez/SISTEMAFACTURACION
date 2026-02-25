@@ -285,6 +285,24 @@
     <Compile Include="FacturasOficinas\frmGlobalBoscoCredito.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FacturasOficinas\frmNotaCreditoOfi.Designer.vb">
+      <DependentUpon>frmNotaCreditoOfi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmNotaCreditoOfi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDF\NotaCreditoReferenciada.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NotaCreditoReferenciada.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PDF\NotaReferenciada.Designer.vb">
+      <DependentUpon>NotaReferenciada.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PDF\NotaReferenciada.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PDF\Pagos.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -670,6 +688,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FacturasOficinas\frmGlobalBoscoCredito.resx">
       <DependentUpon>frmGlobalBoscoCredito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmNotaCreditoOfi.resx">
+      <DependentUpon>frmNotaCreditoOfi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\NotaCreditoReferenciada.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>NotaCreditoReferenciada.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\NotaReferenciada.resx">
+      <DependentUpon>NotaReferenciada.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PDF\Pagos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

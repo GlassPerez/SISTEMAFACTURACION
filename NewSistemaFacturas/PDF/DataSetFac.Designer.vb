@@ -1653,6 +1653,8 @@ Partial Public Class DataSetFac
         
         Private columnnieps As Global.System.Data.DataColumn
         
+        Private columnnUUIDref As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -1977,6 +1979,14 @@ Partial Public Class DataSetFac
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property nUUIDrefColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnnUUIDref
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2049,9 +2059,10 @@ Partial Public Class DataSetFac
                     ByVal Nsucursal As String,  _
                     ByVal nrcomdir As String,  _
                     ByVal nrusocfdi As String,  _
-                    ByVal nieps As String) As DatosNotaCredRow
+                    ByVal nieps As String,  _
+                    ByVal nUUIDref As String) As DatosNotaCredRow
             Dim rowDatosNotaCredRow As DatosNotaCredRow = CType(Me.NewRow,DatosNotaCredRow)
-            Dim columnValuesArray() As Object = New Object() {Nrfc, Nrazonsoc, Nregfis, Ndireccion, Ndoc, Nfolfisc, Nprovcert, Ntipocomp, Nusocfdi, Nmetpag, Nformpag, Nexporta, Nfechaemi, Nlugaremi, Nserieceremi, Nrrfc, Nrrazonsoc, Nrdireccion, Nrcp, Nmoneda, Nsellodig, Nsellosat, Ncomplesat, Nrregimen, Nfsubtotal, Nfdescuento, Nfiva, Nftotal, Ncantidadl, NcertSAT, Nhryfechcer, Nedircomp, Nsucursal, nrcomdir, nrusocfdi, nieps}
+            Dim columnValuesArray() As Object = New Object() {Nrfc, Nrazonsoc, Nregfis, Ndireccion, Ndoc, Nfolfisc, Nprovcert, Ntipocomp, Nusocfdi, Nmetpag, Nformpag, Nexporta, Nfechaemi, Nlugaremi, Nserieceremi, Nrrfc, Nrrazonsoc, Nrdireccion, Nrcp, Nmoneda, Nsellodig, Nsellosat, Ncomplesat, Nrregimen, Nfsubtotal, Nfdescuento, Nfiva, Nftotal, Ncantidadl, NcertSAT, Nhryfechcer, Nedircomp, Nsucursal, nrcomdir, nrusocfdi, nieps, nUUIDref}
             rowDatosNotaCredRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowDatosNotaCredRow)
             Return rowDatosNotaCredRow
@@ -2110,6 +2121,7 @@ Partial Public Class DataSetFac
             Me.columnnrcomdir = MyBase.Columns("nrcomdir")
             Me.columnnrusocfdi = MyBase.Columns("nrusocfdi")
             Me.columnnieps = MyBase.Columns("nieps")
+            Me.columnnUUIDref = MyBase.Columns("nUUIDref")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2187,6 +2199,8 @@ Partial Public Class DataSetFac
             MyBase.Columns.Add(Me.columnnrusocfdi)
             Me.columnnieps = New Global.System.Data.DataColumn("nieps", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnnieps)
+            Me.columnnUUIDref = New Global.System.Data.DataColumn("nUUIDref", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnnUUIDref)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4953,6 +4967,21 @@ Partial Public Class DataSetFac
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property nUUIDref() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDatosNotaCred.nUUIDrefColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'nUUIDref' de la tabla 'DatosNotaCred' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDatosNotaCred.nUUIDrefColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsNrfcNull() As Boolean
             Return Me.IsNull(Me.tableDatosNotaCred.NrfcColumn)
         End Function
@@ -5381,6 +5410,18 @@ Partial Public Class DataSetFac
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetniepsNull()
             Me(Me.tableDatosNotaCred.niepsColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsnUUIDrefNull() As Boolean
+            Return Me.IsNull(Me.tableDatosNotaCred.nUUIDrefColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetnUUIDrefNull()
+            Me(Me.tableDatosNotaCred.nUUIDrefColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

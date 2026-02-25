@@ -18,6 +18,7 @@
                 UTBM.Tools.Item(1).SharedProps.Enabled = True
                 UTBM.Tools.Item(4).SharedProps.Enabled = True
                 UTBM.Tools.Item(5).SharedProps.Enabled = True
+                'UTBM.Tools.Item(22).SharedProps.Enabled = True
                 UTBM.Tools.Item(35).SharedProps.Enabled = True
                 UTBM.Tools.Item(36).SharedProps.Enabled = True
                 UTBM.Tools.Item(37).SharedProps.Enabled = True
@@ -70,7 +71,8 @@
                 UTBM.Tools.Item(33).SharedProps.Enabled = True
                 UTBM.Tools.Item(34).SharedProps.Enabled = False
                 UTBM.Tools.Item(39).SharedProps.Enabled = False
-                UTBM.Tools.Item(51).SharedProps.Enabled = True
+                UTBM.Tools.Item(51).SharedProps.Enabled = True 'Nota Crédito RELACIONADA
+                UTBM.Tools.Item(53).SharedProps.Enabled = True
         End Select
     End Sub
 
@@ -200,7 +202,10 @@
             Case "Re-Imprimir Facturas Bosco"
                 Formulario(frmBoscoReimpresion) 'Bosco
             Case "Nota de Credito Bosco"
-                Formulario(frmNotaCreditoBosco) 'Bosco            
+                Formulario(frmNotaCreditoBosco) 'Bosco 
+            Case "Nota Crédito RELACIONADA"
+                Formulario(frmNotaCreditoOfi) 'Bosco 
+
             Case "Factura Clientes Cafeteria"
                 Formulario(frmClienteCafeteria) 'Cafeteria
             Case "Clientes de Cafeteria"

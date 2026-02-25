@@ -61,6 +61,19 @@ Partial Class frmGlobalBoutv2
         Dim Appearance16 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim EditorButton1 As Infragistics.Win.UltraWinEditors.EditorButton = New Infragistics.Win.UltraWinEditors.EditorButton()
         Dim Appearance3 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance69 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance70 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance71 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance72 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance73 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance81 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance83 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance84 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance85 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance86 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance87 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance88 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance56 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Me.ugbox1 = New Infragistics.Win.Misc.UltraGroupBox()
         Me.UltraLabel3 = New Infragistics.Win.Misc.UltraLabel()
         Me.UltraLabel2 = New Infragistics.Win.Misc.UltraLabel()
@@ -102,6 +115,8 @@ Partial Class frmGlobalBoutv2
         Me.btnFactura = New System.Windows.Forms.Button()
         Me.txtFechaVenta = New Infragistics.Win.UltraWinEditors.UltraDateTimeEditor()
         Me.UltraLabel4 = New Infragistics.Win.Misc.UltraLabel()
+        Me.grbPagos = New Infragistics.Win.UltraWinGrid.UltraCombo()
+        Me.UltraLabel5 = New Infragistics.Win.Misc.UltraLabel()
         CType(Me.ugbox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ugbox1.SuspendLayout()
         CType(Me.grbSucursal, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -128,6 +143,7 @@ Partial Class frmGlobalBoutv2
         Me.ugbox3.SuspendLayout()
         CType(Me.txtEmail, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtFechaVenta, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grbPagos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ugbox1
@@ -136,6 +152,8 @@ Partial Class frmGlobalBoutv2
         Appearance2.BackColor2 = System.Drawing.Color.Cyan
         Appearance2.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical
         Me.ugbox1.Appearance = Appearance2
+        Me.ugbox1.Controls.Add(Me.grbPagos)
+        Me.ugbox1.Controls.Add(Me.UltraLabel5)
         Me.ugbox1.Controls.Add(Me.UltraLabel3)
         Me.ugbox1.Controls.Add(Me.UltraLabel2)
         Me.ugbox1.Controls.Add(Me.UltraLabel1)
@@ -178,7 +196,7 @@ Partial Class frmGlobalBoutv2
         Appearance54.BackColor = System.Drawing.Color.Transparent
         Me.UltraLabel1.Appearance = Appearance54
         Me.UltraLabel1.AutoSize = True
-        Me.UltraLabel1.Location = New System.Drawing.Point(600, 16)
+        Me.UltraLabel1.Location = New System.Drawing.Point(513, 16)
         Me.UltraLabel1.Name = "UltraLabel1"
         Me.UltraLabel1.Size = New System.Drawing.Size(51, 14)
         Me.UltraLabel1.TabIndex = 62
@@ -221,7 +239,7 @@ Partial Class frmGlobalBoutv2
         Me.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnBuscar.ForeColor = System.Drawing.Color.White
-        Me.btnBuscar.Location = New System.Drawing.Point(863, 41)
+        Me.btnBuscar.Location = New System.Drawing.Point(863, 23)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(138, 37)
         Me.btnBuscar.TabIndex = 56
@@ -287,9 +305,9 @@ Partial Class frmGlobalBoutv2
         Me.grbSucursal.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.grbSucursal.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
         Me.grbSucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grbSucursal.Location = New System.Drawing.Point(653, 13)
+        Me.grbSucursal.Location = New System.Drawing.Point(566, 13)
         Me.grbSucursal.Name = "grbSucursal"
-        Me.grbSucursal.Size = New System.Drawing.Size(348, 22)
+        Me.grbSucursal.Size = New System.Drawing.Size(256, 22)
         Me.grbSucursal.TabIndex = 5
         '
         'grbTienda
@@ -736,6 +754,83 @@ Partial Class frmGlobalBoutv2
         Me.UltraLabel4.TabIndex = 66
         Me.UltraLabel4.Text = "Fecha a Facturar:"
         '
+        'grbPagos
+        '
+        Me.grbPagos.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Appearance69.BackColor = System.Drawing.SystemColors.Window
+        Appearance69.BorderColor = System.Drawing.SystemColors.InactiveCaption
+        Me.grbPagos.DisplayLayout.Appearance = Appearance69
+        Me.grbPagos.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ExtendLastColumn
+        Me.grbPagos.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
+        Me.grbPagos.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.[False]
+        Appearance70.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Appearance70.BackColor2 = System.Drawing.SystemColors.ControlDark
+        Appearance70.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical
+        Appearance70.BorderColor = System.Drawing.SystemColors.Window
+        Me.grbPagos.DisplayLayout.GroupByBox.Appearance = Appearance70
+        Appearance71.ForeColor = System.Drawing.SystemColors.GrayText
+        Me.grbPagos.DisplayLayout.GroupByBox.BandLabelAppearance = Appearance71
+        Me.grbPagos.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
+        Appearance72.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Appearance72.BackColor2 = System.Drawing.SystemColors.Control
+        Appearance72.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal
+        Appearance72.ForeColor = System.Drawing.SystemColors.GrayText
+        Me.grbPagos.DisplayLayout.GroupByBox.PromptAppearance = Appearance72
+        Me.grbPagos.DisplayLayout.MaxColScrollRegions = 1
+        Me.grbPagos.DisplayLayout.MaxRowScrollRegions = 1
+        Appearance73.BackColor = System.Drawing.SystemColors.Window
+        Appearance73.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.grbPagos.DisplayLayout.Override.ActiveCellAppearance = Appearance73
+        Appearance81.BackColor = System.Drawing.SystemColors.Highlight
+        Appearance81.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.grbPagos.DisplayLayout.Override.ActiveRowAppearance = Appearance81
+        Me.grbPagos.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted
+        Me.grbPagos.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted
+        Appearance83.BackColor = System.Drawing.SystemColors.Window
+        Me.grbPagos.DisplayLayout.Override.CardAreaAppearance = Appearance83
+        Appearance84.BorderColor = System.Drawing.Color.Silver
+        Appearance84.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter
+        Me.grbPagos.DisplayLayout.Override.CellAppearance = Appearance84
+        Me.grbPagos.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText
+        Me.grbPagos.DisplayLayout.Override.CellPadding = 0
+        Appearance85.BackColor = System.Drawing.SystemColors.Control
+        Appearance85.BackColor2 = System.Drawing.SystemColors.ControlDark
+        Appearance85.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element
+        Appearance85.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal
+        Appearance85.BorderColor = System.Drawing.SystemColors.Window
+        Me.grbPagos.DisplayLayout.Override.GroupByRowAppearance = Appearance85
+        Appearance86.TextHAlignAsString = "Left"
+        Me.grbPagos.DisplayLayout.Override.HeaderAppearance = Appearance86
+        Me.grbPagos.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti
+        Me.grbPagos.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand
+        Appearance87.BackColor = System.Drawing.SystemColors.Window
+        Appearance87.BorderColor = System.Drawing.Color.Silver
+        Me.grbPagos.DisplayLayout.Override.RowAppearance = Appearance87
+        Me.grbPagos.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.[False]
+        Appearance88.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.grbPagos.DisplayLayout.Override.TemplateAddRowAppearance = Appearance88
+        Me.grbPagos.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill
+        Me.grbPagos.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
+        Me.grbPagos.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
+        Me.grbPagos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grbPagos.Location = New System.Drawing.Point(566, 47)
+        Me.grbPagos.Name = "grbPagos"
+        Me.grbPagos.Size = New System.Drawing.Size(256, 22)
+        Me.grbPagos.TabIndex = 173
+        '
+        'UltraLabel5
+        '
+        Appearance56.BackColor = System.Drawing.Color.Transparent
+        Appearance56.TextHAlignAsString = "Right"
+        Me.UltraLabel5.Appearance = Appearance56
+        Me.UltraLabel5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.UltraLabel5.Location = New System.Drawing.Point(459, 52)
+        Me.UltraLabel5.Name = "UltraLabel5"
+        Me.UltraLabel5.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.UltraLabel5.Size = New System.Drawing.Size(101, 17)
+        Me.UltraLabel5.TabIndex = 172
+        Me.UltraLabel5.Text = "Metodo de pago"
+        '
         'frmGlobalBoutv2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -778,6 +873,7 @@ Partial Class frmGlobalBoutv2
         Me.ugbox3.PerformLayout()
         CType(Me.txtEmail, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtFechaVenta, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grbPagos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -823,4 +919,6 @@ Partial Class frmGlobalBoutv2
     Friend WithEvents vta As Infragistics.Win.UltraWinEditors.UltraCurrencyEditor
     Friend WithEvents Label6 As Label
     Friend WithEvents upgb1 As Infragistics.Win.UltraWinProgressBar.UltraProgressBar
+    Friend WithEvents grbPagos As Infragistics.Win.UltraWinGrid.UltraCombo
+    Friend WithEvents UltraLabel5 As Infragistics.Win.Misc.UltraLabel
 End Class

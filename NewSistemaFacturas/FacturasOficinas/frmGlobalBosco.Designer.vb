@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmGlobalBosco
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,27 +20,39 @@ Partial Class frmGlobalBosco
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmGlobalBosco))
+        Dim Appearance69 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance70 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance71 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance72 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance73 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance81 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance83 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance84 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance85 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance86 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance87 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance88 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance56 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance12 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance1 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance54 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance14 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance42 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance19 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance39 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance40 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance41 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance50 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance45 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance44 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance43 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance47 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance49 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance48 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance46 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance20 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance21 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance22 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance23 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance24 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance25 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance26 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance51 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance52 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance55 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance30 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance27 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance28 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -60,6 +72,7 @@ Partial Class frmGlobalBosco
         Dim Appearance3 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance31 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance32 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmGlobalBosco))
         Dim Appearance33 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance34 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance35 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -77,12 +90,12 @@ Partial Class frmGlobalBosco
         Dim ScrollBarLook1 As Infragistics.Win.UltraWinScrollBar.ScrollBarLook = New Infragistics.Win.UltraWinScrollBar.ScrollBarLook()
         Dim Appearance67 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance68 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance69 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance70 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance17 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance18 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance80 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Me.ugbox1 = New Infragistics.Win.Misc.UltraGroupBox()
-        Me.btnDevolucion = New System.Windows.Forms.Button()
-        Me.btnExportar = New Infragistics.Win.Misc.UltraButton()
+        Me.grbPagos = New Infragistics.Win.UltraWinGrid.UltraCombo()
+        Me.UltraLabel5 = New Infragistics.Win.Misc.UltraLabel()
         Me.UltraLabel3 = New Infragistics.Win.Misc.UltraLabel()
         Me.UltraLabel2 = New Infragistics.Win.Misc.UltraLabel()
         Me.UltraLabel1 = New Infragistics.Win.Misc.UltraLabel()
@@ -122,6 +135,7 @@ Partial Class frmGlobalBosco
         Me.Excel = New Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(Me.components)
         CType(Me.ugbox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ugbox1.SuspendLayout()
+        CType(Me.grbPagos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grbSucursal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grbTienda, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ugbox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -151,8 +165,8 @@ Partial Class frmGlobalBosco
         Appearance2.BackColor2 = System.Drawing.Color.Cyan
         Appearance2.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical
         Me.ugbox1.Appearance = Appearance2
-        Me.ugbox1.Controls.Add(Me.btnDevolucion)
-        Me.ugbox1.Controls.Add(Me.btnExportar)
+        Me.ugbox1.Controls.Add(Me.grbPagos)
+        Me.ugbox1.Controls.Add(Me.UltraLabel5)
         Me.ugbox1.Controls.Add(Me.UltraLabel3)
         Me.ugbox1.Controls.Add(Me.UltraLabel2)
         Me.ugbox1.Controls.Add(Me.UltraLabel1)
@@ -168,36 +182,89 @@ Partial Class frmGlobalBosco
         Me.ugbox1.Size = New System.Drawing.Size(1135, 82)
         Me.ugbox1.TabIndex = 2
         '
-        'btnDevolucion
+        'grbPagos
         '
-        Me.btnDevolucion.BackColor = System.Drawing.Color.White
-        Me.btnDevolucion.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnDevolucion.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnDevolucion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDevolucion.Image = CType(resources.GetObject("btnDevolucion.Image"), System.Drawing.Image)
-        Me.btnDevolucion.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.btnDevolucion.Location = New System.Drawing.Point(3, 0)
-        Me.btnDevolucion.Name = "btnDevolucion"
-        Me.btnDevolucion.Size = New System.Drawing.Size(85, 79)
-        Me.btnDevolucion.TabIndex = 73
-        Me.btnDevolucion.Text = "Timbrar Devolución"
-        Me.btnDevolucion.TextAlign = System.Drawing.ContentAlignment.BottomRight
-        Me.btnDevolucion.UseVisualStyleBackColor = False
+        Me.grbPagos.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
+        Appearance69.BackColor = System.Drawing.SystemColors.Window
+        Appearance69.BorderColor = System.Drawing.SystemColors.InactiveCaption
+        Me.grbPagos.DisplayLayout.Appearance = Appearance69
+        Me.grbPagos.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ExtendLastColumn
+        Me.grbPagos.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
+        Me.grbPagos.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.[False]
+        Appearance70.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Appearance70.BackColor2 = System.Drawing.SystemColors.ControlDark
+        Appearance70.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical
+        Appearance70.BorderColor = System.Drawing.SystemColors.Window
+        Me.grbPagos.DisplayLayout.GroupByBox.Appearance = Appearance70
+        Appearance71.ForeColor = System.Drawing.SystemColors.GrayText
+        Me.grbPagos.DisplayLayout.GroupByBox.BandLabelAppearance = Appearance71
+        Me.grbPagos.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
+        Appearance72.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Appearance72.BackColor2 = System.Drawing.SystemColors.Control
+        Appearance72.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal
+        Appearance72.ForeColor = System.Drawing.SystemColors.GrayText
+        Me.grbPagos.DisplayLayout.GroupByBox.PromptAppearance = Appearance72
+        Me.grbPagos.DisplayLayout.MaxColScrollRegions = 1
+        Me.grbPagos.DisplayLayout.MaxRowScrollRegions = 1
+        Appearance73.BackColor = System.Drawing.SystemColors.Window
+        Appearance73.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.grbPagos.DisplayLayout.Override.ActiveCellAppearance = Appearance73
+        Appearance81.BackColor = System.Drawing.SystemColors.Highlight
+        Appearance81.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.grbPagos.DisplayLayout.Override.ActiveRowAppearance = Appearance81
+        Me.grbPagos.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted
+        Me.grbPagos.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted
+        Appearance83.BackColor = System.Drawing.SystemColors.Window
+        Me.grbPagos.DisplayLayout.Override.CardAreaAppearance = Appearance83
+        Appearance84.BorderColor = System.Drawing.Color.Silver
+        Appearance84.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter
+        Me.grbPagos.DisplayLayout.Override.CellAppearance = Appearance84
+        Me.grbPagos.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText
+        Me.grbPagos.DisplayLayout.Override.CellPadding = 0
+        Appearance85.BackColor = System.Drawing.SystemColors.Control
+        Appearance85.BackColor2 = System.Drawing.SystemColors.ControlDark
+        Appearance85.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element
+        Appearance85.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal
+        Appearance85.BorderColor = System.Drawing.SystemColors.Window
+        Me.grbPagos.DisplayLayout.Override.GroupByRowAppearance = Appearance85
+        Appearance86.TextHAlignAsString = "Left"
+        Me.grbPagos.DisplayLayout.Override.HeaderAppearance = Appearance86
+        Me.grbPagos.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti
+        Me.grbPagos.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand
+        Appearance87.BackColor = System.Drawing.SystemColors.Window
+        Appearance87.BorderColor = System.Drawing.Color.Silver
+        Me.grbPagos.DisplayLayout.Override.RowAppearance = Appearance87
+        Me.grbPagos.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.[False]
+        Appearance88.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.grbPagos.DisplayLayout.Override.TemplateAddRowAppearance = Appearance88
+        Me.grbPagos.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill
+        Me.grbPagos.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
+        Me.grbPagos.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
+        Me.grbPagos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grbPagos.Location = New System.Drawing.Point(251, 49)
+        Me.grbPagos.Name = "grbPagos"
+        Me.grbPagos.Size = New System.Drawing.Size(306, 22)
+        Me.grbPagos.TabIndex = 171
         '
-        'btnExportar
+        'UltraLabel5
         '
-        Me.btnExportar.Location = New System.Drawing.Point(804, 41)
-        Me.btnExportar.Name = "btnExportar"
-        Me.btnExportar.Size = New System.Drawing.Size(115, 33)
-        Me.btnExportar.TabIndex = 65
-        Me.btnExportar.Text = "Exportar a Excel"
+        Appearance56.BackColor = System.Drawing.Color.Transparent
+        Appearance56.TextHAlignAsString = "Right"
+        Me.UltraLabel5.Appearance = Appearance56
+        Me.UltraLabel5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.UltraLabel5.Location = New System.Drawing.Point(144, 54)
+        Me.UltraLabel5.Name = "UltraLabel5"
+        Me.UltraLabel5.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.UltraLabel5.Size = New System.Drawing.Size(101, 17)
+        Me.UltraLabel5.TabIndex = 170
+        Me.UltraLabel5.Text = "Metodo de pago"
         '
         'UltraLabel3
         '
         Appearance12.BackColor = System.Drawing.Color.Transparent
         Me.UltraLabel3.Appearance = Appearance12
         Me.UltraLabel3.AutoSize = True
-        Me.UltraLabel3.Location = New System.Drawing.Point(403, 41)
+        Me.UltraLabel3.Location = New System.Drawing.Point(663, 53)
         Me.UltraLabel3.Name = "UltraLabel3"
         Me.UltraLabel3.Size = New System.Drawing.Size(89, 14)
         Me.UltraLabel3.TabIndex = 64
@@ -208,7 +275,7 @@ Partial Class frmGlobalBosco
         Appearance1.BackColor = System.Drawing.Color.Transparent
         Me.UltraLabel2.Appearance = Appearance1
         Me.UltraLabel2.AutoSize = True
-        Me.UltraLabel2.Location = New System.Drawing.Point(225, 41)
+        Me.UltraLabel2.Location = New System.Drawing.Point(664, 24)
         Me.UltraLabel2.Name = "UltraLabel2"
         Me.UltraLabel2.Size = New System.Drawing.Size(88, 14)
         Me.UltraLabel2.TabIndex = 63
@@ -219,7 +286,7 @@ Partial Class frmGlobalBosco
         Appearance54.BackColor = System.Drawing.Color.Transparent
         Me.UltraLabel1.Appearance = Appearance54
         Me.UltraLabel1.AutoSize = True
-        Me.UltraLabel1.Location = New System.Drawing.Point(670, 15)
+        Me.UltraLabel1.Location = New System.Drawing.Point(382, 23)
         Me.UltraLabel1.Name = "UltraLabel1"
         Me.UltraLabel1.Size = New System.Drawing.Size(51, 14)
         Me.UltraLabel1.TabIndex = 62
@@ -230,7 +297,7 @@ Partial Class frmGlobalBosco
         Appearance14.BackColor = System.Drawing.Color.Transparent
         Me.UltraLabel8.Appearance = Appearance14
         Me.UltraLabel8.AutoSize = True
-        Me.UltraLabel8.Location = New System.Drawing.Point(169, 16)
+        Me.UltraLabel8.Location = New System.Drawing.Point(40, 22)
         Me.UltraLabel8.Name = "UltraLabel8"
         Me.UltraLabel8.Size = New System.Drawing.Size(53, 14)
         Me.UltraLabel8.TabIndex = 61
@@ -241,7 +308,7 @@ Partial Class frmGlobalBosco
         Me.grbMes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grbMes.FormattingEnabled = True
         Me.grbMes.Items.AddRange(New Object() {"ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"})
-        Me.grbMes.Location = New System.Drawing.Point(403, 55)
+        Me.grbMes.Location = New System.Drawing.Point(758, 46)
         Me.grbMes.Name = "grbMes"
         Me.grbMes.Size = New System.Drawing.Size(121, 21)
         Me.grbMes.TabIndex = 60
@@ -251,7 +318,7 @@ Partial Class frmGlobalBosco
         Me.grbPeriodo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grbPeriodo.FormattingEnabled = True
         Me.grbPeriodo.Items.AddRange(New Object() {"2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020"})
-        Me.grbPeriodo.Location = New System.Drawing.Point(225, 56)
+        Me.grbPeriodo.Location = New System.Drawing.Point(758, 19)
         Me.grbPeriodo.Name = "grbPeriodo"
         Me.grbPeriodo.Size = New System.Drawing.Size(94, 21)
         Me.grbPeriodo.TabIndex = 59
@@ -262,9 +329,9 @@ Partial Class frmGlobalBosco
         Me.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnBuscar.ForeColor = System.Drawing.Color.White
-        Me.btnBuscar.Location = New System.Drawing.Point(933, 40)
+        Me.btnBuscar.Location = New System.Drawing.Point(939, 19)
         Me.btnBuscar.Name = "btnBuscar"
-        Me.btnBuscar.Size = New System.Drawing.Size(138, 37)
+        Me.btnBuscar.Size = New System.Drawing.Size(138, 34)
         Me.btnBuscar.TabIndex = 56
         Me.btnBuscar.Text = "Consulta Facturado"
         Me.btnBuscar.UseVisualStyleBackColor = False
@@ -272,9 +339,9 @@ Partial Class frmGlobalBosco
         'grbSucursal
         '
         Me.grbSucursal.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Appearance42.BackColor = System.Drawing.SystemColors.Window
-        Appearance42.BorderColor = System.Drawing.SystemColors.InactiveCaption
-        Me.grbSucursal.DisplayLayout.Appearance = Appearance42
+        Appearance19.BackColor = System.Drawing.SystemColors.Window
+        Appearance19.BorderColor = System.Drawing.SystemColors.InactiveCaption
+        Me.grbSucursal.DisplayLayout.Appearance = Appearance19
         Me.grbSucursal.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ExtendLastColumn
         Me.grbSucursal.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
         Me.grbSucursal.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.[False]
@@ -283,54 +350,54 @@ Partial Class frmGlobalBosco
         Appearance39.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical
         Appearance39.BorderColor = System.Drawing.SystemColors.Window
         Me.grbSucursal.DisplayLayout.GroupByBox.Appearance = Appearance39
-        Appearance40.ForeColor = System.Drawing.SystemColors.GrayText
-        Me.grbSucursal.DisplayLayout.GroupByBox.BandLabelAppearance = Appearance40
+        Appearance20.ForeColor = System.Drawing.SystemColors.GrayText
+        Me.grbSucursal.DisplayLayout.GroupByBox.BandLabelAppearance = Appearance20
         Me.grbSucursal.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
-        Appearance41.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Appearance41.BackColor2 = System.Drawing.SystemColors.Control
-        Appearance41.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal
-        Appearance41.ForeColor = System.Drawing.SystemColors.GrayText
-        Me.grbSucursal.DisplayLayout.GroupByBox.PromptAppearance = Appearance41
+        Appearance21.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Appearance21.BackColor2 = System.Drawing.SystemColors.Control
+        Appearance21.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal
+        Appearance21.ForeColor = System.Drawing.SystemColors.GrayText
+        Me.grbSucursal.DisplayLayout.GroupByBox.PromptAppearance = Appearance21
         Me.grbSucursal.DisplayLayout.MaxColScrollRegions = 1
         Me.grbSucursal.DisplayLayout.MaxRowScrollRegions = 1
-        Appearance50.BackColor = System.Drawing.SystemColors.Window
-        Appearance50.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.grbSucursal.DisplayLayout.Override.ActiveCellAppearance = Appearance50
-        Appearance45.BackColor = System.Drawing.SystemColors.Highlight
-        Appearance45.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.grbSucursal.DisplayLayout.Override.ActiveRowAppearance = Appearance45
+        Appearance22.BackColor = System.Drawing.SystemColors.Window
+        Appearance22.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.grbSucursal.DisplayLayout.Override.ActiveCellAppearance = Appearance22
+        Appearance23.BackColor = System.Drawing.SystemColors.Highlight
+        Appearance23.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.grbSucursal.DisplayLayout.Override.ActiveRowAppearance = Appearance23
         Me.grbSucursal.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted
         Me.grbSucursal.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted
-        Appearance44.BackColor = System.Drawing.SystemColors.Window
-        Me.grbSucursal.DisplayLayout.Override.CardAreaAppearance = Appearance44
-        Appearance43.BorderColor = System.Drawing.Color.Silver
-        Appearance43.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter
-        Me.grbSucursal.DisplayLayout.Override.CellAppearance = Appearance43
+        Appearance24.BackColor = System.Drawing.SystemColors.Window
+        Me.grbSucursal.DisplayLayout.Override.CardAreaAppearance = Appearance24
+        Appearance25.BorderColor = System.Drawing.Color.Silver
+        Appearance25.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter
+        Me.grbSucursal.DisplayLayout.Override.CellAppearance = Appearance25
         Me.grbSucursal.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText
         Me.grbSucursal.DisplayLayout.Override.CellPadding = 0
-        Appearance47.BackColor = System.Drawing.SystemColors.Control
-        Appearance47.BackColor2 = System.Drawing.SystemColors.ControlDark
-        Appearance47.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element
-        Appearance47.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal
-        Appearance47.BorderColor = System.Drawing.SystemColors.Window
-        Me.grbSucursal.DisplayLayout.Override.GroupByRowAppearance = Appearance47
-        Appearance49.TextHAlignAsString = "Left"
-        Me.grbSucursal.DisplayLayout.Override.HeaderAppearance = Appearance49
+        Appearance26.BackColor = System.Drawing.SystemColors.Control
+        Appearance26.BackColor2 = System.Drawing.SystemColors.ControlDark
+        Appearance26.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element
+        Appearance26.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal
+        Appearance26.BorderColor = System.Drawing.SystemColors.Window
+        Me.grbSucursal.DisplayLayout.Override.GroupByRowAppearance = Appearance26
+        Appearance51.TextHAlignAsString = "Left"
+        Me.grbSucursal.DisplayLayout.Override.HeaderAppearance = Appearance51
         Me.grbSucursal.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti
         Me.grbSucursal.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand
-        Appearance48.BackColor = System.Drawing.SystemColors.Window
-        Appearance48.BorderColor = System.Drawing.Color.Silver
-        Me.grbSucursal.DisplayLayout.Override.RowAppearance = Appearance48
+        Appearance52.BackColor = System.Drawing.SystemColors.Window
+        Appearance52.BorderColor = System.Drawing.Color.Silver
+        Me.grbSucursal.DisplayLayout.Override.RowAppearance = Appearance52
         Me.grbSucursal.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.[False]
-        Appearance46.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.grbSucursal.DisplayLayout.Override.TemplateAddRowAppearance = Appearance46
+        Appearance55.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.grbSucursal.DisplayLayout.Override.TemplateAddRowAppearance = Appearance55
         Me.grbSucursal.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill
         Me.grbSucursal.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.grbSucursal.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
         Me.grbSucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grbSucursal.Location = New System.Drawing.Point(723, 12)
+        Me.grbSucursal.Location = New System.Drawing.Point(435, 20)
         Me.grbSucursal.Name = "grbSucursal"
-        Me.grbSucursal.Size = New System.Drawing.Size(348, 22)
+        Me.grbSucursal.Size = New System.Drawing.Size(211, 22)
         Me.grbSucursal.TabIndex = 5
         '
         'grbTienda
@@ -392,9 +459,9 @@ Partial Class frmGlobalBosco
         Me.grbTienda.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.grbTienda.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
         Me.grbTienda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grbTienda.Location = New System.Drawing.Point(225, 12)
+        Me.grbTienda.Location = New System.Drawing.Point(99, 20)
         Me.grbTienda.Name = "grbTienda"
-        Me.grbTienda.Size = New System.Drawing.Size(337, 22)
+        Me.grbTienda.Size = New System.Drawing.Size(264, 22)
         Me.grbTienda.TabIndex = 4
         '
         'upb
@@ -799,13 +866,13 @@ Partial Class frmGlobalBosco
         Appearance68.ImageBackground = CType(resources.GetObject("Appearance68.ImageBackground"), System.Drawing.Image)
         Appearance68.ImageBackgroundStretchMargins = New Infragistics.Win.ImageBackgroundStretchMargins(3, 2, 3, 2)
         ScrollBarLook1.AppearanceHorizontal = Appearance68
-        Appearance69.ImageBackground = CType(resources.GetObject("Appearance69.ImageBackground"), System.Drawing.Image)
-        Appearance69.ImageBackgroundStretchMargins = New Infragistics.Win.ImageBackgroundStretchMargins(2, 3, 2, 3)
-        Appearance69.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Stretched
-        ScrollBarLook1.AppearanceVertical = Appearance69
-        Appearance70.ImageBackground = CType(resources.GetObject("Appearance70.ImageBackground"), System.Drawing.Image)
-        Appearance70.ImageBackgroundStretchMargins = New Infragistics.Win.ImageBackgroundStretchMargins(0, 2, 0, 1)
-        ScrollBarLook1.TrackAppearanceHorizontal = Appearance70
+        Appearance17.ImageBackground = CType(resources.GetObject("Appearance17.ImageBackground"), System.Drawing.Image)
+        Appearance17.ImageBackgroundStretchMargins = New Infragistics.Win.ImageBackgroundStretchMargins(2, 3, 2, 3)
+        Appearance17.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Stretched
+        ScrollBarLook1.AppearanceVertical = Appearance17
+        Appearance18.ImageBackground = CType(resources.GetObject("Appearance18.ImageBackground"), System.Drawing.Image)
+        Appearance18.ImageBackgroundStretchMargins = New Infragistics.Win.ImageBackgroundStretchMargins(0, 2, 0, 1)
+        ScrollBarLook1.TrackAppearanceHorizontal = Appearance18
         Appearance80.ImageBackground = CType(resources.GetObject("Appearance80.ImageBackground"), System.Drawing.Image)
         Appearance80.ImageBackgroundStretchMargins = New Infragistics.Win.ImageBackgroundStretchMargins(2, 0, 1, 0)
         Appearance80.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Stretched
@@ -840,6 +907,7 @@ Partial Class frmGlobalBosco
         CType(Me.ugbox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ugbox1.ResumeLayout(False)
         Me.ugbox1.PerformLayout()
+        CType(Me.grbPagos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grbSucursal, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grbTienda, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ugbox2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -903,7 +971,7 @@ Partial Class frmGlobalBosco
     Friend WithEvents Total As Infragistics.Win.UltraWinEditors.UltraCurrencyEditor
     Friend WithEvents Ugr As Infragistics.Win.UltraWinGrid.UltraGrid
     Friend WithEvents upgb1 As Infragistics.Win.UltraWinProgressBar.UltraProgressBar
-    Friend WithEvents btnExportar As Infragistics.Win.Misc.UltraButton
     Friend WithEvents Excel As Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter
-    Friend WithEvents btnDevolucion As System.Windows.Forms.Button
+    Friend WithEvents grbPagos As Infragistics.Win.UltraWinGrid.UltraCombo
+    Friend WithEvents UltraLabel5 As Infragistics.Win.Misc.UltraLabel
 End Class

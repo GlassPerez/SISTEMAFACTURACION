@@ -29,69 +29,69 @@ Module Module1
     'Public Sub EasyOne_cfdi33_AddCfdiRelacionado(ByVal p As Integer, ByVal UUID As String)
     'End Sub
 
-    ''<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
-    ''Public Sub EasyOne_cfdi33_AddConcepto(ByVal p As Integer, ByVal ClaveProdServ As String, ByVal NoIdentificacion As String, ByVal Cantidad As String, ByVal ClaveUnidad As String, ByVal Unidad As String, ByVal Descripcion As String, ByVal ValorUnitario As String, ByVal Importe As String, ByVal Descuento As String)
-    ''End Sub
+    '<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
+    'Public Sub EasyOne_cfdi33_AddConcepto(ByVal p As Integer, ByVal ClaveProdServ As String, ByVal NoIdentificacion As String, ByVal Cantidad As String, ByVal ClaveUnidad As String, ByVal Unidad As String, ByVal Descripcion As String, ByVal ValorUnitario As String, ByVal Importe As String, ByVal Descuento As String)
+    'End Sub
+
+    <DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
+    Public Sub EasyOne_cfdi33_AddInformacionAduanera(ByVal p As Integer, ByVal NumeroPedimento As String)
+    End Sub
+
+    <DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
+    Public Sub EasyOne_cfdi33_AddParte(ByVal p As Integer, ByVal ClaveProdServ As String, ByVal NoIdentificacion As String, ByVal Cantidad As String, ByVal Unidad As String, ByVal Descripcion As String, ByVal ValorUnitario As String, ByVal Importe As String)
+    End Sub
+
+    <DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
+    Public Sub EasyOne_cfdi33_AddParteInformacionAduanera(ByVal p As Integer, ByVal NumeroPedimento As String)
+    End Sub
 
     '<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
-    'Public Sub EasyOne_cfdi33_AddInformacionAduanera(ByVal p As Integer, ByVal NumeroPedimento As String)
+    'Public Sub EasyOne_cfdi33_AddRetencion(ByVal p As Integer, ByVal Base As String, ByVal Impuesto As String, ByVal TipoFactor As String, ByVal TasaOCuota As String, ByVal Importe As String)
     'End Sub
 
     '<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
-    'Public Sub EasyOne_cfdi33_AddParte(ByVal p As Integer, ByVal ClaveProdServ As String, ByVal NoIdentificacion As String, ByVal Cantidad As String, ByVal Unidad As String, ByVal Descripcion As String, ByVal ValorUnitario As String, ByVal Importe As String)
+    'Public Sub EasyOne_cfdi33_AddRetencionesRetencion(ByVal p As Integer, ByVal Impuesto As String, ByVal Importe As String)
     'End Sub
-
-    '<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
-    'Public Sub EasyOne_cfdi33_AddParteInformacionAduanera(ByVal p As Integer, ByVal NumeroPedimento As String)
-    'End Sub
-
-    ''<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
-    ''Public Sub EasyOne_cfdi33_AddRetencion(ByVal p As Integer, ByVal Base As String, ByVal Impuesto As String, ByVal TipoFactor As String, ByVal TasaOCuota As String, ByVal Importe As String)
-    ''End Sub
-
-    ''<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
-    ''Public Sub EasyOne_cfdi33_AddRetencionesRetencion(ByVal p As Integer, ByVal Impuesto As String, ByVal Importe As String)
-    ''End Sub
 
     '<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
     'Public Sub EasyOne_cfdi33_AddTraslado(ByVal p As Integer, ByVal Base As String, ByVal Impuesto As String, ByVal TipoFactor As String, ByVal TasaOCuota As String, ByVal Importe As String)
     'End Sub
 
-    ''<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
-    ''Public Sub EasyOne_cfdi33_AddTrasladosTraslado(ByVal p As Integer, ByVal Impuesto As String, ByVal TipoFactor As String, ByVal TasaOCuota As String, ByVal Importe As String)
-    ''End Sub
-
-    ''<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
-    ''Public Function EasyOne_cfdi33_Create(ByVal outFile As String) As Integer
-    ''End Function
+    '<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
+    'Public Sub EasyOne_cfdi33_AddTrasladosTraslado(ByVal p As Integer, ByVal Impuesto As String, ByVal TipoFactor As String, ByVal TasaOCuota As String, ByVal Importe As String)
+    'End Sub
 
     '<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
-    'Public Sub EasyOne_cfdi33_Free(ByVal p As Integer)
-    'End Sub
+    'Public Function EasyOne_cfdi33_Create(ByVal outFile As String) As Integer
+    'End Function
+
+    <DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
+    Public Sub EasyOne_cfdi33_Free(ByVal p As Integer)
+    End Sub
 
     '<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
     'Public Sub EasyOne_cfdi33_SetCfdiRelacionados(ByVal p As Integer, ByVal TipoRelacion As String)
     'End Sub
 
-    ''<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
-    ''Public Sub EasyOne_cfdi33_SetComprobante(ByVal p As Integer, ByVal Serie As String, ByVal Folio As String, ByVal Fecha As String, ByVal FormaPago As String, ByVal CondicionesDePago As String, ByVal SubTotal As String, ByVal Descuento As String, ByVal Moneda As String, ByVal TipoCambio As String, ByVal Total As String, ByVal TipoDeComprobante As String, ByVal MetodoPago As String, ByVal LugarExpedicion As String, ByVal Confirmacion As String)
-    ''End Sub
-
-    ''<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
-    ''Public Sub EasyOne_cfdi33_SetComprobanteImpuestos(ByVal p As Integer, ByVal TotalImpuestosRetenidos As String, ByVal TotalImpuestosTrasladados As String)
-    ''End Sub
-
     '<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
-    'Public Sub EasyOne_cfdi33_SetCuentaPredial(ByVal p As Integer, ByVal Numero As String)
+    'Public Sub EasyOne_cfdi33_SetComprobante(ByVal p As Integer, ByVal Serie As String, ByVal Folio As String, ByVal Fecha As String, ByVal FormaPago As String, ByVal CondicionesDePago As String, ByVal SubTotal As String, ByVal Descuento As String, ByVal Moneda As String, ByVal TipoCambio As String, ByVal Total As String, ByVal TipoDeComprobante As String, ByVal MetodoPago As String, ByVal LugarExpedicion As String, ByVal Confirmacion As String)
     'End Sub
 
-    ''<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
-    ''Public Sub EasyOne_cfdi33_SetEmisor(ByVal p As Integer, ByVal Rfc As String, ByVal Nombre As String, ByVal RegimenFiscal As String)
-    ''End Sub
+    '<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
+    'Public Sub EasyOne_cfdi33_SetComprobanteImpuestos(ByVal p As Integer, ByVal TotalImpuestosRetenidos As String, ByVal TotalImpuestosTrasladados As String)
+    'End Sub
 
-    ''<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
-    ''Public Sub EasyOne_cfdi33_SetReceptor(ByVal p As Integer, ByVal Rfc As String, ByVal Nombre As String, ByVal ResidenciaFiscal As String, ByVal NumRegIdTrib As String, ByVal UsoCFDI As String)
-    ''End Sub
+    <DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
+    Public Sub EasyOne_cfdi33_SetCuentaPredial(ByVal p As Integer, ByVal Numero As String)
+    End Sub
+
+    '<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
+    'Public Sub EasyOne_cfdi33_SetEmisor(ByVal p As Integer, ByVal Rfc As String, ByVal Nombre As String, ByVal RegimenFiscal As String)
+    'End Sub
+
+    '<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
+    'Public Sub EasyOne_cfdi33_SetReceptor(ByVal p As Integer, ByVal Rfc As String, ByVal Nombre As String, ByVal ResidenciaFiscal As String, ByVal NumRegIdTrib As String, ByVal UsoCFDI As String)
+    'End Sub
 
     '<DllImport("EasyOne.DLL", CallingConvention:=CallingConvention.Cdecl)>
     'Public Sub EasyOne_SetInvoiceOneFachadaInfoPrueba(ByVal p As Integer, ByVal AgenteId As String, ByVal SoftwareId As String)

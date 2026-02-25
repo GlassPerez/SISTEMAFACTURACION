@@ -319,10 +319,10 @@ Public Class frmPreparaInfo
                         'Dim pu1 As Double = Format(prec1 / 1.16, "###,###.00") ''PRECIO UNITARIO
                         'Dim iva1 As Double = Format(CDbl((prec1 - pu1) * cant), "###,###.00") ''iva
 
-                        Dim pu1 As Double = Format(precio / 1.16, "###,###.00") ''PRECIO UNITARIO
+                        Dim pu1 As Double = Format((precio * cant) / 1.16, "###,###.00") ''PRECIO UNITARIO
                         Dim iva1 As Double = Format(CDbl((precio - pu1) * cant), "###,###.00") ''iva
                         ''TOTALES PARA VENTAENC
-                        TOTAL += Format(CDbl(precio), "###,###.00")
+                        TOTAL += Format(CDbl(precio * cant), "###,###.00")
                         DESCU1 += descu
                         TIVA += iva1
                         SUBT += Format(CDbl(pu1), "###,###.00")

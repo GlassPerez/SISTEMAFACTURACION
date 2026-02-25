@@ -30,8 +30,9 @@ Public Class frmGlobalNutrisa
 #End Region
 
 #Region "VariablesGlobales"
+    Dim FeReg As String
     Dim TIP As String
-    Dim Tabla, TSucursal, TablaSucursal, TablaTienda, TabExpeTicket As Data.DataTable
+    Dim Tabla, TSucursal, TablaSucursal, TablaTienda, TabExpeTicket, facturado, yafac As Data.DataTable
     Dim ArrayArchivos As New ArrayList
     Dim fechventa As String
     Dim Timbrado As Boolean = False
@@ -78,6 +79,8 @@ Public Class frmGlobalNutrisa
         FechaFactura = Date.Now.ToString.Substring(0, 10)
         va = 0
         va2 = 0
+        objpro.CargaCombos(grbPagos, "Select idmetpag, metdes as Metodo_Pago from bgxfacelec.satmpag ", 0, 1, As400)
+        grbPagos.Value = "PUE"
         objpro.CargaCombos(grbTienda, "Select tId, trSocial FROM CatTien where tTipo3 = 'N' ", 0, 1, Motor)
         CargaGridConceptos()
 
@@ -194,7 +197,7 @@ Public Class frmGlobalNutrisa
                             txtAmoAprob = TSucursal.Rows(0).Item("seAmoAp").ToString
                             txtLugarExpedicion = TSucursal.Rows(0).Item("seLugarExp").ToString
 
-                            inicializa()
+                            'inicializa()
                             lblDiaFactura.Text = txtFechaVenta.Value.ToString.Substring(0, 2) & "/" & txtFechaVenta.Value.ToString.Substring(3, 2) & "/" & txtFechaVenta.Value.ToString.Substring(6, 4)
                             For Each row In UgrTicket.Rows
                                 Subtotal.Value += Format(CDbl(row.Cells("Importe").Value), "###,###.00")
@@ -232,6 +235,9 @@ Public Class frmGlobalNutrisa
         DevVenta0.Value = 0
         DevIps.Value = 0
         DevIva.Value = 0
+
+        txtFactura = ""
+        txtSerie = ""
     End Sub
 
 
@@ -287,12 +293,10 @@ Public Class frmGlobalNutrisa
                 CarpSucursal = TablaTienda.Rows(0).Item("sCsuc").ToString
                 Directorios = TablaTienda.Rows(0).Item("sUbic").ToString
 
-                Dim f1, f2, f3, freal, FeReg, hr As String
+                Dim f1, f2, f3, freal, hr As String
                 f1 = txtFechaVenta.Text.ToString.Substring(0, 2)
                 f2 = txtFechaVenta.Text.ToString.Substring(3, 2)
                 f3 = txtFechaVenta.Text.ToString.Substring(6, 4)
-                'hr = Now.ToLocalTime.ToString.Substring(11, 8)
-                'freal = Now.Date.ToString.Substring(6, 4) & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr
                 FeReg = txtFechaVenta.Text.ToString.Substring(6, 4) & f2 & f1
 
                 Dim FechaHora As String = Date.Now.ToString.Substring(10, 10)
@@ -358,12 +362,9 @@ Public Class frmGlobalNutrisa
                 Dim RFacImpresas As String
                 RFacImpresas = Directorios & "\" & FechaFactura.ToString.Substring(6, 4) & "\" & FechaFactura.ToString.Substring(3, 2)
 
-                Dim p As Integer = EasyOne_cfdi33_Create(RFacImpresas & "\" & Trim(TRfc) & "-" & txtSerie & "-" & txtFactura & ".xml") ''(RFacImpresas & "\" & "EJEMPLO5.xml")
+                Dim p As Integer = EasyOne_cfdi33_Create(RFacImpresas & "\" & Trim(TRfc) & "-" & txtSerie & "-" & txtFactura & "-" & FeReg.ToString & ".xml") ''(RFacImpresas & "\" & "EJEMPLO5.xml")
 
                 Dim TipoCambio As Int16 = 1
-                Dim CondicionesDePago As String = "CONTADO"
-
-                fp = "EFECTIVO" '"99 - Otros"
                 upb.Value += 10
 
                 'EXPORTACION: 01 - NO APLICA
@@ -416,26 +417,42 @@ Public Class frmGlobalNutrisa
                         DesRegimen = "Régimen Simplificado de Confianza"
                 End Select
 
-                '' // Periodicidad 01 Diario| 02 Semanal | 03 Quincenal | 04 Mensual | 05 Bimensual
-                ''// Meses 01-12 Enero a Diciembre | 13-18 Enero-Febrero a Noviembre-Diciembre  // Año
-                EasyOne_cfdi33_SetInformacionGlobal40(p, "01", f2, f3)
-
                 'Llenamos la sección del Emisor
                 'EasyOne_cfdi33_SetEmisor(p, TRfc, "PLAZA DELI", "XXX")
                 EasyOne_cfdi33_SetEmisor(p, TRfc, TRazonSocial, TpRegimen)
 
                 'Llenamos la sección del Receptor
                 'RFC, NOMBRE, RESIDENCIA FISCAL, NUMREGIDTRIB, USOCFDI
-                EasyOne_cfdi33_SetReceptor(p, "XAXX010101000", "PUBLICO EN GENERAL", "", "", "S01") 'estos paramentros son si o si para factura global
-                EasyOne_cfdi33_SetReceptor40(p, TCp, "616") 'regimen fiscal para global 616
+                If grbPagos.Value = "PPD" Then
+                    fp = "POR DEFINIR"  '"99 - Otros"
+                    EasyOne_cfdi33_SetReceptor(p, "XAXX010101000", "PÚBLICO EN GENERAL", "", "", "S01") 'estos paramentros son si o si para factura global
+                    EasyOne_cfdi33_SetReceptor40(p, TCp, "616") 'regimen fiscal para global 616
 
-                Fila("Rcp") = TCp
-                Fila("Rrfc") = "XAXX010101000"
-                Fila("Rrazonsoc") = "PUBLICO EN GENERAL"
-                Fila("Rdireccion") = ""
-                Fila("Rregimen") = "616-Sin Obligaciones Fiscales"
-                Fila("usocfdi") = "S01"
-                Fila("moneda") = "MXN"
+                    Fila("Rcp") = TCp
+                    Fila("Rrfc") = "XAXX010101000"
+                    Fila("Rrazonsoc") = "PÚBLICO EN GENERAL"
+                    Fila("Rdireccion") = ""
+                    Fila("Rregimen") = "616-Sin Obligaciones Fiscales"
+                    Fila("usocfdi") = "S01"
+                    Fila("moneda") = "MXN"
+                Else
+                    fp = "EFECTIVO"  '"99 - Otros"
+                    '' // Periodicidad 01 Diario| 02 Semanal | 03 Quincenal | 04 Mensual | 05 Bimensual
+                    ''// Meses 01-12 Enero a Diciembre | 13-18 Enero-Febrero a Noviembre-Diciembre  // Año
+                    EasyOne_cfdi33_SetInformacionGlobal40(p, "01", f2, f3)
+
+                    EasyOne_cfdi33_SetReceptor(p, "XAXX010101000", "PUBLICO EN GENERAL", "", "", "S01") 'estos paramentros son si o si para factura global
+                    EasyOne_cfdi33_SetReceptor40(p, TCp, "616") 'regimen fiscal para global 616
+
+                    Fila("Rcp") = TCp
+                    Fila("Rrfc") = "XAXX010101000"
+                    Fila("Rrazonsoc") = "PUBLICO EN GENERAL"
+                    Fila("Rdireccion") = ""
+                    Fila("Rregimen") = "616-Sin Obligaciones Fiscales"
+                    Fila("usocfdi") = "S01"
+                    Fila("moneda") = "MXN"
+                End If
+
 
                 Dim i As Integer
                 Dim sb As Double = 0
@@ -511,9 +528,9 @@ Public Class frmGlobalNutrisa
                         Imp = Format(((T16 - Descu16) * 0.16), "######.00")
                         iv += Imp
                         If Descu16 <> 0 Then
-                            EasyOne_cfdi33_AddConcepto(p, "01010101", "", "1", "ACT", "", "Venta", Format((T16), "######.00"), Format(T16, "######.00"), Format((Descu16), "######.00"))
+                            EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((T16), "######.00"), Format(T16, "######.00"), Format((Descu16), "######.00"))
                         Else
-                            EasyOne_cfdi33_AddConcepto(p, "01010101", "", "1", "ACT", "", "Venta", Format((T16), "######.00"), Format(T16, "######.00"), "")
+                            EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((T16), "######.00"), Format(T16, "######.00"), "")
                         End If
                         EasyOne_cfdi33_SetConcepto40(p, "02")
                         EasyOne_cfdi33_AddTraslado(p, Format(bas, "######.00"), "002", "Tasa", "0.160000", Format(Imp, "######.00"))
@@ -522,9 +539,9 @@ Public Class frmGlobalNutrisa
                         Imp = Format(((T16 - Descu16) * 0.16), "###,###.00")
                         iv += Imp
                         If Descu16 <> 0 Then
-                            EasyOne_cfdi33_AddConcepto(p, "01010101", "", "1", "ACT", "", "Venta", Format((T16), "######.00"), Format(T16, "######.00"), Format((Descu16), "######.00"))
+                            EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((T16), "######.00"), Format(T16, "######.00"), Format((Descu16), "######.00"))
                         Else
-                            EasyOne_cfdi33_AddConcepto(p, "01010101", "", "1", "ACT", "", "Venta", Format((T16), "######.00"), Format(T16, "######.00"), "")
+                            EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((T16), "######.00"), Format(T16, "######.00"), "")
                         End If
                         EasyOne_cfdi33_SetConcepto40(p, "02")
                         EasyOne_cfdi33_AddTraslado(p, Format(bas, "######.00"), "002", "Tasa", "0.160000", Format(Imp, "######.00"))
@@ -546,9 +563,9 @@ Public Class frmGlobalNutrisa
                         flag = 0
                         Dim im As String = Imp.ToString.Replace(".00", "0.00")
                         If Descucero <> 0 Then
-                            EasyOne_cfdi33_AddConcepto(p, "01010101", "", "1", "ACT", "", "Venta", Format((TCERO), "######.00"), Format(TCERO, "######.00"), Format((Descucero), "######.00"))
+                            EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((TCERO), "######.00"), Format(TCERO, "######.00"), Format((Descucero), "######.00"))
                         Else
-                            EasyOne_cfdi33_AddConcepto(p, "01010101", "", "1", "ACT", "", "Venta", Format((TCERO), "######.00"), Format(TCERO, "######.00"), "")
+                            EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((TCERO), "######.00"), Format(TCERO, "######.00"), "")
                         End If
                         EasyOne_cfdi33_SetConcepto40(p, "02")
                         EasyOne_cfdi33_AddTraslado(p, Format(bas, "######.00"), "002", "Tasa", "0.000000", im)
@@ -558,9 +575,9 @@ Public Class frmGlobalNutrisa
                         flag = 0
                         Dim im As String = Imp.ToString.Replace(".00", "0.00")
                         If Descucero <> 0 Then
-                            EasyOne_cfdi33_AddConcepto(p, "01010101", "", "1", "ACT", "", "Venta", Format((TCERO), "######.00"), Format(TCERO, "######.00"), Format((Descucero), "######.00"))
+                            EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((TCERO), "######.00"), Format(TCERO, "######.00"), Format((Descucero), "######.00"))
                         Else
-                            EasyOne_cfdi33_AddConcepto(p, "01010101", "", "1", "ACT", "", "Venta", Format((TCERO), "######.00"), Format(TCERO, "######.00"), "")
+                            EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((TCERO), "######.00"), Format(TCERO, "######.00"), "")
                         End If
                         EasyOne_cfdi33_SetConcepto40(p, "02")
                         EasyOne_cfdi33_AddTraslado(p, Format(bas, "######.00"), "002", "Tasa", "0.000000", im)
@@ -581,30 +598,22 @@ Public Class frmGlobalNutrisa
                         Imp = Format(((TIEPS - Descuieps) * 0.08), "###,###.00")
                         ieps += Imp
                         If Descuieps <> 0 Then
-                            EasyOne_cfdi33_AddConcepto(p, "01010101", "", "1", "ACT", "", "Venta", Format((TIEPS), "######.00"), Format(TIEPS, "######.00"), Format((Descuieps), "######.00"))
+                            EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((TIEPS), "######.00"), Format(TIEPS, "######.00"), Descuieps)
                         Else
-                            EasyOne_cfdi33_AddConcepto(p, "01010101", "", "1", "ACT", "", "Venta", Format((TIEPS), "######.00"), Format(TIEPS, "######.00"), "")
+                            EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((TIEPS), "######.00"), Format(TIEPS, "######.00"), "")
                         End If
                         EasyOne_cfdi33_SetConcepto40(p, "02")
                         EasyOne_cfdi33_AddTraslado(p, Format(bas, "######.00"), "003", "Tasa", "0.080000", Imp)
-                        'If Imp < 0 Then
-                        '    Dim completa As String
-                        '    completa = "0" & Imp.ToString
-                        '    EasyOne_cfdi33_AddTraslado(p, Format(bas, "######.00"), "003", "Tasa", "0.080000", completa)
-                        'Else
-                        '    EasyOne_cfdi33_AddTraslado(p, Format(bas, "######.00"), "003", "Tasa", "0.080000", Imp)
-                        'End If
                     Else
                         bas = TIEPS - Format(Descuieps - 0.1, "###,###.00")
                         Imp = Format(((TIEPS - Descuieps - 0.1) * 0.08), "###,###.00")
                         ieps += Imp
                         If Descuieps <> 0 Then
-                            EasyOne_cfdi33_AddConcepto(p, "01010101", "", "1", "ACT", "", "Venta", Format((TIEPS), "######.00"), Format(TIEPS, "######.00"), Format((Descuieps), "######.00"))
+                            EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((TIEPS), "######.00"), Format(TIEPS, "######.00"), Format((Descuieps), "######.00"))
                         Else
-                            EasyOne_cfdi33_AddConcepto(p, "01010101", "", "1", "ACT", "", "Venta", Format((TIEPS), "######.00"), Format(TIEPS, "######.00"), "")
+                            EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((TIEPS), "######.00"), Format(TIEPS, "######.00"), "")
                         End If
                         EasyOne_cfdi33_SetConcepto40(p, "02")
-                        'EasyOne_cfdi33_AddTraslado(p, Format(bas, "######.00"), "003", "Tasa", "0.080000", Format(Imp, "######.00"))
                         If Imp < 0 Then
                             Dim completa As String
                             completa = "0" & Imp.ToString
@@ -635,7 +644,7 @@ Public Class frmGlobalNutrisa
                 End If
 
                 If Me.IEPS.Value <> 0 Then
-                    EasyOne_cfdi33_AddTrasladosTraslado(p, "003", "Tasa", "0.080000", ieps)
+                    EasyOne_cfdi33_AddTrasladosTraslado(p, "003", "Tasa", "0.080000", Format(ieps, "###,###.00"))
                 End If
 
                 NoCuenta = ""
@@ -662,16 +671,8 @@ Public Class frmGlobalNutrisa
                 Dim metpg As String
                 Dim tipcom As String
                 Dim formpg As String
-                metpg = "PUE"
+                metpg = grbPagos.Value
                 tipcom = "I"
-                formpg = "01" '"99"
-
-                ''Llenamos la sección del comprobante
-                'If des = 0 Then
-                '    EasyOne_cfdi33_SetComprobante(p, txtSerie, txtFactura, freal, formpg, "", Format((Subt), "######.00"), "", "MXN", TipoCambio, Format((Total), "######.00"), tipcom, metpg, TCp, "")
-                'Else
-                '    EasyOne_cfdi33_SetComprobante(p, txtSerie, txtFactura, freal, formpg, "", Format((Subt), "######.00"), Format((des), "######.00"), "MXN", TipoCambio, Format((Total), "######.00"), tipcom, metpg, TCp, "")
-                'End If
 
                 Fila("metpago") = metpg
                 If tipcom = "I" Then
@@ -681,10 +682,13 @@ Public Class frmGlobalNutrisa
                 End If
                 Fila("formpago") = fp
 
-                ''Enviamos el CFDI al metodo de PRUEBAS
-                ''En la siguiente línea es necesario incluir la Clave de Integración que se proporciona en la Guía de Implementación (Menú "Ayuda" de su Oficina Virtual).
-                ''EasyOne_SetInvoiceOneFachadaInfoPrueba(p, "RHUUMRGL", "RHUUMRGL")
-                'EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
+                If grbPagos.Value = "PPD" Then
+                    formpg = "99"
+                    Fila("formpago") = "POR DEFINIR"
+                Else
+                    formpg = "01"
+                    Fila("formpago") = "EFECTIVO"
+                End If
 
                 Application.DoEvents()
                 upb.Value += 30  'Suma 40
@@ -704,7 +708,7 @@ Public Class frmGlobalNutrisa
 
                     freal = Now.Date.ToString.Substring(6, 4) & "-" & Now.Date.ToString.Substring(3, 2) & "-" & Now.Date.ToString.Substring(0, 2) & "T" & hr
 
-                    If (serie = "" And folio = "") Or (serie <> txtSerie And folio <> txtFactura) Then
+                    If (serie = "" And folio = "") Or (folio <> txtFactura) Then
                         'Llenamos la sección del comprobante
                         If des = 0 Then
                             EasyOne_cfdi33_SetComprobante(p, txtSerie, txtFactura, freal, formpg, "", Format((Subt), "######.00"), "", "MXN", TipoCambio, Format((Total), "######.00"), tipcom, metpg, TCp, "")
@@ -712,173 +716,207 @@ Public Class frmGlobalNutrisa
                             EasyOne_cfdi33_SetComprobante(p, txtSerie, txtFactura, freal, formpg, "", Format((Subt), "######.00"), Format((des), "######.00"), "MXN", TipoCambio, Format((Total), "######.00"), tipcom, metpg, TCp, "")
                         End If
 
-                        'Enviamos el CFDI al metodo de PRUEBAS
-                        'En la siguiente línea es necesario incluir la Clave de Integración que se proporciona en la Guía de Implementación (Menú "Ayuda" de su Oficina Virtual).
-                        'EasyOne_SetInvoiceOneFachadaInfoPrueba(p, "RHUUMRGL", "RHUUMRGL")
-                        EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
+                        Dim folf As Integer = 0 'consulto el ultimo folio de serie
+                        folf = CDbl(objpro.DatoMaximo("seCant", "Serie", "sId = " & grbSucursal.Value & " and Tid = " & grbTienda.Value & " and seTipo = '" & TIP & "' and seEstat = 1 ", Motor))
+                        If CInt(txtFactura) > folf Then
 
-                        x = EasyOne_FirmaComprobante(p, CerFactura, Key, Pwd)
-                        Thread.Sleep(10000) 'espera por 10 segundos
-                        If x = 0 Then
-                            va += 1
-                            hra = hr
-                            serie = txtSerie
-                            folio = txtFactura
+                            'Enviamos el CFDI al metodo de PRUEBAS
+                            'En la siguiente línea es necesario incluir la Clave de Integración que se proporciona en la Guía de Implementación (Menú "Ayuda" de su Oficina Virtual).
+                            'EasyOne_SetInvoiceOneFachadaInfoPrueba(p, "RHUUMRGL", "RHUUMRGL")
+                            EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
+
+                            Dim b As Integer
+                            b = p
+                            x = EasyOne_FirmaComprobante(b, CerFactura, Key, Pwd)
+                            p = b
+                            b = 0
+                            Thread.Sleep(10000) 'espera por 10 segundos
+                            If x = 0 Then
+
+                                objpro.Indicacion("update facnutrisa set facsts = 'A' where facsucursal = " & grbSucursal.Value & " and day(facfecha) = " & txtFechaVenta.Value.ToString.Substring(0, 2) & " and Month(facfecha) = " & txtFechaVenta.Value.ToString.Substring(3, 2) & " and year(facfecha) = " & txtFechaVenta.Value.ToString.Substring(6, 4) & "   ", Motor)
+                                objpro.Indicacion("Update Serie set seCant = " & CInt(txtFactura) & " Where seSerie = '" & txtSerie & "' and  SId = " & Me.grbSucursal.Value & " and tid = " & Me.grbTienda.Value & "  and seEstat = 1", Motor)
+                                upb.Value += 10 'Suma 60
+
+                                Dim resultadoXML As String = [String].Empty
+                                resultadoXML = EasyOne_LeeResultado(p, 8)
+                                'Obtenemos el XML completo y timbrado
+                                Console.WriteLine(resultadoXML)
+
+                                Application.DoEvents()
+                                Dim archivoXMLPDF As String = ""
+                                Dim archivoREPX As String = ""
+                                Dim archivoPDF As String = ""
+
+                                IO.File.WriteAllText(Trim(RFacImpresas & "\" & Trim(TRfc) & "-" & txtSerie & "-" & txtFactura & "-" & FeReg.ToString & ".xml"), resultadoXML)
+                                upb.Value += 10 'Suma 50
+
+                                va += 1
+                                hra = hr
+                                serie = txtSerie
+                                folio = txtFactura
+                                'Si el resultado es 0 = El CFDI se procesó correctamente
+                                If x = 0 And va = 1 Then
+                                    '''''''''''''''''''''''''''''' RECORRO XML''''''''''''''''''''''''''''
+                                    Dim Version_xml As String
+                                    'Dim VarConceptos As XmlNodeList
+                                    Dim version As String
+                                    Dim uuid As String
+                                    Dim ftimb As String
+                                    Dim rfcprov As String
+                                    Dim sellocfd As String
+                                    Dim nocert As String
+
+                                    Dim nav As XPathNavigator
+                                    Dim documento As XmlDocument = New XmlDocument()
+                                    Dim VarManager As XmlNamespaceManager = New XmlNamespaceManager(documento.NameTable)
+                                    documento.Load(Trim(RFacImpresas & "\" & Trim(TRfc) & "-" & txtSerie & "-" & txtFactura & "-" & FeReg.ToString & ".xml"))
+                                    VarManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/4") ''para identificar el prefijo CFDI
+                                    VarManager.AddNamespace("tfd", "http://www.sat.gob.mx/TimbreFiscalDigital")
+                                    Version_xml = documento.SelectSingleNode("/cfdi:Comprobante/@Version", VarManager).InnerText
+
+                                    If Version_xml = "4.0" Then
+                                        Fila("NoDoc") = documento.SelectSingleNode("/cfdi:Comprobante/@Folio", VarManager).InnerText
+                                        Fila("sellodig") = documento.SelectSingleNode("/cfdi:Comprobante/@Sello", VarManager).InnerText
+                                        Fila("lugaremi") = documento.SelectSingleNode("/cfdi:Comprobante/@LugarExpedicion", VarManager).InnerText
+                                        Fila("fechaemi") = documento.SelectSingleNode("/cfdi:Comprobante/@Fecha", VarManager).InnerText
+                                        Fila("serieceremi") = documento.SelectSingleNode("/cfdi:Comprobante/@NoCertificado", VarManager).InnerText
+                                        uuid = documento.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@UUID", VarManager).InnerText
+                                        Fila("foliofisc") = uuid
+                                        rfcprov = documento.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@RfcProvCertif", VarManager).InnerText
+                                        Fila("provcert") = rfcprov
+                                        Fila("sellosat") = documento.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@SelloSAT", VarManager).InnerText
+                                        nocert = documento.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@NoCertificadoSAT", VarManager).InnerText
+                                        Fila("certSAT") = nocert
+                                        ftimb = documento.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@FechaTimbrado", VarManager).InnerText
+                                        Fila("hryfechcer") = ftimb
+                                        version = documento.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@Version", VarManager).InnerText
+                                        sellocfd = documento.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@SelloCFD", VarManager).InnerText
+                                        Fila("complesat") = "|" + version + "|" + uuid + "|" + ftimb + "|" + rfcprov + "||" + sellocfd + "|" + nocert + "||"
+
+                                        RutaLogo = rutlogo 'RutFacGlobal & "\RecursosCFD33\Penguin.bmp"
+                                        RutaQR = Trim(RFacImpresas & "\" & Trim(TRfc) & "-" & txtSerie & "-" & txtFactura & "-" & FeReg.ToString & ".xml.png")
+
+                                        If grbPagos.Value = "PPD" Then
+
+                                            Dim FeRegistro, Fecha, fechareal, Fecha11, Fecha22, Fecha33, FePnotasF As String
+                                            Fecha11 = txtFechaVenta.Text.ToString.Substring(0, 2)
+                                            Fecha22 = txtFechaVenta.Text.ToString.Substring(3, 2)
+                                            Fecha33 = txtFechaVenta.Text.ToString.Substring(6, 4)
+                                            FePnotasF = Fecha33 & Fecha22 & Fecha11
+                                            fechareal = Fecha11 & "/" & Fecha22 & "/" & Fecha33.Substring(2, 2)
+                                            FeRegistro = Now.Date.ToString.Substring(6, 4) & Now.Date.ToString.Substring(3, 2) & Now.Date.ToString.Substring(0, 2) ''txtFechaVenta.Text.ToString.Substring(6, 4) & Fecha22 & Fecha11
+                                            Fecha = fechareal
+
+                                            Dim cantidadconletra As String = ""
+                                            Dim FeCan = 0
+                                            Dim FeMotCan As String = ""
+                                            Dim ferisr = 0
+                                            Dim feriva = 0
+                                            Dim Tipo As String = "G"
+                                            Dim Estatus As String = 1
+                                            Dim PorIva As Double = 16.0
+                                            Dim ts As String = Trim(Me.grbTienda.Value) & Trim(Str(Me.grbSucursal.Value))
+                                            ts = Trim(ts)
+
+                                            Dim Subtotal = Me.Subtotal.Value
+                                            Dim Iva = Me.Iva.Value
+                                            Dim Total2 = Me.Total.Value
+                                            Dim Descuento = Me.Descuento.Value
+                                            Dim totalabono As Integer
+                                            totalabono = 0
+                                            Dim ExisteClave As String
+                                            ExisteClave = CStr(objpro.DatoString("cid", "BGXFacElec.catclie", "crfc = 'XAXX010101000' ", As400))
+
+                                            objpro.Indicacion("Insert into bgxfacelec.FEncabez (FeId,tId,FeTerm,FeFact,feSerie,sid," &
+                                            " feFecha,feHora,Cid,FeSubt,fePorIva,FeIva, " &
+                                            " FeDesc1,FePDesc1,FeDesc2,FePDesc2,FeTotal, " &
+                                            " FeCanlet,FeAbonos,FeEstatu,FeReg,fefeccan, femotcan, feTip, feuuid, ferisr, feriva) " &
+                                            " values (" & FeReg & "," & grbTienda.Value & "," & ts & "," & CInt(txtFactura) & ",'" & txtSerie & "'," & Me.grbSucursal.Value & ",'" & FeReg & "'," &
+                                            " '" & Trim(FechaHora) & "', " & CInt(ExisteClave) & ", " & Subtotal & ", " & CDbl(PorIva) & "," & Iva & "," &
+                                            " " & Descuento & "," & Descuento & ", " & Descuento & ", " & Descuento & ", " & Total2 & ", " &
+                                            " '" & cantidadconletra & "', " & totalabono & "," & Estatus & "," & FeRegistro & ",'" & FeCan & "', '" & FeMotCan & "','" & Tipo & "','" & uuid & "', " & ferisr & "," & feriva & ")", As400)
+                                        End If
+
+                                        DS.Tables(0).Rows.Add(Fila)
+                                        Dim objreport As New CRGlobalNut
+
+                                        objreport.SetParameterValue("Logo", RutaLogo)
+                                        objreport.SetParameterValue("QR", RutaQR)
+                                        Dim rpFact As New CRGlobalNut
+                                        rpFact.SetDataSource(DS)
+                                        rpFact.SetParameterValue("QR", RutaQR)
+                                        rpFact.SetParameterValue("Logo", RutaLogo)
+                                        GlobalNut.CrystalReportViewer1.ReportSource = objreport
+                                        GlobalNut.CrystalReportViewer1.ReportSource = rpFact
+                                        GlobalNut.WindowState = FormWindowState.Maximized
+                                        GlobalNut.Show()
+
+                                        upb.Value += 10 'Suma 70
+                                        Dim Ruta As String = Trim(RFacImpresas & "\" & Trim(TRfc) & "-" & txtSerie & "-" & txtFactura & "-" & FeReg.ToString & ".pdf")
+                                        Dim CrFormatTypeOptions As New PdfRtfWordFormatOptions()
+
+                                        Dim cryRpt As New ReportDocument
+
+                                        Try
+                                            Dim CrExportOptions As ExportOptions
+                                            Dim CrDiskFileDestinationOptions As New DiskFileDestinationOptions()
+                                            Dim crf As New PdfRtfWordFormatOptions()
+                                            CrDiskFileDestinationOptions.DiskFileName = Ruta
+                                            CrExportOptions = rpFact.ExportOptions
+                                            With CrExportOptions
+                                                .ExportDestinationType = ExportDestinationType.DiskFile
+                                                .ExportFormatType = ExportFormatType.PortableDocFormat
+                                                .DestinationOptions = CrDiskFileDestinationOptions
+                                                .FormatOptions = CrFormatTypeOptions
+                                            End With
+                                            rpFact.Export()
+                                            rpFact.Close()
+                                            rpFact.Dispose()
+                                            upb.Value += 10 'Suma 80 
+                                        Catch ex As Exception
+                                            MsgBox(ex.ToString)
+                                        End Try
+
+                                        upb.Value += 20 'Suma 100
+                                        If DevVenta.Value <> 0 Or DevIeps.Value <> 0 Or DevVenta0.Value <> 0 Then
+                                            Application.DoEvents()
+                                            REM e_uuid = "4AC99C4A-36E7-4AB9-8FDC-3A09043DBF99"
+                                            NotaCredito(freal, TRazonSocial, TRfc, TRFiscal, RutNotaCredito, CarpTienda, CarpSucursal, Directorios, CerFactura, Key, Pwd, uuid, TCp, DevVenta.Value, DevIeps.Value, DevVenta0.Value)
+                                            Application.DoEvents()
+                                        End If
+                                        BorrarRegistro()
+                                        btnFacturar.Visible = True
+                                        va = 0
+                                    Else
+                                        MsgBox("Archivo XML no es una factura version 4.0")
+                                    End If 'Cierra validacion de timbrado de pac
+                                Else
+                                    'En caso de error mostrar el detalle.
+                                    Dim resultadoXML2 As String = [String].Empty
+                                    resultadoXML2 = EasyOne_LeeResultado(p, 11)
+                                    Console.WriteLine(resultadoXML2)
+                                    MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
+                                    btnFacturar.Visible = True
+                                End If 'Cierra validacion de generar xml
+                            Else
+                                btnFacturar.Visible = True
+                                Dim resultadoXML2 As String = [String].Empty
+                                resultadoXML2 = EasyOne_LeeResultado(p, 11)
+                                MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
+                                hra = hr
+                            End If
                         Else
+                            MsgBox("Intenta tmbrar nuevamente con el mismo FILO Y SERIE !!! Serie: " & serie & "   Folio: " & folio, MsgBoxStyle.Information).ToString()
                             btnFacturar.Visible = True
-                            Dim resultadoXML2 As String = [String].Empty
-                            resultadoXML2 = EasyOne_LeeResultado(p, 11)
-                            MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                            hra = hr
                         End If
                     Else
-                        MsgBox("Intenta tmbrar nuevamente con el mismo FILO Y SERIE !!! Serie: " & serie & "   Folio: " & folio, MsgBoxStyle.Information).ToString()
+                        MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Information).ToString()
+                        btnFacturar.Visible = True
                     End If
                 Else
                     MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Information).ToString()
-                End If
-
-                'Si el resultado es 0 = El CFDI se procesó correctamente
-                If x = 0 And va = 1 Then
-                    Dim resultadoXML As String = [String].Empty
-                    resultadoXML = EasyOne_LeeResultado(p, 8)
-                    'Obtenemos el XML completo y timbrado
-                    Console.WriteLine(resultadoXML)
-
-                    Application.DoEvents()
-                    Dim archivoXMLPDF As String = ""
-                    Dim archivoREPX As String = ""
-                    Dim archivoPDF As String = ""
-
-                    IO.File.WriteAllText(Trim(RFacImpresas & "\" & Trim(TRfc) & "-" & txtSerie & "-" & txtFactura & ".xml"), resultadoXML)
-                    upb.Value += 10 'Suma 50
-
-                    '''''''''''''''''''''''''''''' RECORRO XML''''''''''''''''''''''''''''
-                    Dim Version_xml As String
-                    'Dim VarConceptos As XmlNodeList
-                    Dim version As String
-                    Dim uuid As String
-                    Dim ftimb As String
-                    Dim rfcprov As String
-                    Dim sellocfd As String
-                    Dim nocert As String
-
-                    Dim nav As XPathNavigator
-                    Dim documento As XmlDocument = New XmlDocument()
-                    Dim VarManager As XmlNamespaceManager = New XmlNamespaceManager(documento.NameTable)
-                    documento.Load(Trim(RFacImpresas & "\" & Trim(TRfc) & "-" & txtSerie & "-" & txtFactura & ".xml"))
-                    VarManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/4") ''para identificar el prefijo CFDI
-                    VarManager.AddNamespace("tfd", "http://www.sat.gob.mx/TimbreFiscalDigital")
-                    Version_xml = documento.SelectSingleNode("/cfdi:Comprobante/@Version", VarManager).InnerText
-
-                    If Version_xml = "4.0" Then
-                        Fila("NoDoc") = documento.SelectSingleNode("/cfdi:Comprobante/@Folio", VarManager).InnerText
-                        Fila("sellodig") = documento.SelectSingleNode("/cfdi:Comprobante/@Sello", VarManager).InnerText
-                        Fila("lugaremi") = documento.SelectSingleNode("/cfdi:Comprobante/@LugarExpedicion", VarManager).InnerText
-                        Fila("fechaemi") = documento.SelectSingleNode("/cfdi:Comprobante/@Fecha", VarManager).InnerText
-                        Fila("serieceremi") = documento.SelectSingleNode("/cfdi:Comprobante/@NoCertificado", VarManager).InnerText
-                        uuid = documento.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@UUID", VarManager).InnerText
-                        Fila("foliofisc") = uuid
-                        rfcprov = documento.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@RfcProvCertif", VarManager).InnerText
-                        Fila("provcert") = rfcprov
-                        Fila("sellosat") = documento.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@SelloSAT", VarManager).InnerText
-                        nocert = documento.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@NoCertificadoSAT", VarManager).InnerText
-                        Fila("certSAT") = nocert
-                        ftimb = documento.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@FechaTimbrado", VarManager).InnerText
-                        Fila("hryfechcer") = ftimb
-                        version = documento.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@Version", VarManager).InnerText
-                        sellocfd = documento.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@SelloCFD", VarManager).InnerText
-                        Fila("complesat") = "|" + version + "|" + uuid + "|" + ftimb + "|" + rfcprov + "||" + sellocfd + "|" + nocert + "||"
-
-                        RutaLogo = rutlogo 'RutFacGlobal & "\RecursosCFD33\Penguin.bmp"
-                        RutaQR = Trim(RFacImpresas & "\" & Trim(TRfc) & "-" & txtSerie & "-" & txtFactura & ".xml.png")
-
-                        ''''''''''''''''''''''''''''''''''''''''''''''''''''
-                        Dim Estatus As String
-                        Dim ExisteClave As String = 10
-                        Dim fecha1, fecha2, fecha3, fechareal, FeRegistro As String
-                        fecha1 = txtFechaVenta.Text.ToString.Substring(0, 2)
-                        fecha2 = txtFechaVenta.Text.ToString.Substring(3, 2)
-                        fecha3 = txtFechaVenta.Text.ToString.Substring(6, 4)
-                        fechareal = Now.Date.ToString.Substring(0, 2) & "/" & Now.Date.ToString.Substring(3, 2) & "/" & fecha3
-                        FeRegistro = txtFechaVenta.Text.ToString.Substring(6, 4) & fecha2 & fecha1
-                        Dim FeFecCan As Date = "01/01/1900"
-                        Dim FeMotcan As String = ""
-                        Dim Tipo As String = "F"
-
-                        objpro.Indicacion("update facnutrisa set facsts = 'A' where facsucursal = " & grbSucursal.Value & " and day(facfecha) = " & txtFechaVenta.Value.ToString.Substring(0, 2) & " and Month(facfecha) = " & txtFechaVenta.Value.ToString.Substring(3, 2) & " and year(facfecha) = " & txtFechaVenta.Value.ToString.Substring(6, 4) & "   ", Motor)
-                        objpro.Indicacion("Update Serie set seCant = " & CInt(txtFactura) & " Where seSerie = '" & txtSerie & "' and  SId = " & Me.grbSucursal.Value & " and tid = " & Me.grbTienda.Value & "  and seEstat = 1", Motor)
-                        upb.Value += 10 'Suma 60
-
-                        Dim r_sub As Double = Subtotal.Value
-                        Dim r_des As Double = Descuento.Value
-                        Dim r_iva As Double = Iva.Value
-                        Dim r_total As Double = Total
-
-                        Estatus = 1
-                        ''''''nuevoooooooooooooooooooooooooooooooooooooooooo
-
-                        DS.Tables(0).Rows.Add(Fila)
-                        Dim objreport As New CRGlobalNut
-
-                        objreport.SetParameterValue("Logo", RutaLogo)
-                        objreport.SetParameterValue("QR", RutaQR)
-                        Dim rpFact As New CRGlobalNut
-                        rpFact.SetDataSource(DS)
-                        rpFact.SetParameterValue("QR", RutaQR)
-                        rpFact.SetParameterValue("Logo", RutaLogo)
-                        GlobalNut.CrystalReportViewer1.ReportSource = objreport
-                        GlobalNut.CrystalReportViewer1.ReportSource = rpFact
-                        GlobalNut.WindowState = FormWindowState.Maximized
-                        GlobalNut.Show()
-
-                        upb.Value += 10 'Suma 70
-                        Dim Ruta As String = Trim(RFacImpresas & "\" & Trim(TRfc) & "-" & txtSerie & "-" & txtFactura & ".pdf")
-                        Dim CrFormatTypeOptions As New PdfRtfWordFormatOptions()
-
-                        Dim cryRpt As New ReportDocument
-
-                        Try
-                            Dim CrExportOptions As ExportOptions
-                            Dim CrDiskFileDestinationOptions As New DiskFileDestinationOptions()
-                            Dim crf As New PdfRtfWordFormatOptions()
-                            CrDiskFileDestinationOptions.DiskFileName = Ruta
-                            CrExportOptions = rpFact.ExportOptions
-                            With CrExportOptions
-                                .ExportDestinationType = ExportDestinationType.DiskFile
-                                .ExportFormatType = ExportFormatType.PortableDocFormat
-                                .DestinationOptions = CrDiskFileDestinationOptions
-                                .FormatOptions = CrFormatTypeOptions
-                            End With
-                            rpFact.Export()
-                            rpFact.Close()
-                            rpFact.Dispose()
-                            upb.Value += 10 'Suma 80 
-                        Catch ex As Exception
-                            MsgBox(ex.ToString)
-                        End Try
-
-                        upb.Value += 20 'Suma 100
-                        If DevVenta.Value <> 0 Or DevIeps.Value <> 0 Or DevVenta0.Value <> 0 Then
-                            Application.DoEvents()
-                            REM e_uuid = "4AC99C4A-36E7-4AB9-8FDC-3A09043DBF99"
-                            NotaCredito(freal, TRazonSocial, TRfc, TRFiscal, RutNotaCredito, CarpTienda, CarpSucursal, Directorios, CerFactura, Key, Pwd, uuid, TCp, DevVenta.Value, DevIeps.Value, DevVenta0.Value)
-                            Application.DoEvents()
-                        End If
-                        BorrarRegistro()
-                        btnFacturar.Visible = True
-                        va = 0
-                    Else
-                        MsgBox("Archivo XML no es una factura version 4.0")
-                    End If 'Cierra validacion de timbrado de pac
-                Else
-                    'En caso de error mostrar el detalle.
-                    Dim resultadoXML2 As String = [String].Empty
-                    resultadoXML2 = EasyOne_LeeResultado(p, 11)
-                    Console.WriteLine(resultadoXML2)
-                    MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
                     btnFacturar.Visible = True
-                End If 'Cierra validacion de generar xml
+                End If
             Else
                 btnFacturar.Visible = True
             End If 'Cierra validacion de si desea generar factura
@@ -895,8 +933,9 @@ Public Class frmGlobalNutrisa
         Descuento.Value = "0.0"
         Iva.Value = "0.0"
         Total.Value = "0.0"
+        IEPS.Value = "0.0"
+        Traslado.Value = "0.0"
     End Sub
-
 
     Private Sub limpiar()
         txtSerie = ""
@@ -994,7 +1033,7 @@ Public Class frmGlobalNutrisa
 
         Dim RFacImpresas2 As String
         RFacImpresas2 = n_Directorios & "\" & FechaFactura.ToString.Substring(6, 4) & "\" & FechaFactura.ToString.Substring(3, 2)
-        Dim pN As Integer = EasyOne_cfdi33_Create(RFacImpresas2 & "\" & Trim(n_TRfc) & "-" & n_serie & "-" & n_notacredito & ".xml")
+        Dim pN As Integer = EasyOne_cfdi33_Create(RFacImpresas2 & "\" & Trim(n_TRfc) & "-" & n_serie & "-" & n_notacredito & "-" & FeReg.ToString & ".xml")
 
         Dim TipoCambio As Int16 = 1
         Fila("Nexporta") = "01-No Aplica"
@@ -1018,19 +1057,25 @@ Public Class frmGlobalNutrisa
         Dim metpg As String
         Dim tipcom As String
         Dim formpg As String
-        metpg = "PUE"
-        tipcom = "E"
-        formpg = "EFECTIVO"
 
-        Fila("Ntipocomp") = tipcom + " - EGRESO"
+        Fila("Ntipocomp") = "E - EGRESO"
+
+        If grbPagos.Value = "PPD" Then
+            formpg = "99"
+            metpg = "PPD"
+            tipcom = "E"
+            Fila("Nformpag") = "POR DEFINIR" '"Otros"
+        Else
+            formpg = "01"
+            metpg = "PUE"
+            tipcom = "E"
+            Fila("Nformpag") = "EFECTIVO" '"Otros"
+        End If
         Fila("Nmetpag") = metpg
-        Fila("Nformpag") = formpg
-
         'Tipo de relacion
         EasyOne_cfdi33_SetCfdiRelacionados(pN, "01")
         'CFDI Relacionado
         EasyOne_cfdi33_AddCfdiRelacionado(pN, n_uuid)
-        fp = "EFECTIVO"
 
         Select Case n_TRFiscal
             Case 601
@@ -1081,8 +1126,6 @@ Public Class frmGlobalNutrisa
         'RFC, NOMBRE, RESIDENCIA FISCAL, NUMREGIDTRIB, USOCFDI
         EasyOne_cfdi33_SetReceptor(pN, "XAXX010101000", "PUBLICO EN GENERAL", "", "", "S01") 'estos paramentros son si o si para factura global
         EasyOne_cfdi33_SetReceptor40(pN, n_LExpedicion, "616") 'regimen fiscal para global 616
-
-        'Dim Pu As Double = Format((Me.Devoluciones.Value / 1.16), "###,###.00")
         Dim iv As Double = 0  REM = Format((Pu * 0.16), "###,###.00")
 
         Fila("Nrcp") = TCp
@@ -1120,7 +1163,7 @@ Public Class frmGlobalNutrisa
         Tabla4.Columns.Add("NclaveSAT")
         Dim Fila3 As DataRow
         If Put16 <> 0 Then
-            EasyOne_cfdi33_AddConcepto(pN, "84111506", "100", "1", "ACT", "SERVICIO", "Devoluciones del día " & txtFechaVenta.Value.ToString.Substring(0, 10) & " con tasa del 16 % y referencia de Folio Fiscal (UUID) " & n_uuid & " con un importe de $ " & Format(Put16, "###,###.00"), Format(Put16, "######.00"), Format(Put16, "######.00"), "")
+            EasyOne_cfdi33_AddConcepto(pN, "84111506", FeReg.ToString, "1", "ACT", "SERVICIO", "Devoluciones del día " & txtFechaVenta.Value.ToString.Substring(0, 10) & " con tasa del 16 % y referencia de Folio Fiscal (UUID) " & n_uuid & " con un importe de $ " & Format(Put16, "###,###.00"), Format(Put16, "######.00"), Format(Put16, "######.00"), "")
             EasyOne_cfdi33_SetConcepto40(pN, "02")
 
             Fila3 = DSNC.Tables(1).NewRow() ' Acá insertas una fila nueva
@@ -1142,7 +1185,7 @@ Public Class frmGlobalNutrisa
         End If
 
         If Put8 <> 0 Then
-            EasyOne_cfdi33_AddConcepto(pN, "84111506", "100", "1", "ACT", "SERVICIO", "Devoluciones del día " & txtFechaVenta.Value.ToString.Substring(0, 10) & " con tasa del 8 % y referencia de Folio Fiscal (UUID) " & n_uuid & " con un importe de $ " & Format(Put8, "###,###.00"), Format(Put8, "######.00"), Format(Put8, "######.00"), "")
+            EasyOne_cfdi33_AddConcepto(pN, "84111506", FeReg.ToString, "1", "ACT", "SERVICIO", "Devoluciones del día " & txtFechaVenta.Value.ToString.Substring(0, 10) & " con tasa del 8 % y referencia de Folio Fiscal (UUID) " & n_uuid & " con un importe de $ " & Format(Put8, "###,###.00"), Format(Put8, "######.00"), Format(Put8, "######.00"), "")
             EasyOne_cfdi33_SetConcepto40(pN, "02")
 
             Fila3 = DSNC.Tables(1).NewRow() ' Acá insertas una fila nueva
@@ -1165,7 +1208,7 @@ Public Class frmGlobalNutrisa
 
 
         If Put0 <> 0 Then
-            EasyOne_cfdi33_AddConcepto(pN, "84111506", "100", "1", "ACT", "SERVICIO", "Devoluciones del día " & txtFechaVenta.Value.ToString.Substring(0, 10) & " con tasa del 0 % y referencia de Folio Fiscal (UUID) " & n_uuid & " con un importe de $ " & Format(Put0, "###,###.00"), Format(Put0, "######.00"), Format(Put0, "######.00"), "")
+            EasyOne_cfdi33_AddConcepto(pN, "84111506", FeReg.ToString, "1", "ACT", "SERVICIO", "Devoluciones del día " & txtFechaVenta.Value.ToString.Substring(0, 10) & " con tasa del 0 % y referencia de Folio Fiscal (UUID) " & n_uuid & " con un importe de $ " & Format(Put0, "###,###.00"), Format(Put0, "######.00"), Format(Put0, "######.00"), "")
             EasyOne_cfdi33_SetConcepto40(pN, "02")
 
             Fila3 = DSNC.Tables(1).NewRow() ' Acá insertas una fila nueva
@@ -1189,8 +1232,6 @@ Public Class frmGlobalNutrisa
         total = Format((Put16 + Put8 + Put0) + (iv + ieps), "######.00")
 
         PUNI = Format((Put16 + Put8 + Put0), "######.00")
-        ''Llenamos la sección del comprobante (2)
-        'EasyOne_cfdi33_SetComprobante(pN, n_serie, n_notacredito, fechaNC, "01", "", PUNI.ToString, "", "MXN", TipoCambio, total.ToString, tipcom, metpg, n_LExpedicion, "")
 
         Dim t_traslado = Format((iv + ieps), "######.00")
         t_traslado = t_traslado.ToString.Replace(",", "")
@@ -1213,7 +1254,6 @@ Public Class frmGlobalNutrisa
         Dim Subt As Double = PUNI
         totales = Format(((Subt) + iv + ieps), "###,###.00")
         Fila("Nfsubtotal") = Subt
-        'Fila("Nfdescuento") = "0.00"
         Fila("Nfiva") = iv
         Fila("nieps") = ieps
         Fila("Nftotal") = totales
@@ -1222,147 +1262,149 @@ Public Class frmGlobalNutrisa
         cantl = Letras(totales)
         Fila("Ncantidadl") = cantl
 
-        ''EasyOne_SetInvoiceOneFachadaInfoPrueba(pN, "RHUUMRGL", "RHUUMRGL")
-        'EasyOne_SetInvoiceOneFachadaInfo(pN, "RHUUMRGL", "RHUUMRGL")
-
         'Timbra XML, que se encuentra en variable P
         Dim nc As Integer = 99
         If va2 = 0 Then
-            If (serieNC = "" And folioNC = "") Or (n_serie <> serieNC And n_notacredito <> folioNC) Then
+            If (serieNC = "" And folioNC = "") Or (n_notacredito <> folioNC) Then
                 'Llenamos la sección del comprobante (2)
                 EasyOne_cfdi33_SetComprobante(pN, n_serie, n_notacredito, fechaNC, "01", "", PUNI.ToString, "", "MXN", TipoCambio, total.ToString, tipcom, metpg, n_LExpedicion, "")
 
-                'EasyOne_SetInvoiceOneFachadaInfoPrueba(pN, "RHUUMRGL", "RHUUMRGL")
-                EasyOne_SetInvoiceOneFachadaInfo(pN, "RHUUMRGL", "RHUUMRGL")
+                Dim folf As Integer = 0 'consulto el ultimo folio de serie
+                folf = CDbl(objpro.DatoMaximo("seCant", "Serie", "sId = " & grbSucursal.Value & " and Tid = " & grbTienda.Value & " and seTipo = '" & TIP & "' and seEstat = 1 ", Motor))
+                If CInt(n_notacredito) > folf Then
+                    'EasyOne_SetInvoiceOneFachadaInfoPrueba(pN, "RHUUMRGL", "RHUUMRGL")
+                    EasyOne_SetInvoiceOneFachadaInfo(pN, "RHUUMRGL", "RHUUMRGL")
 
-                nc = EasyOne_FirmaComprobante(pN, cer, key, psw)
-                Thread.Sleep(10000) 'espera por 10 segundos
-                If nc = 0 Then
-                    va2 += 1
-                    serieNC = n_serie
-                    folioNC = n_notacredito
+                    Dim bN As Integer
+                    bN = pN
+                    nc = EasyOne_FirmaComprobante(bN, cer, key, psw)
+                    pN = bN
+                    bN = 0
+                    Thread.Sleep(10000) 'espera por 10 segundos
+                    If nc = 0 Then
+                        '''''''''''''''''''''''''''''''''''''''''''''''''''
+                        objpro.Indicacion("Update Serie set seCant = " & CInt(n_notacredito) & " Where seSerie = '" & n_serie & "' and  SId = " & Me.grbSucursal.Value & " and tid = " & Me.grbTienda.Value & " and seTipo = '" & TIP & " and seEstat = 1", Motor)
+                        '''''nuevoooooooooooooooooooooooooooooooooooooooooo
+                        Dim resultadoXMLNC As String = [String].Empty
+
+                        'Obtenemos el XML completo y timbrado
+                        resultadoXMLNC = EasyOne_LeeResultado(pN, 8)
+
+                        Console.WriteLine(resultadoXMLNC)
+                        Dim archivoXMLPDFNC As String = ""
+                        Dim archivoREPXNC As String = ""
+                        Dim archivoPDFNC As String = ""
+
+                        IO.File.WriteAllText(Trim(RFacImpresas2 & "\" & Trim(n_TRfc) & "-" & n_serie & "-" & n_notacredito & "-" & FeReg.ToString & ".xml"), resultadoXMLNC)
+
+                        va2 += 1
+                        serieNC = n_serie
+                        folioNC = n_notacredito
+
+                        If nc = 0 And va2 = 1 Then
+                            Application.DoEvents()
+                            '''''''''''''''''''''''''''''' RECORRO XML NOTA CREDITO''''''''''''''''''''''''''''
+                            Dim Version_xmlNC As String
+                            Dim versionNC As String
+                            Dim uuidNC As String
+                            Dim ftimbNC As String
+                            Dim rfcprovNC As String
+                            Dim sellocfdNC As String
+                            Dim nocertNC As String
+
+                            Dim documentoNC As XmlDocument = New XmlDocument()
+                            Dim VarManager As XmlNamespaceManager = New XmlNamespaceManager(documentoNC.NameTable)
+                            documentoNC.Load(Trim(RFacImpresas2 & "\" & Trim(n_TRfc) & "-" & n_serie & "-" & n_notacredito & "-" & FeReg.ToString & ".xml"))
+                            VarManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/4") ''para identificar el prefijo CFDI
+                            VarManager.AddNamespace("tfd", "http://www.sat.gob.mx/TimbreFiscalDigital")
+                            Version_xmlNC = documentoNC.SelectSingleNode("/cfdi:Comprobante/@Version", VarManager).InnerText
+                            If Version_xmlNC = "4.0" Then
+                                Fila("Ndoc") = documentoNC.SelectSingleNode("/cfdi:Comprobante/@Folio", VarManager).InnerText
+                                Fila("Nsellodig") = documentoNC.SelectSingleNode("/cfdi:Comprobante/@Sello", VarManager).InnerText
+                                Fila("Nlugaremi") = documentoNC.SelectSingleNode("/cfdi:Comprobante/@LugarExpedicion", VarManager).InnerText
+                                Fila("Nfechaemi") = documentoNC.SelectSingleNode("/cfdi:Comprobante/@Fecha", VarManager).InnerText
+                                Fila("Nserieceremi") = documentoNC.SelectSingleNode("/cfdi:Comprobante/@NoCertificado", VarManager).InnerText
+                                uuidNC = documentoNC.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@UUID", VarManager).InnerText
+                                Fila("Nfolfisc") = uuidNC
+                                rfcprovNC = documentoNC.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@RfcProvCertif", VarManager).InnerText
+                                Fila("Nprovcert") = rfcprovNC
+                                Fila("Nsellosat") = documentoNC.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@SelloSAT", VarManager).InnerText
+                                nocertNC = documentoNC.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@NoCertificadoSAT", VarManager).InnerText
+                                Fila("NcertSAT") = nocertNC
+                                ftimbNC = documentoNC.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@FechaTimbrado", VarManager).InnerText
+                                Fila("Nhryfechcer") = ftimbNC
+                                versionNC = documentoNC.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@Version", VarManager).InnerText
+                                sellocfdNC = documentoNC.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@SelloCFD", VarManager).InnerText
+                                Fila("Ncomplesat") = "|" + versionNC + "|" + uuidNC + "|" + ftimbNC + "|" + rfcprovNC + "||" + sellocfdNC + "|" + nocertNC + "||"
+
+                                RutaQRN = Trim(RFacImpresas2 & "\" & Trim(n_TRfc) & "-" & n_serie & "-" & n_notacredito & "-" & FeReg.ToString & ".xml.png")
+
+                                DSNC.Tables(0).Rows.Add(Fila)
+                                Dim objrep As New CRNotaGlobalNut
+                                objrep.SetParameterValue("NLOGO", RutaLogo)
+                                objrep.SetParameterValue("NQR", RutaQRN)
+                                Dim NotaC As New CRNotaGlobalNut
+                                NotaC.SetDataSource(DSNC)
+                                NotaC.SetParameterValue("NQR", RutaQRN)
+                                NotaC.SetParameterValue("NLOGO", RutaLogo)
+                                GNotaNut.CrystalReportViewer1.ReportSource = objrep
+                                GNotaNut.CrystalReportViewer1.ReportSource = NotaC
+                                GNotaNut.WindowState = FormWindowState.Maximized
+                                GNotaNut.Show()
+
+                                Dim Ruta As String = Trim(RFacImpresas2 & "\" & Trim(n_TRfc) & "-" & n_serie & "-" & n_notacredito & "-" & FeReg.ToString & ".pdf")
+                                Dim CrFormatTypeOptions As New PdfRtfWordFormatOptions()
+
+                                Dim cryRpt As New ReportDocument
+
+                                Try
+                                    Dim CrExportOptions As ExportOptions
+                                    Dim CrDiskFileDestinationOptions As New DiskFileDestinationOptions()
+                                    Dim crf As New PdfRtfWordFormatOptions()
+                                    CrDiskFileDestinationOptions.DiskFileName = Ruta
+                                    CrExportOptions = NotaC.ExportOptions
+                                    With CrExportOptions
+                                        .ExportDestinationType = ExportDestinationType.DiskFile
+                                        .ExportFormatType = ExportFormatType.PortableDocFormat
+                                        .DestinationOptions = CrDiskFileDestinationOptions
+                                        .FormatOptions = CrFormatTypeOptions
+                                    End With
+                                    NotaC.Export()
+                                    NotaC.Close()
+                                    NotaC.Dispose()
+                                Catch ex As Exception
+                                    MsgBox(ex.ToString)
+                                End Try
+                                va2 = 0
+                                '''''nuevoooooooooooooooooooooooooooooooooooooooooo
+                            Else
+                                MsgBox("Archivo XML no es una factura version 4.0")
+                            End If
+                        Else
+                            Console.WriteLine(EasyOne_LeeResultado(pN, 8))
+                            Console.WriteLine(EasyOne_LeeResultado(pN, 11))
+
+                            Console.WriteLine("*******************************")
+                            Console.WriteLine("*********** ERROR *************")
+                            Console.WriteLine("*******************************")
+                            Dim resultadoXML3 As String = [String].Empty
+                            resultadoXML3 = EasyOne_LeeResultado(pN, 11)
+                            Console.ReadLine()
+                            MsgBox("ERROR AL GENERAR LA NOTA DE CREDITO 4.0" & resultadoXML3)
+                        End If
+                    Else
+                        Dim resultadoXML2 As String = [String].Empty
+                        resultadoXML2 = EasyOne_LeeResultado(pN, 11)
+                        MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación Nota de Credito.. ")
+                    End If
                 Else
-                    Dim resultadoXML2 As String = [String].Empty
-                    resultadoXML2 = EasyOne_LeeResultado(pN, 11)
-                    MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación Nota de Credito.. ")
+                    MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va2, MsgBoxStyle.Information).ToString()
                 End If
             Else
                 MsgBox("Intenta tmbrar nuevamente la Nota de crédito con el mismo FOLIO Y SERIE !!! Serie: " & serieNC & "   Folio: " & folioNC, MsgBoxStyle.Information).ToString()
             End If
         Else
             MsgBox("Archivo ya Timbrado !!!" & " " & " No. de Veces de Timbrado " & va2, MsgBoxStyle.Information).ToString()
-        End If
-
-
-
-        If nc = 0 And va2 = 1 Then
-            Application.DoEvents()
-            Dim resultadoXMLNC As String = [String].Empty
-
-            'Obtenemos el XML completo y timbrado
-            resultadoXMLNC = EasyOne_LeeResultado(pN, 8)
-
-            Console.WriteLine(resultadoXMLNC)
-            Dim archivoXMLPDFNC As String = ""
-            Dim archivoREPXNC As String = ""
-            Dim archivoPDFNC As String = ""
-
-            IO.File.WriteAllText(Trim(RFacImpresas2 & "\" & Trim(n_TRfc) & "-" & n_serie & "-" & n_notacredito & ".xml"), resultadoXMLNC)
-
-            '''''''''''''''''''''''''''''' RECORRO XML NOTA CREDITO''''''''''''''''''''''''''''
-            Dim Version_xmlNC As String
-            'Dim VarConceptos As XmlNodeList
-            Dim versionNC As String
-            Dim uuidNC As String
-            Dim ftimbNC As String
-            Dim rfcprovNC As String
-            Dim sellocfdNC As String
-            Dim nocertNC As String
-
-            Dim nav As XPathNavigator
-            Dim documentoNC As XmlDocument = New XmlDocument()
-            Dim VarManager As XmlNamespaceManager = New XmlNamespaceManager(documentoNC.NameTable)
-            documentoNC.Load(Trim(RFacImpresas2 & "\" & Trim(n_TRfc) & "-" & n_serie & "-" & n_notacredito & ".xml"))
-            VarManager.AddNamespace("cfdi", "http://www.sat.gob.mx/cfd/4") ''para identificar el prefijo CFDI
-            VarManager.AddNamespace("tfd", "http://www.sat.gob.mx/TimbreFiscalDigital")
-            Version_xmlNC = documentoNC.SelectSingleNode("/cfdi:Comprobante/@Version", VarManager).InnerText
-            If Version_xmlNC = "4.0" Then
-                Fila("Ndoc") = documentoNC.SelectSingleNode("/cfdi:Comprobante/@Folio", VarManager).InnerText
-                Fila("Nsellodig") = documentoNC.SelectSingleNode("/cfdi:Comprobante/@Sello", VarManager).InnerText
-                Fila("Nlugaremi") = documentoNC.SelectSingleNode("/cfdi:Comprobante/@LugarExpedicion", VarManager).InnerText
-                Fila("Nfechaemi") = documentoNC.SelectSingleNode("/cfdi:Comprobante/@Fecha", VarManager).InnerText
-                Fila("Nserieceremi") = documentoNC.SelectSingleNode("/cfdi:Comprobante/@NoCertificado", VarManager).InnerText
-                uuidNC = documentoNC.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@UUID", VarManager).InnerText
-                Fila("Nfolfisc") = uuidNC
-                rfcprovNC = documentoNC.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@RfcProvCertif", VarManager).InnerText
-                Fila("Nprovcert") = rfcprovNC
-                Fila("Nsellosat") = documentoNC.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@SelloSAT", VarManager).InnerText
-                nocertNC = documentoNC.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@NoCertificadoSAT", VarManager).InnerText
-                Fila("NcertSAT") = nocertNC
-                ftimbNC = documentoNC.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@FechaTimbrado", VarManager).InnerText
-                Fila("Nhryfechcer") = ftimbNC
-                versionNC = documentoNC.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@Version", VarManager).InnerText
-                sellocfdNC = documentoNC.SelectSingleNode("/cfdi:Comprobante/cfdi:Complemento/tfd:TimbreFiscalDigital/@SelloCFD", VarManager).InnerText
-                Fila("Ncomplesat") = "|" + versionNC + "|" + uuidNC + "|" + ftimbNC + "|" + rfcprovNC + "||" + sellocfdNC + "|" + nocertNC + "||"
-
-                'RutaLogoN = RutFac & "\RecursosCFD33\Penguin.bmp"
-                RutaQRN = Trim(RFacImpresas2 & "\" & Trim(n_TRfc) & "-" & n_serie & "-" & n_notacredito & ".xml.png")
-                '''''''''''''''''''''''''''''''''''''''''''''''''''
-                objpro.Indicacion("Update Serie set seCant = " & CInt(n_notacredito) & " Where seSerie = '" & n_serie & "' and  SId = " & Me.grbSucursal.Value & " and tid = " & Me.grbTienda.Value & "  and seEstat = 1", Motor)
-                '''''nuevoooooooooooooooooooooooooooooooooooooooooo
-
-                DSNC.Tables(0).Rows.Add(Fila)
-                Dim objrep As New CRNotaGlobalNut
-                objrep.SetParameterValue("NLOGO", RutaLogo)
-                objrep.SetParameterValue("NQR", RutaQRN)
-                Dim NotaC As New CRNotaGlobalNut
-                NotaC.SetDataSource(DSNC)
-                NotaC.SetParameterValue("NQR", RutaQRN)
-                NotaC.SetParameterValue("NLOGO", RutaLogo)
-                GNotaNut.CrystalReportViewer1.ReportSource = objrep
-                GNotaNut.CrystalReportViewer1.ReportSource = NotaC
-                GNotaNut.WindowState = FormWindowState.Maximized
-                GNotaNut.Show()
-
-                Dim Ruta As String = Trim(RFacImpresas2 & "\" & Trim(n_TRfc) & "-" & n_serie & "-" & n_notacredito & ".pdf")
-                Dim CrFormatTypeOptions As New PdfRtfWordFormatOptions()
-
-                Dim cryRpt As New ReportDocument
-
-                Try
-                    Dim CrExportOptions As ExportOptions
-                    Dim CrDiskFileDestinationOptions As New DiskFileDestinationOptions()
-                    Dim crf As New PdfRtfWordFormatOptions()
-                    CrDiskFileDestinationOptions.DiskFileName = Ruta
-                    CrExportOptions = NotaC.ExportOptions
-                    With CrExportOptions
-                        .ExportDestinationType = ExportDestinationType.DiskFile
-                        .ExportFormatType = ExportFormatType.PortableDocFormat
-                        .DestinationOptions = CrDiskFileDestinationOptions
-                        .FormatOptions = CrFormatTypeOptions
-                    End With
-                    NotaC.Export()
-                    NotaC.Close()
-                    NotaC.Dispose()
-                Catch ex As Exception
-                    MsgBox(ex.ToString)
-                End Try
-                va2 = 0
-                '''''nuevoooooooooooooooooooooooooooooooooooooooooo
-            Else
-                MsgBox("Archivo XML no es una factura version 4.0")
-            End If
-        Else
-            Console.WriteLine(EasyOne_LeeResultado(pN, 8))
-            Console.WriteLine(EasyOne_LeeResultado(pN, 11))
-
-            Console.WriteLine("*******************************")
-            Console.WriteLine("*********** ERROR *************")
-            Console.WriteLine("*******************************")
-            Dim resultadoXML3 As String = [String].Empty
-            resultadoXML3 = EasyOne_LeeResultado(pN, 11)
-            Console.ReadLine()
-            MsgBox("ERROR AL GENERAR LA NOTA DE CREDITO 4.0" & resultadoXML3)
         End If
         Return ""
     End Function
