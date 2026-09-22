@@ -34,8 +34,9 @@ Public Class frmGlobalBoutv2
     Dim TIP As String
     Dim fechventa As String
     Dim FechaFactura, FeReg As String
+    Dim vtadia As Double
 
-    Dim TSucursal, TablaSucursal, DatGrid, TablaTienda, tiendaPrinc, sucursal, vtaenca, vtadetalle, tventas, mail, facturado, yafac As Data.DataTable
+    Dim TSucursal, TablaSucursal, DatGrid, TablaTienda, tiendaPrinc, sucursal, vtaenca, vtadetalle, tventas, mail, facturado, yafac, COMPRUEBA, valida As Data.DataTable
     'Dim datosGen As Data.DataSet
     Dim Terminal, TpDev As Integer
     Dim Transaccion As Integer
@@ -250,7 +251,7 @@ Public Class frmGlobalBoutv2
                         Me.Devoluciones.Value = 0
                     End If
                     'Devolucion
-                    upgb1.Value += 25
+                    upgb1.Value += 20
                     Application.DoEvents()
                     TSucursal = objpro.ObtenDatos("SELECT * FROM Serie Where tid = " & Me.grbTienda.Value & " AND sid = " & Me.grbSucursal.Value & " and seTipo = '" & TIP & "' and seEstat = 1 ", Motor).Tables(0)
                     txtFactura = Format(CDbl(objpro.DatoMaximo("seCant", "Serie", "sId = " & TSucursal.Rows(0).Item("sid").ToString & " and Tid = " & TSucursal.Rows(0).Item("Tid").ToString & " and seTipo = '" & TIP & "' and seEstat = 1 ", Motor)) + 1, "00000")
@@ -288,7 +289,7 @@ Public Class frmGlobalBoutv2
 
         If DatGrid.Rows.Count <> 0 Then
 
-            upgb1.Value += 25
+            upgb1.Value += 20
             Me.Importe.Value = 0
             Dim PU As Double = 0
             Dim pu1 As Double = 0
@@ -322,7 +323,7 @@ Public Class frmGlobalBoutv2
                     de += d
                 End If
             Next
-            upgb1.Value += 25
+            upgb1.Value += 20
             Me.Importe.Value = PU
 
             Me.Total.Value = (PU - descue) '- Devoluciones.Value  'impo.ToString 
@@ -342,12 +343,102 @@ Public Class frmGlobalBoutv2
                     Me.facturacte.Value += totalesfac
                 Next
             End If
-            Me.vta.Value = (Total.Value + facturacte.Value) - Devoluciones.Value '+ Devoluciones.Value '- Devoluciones.Value
-            upgb1.Value += 25
+
+
+            vtadia = 0
+            vtadia = (Total.Value + facturacte.Value) - Devoluciones.Value '+ Devoluciones.Value '- Devoluciones.Value
+
+            ''VOY A CONSULTAR AL VENTAENC DE LA TIENDA PARA VER REALMENTE QUE FUE FACTURADO A CLIENTES
+            COMPRUEBA = objpro.ObtenDatos("Select VENTAENC.VETERM AS TERMINAL,  VENTAENC.VEIDFOLV AS FOLIO, VENTAENC.VEFECHA AS FECHA, VENTAENC.VEESTATU AS ESTATUS, VENTAENC.VETOTAL AS TOTAL, VENTAENC.VEFAC AS NUM_FACTURA  from VENTAENC  where VENTAENC.VEFOLIO = " & CInt(grbTienda.Value) & " and VENTAENC.sid = " & CInt(grbSucursal.Value) & " and " &
+                         " day(VENTAENC.VEFECHA) = " & txtFechaVenta.Value.ToString.Substring(0, 2) & " and month(VENTAENC.VEFECHA) = " & txtFechaVenta.Value.ToString.Substring(3, 2) & " and year(VENTAENC.VEFECHA) = " & txtFechaVenta.Value.ToString.Substring(6, 4) & "  ", MotorBoutique).Tables(0)
+
+            Dim totfaccte As Double
+            totfaccte = 0
+            If COMPRUEBA.Rows.Count <> 0 Then
+                For Each f In COMPRUEBA.Rows
+                    Dim stsfac As String = f("ESTATUS").ToString ''Format(CDbl(f("ESTATUS").ToString), "###,###.00")
+                    If stsfac = "0" Or stsfac = "" Then
+                        Dim noticket As String = f("TERMINAL").ToString & "-" & f("FOLIO").ToString
+                        MsgBox("El Ticket " & noticket & " esta pendiente por facturar a clientes en el Ventaenc, favor de verificar... ", MsgBoxStyle.Information, "Facturación.. ")
+                    Else
+                        Dim totfaccts As Double = Format(CDbl(f("TOTAL").ToString), "###,###.00")
+                        totfaccte += totfaccts
+                    End If
+
+                Next
+            End If
+
+            If facturacte.Value <> totfaccte Then
+                If facturacte.Value > totfaccte Then
+                    Dim dif As Double
+                    dif = 0
+                    dif = facturacte.Value - totfaccte
+                    If dif > 3 Then
+                        MsgBox("Se encontró diferencia en pesos en las facturas de clientes en el MVTAPOS.. ", MsgBoxStyle.Information, "Facturación.. ")
+                        btnGenerarFactura.Visible = False
+                    Else
+                        btnGenerarFactura.Visible = True
+                        'upgb1.Value += 20
+                        cargavta()
+                    End If
+                Else
+                    Dim dif As Double
+                    dif = 0
+                    dif = totfaccte - facturacte.Value
+                    If dif > 3 Then
+                        MsgBox("Se encontró diferencia en pesos en las facturas de clientes en el VENTAENC(tienda).. ", MsgBoxStyle.Information, "Facturación.. ")
+                        btnGenerarFactura.Visible = False
+                    Else
+                        btnGenerarFactura.Visible = True
+                        'upgb1.Value += 20
+                        cargavta()
+                    End If
+
+                End If
+            Else
+                cargavta()
+            End If
         Else
             MsgBox("No se encontró información.. ", MsgBoxStyle.Information, "Facturación.. ")
         End If
+
     End Sub
+
+    Public Function cargavta()
+        upgb1.Value += 20
+        valida = objpro.ObtenDatos("SELECT mvpos.MVPFOL AS notfol, mvpos.MVPTER AS TER, mvpos.MVPTOTP AS TOT " &
+                            "FROM MVTAPOS AS mvpos " &
+                            "WHERE mvpos.mvpsts = 'P' and (mvpos.mvpfill <> 'R' OR isnull(mvpos.mvpfill)) and day(mvpos.MVPFEC) = " & txtFechaVenta.Value.ToString.Substring(0, 2) & " and month(mvpos.MVPFEC) = " & txtFechaVenta.Value.ToString.Substring(3, 2) & " and year(mvpos.MVPFEC) = " & txtFechaVenta.Value.ToString.Substring(6, 4) & " ", MotorBoutique).Tables(0)
+        Dim ventat As Double
+        ventat = 0
+        If valida.Rows.Count <> 0 Then
+            For Each v In valida.Rows
+                Dim vntat As Double = Format(CDbl(v("TOT").ToString), "###,###.00")
+                ventat += vntat
+            Next
+        End If
+        Me.vta.Value = Format(CDbl(ventat.ToString), "###,###.00")
+        If ventat <> vtadia Then
+            Dim dif As Double
+            dif = 0
+            dif = ventat - vtadia
+            If dif < 0 Then
+                dif = dif * (-1)
+            End If
+
+            If dif > 0 And dif <= 1 Then
+                btnGenerarFactura.Visible = True
+                upgb1.Value += 20
+            Else
+                MsgBox("El Total a Facturar NO es correcto. Borra y vuelve a cargar la venta o solicita ayuda al depto. de Sistemas ", MsgBoxStyle.Information, "Facturación.. ")
+                btnGenerarFactura.Visible = False
+
+            End If
+        Else
+            btnGenerarFactura.Visible = True
+            upgb1.Value += 20
+        End If
+    End Function
 
     Private Sub FormatoGrid(codSat As String, cvlUni As String, ClaveInterno As String, Descripcion As String,
                                Cantidad As Integer, Unidad As String, PrecioUnitario As Double, Iva As Double,
@@ -469,7 +560,7 @@ Public Class frmGlobalBoutv2
             Fila("Edircomp") = TablaTienda.Rows(0).Item("tmun").ToString + " " + TablaTienda.Rows(0).Item("testado").ToString + " " + TablaTienda.Rows(0).Item("tlocal").ToString + " " + TablaTienda.Rows(0).Item("tpais").ToString
 
             Dim RFacImpresas As String
-            RFacImpresas = Directorios & "\" & FechaFactura.ToString.Substring(6, 4) & "\" & FechaFactura.ToString.Substring(3, 2)
+            RFacImpresas = Directorios & "\" & txtFechaVenta.Value.ToString.Substring(6, 4) & "\" & txtFechaVenta.Value.ToString.Substring(3, 2) '& FechaFactura.ToString.Substring(6, 4) & "\" & FechaFactura.ToString.Substring(3, 2)
 
             Dim p As Integer = EasyOne_cfdi33_Create(RFacImpresas & "\" & Trim(TRfc) & "-" & txtSerie & "-" & txtFactura & "-" & FeReg & ".xml") ''(RFacImpresas & "\" & "EJEMPLO5.xml")
 
@@ -775,45 +866,6 @@ Public Class frmGlobalBoutv2
                                         RutaLogo = rutlogo 'RutFacGlobal & "\RecursosCFD33\Penguin.bmp"
                                         RutaQR = Trim(RFacImpresas & "\" & Trim(TRfc) & "-" & txtSerie & "-" & txtFactura & "-" & FeReg & ".xml.png")
 
-                                        ''''''''''''''''''''''''''''''''''''''''''''''''''''
-                                        Dim Estatus As String
-                                        Dim refGlobal As Data.DataTable
-                                        Dim fecha1, fecha2, fecha3 As String
-                                        fecha1 = txtFechaVenta.Text.ToString.Substring(0, 2)
-                                        fecha2 = txtFechaVenta.Text.ToString.Substring(3, 2)
-                                        fecha3 = txtFechaVenta.Text.ToString.Substring(6, 4)
-                                        fechareal = Now.Date.ToString.Substring(0, 2) & "/" & Now.Date.ToString.Substring(3, 2) & "/" & fecha3
-                                        FeRegistro = txtFechaVenta.Text.ToString.Substring(6, 4) & fecha2 & fecha1
-                                        Dim FeFecCan As Date = "01/01/1900"
-                                        Dim FeMotcan As String = ""
-                                        Dim Tipo As String = "F"
-
-                                        refGlobal = objpro.ObtenDatos("SELECT cid FROM catclie WHERE crfc = 'XAXX010101000' ", Motor).Tables(0)
-                                        If refGlobal.Rows.Count <> 0 Then
-
-                                            For Each j In refGlobal.Rows
-                                                Application.DoEvents()
-                                                ExisteClave = Int(j("cid").ToString)
-                                            Next
-                                        End If
-
-                                        Dim r_sub As Double = Subtotal.Value
-                                        Dim r_des As Double = Descuento.Value
-                                        Dim r_iva As Double = Iva.Value
-                                        Dim r_total As Double = Total.Value
-
-                                        Estatus = 1
-                                        objpro.Indicacion("Insert into FEncabez (FeId,tId,FeTerm,FeFact,feSerie,sid,feFecha," &
-                                " feHora,Cid,FeSubt,fePorIva,FeIva, " &
-                                " FeDesc1,FePDesc1,FeDesc2,FePDesc2,FeTotal, " &
-                                " FeCanlet,FeAbonos,FeEstatu,FeReg, FeFecCan,FeMotcan, feTip,feuuid, fformpag) " &
-                                " values (" & CInt(Transaccion) & "," & grbTienda.Value & "," & Me.grbTienda.Value & Me.grbSucursal.Value & "," & CInt(txtFactura) & ",'" & txtSerie & "'," & Me.grbSucursal.Value & ",'" & fechareal & "'," &
-                                " '" & Trim(FechaHora) & "', " & CInt(ExisteClave) & ",'" & r_sub & "', '" & CDbl(PorIVa) & "','" & r_iva & "'," &
-                                " '" & r_des & "','" & r_des & "', '" & r_des & "', '" & r_des & "', '" & r_total & "', " &
-                                " '" & cantletra & "', '" & r_total & "'," & Estatus & "," & FeRegistro & ",  " & FeFecCan & ", '" & FeMotcan & "', '" & Tipo & "','" & uuid & "', '01')", Motor)
-
-                                        ''''''nuevoooooooooooooooooooooooooooooooooooooooooo
-
                                         DS.Tables(0).Rows.Add(Fila)
                                         Dim objreport As New Global40
                                         objreport.SetParameterValue("Logo", RutaLogo)
@@ -856,6 +908,45 @@ Public Class frmGlobalBoutv2
 
                                         Application.DoEvents()
                                         upb.Value += 10 'Suma 90
+
+                                        ''''''''''''''''''''''''''''''''''''''''''''''''''''
+                                        Dim Estatus As String
+                                        Dim refGlobal As Data.DataTable
+                                        Dim fecha1, fecha2, fecha3 As String
+                                        fecha1 = txtFechaVenta.Text.ToString.Substring(0, 2)
+                                        fecha2 = txtFechaVenta.Text.ToString.Substring(3, 2)
+                                        fecha3 = txtFechaVenta.Text.ToString.Substring(6, 4)
+                                        fechareal = Now.Date.ToString.Substring(0, 2) & "/" & Now.Date.ToString.Substring(3, 2) & "/" & fecha3
+                                        FeRegistro = txtFechaVenta.Text.ToString.Substring(6, 4) & fecha2 & fecha1
+                                        Dim FeFecCan As Date = "01/01/1900"
+                                        Dim FeMotcan As String = ""
+                                        Dim Tipo As String = "G"
+
+                                        refGlobal = objpro.ObtenDatos("SELECT cid FROM catclie WHERE crfc = 'XAXX010101000' ", Motor).Tables(0)
+                                        If refGlobal.Rows.Count <> 0 Then
+
+                                            For Each j In refGlobal.Rows
+                                                Application.DoEvents()
+                                                ExisteClave = Int(j("cid").ToString)
+                                            Next
+                                        End If
+
+                                        Dim r_sub As Double = Subtotal.Value
+                                        Dim r_des As Double = Descuento.Value
+                                        Dim r_iva As Double = Iva.Value
+                                        Dim r_total As Double = Total.Value
+
+                                        Estatus = 1
+                                        objpro.Indicacion("Insert into FEncabez (FeId,tId,FeTerm,FeFact,feSerie,sid,feFecha," &
+                                " feHora,Cid,FeSubt,fePorIva,FeIva, " &
+                                " FeDesc1,FePDesc1,FeDesc2,FePDesc2,FeTotal, " &
+                                " FeCanlet,FeAbonos,FeEstatu,FeReg, FeFecCan,FeMotcan, feTip,feuuid, fformpag) " &
+                                " values (" & CInt(Transaccion) & "," & grbTienda.Value & "," & Me.grbTienda.Value & Me.grbSucursal.Value & "," & CInt(txtFactura) & ",'" & txtSerie & "'," & Me.grbSucursal.Value & ",'" & fechareal & "'," &
+                                " '" & Trim(FechaHora) & "', " & CInt(ExisteClave) & ",'" & r_sub & "', 16,'" & r_iva & "'," &
+                                " '" & r_des & "','" & r_des & "', '" & r_des & "', '" & r_des & "', '" & r_total & "', " &
+                                " '" & cantletra & "', 0," & Estatus & "," & FeRegistro & ",  " & FeFecCan & ", '" & FeMotcan & "', '" & Tipo & "','" & uuid & "', '" & formpg & "' )", Motor)
+
+                                        ''''''nuevoooooooooooooooooooooooooooooooooooooooooo
 
                                         yafac.Reset()
                                         facturado.Reset()
@@ -910,7 +1001,7 @@ Public Class frmGlobalBoutv2
 
                                         ''''''''
 
-                                        'Ejecuta el archivo .exe especificado
+                                        '''Ejecuta el archivo .exe especificado
                                         Try
                                             Shell("C:\aplicacion\appcliente.exe") ' ejecutable de Gonzalez para seguimiento de facturacion
                                         Catch ex As Exception
@@ -945,7 +1036,7 @@ Public Class frmGlobalBoutv2
                         End If
                     Else
                         btnGenerarFactura.Visible = True
-                        MsgBox("La factura ya esta realizada !!! ", MsgBoxStyle.Information).ToString()
+                        MsgBox("La factura ya esta realizada !!! () ", MsgBoxStyle.Information).ToString()
                     End If
                 Else
                     btnGenerarFactura.Visible = True
@@ -1033,7 +1124,7 @@ Public Class frmGlobalBoutv2
         Fila("Ndircomp") = TablaTienda.Rows(0).Item("tmun").ToString + " " + TablaTienda.Rows(0).Item("testado").ToString + " " + TablaTienda.Rows(0).Item("tlocal").ToString + " " + TablaTienda.Rows(0).Item("tpais").ToString
 
         Dim RFacImpresas2 As String
-        RFacImpresas2 = n_Directorios & "\" & FechaFactura.ToString.Substring(6, 4) & "\" & FechaFactura.ToString.Substring(3, 2)
+        RFacImpresas2 = n_Directorios & "\" & txtFechaVenta.Value.ToString.Substring(6, 4) & "\" & txtFechaVenta.Value.ToString.Substring(3, 2) '& FechaFactura.ToString.Substring(6, 4) & "\" & FechaFactura.ToString.Substring(3, 2)
         Dim pN As Integer = EasyOne_cfdi33_Create(RFacImpresas2 & "\" & Trim(n_TRfc) & "-" & n_serie & "-" & n_notacredito & "-" & FeReg & ".xml")
 
         Dim TipoCambio As Int16 = 1
@@ -1221,7 +1312,7 @@ Public Class frmGlobalBoutv2
             'Llenamos la sección del comprobante (2)
 
             If (serieNC = "" And folioNC = "") Or (n_notacredito <> folioNC) Then
-                EasyOne_cfdi33_SetComprobante(pN, n_serie, n_notacredito, fechaNC, "01", "", Pu.ToString, "", "MXN", TipoCambio, total.ToString, tipcom, "PUE", n_LExpedicion, "")
+                EasyOne_cfdi33_SetComprobante(pN, n_serie, n_notacredito, fechaNC, formpg, "", Pu.ToString, "", "MXN", TipoCambio, total.ToString, tipcom, metpg, n_LExpedicion, "")
 
                 yafac = objpro.ObtenDatos("Select * from ventaenc where vefac = '0' and veestatu = 0 and veFolio =" & grbTienda.Value & " and sid = " & grbSucursal.Value & "  and VeIdFolv = 2 and veEstado = 1 and VeTerm = " & Terminal & " and day(veFecha) = " & txtFechaVenta.Value.ToString.Substring(0, 2) & " and Month(veFecha) = " & txtFechaVenta.Value.ToString.Substring(3, 2) & " and year(veFecha) = " & txtFechaVenta.Value.ToString.Substring(6, 4) & " ", Motor).Tables(0)
                 If yafac.Rows.Count = 1 Then
@@ -1292,24 +1383,6 @@ Public Class frmGlobalBoutv2
 
                                     RutaQRN = Trim(RFacImpresas2 & "\" & Trim(n_TRfc) & "-" & n_serie & "-" & n_notacredito & "-" & FeReg & ".xml.png")
 
-                                    ''''''''''''''''''''''''''''''''''''''''''''''''''''
-                                    Dim r_sub As Double = Subtotal.Value
-                                    Dim r_des As Double = Descuento.Value
-                                    Dim r_iva As Double = Iva.Value
-                                    Dim r_total As Double = total
-                                    Dim FeFecCan As Date = "01/01/1900"
-                                    Dim FeMotcan As String = ""
-
-                                    objpro.Indicacion("Insert into FEncabez (FeId,tId,FeTerm,FeFact,feSerie,sid,feFecha," &
-                                " feHora,Cid,FeSubt,fePorIva,FeIva, " &
-                                " FeDesc1,FePDesc1,FeDesc2,FePDesc2,FeTotal, " &
-                                " FeCanlet,FeAbonos,FeEstatu,FeReg, FeFecCan,FeMotcan, feTip,feuuid, fformpag) " &
-                                " values (" & CInt(Transaccion) & "," & grbTienda.Value & "," & Me.grbTienda.Value & Me.grbSucursal.Value & "," & CInt(n_notacredito) & ",'" & n_serie & "'," & Me.grbSucursal.Value & ",'" & fechareal & "'," &
-                                " '" & Trim(FechaHora) & "', " & CInt(ExisteClave) & ",'" & r_sub & "', '" & CDbl(PorIVa) & "','" & r_iva & "'," &
-                                " '" & r_des & "','" & r_des & "', '" & r_des & "', '" & r_des & "', '" & r_total & "', " &
-                                " '" & cantl & "', '" & r_total & "',1 ," & FeRegistro & ",  " & FeFecCan & ", '" & FeMotcan & "', 'N','" & n_uuid & "', '01')", Motor)
-                                    '''''nuevoooooooooooooooooooooooooooooooooooooooooo
-
                                     DSNC.Tables(0).Rows.Add(Fila)
                                     Dim objrep As New NotaCredito
                                     objrep.SetParameterValue("NLOGO", RutaLogo)
@@ -1348,6 +1421,23 @@ Public Class frmGlobalBoutv2
                                     Catch ex As Exception
                                         MsgBox(ex.ToString)
                                     End Try
+                                    '''''nuevoooooooooooooooooooooooooooooooooooooooooo
+                                    ''''''''''''''''''''''''''''''''''''''''''''''''''''
+                                    Dim r_sub As Double = Subtotal.Value
+                                    Dim r_des As Double = Descuento.Value
+                                    Dim r_iva As Double = Iva.Value
+                                    Dim r_total As Double = total
+                                    Dim FeFecCan As Date = "01/01/1900"
+                                    Dim FeMotcan As String = ""
+
+                                    objpro.Indicacion("Insert into FEncabez (FeId,tId,FeTerm,FeFact,feSerie,sid,feFecha," &
+                                " feHora,Cid,FeSubt,fePorIva,FeIva, " &
+                                " FeDesc1,FePDesc1,FeDesc2,FePDesc2,FeTotal, " &
+                                " FeCanlet,FeAbonos,FeEstatu,FeReg, FeFecCan,FeMotcan, feTip,feuuid, fformpag) " &
+                                " values (" & CInt(Transaccion) & "," & grbTienda.Value & "," & Me.grbTienda.Value & Me.grbSucursal.Value & "," & CInt(n_notacredito) & ",'" & n_serie & "'," & Me.grbSucursal.Value & ",'" & fechareal & "'," &
+                                " '" & Trim(FechaHora) & "', " & CInt(ExisteClave) & ",'" & r_sub & "', 16,'" & r_iva & "'," &
+                                " '" & r_des & "','" & r_des & "', '" & r_des & "', '" & r_des & "', '" & r_total & "', " &
+                                " '" & cantl & "', '0',1 ," & FeRegistro & ",  " & FeFecCan & ", '" & FeMotcan & "', 'N','" & n_uuid & "', '" & formpg & "' )", Motor)
                                     '''''nuevoooooooooooooooooooooooooooooooooooooooooo
                                     '''
                                     Dim correo As New System.Net.Mail.MailMessage()

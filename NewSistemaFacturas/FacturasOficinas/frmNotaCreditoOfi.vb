@@ -88,7 +88,7 @@ Public Class frmNotaCreditoOfi
 #End Region
 
     Private Sub frmNotaCreditoOfi_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        TIP = "NC"
+        TIP = "NCV"
         FechaFactura = Date.Now.ToString.Substring(0, 10)
         'va = 0
         va2 = 0
@@ -100,6 +100,11 @@ Public Class frmNotaCreditoOfi
         Application.DoEvents()
         objpro.CargaCombos(grbUnidad, "Select IdUni as Id, Unides as Unidad FROM BGXFacElec.satUnidad where unists = 'A'", 0, 1, As400)
         Application.DoEvents()
+        periodod = Date.Now.ToString.Substring(6, 4)
+        cmbperiodo.Items.Add(0)
+        cmbperiodo.Items.Add(2010)
+        cmbperiodo.Items.Add(periodod - 1)
+        cmbperiodo.Items.Add(periodod)
     End Sub
 
     Private Sub CargaGridConceptos()
@@ -238,6 +243,31 @@ Public Class frmNotaCreditoOfi
         End With
     End Sub
 
+    Private Sub btnBuscarNota_Click(sender As Object, e As EventArgs) Handles btnBuscarNota.Click
+        If grbTienda.Value <> 0 Then
+            If grbSucursal.Value <> 0 Then
+                If ckTIP.Checked = False Then
+                    TIP = "NCV"
+                Else
+                    TIP = "NCE"
+                End If
+                Tabla = objpro.ObtenDatos("SELECT * FROM bgxfacelec.CatTien as Tienda left join bgxfacelec.Catsucu as Sucursal on Tienda.Tid = Sucursal.Tid Where Tienda.tid = " & Me.grbTienda.Value & " AND Sucursal.sid = " & Me.grbSucursal.Value & " ", As400).Tables(0)
+                Application.DoEvents()
+                If objpro.DatoExiste("seCant", "bgxfacelec.Serie", "sId = " & grbSucursal.Value & " and Tid = " & grbTienda.Value & " and seTipo = '" & TIP & "' and SEAMOAP = " & cmbperiodo.SelectedItem & " and seEstat = 1 ", As400) = True Then
+                    txtFactura.Text = Format(CDbl(objpro.DatoMaximo("seCant", "bgxfacelec.Serie", "sId = " & grbSucursal.Value & " and Tid = " & grbTienda.Value & " and seTipo = '" & TIP & "' and SEAMOAP = " & cmbperiodo.SelectedItem & " and seEstat = 1 ", As400)) + 1, "00000")
+                    txtSerie.Text = objpro.Dato("seserie", "bgxfacelec.serie", "sId = " & grbSucursal.Value & " and Tid = " & grbTienda.Value & " and seTipo = '" & TIP & "' and SEAMOAP = " & cmbperiodo.SelectedItem & " and seEstat = 1", As400)
+
+                Else
+                    MsgBox("No se encontró la serie... ", MsgBoxStyle.Information, "Facturación.. ")
+                End If
+            Else
+                MsgBox("Falta seleccionar sucursal .. ", MsgBoxStyle.Information, "Facturación")
+            End If
+        Else
+            MsgBox("Falta seleccionar tienda correspondiente .. ", MsgBoxStyle.Information, "Facturación")
+        End If
+    End Sub
+
     Private Sub FormatoGriduuid(uuidref As String)
         ugr.Rows.Band.AddNew()
         ColocarArticuloUuid(ugr.Rows.Count - 1, uuidref)
@@ -325,9 +355,11 @@ Public Class frmNotaCreditoOfi
         Dim Key As String = TablaTienda.Rows(0).Item("sRKey").ToString
         Dim Pwd As String = TablaTienda.Rows(0).Item("sPwd").ToString
 
-        TSucursal = objpro.ObtenDatos("SELECT * FROM bgxfacelec.Serie Where tid = " & Me.grbTienda.Value & " AND sid = " & Me.grbSucursal.Value & " and seTipo = '" & TIP & "' and seEstat = 1 ", As400).Tables(0)
-        n_notacredito = Format(CDbl(objpro.DatoMaximo("seCant", "bgxfacelec.Serie", "sId = " & TSucursal.Rows(0).Item("sid").ToString & " and Tid = " & TSucursal.Rows(0).Item("Tid").ToString & " and seTipo = '" & TIP & "' and seEstat = 1 ", As400)) + 1, "00000")
-        n_serie = TSucursal.Rows(0).Item("Seserie").ToString
+        n_notacredito = txtFactura.Text
+        n_serie = txtSerie.Text
+        'TSucursal = objpro.ObtenDatos("SELECT * FROM bgxfacelec.Serie Where tid = " & Me.grbTienda.Value & " AND sid = " & Me.grbSucursal.Value & " and seTipo = '" & TIP & "' and seEstat = 1 ", As400).Tables(0)
+        'n_notacredito = Format(CDbl(objpro.DatoMaximo("seCant", "bgxfacelec.Serie", "sId = " & TSucursal.Rows(0).Item("sid").ToString & " and Tid = " & TSucursal.Rows(0).Item("Tid").ToString & " and seTipo = '" & TIP & "' and seEstat = 1 ", As400)) + 1, "00000")
+        'n_serie = TSucursal.Rows(0).Item("Seserie").ToString
 
         Dim RFacImpresas As String
         RFacImpresas = Directorios & "\" & FechaFactura.ToString.Substring(6, 4) & "\" & FechaFactura.ToString.Substring(3, 2)

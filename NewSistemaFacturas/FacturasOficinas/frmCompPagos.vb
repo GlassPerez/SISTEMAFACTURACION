@@ -586,15 +586,13 @@ Public Class frmCompPagos
         If grbformaPago.Text = "Efectivo" Then
             EasyOne_pago10_AddPago(p, FecPAgo, grbformaPago.Value, "MXN", "01", Format(TAbono.Value, "######.00"), txtNumOperacion.Text, "", "", "", "", "", "", "", "", "")
         Else
-            EasyOne_pago10_AddPago(p, FecPAgo, grbformaPago.Value, "MXN", "01", Format(TAbono.Value, "######.00"), txtNumOperacion.Text, rfcReceptor, grbBancos.Text, txtCtaOrdenante.Text, rfcEmisor, txtCtaBeneficiario.Text, "", "", "", "")
-        End If
-        If grbformaPago.Text <> "Efectivo" Then
-            If txtCtaOrdenante.Text = "" Then
-                Me.txtCtaBeneficiario.Text = ""
-                Me.txtCtaOrdenante.Text = ""
-                Me.grbBancos.Text = ""
+            If chkdatos.Checked = True Then
+                EasyOne_pago10_AddPago(p, FecPAgo, grbformaPago.Value, "MXN", "01", Format(TAbono.Value, "######.00"), txtNumOperacion.Text, "", "", "", "", "", "", "", "", "")
+            Else
+                EasyOne_pago10_AddPago(p, FecPAgo, grbformaPago.Value, "MXN", "01", Format(TAbono.Value, "######.00"), txtNumOperacion.Text, RFCOrdenante.Text, grbBancos.Text, txtCtaOrdenante.Text, RFCBeneficiario.Text, txtCtaBeneficiario.Text, "", "", "", "")
             End If
         End If
+
         upb.Value += 10 '30
         Dim basep As Double = 0
         Dim ImporteP As Double = 0
@@ -628,9 +626,14 @@ Public Class frmCompPagos
                 Fila2("SaldoInsoluto") = Format(SDOINS, "######.00")
             End If
             If grbformaPago.Text <> "Efectivo" Then
-                Fila2("RFCBeneficiario") = rfcEmisor
+                If chkdatos.Checked = False Then
+                    Fila2("RFCBeneficiario") = RFCBeneficiario.Text
+                    Fila2("RFCOrdenante") = RFCOrdenante.Text
+                Else
+                    Fila2("RFCBeneficiario") = ""
+                    Fila2("RFCOrdenante") = ""
+                End If
                 Fila2("NoCtaBenef") = txtCtaBeneficiario.Text
-                Fila2("RFCOrdenante") = rfcReceptor
                 Fila2("BancoOrd") = grbBancos.Text
                 Fila2("NoCtaOrd") = txtCtaOrdenante.Text
             End If
@@ -681,21 +684,6 @@ Public Class frmCompPagos
 
         ''Se agrega el complemento al comprobante
         EasyOne_AddComplemento(c, p)
-
-        TablaTienda = objpro.ObtenDatos("SELECT * FROM bgxfacelec.CatTien as Tienda left join bgxfacelec.Catsucu as Sucursal on Tienda.tid = Sucursal.tid Where Tienda.tid = " & grbTienda.Value & " and Sucursal.sid = " & grbSucursal.Value & " ", As400).Tables(0)
-
-        DirEmail = TablaTienda.Rows(0).Item("EMAILDIR").ToString
-        PwdEmail = TablaTienda.Rows(0).Item("EMAILPWD").ToString
-        Pop = TablaTienda.Rows(0).Item("EMAILPOP").ToString
-        PuertoPop = TablaTienda.Rows(0).Item("EMAILPPOP").ToString
-        SmtpHost = TablaTienda.Rows(0).Item("EMAILSMTP").ToString
-        PuertoSmtp = TablaTienda.Rows(0).Item("EMAILPSMTP").ToString
-        DescEmail = TablaTienda.Rows(0).Item("EMAILDESC").ToString
-        AsuntoEmail = TablaTienda.Rows(0).Item("EMAILASU").ToString
-        MsjEmail = TablaTienda.Rows(0).Item("EMAILMSG").ToString
-
-        RFacImpresas = Directorios & "\" & FechaFactura.ToString.Substring(6, 4) & "\" & FechaFactura.ToString.Substring(3, 2)
-
 
         'Timbra XML, que se encuentra en variable P
         Dim x As Integer = 99
@@ -907,7 +895,7 @@ Public Class frmCompPagos
                 End If
 
             Else
-                    MsgBox("Intenta tmbrar nuevamente con el mismo FILO Y SERIE !!! Serie: " & seriee & "   Folio: " & folio, MsgBoxStyle.Information).ToString()
+                MsgBox("Intenta tmbrar nuevamente con el mismo FILO Y SERIE !!! Serie: " & seriee & "   Folio: " & folio, MsgBoxStyle.Information).ToString()
                 btnAplicarPago.Visible = True
             End If
         Else
@@ -929,6 +917,8 @@ Public Class frmCompPagos
         Importe.Value = 0.0
         txtRfc.Text = ""
         txtRazonSocial.Text = ""
+        RFCBeneficiario.Text = ""
+        RFCOrdenante.Text = ""
     End Sub
 
     Public Function APDF(ByVal Ruta As String) As String
@@ -989,23 +979,40 @@ Public Class frmCompPagos
         grbformaPago.Visible = opcion
     End Sub
 
+
+    Private Sub chkdatos_CheckStateChanged(sender As Object, e As EventArgs) Handles chkdatos.CheckStateChanged
+        If chkdatos.Checked = True Then
+            txtNumOperacion.Enabled = False
+            txtCtaBeneficiario.Enabled = False
+            grbBancos.Enabled = False
+            txtCtaOrdenante.Enabled = False
+            RFCBeneficiario.Enabled = False
+            RFCOrdenante.Enabled = False
+        Else
+            'End If
+            'If chkdatos.CheckState = False Then
+            txtNumOperacion.Enabled = True
+            txtCtaBeneficiario.Enabled = True
+            grbBancos.Enabled = True
+            txtCtaOrdenante.Enabled = True
+            RFCBeneficiario.Enabled = True
+            RFCOrdenante.Enabled = True
+        End If
+    End Sub
+
+
     Private Sub grbformaPago_ValueChanged(sender As Object, e As EventArgs) Handles grbformaPago.ValueChanged
         If objpro.DatoExiste("pagcom", "bgxfacelec.satfpag", "idpag = '" & grbformaPago.Value & "' and pagcom = 'D'", As400) = True Then
             banSolCuenta = True
             verNumCta(True)
             verEmpresa(True)
-            verinfobancos(False)
-            grbBancos.Visible = True
-            UltraLabel2.Visible = True
-            UltraLabel5.Visible = True
-            UltraLabel1.Visible = True
-            UltraLabel4.Visible = True
+            verinfobancos(True)
             Me.txtNumCuenta.Focus()
         Else
             banSolCuenta = False
             verNumCta(False)
             verEmpresa(True)
-            verinfobancos(True)
+            verinfobancos(False)
             btnClientes.Focus()
         End If
 
@@ -1013,13 +1020,18 @@ Public Class frmCompPagos
 
     Private Sub verinfobancos(opcion As Boolean)
         UltraLabel2.Visible = opcion
-        txtNumOperacion.ReadOnly = opcion
+        txtNumOperacion.Enabled = opcion
         UltraLabel5.Visible = opcion
-        txtCtaBeneficiario.ReadOnly = opcion
+        txtCtaBeneficiario.Enabled = opcion
         UltraLabel1.Visible = opcion
-        grbBancos.Visible = False
+        grbBancos.Enabled = opcion
         UltraLabel4.Visible = opcion
-        txtCtaOrdenante.ReadOnly = opcion
+        txtCtaOrdenante.Enabled = opcion
+        UltraLabel12.Visible = opcion
+        UltraLabel13.Visible = opcion
+        RFCBeneficiario.Enabled = opcion
+        RFCOrdenante.Enabled = opcion
+        chkdatos.Enabled = opcion
     End Sub
 
     Private Sub verEmpresa(opcion As Boolean)
@@ -1038,6 +1050,7 @@ Public Class frmCompPagos
         Formulario(frmClientesBosco)
         If idCliente <> 0 Then
             txtRfc.Text = objpro.Dato("crfc", "bgxfacelec.catclie", "cid = " & idCliente & "", As400)
+            RFCOrdenante.Text = objpro.Dato("crfc", "bgxfacelec.catclie", "cid = " & idCliente & "", As400)
             txtRazonSocial.Text = objpro.Dato("crsocial", "bgxfacelec.catclie", "cid = " & idCliente & "", As400)
             txtEmail.Text = objpro.Dato("cemail", "bgxfacelec.catclie", "cid = " & idCliente & "", As400)
             cCP = objpro.Dato("cCP", "bgxfacelec.catclie", "cid = " & idCliente & "", As400)
@@ -1048,7 +1061,7 @@ Public Class frmCompPagos
             RegimenFiscal = regimenFisc
             DesRegimenFiscal = regimen
             DesCFDI = objpro.Dato("cfdides", "bgxfacelec.satuscfdi", "cfdiuso = '" & cfdiuso & "'", As400)
-
+            RFCBeneficiario.Text = objpro.Dato("trfc", "bgxfacelec.cattien", "Tid = " & grbTienda.Value & " ", As400)
             Me.gpoDatos.Visible = True
             Me.txtNumOperacion.Focus()
         End If

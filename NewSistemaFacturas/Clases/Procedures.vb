@@ -75,7 +75,12 @@ Public Class Procedures
     End Sub
 
     Public Function Dato(ByVal Campo As String, ByVal Tabla As String, ByVal Where As String, ByVal coneccion As String) As String
-        Return ObjConecta.ConsultaSelect(" (" & Campo & ") as Dato", Tabla, Where, "", coneccion).Tables(0).Rows(0).Item(0)
+        Try
+            Return ObjConecta.ConsultaSelect(" (" & Campo & ") as Dato", Tabla, Where, "", coneccion).Tables(0).Rows(0).Item(0)
+        Catch ex As Exception
+
+        End Try
+
     End Function
 
     'Public Function Dato2(ByVal Campo As String, ByVal Tabla As String, ByVal Where As String, ByVal coneccion As String) As String

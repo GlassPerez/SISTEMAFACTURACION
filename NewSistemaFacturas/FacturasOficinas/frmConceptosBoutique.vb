@@ -88,14 +88,6 @@ Public Class frmConceptosBoutique
         Application.DoEvents()
         objpro.CargaCombos(grbPagos, "Select idmetpag, metdes as Metodo_Pago from bgxfacelec.satmpag ", 0, 1, As400)
         Application.DoEvents()
-
-        'objpro.CargaCombos(grbformaPago1, "Select idpag as Id, pagdes as Forma_Pago from satfpag ", 0, 1, Motor)
-        'Application.DoEvents()
-        'objpro.CargaCombos(grbUnidad, "Select IdUni as Id, Unides as Unidad FROM satUnidad where unists = 'A'", 0, 1, Motor)
-        'Application.DoEvents()
-        'objpro.CargaCombos(grbPagos, "Select idmetpag, metdes as Metodo_Pago from satmpag ", 0, 1, Motor)
-        'grbPagos.Value = "PUE"
-        Application.DoEvents()
     End Sub
 
     Private Sub verNumCta(opcion As Boolean)
@@ -335,7 +327,7 @@ Public Class frmConceptosBoutique
     End Sub
 
     Private Sub Timbra()
-        If grbformaPago.Value <> 0 Then
+        If grbformaPago1.Value <> 0 Then
             TIP = "FC"
             FolioFinal = objpro.Dato("seffin", "serie", "tid = " & Me.grbTienda.Value & " and sid = " & Me.grbSucursal.Value & " and seSerie = '" & txtSerie.Text & "' and seTipo = '" & TIP & "' and seEstat = 1  ", Motor)
             upb.Value = 0
@@ -708,9 +700,9 @@ Public Class frmConceptosBoutique
 
                     If (serie = "" And folio = "") Or (folio <> txtFactura.Text) Then
                         If des = 0 Then
-                            EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, grbformaPago.Value, "", Format((Subt), "######.00"), "", "MXN", "1", Format((Total), "######.00"), "I", grbPagos.Value, TCp, "")
+                            EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, grbformaPago1.Value, "", Format((Subt), "######.00"), "", "MXN", "1", Format((Total), "######.00"), "I", grbPagos.Value, TCp, "")
                         Else
-                            EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, grbformaPago.Value, "", Format((Subt), "######.00"), Format((des), "######.00"), "MXN", "1", Format((Total), "######.00"), "I", grbPagos.Value, TCp, "")
+                            EasyOne_cfdi33_SetComprobante(p, txtSerie.Text, txtFactura.Text, freal, grbformaPago1.Value, "", Format((Subt), "######.00"), Format((des), "######.00"), "MXN", "1", Format((Total), "######.00"), "I", grbPagos.Value, TCp, "")
                         End If
 
                         Dim folf As Integer = 0 'consulto el ultimo folio de serie
@@ -821,7 +813,7 @@ Public Class frmConceptosBoutique
                                                         "FeDesc1, FePDesc1, FeDesc2, FePDesc2, FeTotal, FeCanlet, FeAbonos, FeEstatu, FeReg, feTip, feuuid, fformpag) " &
                                                         "values (" & FeRegistro & ", " & Me.grbTienda.Value & ", " & Tterm & "," & CInt(Me.txtFactura.Text) & ",'" & Me.txtSerie.Text & "'," & Me.grbSucursal.Value & ",'" & fechareal & "', " &
                                                         " '" & Trim(FechaHora) & "', " & CInt(ExisteClave) & ", '" & Subtotal & "', " & PorIva & ",'" & Iva & "', '" & Descuento & "','" & Descuento & "', '" & Descuento & "', '" & Descuento & "', " &
-                                                        " '" & Me.Total.Value & "', '" & cantletra & "', " & feAbonos & "," & Estatus & ",'" & FeRegistro & "', '" & Tipo & "', '" & uuid & "', '" & Me.grbformaPago.Value & "')", Motor)
+                                                        " '" & Me.Total.Value & "', '" & cantletra & "', " & feAbonos & "," & Estatus & ",'" & FeRegistro & "', '" & Tipo & "', '" & uuid & "', '" & Me.grbformaPago1.Value & "')", Motor)
 
                                         Application.DoEvents()
 
@@ -941,9 +933,11 @@ Public Class frmConceptosBoutique
                 End If
             Else
                 btnFacturar.Visible = True
+                MsgBox("El folio no es valido", MsgBoxStyle.Information).ToString()
             End If 'Cierra validacion de factura y folio
         Else
             btnFacturar.Visible = True
+            MsgBox("No ha seleccionado forma de pago", MsgBoxStyle.Information).ToString()
         End If 'Cierra validacion forma de pago
     End Sub
 

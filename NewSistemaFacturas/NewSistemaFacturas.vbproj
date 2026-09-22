@@ -225,6 +225,42 @@
     <Compile Include="Clases\Module1.vb" />
     <Compile Include="Clases\Procedures.vb" />
     <Compile Include="Clases\VarGlobales.vb" />
+    <Compile Include="FacturasOficinas\frmTicketCte.Designer.vb">
+      <DependentUpon>frmTicketCte.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasOficinas\frmTicketCte.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDF\FacClienteNutrisa.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FacClienteNutrisa.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FacturaCafeterias\frmComplementoCafeteria.Designer.vb">
+      <DependentUpon>frmComplementoCafeteria.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturaCafeterias\frmComplementoCafeteria.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturaCafeterias\frmConceptosCafeteria.Designer.vb">
+      <DependentUpon>frmConceptosCafeteria.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturaCafeterias\frmConceptosCafeteria.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturaCafeterias\frmConceptosGlobal.Designer.vb">
+      <DependentUpon>frmConceptosGlobal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturaCafeterias\frmConceptosGlobal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturaCafeterias\frmPagosCoffe.Designer.vb">
+      <DependentUpon>frmPagosCoffe.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturaCafeterias\frmPagosCoffe.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FacturasBoutique\frmBorraVentas.Designer.vb">
       <DependentUpon>frmBorraVentas.vb</DependentUpon>
     </Compile>
@@ -289,6 +325,12 @@
       <DependentUpon>frmNotaCreditoOfi.vb</DependentUpon>
     </Compile>
     <Compile Include="FacturasOficinas\frmNotaCreditoOfi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDF\FacNutrisa.Designer.vb">
+      <DependentUpon>FacNutrisa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PDF\FacNutrisa.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PDF\NotaCreditoReferenciada.vb">
@@ -659,6 +701,25 @@
     <EmbeddedResource Include="Arrendamiento\frmArrendamiento.resx">
       <DependentUpon>frmArrendamiento.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FacturasOficinas\frmTicketCte.resx">
+      <DependentUpon>frmTicketCte.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\FacClienteNutrisa.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FacClienteNutrisa.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturaCafeterias\frmComplementoCafeteria.resx">
+      <DependentUpon>frmComplementoCafeteria.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturaCafeterias\frmConceptosCafeteria.resx">
+      <DependentUpon>frmConceptosCafeteria.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturaCafeterias\frmConceptosGlobal.resx">
+      <DependentUpon>frmConceptosGlobal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturaCafeterias\frmPagosCoffe.resx">
+      <DependentUpon>frmPagosCoffe.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FacturasBoutique\frmBorraVentas.resx">
       <DependentUpon>frmBorraVentas.vb</DependentUpon>
     </EmbeddedResource>
@@ -691,6 +752,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FacturasOficinas\frmNotaCreditoOfi.resx">
       <DependentUpon>frmNotaCreditoOfi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\FacNutrisa.resx">
+      <DependentUpon>FacNutrisa.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PDF\NotaCreditoReferenciada.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

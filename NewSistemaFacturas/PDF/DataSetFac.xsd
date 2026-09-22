@@ -58,6 +58,9 @@
               <xs:element name="UUIDRel" msprop:Generator_ColumnVarNameInTable="columnUUIDRel" msprop:Generator_ColumnPropNameInRow="UUIDRel" msprop:Generator_ColumnPropNameInTable="UUIDRelColumn" msprop:Generator_UserColumnName="UUIDRel" type="xs:string" minOccurs="0" />
               <xs:element name="TipoRel" msprop:Generator_ColumnVarNameInTable="columnTipoRel" msprop:Generator_ColumnPropNameInRow="TipoRel" msprop:Generator_ColumnPropNameInTable="TipoRelColumn" msprop:Generator_UserColumnName="TipoRel" type="xs:string" minOccurs="0" />
               <xs:element name="UUID2Rel" msprop:Generator_ColumnVarNameInTable="columnUUID2Rel" msprop:Generator_ColumnPropNameInRow="UUID2Rel" msprop:Generator_ColumnPropNameInTable="UUID2RelColumn" msprop:Generator_UserColumnName="UUID2Rel" type="xs:string" minOccurs="0" />
+              <xs:element name="FTasa0" msprop:Generator_ColumnVarNameInTable="columnFTasa0" msprop:Generator_ColumnPropNameInRow="FTasa0" msprop:Generator_ColumnPropNameInTable="FTasa0Column" msprop:Generator_UserColumnName="FTasa0" type="xs:string" minOccurs="0" />
+              <xs:element name="Ftasa08" msprop:Generator_ColumnVarNameInTable="columnFtasa08" msprop:Generator_ColumnPropNameInRow="Ftasa08" msprop:Generator_ColumnPropNameInTable="Ftasa08Column" msprop:Generator_UserColumnName="Ftasa08" type="xs:string" minOccurs="0" />
+              <xs:element name="FechVta" msprop:Generator_ColumnVarNameInTable="columnFechVta" msprop:Generator_ColumnPropNameInRow="FechVta" msprop:Generator_ColumnPropNameInTable="FechVtaColumn" msprop:Generator_UserColumnName="FechVta" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

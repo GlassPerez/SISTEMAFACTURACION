@@ -67,6 +67,7 @@ Public Class frmNotaCreditoDetalleBoutique
 #End Region
 
     Private Sub frmNotaCreditoDetalleBoutique_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        btnFacturar.Visible = False
         txtclvUsoCfdi.Text = ""
         txtUsoCfdi.Text = ""
         verNumCta(False)
@@ -898,6 +899,7 @@ Public Class frmNotaCreditoDetalleBoutique
         txtNumCuenta.Text = ""
         grbPagos.Text = ""
     End Sub
+
 
     Private Sub limpi_UUID()
         txtUUID.Text = ""

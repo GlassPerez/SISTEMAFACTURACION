@@ -18,7 +18,6 @@
                 UTBM.Tools.Item(1).SharedProps.Enabled = True
                 UTBM.Tools.Item(4).SharedProps.Enabled = True
                 UTBM.Tools.Item(5).SharedProps.Enabled = True
-                'UTBM.Tools.Item(22).SharedProps.Enabled = True
                 UTBM.Tools.Item(35).SharedProps.Enabled = True
                 UTBM.Tools.Item(36).SharedProps.Enabled = True
                 UTBM.Tools.Item(37).SharedProps.Enabled = True
@@ -42,8 +41,12 @@
                 UTBM.Tools.Item(18).SharedProps.Enabled = True
                 UTBM.Tools.Item(19).SharedProps.Enabled = True
                 UTBM.Tools.Item(21).SharedProps.Enabled = True
+                UTBM.Tools.Item(35).SharedProps.Enabled = True
                 UTBM.Tools.Item(43).SharedProps.Enabled = True
                 UTBM.Tools.Item(44).SharedProps.Enabled = True
+                UTBM.Tools.Item(54).SharedProps.Enabled = True
+                UTBM.Tools.Item(55).SharedProps.Enabled = True
+                UTBM.Tools.Item(57).SharedProps.Enabled = True
             Case "NUTRISA"
                 UTBM.Tools.Item(28).SharedProps.Enabled = True
                 UTBM.Tools.Item(29).SharedProps.Enabled = True
@@ -69,9 +72,11 @@
                 UTBM.Tools.Item(25).SharedProps.Enabled = True
                 UTBM.Tools.Item(26).SharedProps.Enabled = True
                 UTBM.Tools.Item(33).SharedProps.Enabled = True
-                UTBM.Tools.Item(34).SharedProps.Enabled = False
-                UTBM.Tools.Item(39).SharedProps.Enabled = False
+                UTBM.Tools.Item(35).SharedProps.Enabled = True
+                'UTBM.Tools.Item(34).SharedProps.Enabled = True
+                UTBM.Tools.Item(39).SharedProps.Enabled = True
                 UTBM.Tools.Item(51).SharedProps.Enabled = True 'Nota Crédito RELACIONADA
+                UTBM.Tools.Item(52).SharedProps.Enabled = True
                 UTBM.Tools.Item(53).SharedProps.Enabled = True
         End Select
     End Sub
@@ -82,18 +87,26 @@
         UTBM.Tools.Item(1).SharedProps.Enabled = False
         UTBM.Tools.Item(4).SharedProps.Enabled = False
         UTBM.Tools.Item(5).SharedProps.Enabled = False
+        UTBM.Tools.Item(10).SharedProps.Enabled = False
         UTBM.Tools.Item(21).SharedProps.Enabled = False
         UTBM.Tools.Item(24).SharedProps.Enabled = False
+        UTBM.Tools.Item(33).SharedProps.Enabled = False
+        UTBM.Tools.Item(34).SharedProps.Enabled = False
         UTBM.Tools.Item(35).SharedProps.Enabled = False
         UTBM.Tools.Item(36).SharedProps.Enabled = False
         UTBM.Tools.Item(37).SharedProps.Enabled = False
         UTBM.Tools.Item(38).SharedProps.Enabled = False
+        UTBM.Tools.Item(40).SharedProps.Enabled = False
         UTBM.Tools.Item(43).SharedProps.Enabled = False
         UTBM.Tools.Item(44).SharedProps.Enabled = False
         UTBM.Tools.Item(45).SharedProps.Enabled = False
         UTBM.Tools.Item(46).SharedProps.Enabled = False
         UTBM.Tools.Item(47).SharedProps.Enabled = False
         UTBM.Tools.Item(49).SharedProps.Enabled = False
+        UTBM.Tools.Item(50).SharedProps.Enabled = False
+        UTBM.Tools.Item(54).SharedProps.Enabled = False
+        UTBM.Tools.Item(55).SharedProps.Enabled = False
+        UTBM.Tools.Item(57).SharedProps.Enabled = False
         '*************************  BOUTIQUE **********************'
 
         '*************************  BOSCO *************************'
@@ -104,6 +117,9 @@
         UTBM.Tools.Item(20).SharedProps.Enabled = False
         UTBM.Tools.Item(47).SharedProps.Enabled = False
         UTBM.Tools.Item(49).SharedProps.Enabled = False
+        UTBM.Tools.Item(54).SharedProps.Enabled = False
+        UTBM.Tools.Item(55).SharedProps.Enabled = False
+        UTBM.Tools.Item(57).SharedProps.Enabled = False
         '*************************  BOSCO *************************'
 
         '************************* CAFETERIA *************************'
@@ -117,7 +133,7 @@
         UTBM.Tools.Item(45).SharedProps.Enabled = False
         UTBM.Tools.Item(46).SharedProps.Enabled = False
         UTBM.Tools.Item(47).SharedProps.Enabled = False
-        UTBM.Tools.Item(49).SharedProps.Enabled = False
+        UTBM.Tools.Item(4).SharedProps.Enabled = False
         '************************* CAFETERIA *************************'
 
         '************************** NUTRISA **************************'
@@ -132,6 +148,9 @@
         UTBM.Tools.Item(41).SharedProps.Enabled = False
         UTBM.Tools.Item(47).SharedProps.Enabled = False
         UTBM.Tools.Item(49).SharedProps.Enabled = False
+        UTBM.Tools.Item(54).SharedProps.Enabled = False
+        UTBM.Tools.Item(55).SharedProps.Enabled = False
+        UTBM.Tools.Item(57).SharedProps.Enabled = False
         '************************** NUTRISA **************************'
 
         UTBM.Tools.Item(6).SharedProps.Enabled = False
@@ -147,6 +166,8 @@
         UTBM.Tools.Item(25).SharedProps.Enabled = False
         UTBM.Tools.Item(26).SharedProps.Enabled = False
         UTBM.Tools.Item(31).SharedProps.Enabled = False
+        UTBM.Tools.Item(33).SharedProps.Enabled = False
+        UTBM.Tools.Item(34).SharedProps.Enabled = False
         UTBM.Tools.Item(43).SharedProps.Enabled = False
         UTBM.Tools.Item(44).SharedProps.Enabled = False
         UTBM.Tools.Item(45).SharedProps.Enabled = False
@@ -155,7 +176,12 @@
         UTBM.Tools.Item(41).SharedProps.Enabled = False
         UTBM.Tools.Item(47).SharedProps.Enabled = False
         UTBM.Tools.Item(49).SharedProps.Enabled = False
+        UTBM.Tools.Item(50).SharedProps.Enabled = False
         UTBM.Tools.Item(51).SharedProps.Enabled = False
+        UTBM.Tools.Item(52).SharedProps.Enabled = False
+        UTBM.Tools.Item(54).SharedProps.Enabled = False
+        UTBM.Tools.Item(55).SharedProps.Enabled = False
+        UTBM.Tools.Item(57).SharedProps.Enabled = False
     End Sub
 
     Private Sub toolFacClientesBosco_Click(sender As Object, e As EventArgs)
@@ -181,7 +207,7 @@
                 Formulario(frmNotaCreditoBoutique) 'Boutique
             Case "Nota de Credito a Detalle Boutique"
                 Formulario(frmNotaCreditoDetalleBoutique) 'Boutique 
-            Case "Cierre de Ventas del Día"
+            Case "Carga / Cierre de Ventas del Día"
                 Formulario(frmPreparaInfo) 'Boutique prepara info
             Case "Factura Global Diaria"
                 Formulario(frmGlobalBoutv2) 'Boutique FACTURA GLOBAL
@@ -193,6 +219,7 @@
                 Formulario(frmRepeco)
             Case "Complemento Pago Boutique"
                 Formulario(frmComplementoPagoBoutique)
+
             Case "Factura Clientes Bosco"
                 Formulario(frmBosFacClientes) 'Bosco
             Case "Clientes Bosco"
@@ -220,6 +247,13 @@
                 Formulario(frmPreparaInfo)
             Case "Factura Global Cafeteria"
                 Formulario(frmGlobalBoutv2) 'Cafeteria
+            Case "Facturas en Conceptos Churreria"
+                Formulario(frmConceptosCafeteria) 'Cafeteria
+            Case "Factura Conceptos Global Churreria"
+                Formulario(frmConceptosGlobal) 'Cafeteria
+            Case "Complemento de Pago Churreria"
+                Formulario(frmComplementoCafeteria)
+
             Case "Factura Global Contado Bosco"
                 Formulario(frmGlobalBosco) 'Global Bosco
             Case "Factura Global Boutique"

@@ -23,17 +23,22 @@
     Dim SmtpHost As String
     Dim PuertoSmtp As String
     Dim DescEmail As String
+
+    Private Sub gpoBusqueda_Enter(sender As Object, e As EventArgs) Handles gpoBusqueda.Enter
+
+    End Sub
+
     Dim AsuntoEmail As String
     Dim MsjEmail As String
     Dim SeguridadEmail As Boolean
 #End Region
 
-    Private Sub grbSucursal_ValueChanged(sender As Object, e As EventArgs) Handles grbSucursal.ValueChanged
-        REM objpro.CargaCombos(grbSucursal, "Select sId, sCsuc as Sucursal FROM BGXFacElec.CatSucu Where tid = " & Me.grbTienda.Value & " ", 0, 1, As400)
-        objpro.CargaCombos(grbTipoFactura, "select setipo, sedesc from serie where tid = " & grbTienda.Value & " and sid = " & grbSucursal.Value & "", 0, 1, Motor)
-        grbTipoFactura.Focus()
-        Ugr.DataSource = Nothing
-    End Sub
+    'Private Sub grbSucursal_ValueChanged(sender As Object, e As EventArgs) Handles grbSucursal.ValueChanged
+    '    REM objpro.CargaCombos(grbSucursal, "Select sId, sCsuc as Sucursal FROM BGXFacElec.CatSucu Where tid = " & Me.grbTienda.Value & " ", 0, 1, As400)
+    '    objpro.CargaCombos(grbTipoFactura, "select setipo, sedesc from serie where tid = " & grbTienda.Value & " and sid = " & grbSucursal.Value & "", 0, 1, Motor)
+    '    grbTipoFactura.Focus()
+    '    Ugr.DataSource = Nothing
+    'End Sub
 
     Private Sub frmBoutiqueCorreo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         objpro.CargaCombos(grbTienda, "Select tId, trSocial FROM CatTien where Tid = " & Tienda & "", 0, 1, Motor)
@@ -54,7 +59,7 @@
     Private Sub CargaGrid()
         Try           
             FechaBusqueda = Me.grbPeriodo.Text & OBJFUN.EscojeMes(Me.grbMes.Text)
-            objpro.LLenaGrid(Ugr, "SELECT FEncabezado.FeFact as Factura,FEncabezado.fefecha as FechaTIM, FEncabezado.fereg as FechaVTA,FEncabezado.FeSerie as Serie,FEncabezado.FeEstatu as Estado,FEncabezado.Cid,FEncabezado.FeTerm as Terminal,Clientes.crfc as rfc_Clientes,Clientes.cRSocial as Clientes,Clientes.cemail as Email,FEncabezado.FeSubt as Subtotal, FEncabezado.fepdesc1 as Descuento ,FEncabezado.FeIva as Iva,FEncabezado.FeTotal as Total,FEncabezado.tid FROM FEncabez as FEncabezado left join CatClie as Clientes on FEncabezado.Cid = Clientes.Cid  Where mid(FEncabezado.FeReg,1,6) = " & FechaBusqueda & " and FEncabezado.Tid = " & Me.grbTienda.Value & " and FEncabezado.Sid = " & grbSucursal.Value & " order by FEncabezado.FeSerie,FEncabezado.FeFact", "FEncabez", Motor)
+            objpro.LLenaGrid(Ugr, "SELECT FEncabezado.FeFact as Factura, FEncabezado.FeTip as TipoF ,FEncabezado.fefecha as FechaTIM, FEncabezado.fereg as FechaVTA, FEncabezado.FeSerie as Serie,FEncabezado.FeEstatu as Estado,FEncabezado.Cid,FEncabezado.FeTerm as Terminal,Clientes.crfc as rfc_Clientes,Clientes.cRSocial as Clientes,Clientes.cemail as Email,FEncabezado.FeSubt as Subtotal, FEncabezado.fepdesc1 as Descuento ,FEncabezado.FeIva as Iva,FEncabezado.FeTotal as Total,FEncabezado.tid FROM FEncabez as FEncabezado left join CatClie as Clientes on FEncabezado.Cid = Clientes.Cid  Where mid(FEncabezado.FeReg,1,6) = " & FechaBusqueda & " and FEncabezado.Tid = " & Me.grbTienda.Value & " and FEncabezado.Sid = " & grbSucursal.Value & " order by FEncabezado.FeSerie,FEncabezado.FeFact", "FEncabez", Motor) 'and FEncabezado.feSerie = '" & grbTipoFactura.Value & "'
             Me.Ugr.DataBind()
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Information, "Facturación .. ")
@@ -64,6 +69,7 @@
 
     Private Sub Ugr_InitializeLayout(sender As Object, e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) Handles Ugr.InitializeLayout
         With Ugr
+            .DisplayLayout.Bands(0).Columns(0).Width = 50
             .DisplayLayout.Bands(0).Columns(0).Width = 50
             .DisplayLayout.Bands(0).Columns(1).Width = 100
             .DisplayLayout.Bands(0).Columns(2).Width = 100
@@ -90,7 +96,7 @@
             txtFechaFactura.Value = Ugr.ActiveRow.Cells("FechaTIM").Value.ToString
             txtfecvta.Text = Ugr.ActiveRow.Cells("FechaVTA").Value.ToString
             txtEmail.Text = Ugr.ActiveRow.Cells("Email").Value.ToString
-
+            tipof.Text = Ugr.ActiveRow.Cells("TipoF").Value.ToString
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Information, "Facturación .. ")
         End Try
@@ -133,7 +139,7 @@
                 Dim rutaArchivoPDF As String = ""
                 Dim rutaArchivoXML As String = ""
 
-                If grbTipoFactura.Value = "VG" Then
+                If tipof.Text = "G" Then
                     rutaArchivoPDF = Directorios & "\" & Me.grbPeriodo.Text & "\" & mfac & "\" & Trim(TRfc) & "-" & Me.txtSerie.Text & "-" & txtFactura.Text & "-" & txtfecvta.Text & ".pdf"
                     rutaArchivoXML = Directorios & "\" & Me.grbPeriodo.Text & "\" & mfac & "\" & Trim(TRfc) & "-" & Me.txtSerie.Text & "-" & txtFactura.Text & "-" & txtfecvta.Text & ".xml"
                     AsuntoEmail = "FACTURA CORRESPONDIENTE A: " & Trim(TRfc) & "-" & Me.txtSerie.Text & "-" & txtFactura.Text & "-" & txtfecvta.Text

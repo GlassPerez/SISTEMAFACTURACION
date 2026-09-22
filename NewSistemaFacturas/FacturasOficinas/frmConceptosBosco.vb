@@ -346,7 +346,7 @@ Public Class frmConceptosBosco
         If grbPagos.Text <> "" Then
             If grbformaPago.Value <> 0 Then
                 TIP = "FC"
-                FolioFinal = objpro.Dato("seffin", "bgxfacelec.serie", "tid = " & Me.grbTienda.Value & " and sid = " & Me.grbSucursal.Value & " and seSerie = '" & txtSerie.Text & "' and seTipo = '" & TIP & "' and seEstat = 1  ", As400)
+                FolioFinal = objpro.Dato("seffin", "bgxfacelec.serie", "tid = " & Me.grbTienda.Value & " and sid = " & Me.grbSucursal.Value & " and seSerie = '" & txtSerie.Text & "' and seTipo = '" & TIP & "' and seEstat = 1 and SEAMOAP = " & grdperiodo.SelectedItem & " ", As400)
                 upb.Value = 0
                 upb.Maximum = 100
                 tablaclientes = objpro.ObtenDatos("SELECT * FROM bgxfacelec.CATCLIE WHERE cRFC = '" & Me.txtRfc.Text & "'", As400).Tables(0)

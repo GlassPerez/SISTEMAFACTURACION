@@ -499,6 +499,7 @@ Public Class frmFacClienteNutrisa
             Tabla1.Columns.Add("certSAT")
             Tabla1.Columns.Add("hryfechcer")
             Tabla1.Columns.Add("sucursal")
+            Tabla1.Columns.Add("rieps")
             Tabla1.Columns.Add("rcomdir")
             Tabla1.Columns.Add("rusocfdi")
             Tabla1.Columns.Add("nocuenta")
@@ -695,7 +696,7 @@ Public Class frmFacClienteNutrisa
                     NotaSel = Split(ChlisFact.Items.Item(i).ToString, ".")
                     cadenaFecha = FechaFactura.ToString.Substring(0, 10)
                     'Cadena &= cadenaFecha & "-" &  & "- $"
-                    Cadena = "Suc: " & Trim(CarpSucursal) & " Fecha Venta: " & cadenaFecha & "- " & NotaSel(0) & " -" & " $" & Str(FormatCurrency(Me.Total.Value))
+                    Cadena = "Suc: " & Trim(CarpSucursal) & " Fecha Venta: " & cadenaFecha & "- " & NotaSel(0) ''& " -" & " $" & Str(FormatCurrency(Me.Total.Value))
                     Dim j As Integer : Cantidad = 0
                     REM convertir txt a pdf *****************************************************
                     Dim RArchivo As String = Trim(RutaArchivos) & "\" & Me.grbPeriodo.Text & "\" & objfun.EscojeMes(Me.grbMes.Text) & "\" & Trim(ChlisFact.Items.Item(i).ToString)
@@ -735,7 +736,7 @@ Public Class frmFacClienteNutrisa
             Dim Fila2 As DataRow
 
             For i = 0 To Me.UgrTicket.Rows.Count - 1
-                Dim TOTALPROD As Double = Format(Me.UgrTicket.Rows(i).Cells("Total").Value, "###,###.00")
+                Dim TOTALPROD As Double = Me.UgrTicket.Rows(i).Cells("Total").Value
                 If TOTALPROD <> 0 Then
                     Dim pun As Double = Format(Me.UgrTicket.Rows(i).Cells("PrecioUnitario").Value, "###,###.00")
                     Dim producto As String = Trim(Me.UgrTicket.Rows(i).Cells("DESCRIPCION").Value)
@@ -880,7 +881,10 @@ Public Class frmFacClienteNutrisa
             Fila("Fsubtotal") = Format(Subt, "###,###.00")
             Fila("Fdescuento") = Format(des, "###,###.00")
             Fila("Fiva") = Format(iv, "###,###.00")
+            Fila("rieps") = Format(ieps, "###,###.00")
             Fila("Ftotal") = Format(Total, "###,###.00")
+
+            Cadena &= " -" & " $" & Str(FormatCurrency(Total))
 
             Dim cantletra As String
             cantletra = Letras(Total)
@@ -1037,10 +1041,10 @@ Public Class frmFacClienteNutrisa
                                 ''''''nuevoooooooooooooooooooooooooooooooooooooooooo
 
                                 DS.Tables(0).Rows.Add(Fila)
-                                Dim objreport As New factura40
+                                Dim objreport As New FacClienteNutrisa
                                 objreport.SetParameterValue("Logo", RutaLogo)
                                 objreport.SetParameterValue("QR", RutaQR)
-                                Dim rpFact As New factura40
+                                Dim rpFact As New FacClienteNutrisa
                                 rpFact.SetDataSource(DS)
                                 rpFact.SetParameterValue("QR", RutaQR)
                                 rpFact.SetParameterValue("Logo", RutaLogo)
@@ -1125,7 +1129,7 @@ Public Class frmFacClienteNutrisa
                         Dim resultadoXML2 As String = [String].Empty
                         resultadoXML2 = EasyOne_LeeResultado(p, 11)
                         MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
-                        MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
+                        'MsgBox("No se timbro archivo, contactar DEPTO. DE SISTEMAS, XML MAL" & " " & " No. de Veces de Timbrado " & va, MsgBoxStyle.Critical).ToString()
                         btnFacturar.Visible = True
                         hra = hr
                     End If

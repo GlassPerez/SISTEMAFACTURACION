@@ -1246,4 +1246,5 @@ Public Class frmGlobalBoutiqueV2
         Return False
     End Function
 
+
 End Class

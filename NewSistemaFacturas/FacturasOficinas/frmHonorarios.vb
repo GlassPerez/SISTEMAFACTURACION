@@ -631,17 +631,29 @@ Public Class frmHonorarios
                         Dim TotalImpuestosTrasladados As Double = 0
                         TotalImpuestosTrasladados = Format(iv, "######.00")
 
+
                         'Agregamos los Impuestos
                         Dim TotalImpuestosRetenidos As Double = Import + Import2
-                        If TotalImpuestosRetenidos = 0 Then
-                            EasyOne_cfdi33_SetComprobanteImpuestos(p, "0.00", Format(TotalImpuestosTrasladados, "######.00"))
+                            If TotalImpuestosRetenidos = 0 Then
+                            EasyOne_cfdi33_SetComprobanteImpuestos(p, "", Format(TotalImpuestosTrasladados, "######.00"))
                         Else
-                            EasyOne_cfdi33_SetComprobanteImpuestos(p, Format(TotalImpuestosRetenidos, "######.00"), Format(TotalImpuestosTrasladados, "######.00"))
-                        End If
+                                EasyOne_cfdi33_SetComprobanteImpuestos(p, Format(TotalImpuestosRetenidos, "######.00"), Format(TotalImpuestosTrasladados, "######.00"))
+                            End If
 
                         If txtIv.Text <> 0 Then
                             EasyOne_cfdi33_AddRetencionesRetencion(p, Impuest, Import)
                             EasyOne_cfdi33_AddRetencionesRetencion(p, Impuest2, Import2)
+
+                            'Else
+                            '    EasyOne_cfdi33_AddRetencionesRetencion(p, "002", "0.00")
+                            '    EasyOne_cfdi33_AddRetencionesRetencion(p, "001", "0.00")
+
+                            '    Dim TotalImpuestosRetenidos As Double = iv '+ Import2
+                            '    If TotalImpuestosRetenidos = 0 Then
+                            '        EasyOne_cfdi33_SetComprobanteImpuestos(p, "0.00", Format(TotalImpuestosTrasladados, "######.00"))
+                            '    Else
+                            '        EasyOne_cfdi33_SetComprobanteImpuestos(p, Format(TotalImpuestosRetenidos, "######.00"), Format(TotalImpuestosTrasladados, "######.00"))
+                            '    End If
                         End If
 
                         EasyOne_cfdi33_AddTrasladosTraslado(p, Impuesto, TipoFactor, TasaOCuota, Importe)
@@ -891,7 +903,7 @@ Public Class frmHonorarios
                                     Else
                                         btnFacturar.Visible = True
                                         Dim resultadoXML2 As String = [String].Empty
-                                        resultadoXML2 = EasyOne_LeeResultado(p, 11)
+                                        resultadoXML2 = EasyOne_LeeResultado(p, 16)
                                         MsgBox(resultadoXML2, MsgBoxStyle.Information, "Facturación .. ")
                                         hra = hr
                                     End If
@@ -986,4 +998,5 @@ Public Class frmHonorarios
             End If
         End If
     End Sub
+
 End Class

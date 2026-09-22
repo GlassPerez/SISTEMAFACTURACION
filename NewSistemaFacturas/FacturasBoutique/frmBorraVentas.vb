@@ -72,14 +72,14 @@ Public Class frmBorraVentas
             Application.DoEvents()
             tventas = objpro.ObtenDatos(" select VETERM AS TERMINAL, VEFOLIO AS FOLIO from VENTAENC WHERE VEFOLIO = " & Tienda & " AND  SID = " & Sucursal & " AND day(vefecha) = " & txtFechaVenta.Value.ToString.Substring(0, 2) & " and month(vefecha) = " & txtFechaVenta.Value.ToString.Substring(3, 2) & " and year(vefecha) = " & txtFechaVenta.Value.ToString.Substring(6, 4) & " ", Motor).Tables(0)
             If tventas.Rows.Count <> 0 Then
+                upb.Value += 25
                 Dim folio, terminal As Integer
                 For Each j In tventas.Rows
                     folio = CInt(j("FOLIO").ToString)
                     terminal = CInt(j("TERMINAL").ToString)
-                    upb.Value += 25
                 Next
                 Application.DoEvents()
-                If objpro.DatoExiste("veestatu", "ventaenc", "sid = " & Sucursal & " and VEFOLIO =  " & folio & " and veterm =  " & terminal & " and veestatu = 0 and vefac = '0'", Motor) = True Then
+                If objpro.DatoExiste("veestatu", "ventaenc", "sid = " & Sucursal & " and VEFOLIO =  " & folio & " and veterm =  " & terminal & " and veestatu = 0 and vefac = '0' and day(vefecha) = " & txtFechaVenta.Value.ToString.Substring(0, 2) & " and month(vefecha) = " & txtFechaVenta.Value.ToString.Substring(3, 2) & " and year(vefecha) = " & txtFechaVenta.Value.ToString.Substring(6, 4) & " ", Motor) = True Then
                     upb.Value += 25
                     Application.DoEvents()
                     ''ELIMINA DETALLE

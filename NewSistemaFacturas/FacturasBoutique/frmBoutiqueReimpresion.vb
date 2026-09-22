@@ -32,12 +32,12 @@ Public Class frmBoutiqueReimpresion
     Dim SeguridadEmail As Boolean
 #End Region
 
-    Private Sub grbSucursal_ValueChanged(sender As Object, e As EventArgs) Handles grbSucursal.ValueChanged
-        REM objpro.CargaCombos(grbSucursal, "Select sId, sCsuc as Sucursal FROM BGXFacElec.CatSucu Where tid = " & Me.grbTienda.Value & " ", 0, 1, As400)
-        objpro.CargaCombos(grbTipoFactura, "select setipo, sedesc from serie where tid = " & grbTienda.Value & " and sid = " & grbSucursal.Value & "", 0, 1, Motor)
-        grbTipoFactura.Focus()
-        Ugr.DataSource = Nothing
-    End Sub
+    'Private Sub grbSucursal_ValueChanged(sender As Object, e As EventArgs) Handles grbSucursal.ValueChanged
+    '    REM objpro.CargaCombos(grbSucursal, "Select sId, sCsuc as Sucursal FROM BGXFacElec.CatSucu Where tid = " & Me.grbTienda.Value & " ", 0, 1, As400)
+    '    objpro.CargaCombos(grbTipoFactura, "select setipo, sedesc from serie where tid = " & grbTienda.Value & " and sid = " & grbSucursal.Value & "", 0, 1, Motor)
+    '    grbTipoFactura.Focus()
+    '    Ugr.DataSource = Nothing
+    'End Sub
 
     Private Sub frmBoutiqueReimpresion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         objpro.CargaCombos(grbTienda, "Select tId, trSocial FROM CatTien where Tid = " & Tienda & "", 0, 1, Motor)
@@ -59,7 +59,7 @@ Public Class frmBoutiqueReimpresion
     Private Sub CargaGrid()
         Try
             FechaBusqueda = Me.grbPeriodo.Text & objfun.EscojeMes(Me.grbMes.Text)
-            objpro.LLenaGrid(Ugr, "SELECT FEncabezado.FeFact as Factura,FEncabezado.fefecha as FechaTIM, FEncabezado.fereg as FechaVTA, FEncabezado.FeSerie as Serie,FEncabezado.FeEstatu as Estado,FEncabezado.Cid,FEncabezado.FeTerm as Terminal,Clientes.crfc as rfc_Clientes,Clientes.cRSocial as Clientes,Clientes.cemail as Email,FEncabezado.FeSubt as Subtotal, FEncabezado.fepdesc1 as Descuento ,FEncabezado.FeIva as Iva,FEncabezado.FeTotal as Total,FEncabezado.tid FROM FEncabez as FEncabezado left join CatClie as Clientes on FEncabezado.Cid = Clientes.Cid  Where mid(FEncabezado.FeReg,1,6) = " & FechaBusqueda & " and FEncabezado.Tid = " & Me.grbTienda.Value & " and FEncabezado.Sid = " & grbSucursal.Value & " order by FEncabezado.FeSerie,FEncabezado.FeFact", "FEncabez", Motor) 'and FEncabezado.feSerie = '" & grbTipoFactura.Value & "'
+            objpro.LLenaGrid(Ugr, "SELECT FEncabezado.FeFact as Factura, FEncabezado.FeTip as TipoF ,FEncabezado.fefecha as FechaTIM, FEncabezado.fereg as FechaVTA, FEncabezado.FeSerie as Serie,FEncabezado.FeEstatu as Estado,FEncabezado.Cid,FEncabezado.FeTerm as Terminal,FEncabezado.FeSubt as Subtotal, FEncabezado.fepdesc1 as Descuento ,FEncabezado.FeIva as Iva,FEncabezado.FeTotal as Total, FEncabezado.FeAbonos as Abonos, Clientes.crfc as rfc_Clientes, Clientes.cRSocial as Clientes, Clientes.cemail as Email, FEncabezado.tid FROM FEncabez as FEncabezado left join CatClie as Clientes on FEncabezado.Cid = Clientes.Cid  Where mid(FEncabezado.FeReg,1,6) = " & FechaBusqueda & " and FEncabezado.Tid = " & Me.grbTienda.Value & " and FEncabezado.Sid = " & grbSucursal.Value & " order by FEncabezado.FeSerie,FEncabezado.FeFact", "FEncabez", Motor) 'and FEncabezado.feSerie = '" & grbTipoFactura.Value & "'
             Me.Ugr.DataBind()
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Information, "Facturación .. ")
@@ -69,20 +69,22 @@ Public Class frmBoutiqueReimpresion
     Private Sub Ugr_InitializeLayout(sender As Object, e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) Handles Ugr.InitializeLayout
         With Ugr
             .DisplayLayout.Bands(0).Columns(0).Width = 50
-            .DisplayLayout.Bands(0).Columns(1).Width = 100
-            .DisplayLayout.Bands(0).Columns(2).Width = 100
-            .DisplayLayout.Bands(0).Columns(3).Width = 55
-            .DisplayLayout.Bands(0).Columns(4).Width = 65
-            .DisplayLayout.Bands(0).Columns(5).Width = 70
-            .DisplayLayout.Bands(0).Columns(6).Hidden = True
-            .DisplayLayout.Bands(0).Columns(7).Width = 100
-            .DisplayLayout.Bands(0).Columns(8).Width = 450
-            .DisplayLayout.Bands(0).Columns(9).Width = 250
+            .DisplayLayout.Bands(0).Columns(1).Width = 50
+            .DisplayLayout.Bands(0).Columns(2).Width = 65
+            .DisplayLayout.Bands(0).Columns(3).Width = 70
+            .DisplayLayout.Bands(0).Columns(4).Width = 50
+            .DisplayLayout.Bands(0).Columns(5).Hidden = True
+            .DisplayLayout.Bands(0).Columns(6).Width = 50
+            .DisplayLayout.Bands(0).Columns(7).Width = 50
+            .DisplayLayout.Bands(0).Columns(8).Width = 60
+            .DisplayLayout.Bands(0).Columns(9).Width = 100
             .DisplayLayout.Bands(0).Columns(10).Width = 100
             .DisplayLayout.Bands(0).Columns(11).Width = 100
-            .DisplayLayout.Bands(0).Columns(12).Width = 100
+            .DisplayLayout.Bands(0).Columns(12).Width = 60
             .DisplayLayout.Bands(0).Columns(13).Width = 100
-            .DisplayLayout.Bands(0).Columns(14).Hidden = True
+            .DisplayLayout.Bands(0).Columns(14).Width = 180
+            .DisplayLayout.Bands(0).Columns(15).Width = 100
+            .DisplayLayout.Bands(0).Columns(16).Hidden = True
         End With
     End Sub
 
@@ -93,6 +95,7 @@ Public Class frmBoutiqueReimpresion
             txtSerie.Text = Ugr.ActiveRow.Cells("Serie").Value.ToString
             txtFechaFactura.Value = Ugr.ActiveRow.Cells("FechaTIM").Value.ToString
             txtfecvta.Text = Ugr.ActiveRow.Cells("FechaVTA").Value.ToString
+            tipof.Text = Ugr.ActiveRow.Cells("TipoF").Value.ToString
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Information, "FACTURAS-E")
         End Try
@@ -111,10 +114,14 @@ Public Class frmBoutiqueReimpresion
             Dim Directorios As String = Me.TablaTienda.Rows(0).Item("sUbic").ToString
             Dim mfac As String = txtFechaFactura.Value.ToString.Substring(3, 2) ''mes de factura para saber en que carpeta se guardo
             Dim rutaArchivoPDF As String = ""
-            If grbTipoFactura.Value = "VG" Then
+            If tipof.Text = "G" Or tipof.Text = "N" Then
                 rutaArchivoPDF = Directorios & "\" & Me.grbPeriodo.Text & "\" & mfac & "\" & Trim(TRfc) & "-" & Me.txtSerie.Text & "-" & txtFactura.Text & "-" & txtfecvta.Text & ".pdf"
             Else
+                'If tipof.Text = "P" Then
+                '    rutaArchivoPDF = Directorios & "\" & Me.grbPeriodo.Text & "\" & mfac & "\" & Trim(TRfc) & "-" & Me.txtSerie.Text & "-" & txtFactura.Text & ".pdf"
+                'Else
                 rutaArchivoPDF = Directorios & "\" & Me.grbPeriodo.Text & "\" & objfun.EscojeMes(Me.grbMes.Text) & "\" & Trim(TRfc) & "-" & Me.txtSerie.Text & "-" & txtFactura.Text & ".pdf"
+                'End If
             End If
 
             'TF = objpro.ObtenDatos("select seserie, sedesc from serie where tid = " & grbTienda.Value & " and sid = " & grbSucursal.Value & " AND setipo = 'NC' ", Motor).Tables(0)

@@ -526,6 +526,7 @@ Partial Class frmFacClientes
         Me.txtRfc.Location = New System.Drawing.Point(107, 42)
         Me.txtRfc.MaxLength = 13
         Me.txtRfc.Name = "txtRfc"
+        Me.txtRfc.ReadOnly = True
         Me.txtRfc.Size = New System.Drawing.Size(129, 20)
         Me.txtRfc.TabIndex = 1
         Me.txtRfc.TabStop = False

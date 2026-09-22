@@ -129,6 +129,8 @@ Partial Class frmNotaCreditoDetalleBoutique
         Me.UltraLabel9 = New Infragistics.Win.Misc.UltraLabel()
         Me.upb = New Infragistics.Win.UltraWinProgressBar.UltraProgressBar()
         Me.ugbox1 = New Infragistics.Win.Misc.UltraGroupBox()
+        Me.btnBuscaUUID3 = New System.Windows.Forms.Button()
+        Me.txtUUID2 = New System.Windows.Forms.TextBox()
         Me.btnBuscaUUID2 = New System.Windows.Forms.Button()
         Me.txtUUID1 = New System.Windows.Forms.TextBox()
         Me.btnBuscaUUID = New System.Windows.Forms.Button()
@@ -167,8 +169,6 @@ Partial Class frmNotaCreditoDetalleBoutique
         Me.Iva = New Infragistics.Win.UltraWinEditors.UltraCurrencyEditor()
         Me.Descuento = New Infragistics.Win.UltraWinEditors.UltraCurrencyEditor()
         Me.Total = New Infragistics.Win.UltraWinEditors.UltraCurrencyEditor()
-        Me.txtUUID2 = New System.Windows.Forms.TextBox()
-        Me.btnBuscaUUID3 = New System.Windows.Forms.Button()
         CType(Me.ugbox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ugbox.SuspendLayout()
         CType(Me.grbPagos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -562,6 +562,30 @@ Partial Class frmNotaCreditoDetalleBoutique
         Me.ugbox1.Name = "ugbox1"
         Me.ugbox1.Size = New System.Drawing.Size(1021, 178)
         Me.ugbox1.TabIndex = 121
+        '
+        'btnBuscaUUID3
+        '
+        Me.btnBuscaUUID3.BackColor = System.Drawing.Color.Black
+        Me.btnBuscaUUID3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnBuscaUUID3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBuscaUUID3.ForeColor = System.Drawing.Color.White
+        Me.btnBuscaUUID3.Location = New System.Drawing.Point(493, 146)
+        Me.btnBuscaUUID3.Name = "btnBuscaUUID3"
+        Me.btnBuscaUUID3.Size = New System.Drawing.Size(85, 27)
+        Me.btnBuscaUUID3.TabIndex = 112
+        Me.btnBuscaUUID3.Text = "UUID 3 ..."
+        Me.btnBuscaUUID3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.btnBuscaUUID3.UseVisualStyleBackColor = False
+        '
+        'txtUUID2
+        '
+        Me.txtUUID2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtUUID2.Location = New System.Drawing.Point(85, 147)
+        Me.txtUUID2.Name = "txtUUID2"
+        Me.txtUUID2.ReadOnly = True
+        Me.txtUUID2.Size = New System.Drawing.Size(402, 24)
+        Me.txtUUID2.TabIndex = 111
+        Me.txtUUID2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'btnBuscaUUID2
         '
@@ -1216,30 +1240,6 @@ Partial Class frmNotaCreditoDetalleBoutique
         Me.Total.ReadOnly = True
         Me.Total.Size = New System.Drawing.Size(114, 24)
         Me.Total.TabIndex = 127
-        '
-        'txtUUID2
-        '
-        Me.txtUUID2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtUUID2.Location = New System.Drawing.Point(85, 147)
-        Me.txtUUID2.Name = "txtUUID2"
-        Me.txtUUID2.ReadOnly = True
-        Me.txtUUID2.Size = New System.Drawing.Size(402, 24)
-        Me.txtUUID2.TabIndex = 111
-        Me.txtUUID2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'btnBuscaUUID3
-        '
-        Me.btnBuscaUUID3.BackColor = System.Drawing.Color.Black
-        Me.btnBuscaUUID3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnBuscaUUID3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBuscaUUID3.ForeColor = System.Drawing.Color.White
-        Me.btnBuscaUUID3.Location = New System.Drawing.Point(493, 146)
-        Me.btnBuscaUUID3.Name = "btnBuscaUUID3"
-        Me.btnBuscaUUID3.Size = New System.Drawing.Size(85, 27)
-        Me.btnBuscaUUID3.TabIndex = 112
-        Me.btnBuscaUUID3.Text = "UUID 3 ..."
-        Me.btnBuscaUUID3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btnBuscaUUID3.UseVisualStyleBackColor = False
         '
         'frmNotaCreditoDetalleBoutique
         '

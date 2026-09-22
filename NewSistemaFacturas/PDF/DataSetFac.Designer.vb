@@ -509,6 +509,12 @@ Partial Public Class DataSetFac
         
         Private columnUUID2Rel As Global.System.Data.DataColumn
         
+        Private columnFTasa0 As Global.System.Data.DataColumn
+        
+        Private columnFtasa08 As Global.System.Data.DataColumn
+        
+        Private columnFechVta As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -889,6 +895,30 @@ Partial Public Class DataSetFac
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FTasa0Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFTasa0
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property Ftasa08Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFtasa08
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property FechVtaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFechVta
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -968,9 +998,12 @@ Partial Public Class DataSetFac
                     ByVal rieps As String,  _
                     ByVal UUIDRel As String,  _
                     ByVal TipoRel As String,  _
-                    ByVal UUID2Rel As String) As DatosGenRow
+                    ByVal UUID2Rel As String,  _
+                    ByVal FTasa0 As String,  _
+                    ByVal Ftasa08 As String,  _
+                    ByVal FechVta As String) As DatosGenRow
             Dim rowDatosGenRow As DatosGenRow = CType(Me.NewRow,DatosGenRow)
-            Dim columnValuesArray() As Object = New Object() {Erfc, Erazonsoc, Eregfis, Edireccion, NoDoc, foliofisc, provcert, tipocomp, usocfdi, metpago, formpago, exporta, fechaemi, lugaremi, serieceremi, Rrfc, Rrazonsoc, Rdireccion, Rcp, moneda, sellodig, sellosat, complesat, Rregimen, Fsubtotal, Fdescuento, Fiva, Ftotal, cantidadl, certSAT, hryfechcer, Edircomp, sucursal, rcomdir, rusocfdi, nocuenta, retIVA, retISR, cuentapredial, rieps, UUIDRel, TipoRel, UUID2Rel}
+            Dim columnValuesArray() As Object = New Object() {Erfc, Erazonsoc, Eregfis, Edireccion, NoDoc, foliofisc, provcert, tipocomp, usocfdi, metpago, formpago, exporta, fechaemi, lugaremi, serieceremi, Rrfc, Rrazonsoc, Rdireccion, Rcp, moneda, sellodig, sellosat, complesat, Rregimen, Fsubtotal, Fdescuento, Fiva, Ftotal, cantidadl, certSAT, hryfechcer, Edircomp, sucursal, rcomdir, rusocfdi, nocuenta, retIVA, retISR, cuentapredial, rieps, UUIDRel, TipoRel, UUID2Rel, FTasa0, Ftasa08, FechVta}
             rowDatosGenRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowDatosGenRow)
             Return rowDatosGenRow
@@ -1036,6 +1069,9 @@ Partial Public Class DataSetFac
             Me.columnUUIDRel = MyBase.Columns("UUIDRel")
             Me.columnTipoRel = MyBase.Columns("TipoRel")
             Me.columnUUID2Rel = MyBase.Columns("UUID2Rel")
+            Me.columnFTasa0 = MyBase.Columns("FTasa0")
+            Me.columnFtasa08 = MyBase.Columns("Ftasa08")
+            Me.columnFechVta = MyBase.Columns("FechVta")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1127,6 +1163,12 @@ Partial Public Class DataSetFac
             MyBase.Columns.Add(Me.columnTipoRel)
             Me.columnUUID2Rel = New Global.System.Data.DataColumn("UUID2Rel", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUUID2Rel)
+            Me.columnFTasa0 = New Global.System.Data.DataColumn("FTasa0", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFTasa0)
+            Me.columnFtasa08 = New Global.System.Data.DataColumn("Ftasa08", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFtasa08)
+            Me.columnFechVta = New Global.System.Data.DataColumn("FechVta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFechVta)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3717,6 +3759,51 @@ Partial Public Class DataSetFac
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FTasa0() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDatosGen.FTasa0Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FTasa0' de la tabla 'DatosGen' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDatosGen.FTasa0Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Ftasa08() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDatosGen.Ftasa08Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Ftasa08' de la tabla 'DatosGen' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDatosGen.Ftasa08Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property FechVta() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDatosGen.FechVtaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FechVta' de la tabla 'DatosGen' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDatosGen.FechVtaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsErfcNull() As Boolean
             Return Me.IsNull(Me.tableDatosGen.ErfcColumn)
         End Function
@@ -4229,6 +4316,42 @@ Partial Public Class DataSetFac
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetUUID2RelNull()
             Me(Me.tableDatosGen.UUID2RelColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFTasa0Null() As Boolean
+            Return Me.IsNull(Me.tableDatosGen.FTasa0Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFTasa0Null()
+            Me(Me.tableDatosGen.FTasa0Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFtasa08Null() As Boolean
+            Return Me.IsNull(Me.tableDatosGen.Ftasa08Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFtasa08Null()
+            Me(Me.tableDatosGen.Ftasa08Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsFechVtaNull() As Boolean
+            Return Me.IsNull(Me.tableDatosGen.FechVtaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetFechVtaNull()
+            Me(Me.tableDatosGen.FechVtaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

@@ -562,7 +562,7 @@ Public Class frmArrendamiento
                                 'Agregamos los Impuestos
                                 Dim TotalImpuestosRetenidos As Double = Import + Import2
                                 If TotalImpuestosRetenidos.ToString = "0" Then
-                                    EasyOne_cfdi33_SetComprobanteImpuestos(p, "0.00", Format(TotalImpuestosTrasladados, "######.00"))
+                                    EasyOne_cfdi33_SetComprobanteImpuestos(p, "", Format(TotalImpuestosTrasladados, "######.00"))
                                 Else
                                     EasyOne_cfdi33_SetComprobanteImpuestos(p, Format(TotalImpuestosRetenidos, "######.00"), Format(TotalImpuestosTrasladados, "######.00"))
                                 End If
@@ -639,8 +639,8 @@ Public Class frmArrendamiento
                                     If CInt(Me.txtFactura.Text) > folf Then
                                         'Enviamos el CFDI al metodo de PRUEBAS
                                         'En la siguiente línea es necesario incluir la Clave de Integración que se proporciona en la Guía de Implementación (Menú "Ayuda" de su Oficina Virtual).
-                                        'EasyOne_SetInvoiceOneFachadaInfoPrueba(p, "RHUUMRGL", "RHUUMRGL") 'PARA PRUEBAS
-                                        EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
+                                        EasyOne_SetInvoiceOneFachadaInfoPrueba(p, "RHUUMRGL", "RHUUMRGL") 'PARA PRUEBAS
+                                        'EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
 
                                         Dim b As Integer
                                         b = p

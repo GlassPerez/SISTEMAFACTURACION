@@ -73,7 +73,7 @@ Partial Class frmNotaCreditoOfi
         Dim Appearance22 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance23 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance13 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance7 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance25 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance1 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance3 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -82,6 +82,7 @@ Partial Class frmNotaCreditoOfi
         Dim Appearance59 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance60 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance61 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance7 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Me.ugbox1 = New Infragistics.Win.Misc.UltraGroupBox()
         Me.grbTienda = New Infragistics.Win.UltraWinGrid.UltraCombo()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -125,6 +126,15 @@ Partial Class frmNotaCreditoOfi
         Me.UltraGroupBox3 = New Infragistics.Win.Misc.UltraGroupBox()
         Me.ugr = New Infragistics.Win.UltraWinGrid.UltraGrid()
         Me.ugrnotacred = New Infragistics.Win.UltraWinGrid.UltraGrid()
+        Me.ugbox2 = New Infragistics.Win.Misc.UltraGroupBox()
+        Me.ckTIP = New System.Windows.Forms.CheckBox()
+        Me.cmbperiodo = New System.Windows.Forms.ComboBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.lblSerie = New System.Windows.Forms.Label()
+        Me.lblNumFactura = New System.Windows.Forms.Label()
+        Me.txtSerie = New System.Windows.Forms.TextBox()
+        Me.txtFactura = New System.Windows.Forms.TextBox()
+        Me.btnBuscarNota = New System.Windows.Forms.Button()
         CType(Me.ugbox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ugbox1.SuspendLayout()
         CType(Me.grbTienda, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -146,6 +156,8 @@ Partial Class frmNotaCreditoOfi
         Me.UltraGroupBox3.SuspendLayout()
         CType(Me.ugr, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ugrnotacred, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ugbox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ugbox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'ugbox1
@@ -154,6 +166,10 @@ Partial Class frmNotaCreditoOfi
         Appearance80.BackColor2 = System.Drawing.Color.White
         Appearance80.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical
         Me.ugbox1.Appearance = Appearance80
+        Me.ugbox1.Controls.Add(Me.ckTIP)
+        Me.ugbox1.Controls.Add(Me.ugbox2)
+        Me.ugbox1.Controls.Add(Me.cmbperiodo)
+        Me.ugbox1.Controls.Add(Me.Label15)
         Me.ugbox1.Controls.Add(Me.grbTienda)
         Me.ugbox1.Controls.Add(Me.Label1)
         Me.ugbox1.Controls.Add(Me.Label3)
@@ -163,7 +179,7 @@ Partial Class frmNotaCreditoOfi
         Me.ugbox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.ugbox1.Location = New System.Drawing.Point(0, 0)
         Me.ugbox1.Name = "ugbox1"
-        Me.ugbox1.Size = New System.Drawing.Size(1025, 66)
+        Me.ugbox1.Size = New System.Drawing.Size(1037, 112)
         Me.ugbox1.TabIndex = 123
         '
         'grbTienda
@@ -224,19 +240,19 @@ Partial Class frmNotaCreditoOfi
         Me.grbTienda.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill
         Me.grbTienda.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.grbTienda.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
-        Me.grbTienda.Location = New System.Drawing.Point(75, 28)
+        Me.grbTienda.Location = New System.Drawing.Point(15, 33)
         Me.grbTienda.Name = "grbTienda"
-        Me.grbTienda.Size = New System.Drawing.Size(246, 22)
+        Me.grbTienda.Size = New System.Drawing.Size(210, 22)
         Me.grbTienda.TabIndex = 111
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(72, 7)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(12, 14)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(58, 18)
+        Me.Label1.Size = New System.Drawing.Size(57, 16)
         Me.Label1.TabIndex = 112
         Me.Label1.Text = "Tienda"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -245,10 +261,10 @@ Partial Class frmNotaCreditoOfi
         '
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(361, 7)
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(242, 14)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(79, 18)
+        Me.Label3.Size = New System.Drawing.Size(72, 16)
         Me.Label3.TabIndex = 113
         Me.Label3.Text = "Sucursal:"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -311,9 +327,9 @@ Partial Class frmNotaCreditoOfi
         Me.grbSucursal.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill
         Me.grbSucursal.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.grbSucursal.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
-        Me.grbSucursal.Location = New System.Drawing.Point(364, 28)
+        Me.grbSucursal.Location = New System.Drawing.Point(245, 33)
         Me.grbSucursal.Name = "grbSucursal"
-        Me.grbSucursal.Size = New System.Drawing.Size(223, 22)
+        Me.grbSucursal.Size = New System.Drawing.Size(208, 22)
         Me.grbSucursal.TabIndex = 114
         '
         'grbPagos
@@ -374,9 +390,9 @@ Partial Class frmNotaCreditoOfi
         Me.grbPagos.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill
         Me.grbPagos.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.grbPagos.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
-        Me.grbPagos.Location = New System.Drawing.Point(665, 28)
+        Me.grbPagos.Location = New System.Drawing.Point(492, 35)
         Me.grbPagos.Name = "grbPagos"
-        Me.grbPagos.Size = New System.Drawing.Size(243, 22)
+        Me.grbPagos.Size = New System.Drawing.Size(242, 22)
         Me.grbPagos.TabIndex = 75
         '
         'UltraLabel2
@@ -384,8 +400,8 @@ Partial Class frmNotaCreditoOfi
         Appearance53.BackColor = System.Drawing.Color.Transparent
         Appearance53.TextHAlignAsString = "Right"
         Me.UltraLabel2.Appearance = Appearance53
-        Me.UltraLabel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UltraLabel2.Location = New System.Drawing.Point(665, 7)
+        Me.UltraLabel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.UltraLabel2.Location = New System.Drawing.Point(470, 19)
         Me.UltraLabel2.Name = "UltraLabel2"
         Me.UltraLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.UltraLabel2.Size = New System.Drawing.Size(140, 24)
@@ -411,9 +427,9 @@ Partial Class frmNotaCreditoOfi
         Me.GroupBox1.Controls.Add(Me.lblClave)
         Me.GroupBox1.Controls.Add(Me.lblUnidad)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 66)
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 112)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1025, 113)
+        Me.GroupBox1.Size = New System.Drawing.Size(1037, 113)
         Me.GroupBox1.TabIndex = 124
         Me.GroupBox1.TabStop = False
         '
@@ -641,9 +657,9 @@ Partial Class frmNotaCreditoOfi
         Me.UltraGroupBox1.Controls.Add(Me.Descuento)
         Me.UltraGroupBox1.Controls.Add(Me.Total)
         Me.UltraGroupBox1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.UltraGroupBox1.Location = New System.Drawing.Point(0, 450)
+        Me.UltraGroupBox1.Location = New System.Drawing.Point(0, 536)
         Me.UltraGroupBox1.Name = "UltraGroupBox1"
-        Me.UltraGroupBox1.Size = New System.Drawing.Size(1025, 90)
+        Me.UltraGroupBox1.Size = New System.Drawing.Size(1037, 90)
         Me.UltraGroupBox1.TabIndex = 126
         '
         'upb
@@ -651,7 +667,7 @@ Partial Class frmNotaCreditoOfi
         Me.upb.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.upb.Location = New System.Drawing.Point(3, 62)
         Me.upb.Name = "upb"
-        Me.upb.Size = New System.Drawing.Size(1019, 25)
+        Me.upb.Size = New System.Drawing.Size(1031, 25)
         Me.upb.TabIndex = 141
         Me.upb.Text = "[Formatted]"
         '
@@ -780,9 +796,9 @@ Partial Class frmNotaCreditoOfi
         Me.GroupBox2.Controls.Add(Me.btnBuscaUUID)
         Me.GroupBox2.Controls.Add(Me.UltraGroupBox3)
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 302)
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 388)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1025, 148)
+        Me.GroupBox2.Size = New System.Drawing.Size(1037, 148)
         Me.GroupBox2.TabIndex = 127
         Me.GroupBox2.TabStop = False
         '
@@ -823,12 +839,12 @@ Partial Class frmNotaCreditoOfi
         '
         'UltraGroupBox3
         '
-        Appearance7.BackColor = System.Drawing.Color.White
-        Me.UltraGroupBox3.Appearance = Appearance7
+        Appearance25.BackColor = System.Drawing.Color.White
+        Me.UltraGroupBox3.Appearance = Appearance25
         Me.UltraGroupBox3.Controls.Add(Me.ugr)
         Me.UltraGroupBox3.Dock = System.Windows.Forms.DockStyle.Right
         Me.UltraGroupBox3.ForeColor = System.Drawing.Color.Black
-        Me.UltraGroupBox3.Location = New System.Drawing.Point(513, 16)
+        Me.UltraGroupBox3.Location = New System.Drawing.Point(525, 16)
         Me.UltraGroupBox3.Name = "UltraGroupBox3"
         Me.UltraGroupBox3.Size = New System.Drawing.Size(509, 129)
         Me.UltraGroupBox3.TabIndex = 131
@@ -885,17 +901,112 @@ Partial Class frmNotaCreditoOfi
         Me.ugrnotacred.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill
         Me.ugrnotacred.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.ugrnotacred.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ugrnotacred.Location = New System.Drawing.Point(0, 179)
+        Me.ugrnotacred.Location = New System.Drawing.Point(0, 225)
         Me.ugrnotacred.Name = "ugrnotacred"
-        Me.ugrnotacred.Size = New System.Drawing.Size(1025, 123)
+        Me.ugrnotacred.Size = New System.Drawing.Size(1037, 163)
         Me.ugrnotacred.TabIndex = 128
         Me.ugrnotacred.Text = "  "
+        '
+        'ugbox2
+        '
+        Appearance7.BackColor = System.Drawing.Color.White
+        Me.ugbox2.Appearance = Appearance7
+        Me.ugbox2.Controls.Add(Me.lblSerie)
+        Me.ugbox2.Controls.Add(Me.lblNumFactura)
+        Me.ugbox2.Controls.Add(Me.txtSerie)
+        Me.ugbox2.Controls.Add(Me.txtFactura)
+        Me.ugbox2.Controls.Add(Me.btnBuscarNota)
+        Me.ugbox2.Dock = System.Windows.Forms.DockStyle.Right
+        Me.ugbox2.ForeColor = System.Drawing.Color.Black
+        Me.ugbox2.Location = New System.Drawing.Point(750, 0)
+        Me.ugbox2.Name = "ugbox2"
+        Me.ugbox2.Size = New System.Drawing.Size(284, 109)
+        Me.ugbox2.TabIndex = 130
+        '
+        'ckTIP
+        '
+        Me.ckTIP.AutoSize = True
+        Me.ckTIP.Location = New System.Drawing.Point(492, 79)
+        Me.ckTIP.Name = "ckTIP"
+        Me.ckTIP.Size = New System.Drawing.Size(118, 17)
+        Me.ckTIP.TabIndex = 115
+        Me.ckTIP.Text = "Usar Serie Especial"
+        Me.ckTIP.UseVisualStyleBackColor = True
+        '
+        'cmbperiodo
+        '
+        Me.cmbperiodo.FormattingEnabled = True
+        Me.cmbperiodo.Location = New System.Drawing.Point(245, 77)
+        Me.cmbperiodo.Name = "cmbperiodo"
+        Me.cmbperiodo.Size = New System.Drawing.Size(187, 21)
+        Me.cmbperiodo.TabIndex = 114
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.BackColor = System.Drawing.Color.Transparent
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(102, 78)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(137, 13)
+        Me.Label15.TabIndex = 113
+        Me.Label15.Text = "Periodo de Facturación"
+        Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblSerie
+        '
+        Me.lblSerie.AutoSize = True
+        Me.lblSerie.Location = New System.Drawing.Point(152, 56)
+        Me.lblSerie.Name = "lblSerie"
+        Me.lblSerie.Size = New System.Drawing.Size(31, 13)
+        Me.lblSerie.TabIndex = 26
+        Me.lblSerie.Text = "Serie"
+        '
+        'lblNumFactura
+        '
+        Me.lblNumFactura.AutoSize = True
+        Me.lblNumFactura.Location = New System.Drawing.Point(25, 55)
+        Me.lblNumFactura.Name = "lblNumFactura"
+        Me.lblNumFactura.Size = New System.Drawing.Size(71, 13)
+        Me.lblNumFactura.TabIndex = 25
+        Me.lblNumFactura.Text = "Num. Factura"
+        '
+        'txtSerie
+        '
+        Me.txtSerie.BackColor = System.Drawing.Color.White
+        Me.txtSerie.Location = New System.Drawing.Point(155, 71)
+        Me.txtSerie.Name = "txtSerie"
+        Me.txtSerie.ReadOnly = True
+        Me.txtSerie.Size = New System.Drawing.Size(100, 20)
+        Me.txtSerie.TabIndex = 24
+        '
+        'txtFactura
+        '
+        Me.txtFactura.BackColor = System.Drawing.Color.White
+        Me.txtFactura.Location = New System.Drawing.Point(28, 71)
+        Me.txtFactura.Name = "txtFactura"
+        Me.txtFactura.ReadOnly = True
+        Me.txtFactura.Size = New System.Drawing.Size(100, 20)
+        Me.txtFactura.TabIndex = 23
+        '
+        'btnBuscarNota
+        '
+        Me.btnBuscarNota.BackColor = System.Drawing.Color.Black
+        Me.btnBuscarNota.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnBuscarNota.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBuscarNota.ForeColor = System.Drawing.Color.White
+        Me.btnBuscarNota.Location = New System.Drawing.Point(24, 14)
+        Me.btnBuscarNota.Name = "btnBuscarNota"
+        Me.btnBuscarNota.Size = New System.Drawing.Size(213, 27)
+        Me.btnBuscarNota.TabIndex = 30
+        Me.btnBuscarNota.Text = "Buscar Folio"
+        Me.btnBuscarNota.UseVisualStyleBackColor = False
         '
         'frmNotaCreditoOfi
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1025, 540)
+        Me.ClientSize = New System.Drawing.Size(1037, 626)
         Me.Controls.Add(Me.ugrnotacred)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.UltraGroupBox1)
@@ -929,6 +1040,9 @@ Partial Class frmNotaCreditoOfi
         Me.UltraGroupBox3.ResumeLayout(False)
         CType(Me.ugr, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ugrnotacred, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ugbox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ugbox2.ResumeLayout(False)
+        Me.ugbox2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -975,4 +1089,13 @@ Partial Class frmNotaCreditoOfi
     Friend WithEvents UltraGroupBox3 As Infragistics.Win.Misc.UltraGroupBox
     Friend WithEvents ugr As Infragistics.Win.UltraWinGrid.UltraGrid
     Friend WithEvents ugrnotacred As Infragistics.Win.UltraWinGrid.UltraGrid
+    Friend WithEvents ugbox2 As Infragistics.Win.Misc.UltraGroupBox
+    Friend WithEvents ckTIP As CheckBox
+    Friend WithEvents cmbperiodo As ComboBox
+    Friend WithEvents Label15 As Label
+    Friend WithEvents lblSerie As Label
+    Friend WithEvents lblNumFactura As Label
+    Friend WithEvents txtSerie As TextBox
+    Friend WithEvents txtFactura As TextBox
+    Friend WithEvents btnBuscarNota As Button
 End Class

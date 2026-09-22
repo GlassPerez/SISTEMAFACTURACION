@@ -40,6 +40,8 @@ Partial Class frmCompPagos
         Dim Appearance50 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance82 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance4 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance9 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance34 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim UltraToolTipInfo1 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Se puede registrar el número de cheque, número de autorización, número de referen" &
         "cia, clave de rastreo en caso de ser SPEI, ", Infragistics.Win.ToolTipImage.[Default], Nothing, Infragistics.Win.DefaultableBoolean.[Default])
         Dim Appearance5 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -52,7 +54,7 @@ Partial Class frmCompPagos
         Dim Appearance7 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim UltraToolTipInfo4 As Infragistics.Win.UltraWinToolTip.UltraToolTipInfo = New Infragistics.Win.UltraWinToolTip.UltraToolTipInfo("Si no tiene banco dejar el valor en 0", Infragistics.Win.ToolTipImage.[Default], Nothing, Infragistics.Win.DefaultableBoolean.[Default])
         Dim Appearance8 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance9 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance35 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance10 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance11 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance64 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -123,6 +125,11 @@ Partial Class frmCompPagos
         Me.grbformaPago = New Infragistics.Win.UltraWinGrid.UltraCombo()
         Me.lblMetodoPago = New System.Windows.Forms.Label()
         Me.gpoDatos = New Infragistics.Win.Misc.UltraGroupBox()
+        Me.chkdatos = New System.Windows.Forms.CheckBox()
+        Me.RFCOrdenante = New System.Windows.Forms.TextBox()
+        Me.RFCBeneficiario = New System.Windows.Forms.TextBox()
+        Me.UltraLabel13 = New Infragistics.Win.Misc.UltraLabel()
+        Me.UltraLabel12 = New Infragistics.Win.Misc.UltraLabel()
         Me.txtNumOperacion = New System.Windows.Forms.TextBox()
         Me.UltraLabel7 = New Infragistics.Win.Misc.UltraLabel()
         Me.fechaPago = New Infragistics.Win.UltraWinEditors.UltraDateTimeEditor()
@@ -258,9 +265,9 @@ Partial Class frmCompPagos
         Me.btnClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnClientes.Image = CType(resources.GetObject("btnClientes.Image"), System.Drawing.Image)
         Me.btnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnClientes.Location = New System.Drawing.Point(641, 371)
+        Me.btnClientes.Location = New System.Drawing.Point(641, 380)
         Me.btnClientes.Name = "btnClientes"
-        Me.btnClientes.Size = New System.Drawing.Size(208, 58)
+        Me.btnClientes.Size = New System.Drawing.Size(208, 44)
         Me.btnClientes.TabIndex = 175
         Me.btnClientes.Text = "Seleccionar Cliente o Empresa"
         Me.btnClientes.UseVisualStyleBackColor = True
@@ -365,6 +372,11 @@ Partial Class frmCompPagos
         Appearance4.BackColor2 = System.Drawing.Color.White
         Appearance4.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical
         Me.gpoDatos.Appearance = Appearance4
+        Me.gpoDatos.Controls.Add(Me.chkdatos)
+        Me.gpoDatos.Controls.Add(Me.RFCOrdenante)
+        Me.gpoDatos.Controls.Add(Me.RFCBeneficiario)
+        Me.gpoDatos.Controls.Add(Me.UltraLabel13)
+        Me.gpoDatos.Controls.Add(Me.UltraLabel12)
         Me.gpoDatos.Controls.Add(Me.txtNumOperacion)
         Me.gpoDatos.Controls.Add(Me.UltraLabel7)
         Me.gpoDatos.Controls.Add(Me.fechaPago)
@@ -379,13 +391,63 @@ Partial Class frmCompPagos
         Me.gpoDatos.Controls.Add(Me.UltraLabel2)
         Me.gpoDatos.Location = New System.Drawing.Point(626, 477)
         Me.gpoDatos.Name = "gpoDatos"
-        Me.gpoDatos.Size = New System.Drawing.Size(486, 102)
+        Me.gpoDatos.Size = New System.Drawing.Size(486, 155)
         Me.gpoDatos.TabIndex = 182
         Me.gpoDatos.Visible = False
         '
+        'chkdatos
+        '
+        Me.chkdatos.BackColor = System.Drawing.Color.Azure
+        Me.chkdatos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkdatos.Location = New System.Drawing.Point(18, 8)
+        Me.chkdatos.Name = "chkdatos"
+        Me.chkdatos.Size = New System.Drawing.Size(129, 37)
+        Me.chkdatos.TabIndex = 201
+        Me.chkdatos.Text = "¿Sin datos Bancarizados?"
+        Me.chkdatos.TextAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.chkdatos.UseVisualStyleBackColor = False
+        '
+        'RFCOrdenante
+        '
+        Me.RFCOrdenante.Location = New System.Drawing.Point(315, 25)
+        Me.RFCOrdenante.Name = "RFCOrdenante"
+        Me.RFCOrdenante.Size = New System.Drawing.Size(124, 20)
+        Me.RFCOrdenante.TabIndex = 191
+        '
+        'RFCBeneficiario
+        '
+        Me.RFCBeneficiario.Location = New System.Drawing.Point(165, 25)
+        Me.RFCBeneficiario.Name = "RFCBeneficiario"
+        Me.RFCBeneficiario.Size = New System.Drawing.Size(131, 20)
+        Me.RFCBeneficiario.TabIndex = 190
+        '
+        'UltraLabel13
+        '
+        Appearance9.BackColor = System.Drawing.Color.Transparent
+        Me.UltraLabel13.Appearance = Appearance9
+        Me.UltraLabel13.AutoSize = True
+        Me.UltraLabel13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.UltraLabel13.Location = New System.Drawing.Point(315, 8)
+        Me.UltraLabel13.Name = "UltraLabel13"
+        Me.UltraLabel13.Size = New System.Drawing.Size(106, 14)
+        Me.UltraLabel13.TabIndex = 189
+        Me.UltraLabel13.Text = "RFC del Ordenante"
+        '
+        'UltraLabel12
+        '
+        Appearance34.BackColor = System.Drawing.Color.Transparent
+        Me.UltraLabel12.Appearance = Appearance34
+        Me.UltraLabel12.AutoSize = True
+        Me.UltraLabel12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.UltraLabel12.Location = New System.Drawing.Point(168, 8)
+        Me.UltraLabel12.Name = "UltraLabel12"
+        Me.UltraLabel12.Size = New System.Drawing.Size(112, 14)
+        Me.UltraLabel12.TabIndex = 188
+        Me.UltraLabel12.Text = "RFC del Beneficiario"
+        '
         'txtNumOperacion
         '
-        Me.txtNumOperacion.Location = New System.Drawing.Point(31, 24)
+        Me.txtNumOperacion.Location = New System.Drawing.Point(23, 78)
         Me.txtNumOperacion.Name = "txtNumOperacion"
         Me.txtNumOperacion.Size = New System.Drawing.Size(100, 20)
         Me.txtNumOperacion.TabIndex = 187
@@ -399,7 +461,7 @@ Partial Class frmCompPagos
         Me.UltraLabel7.Appearance = Appearance5
         Me.UltraLabel7.AutoSize = True
         Me.UltraLabel7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UltraLabel7.Location = New System.Drawing.Point(176, 54)
+        Me.UltraLabel7.Location = New System.Drawing.Point(168, 108)
         Me.UltraLabel7.Name = "UltraLabel7"
         Me.UltraLabel7.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.UltraLabel7.Size = New System.Drawing.Size(87, 14)
@@ -409,7 +471,7 @@ Partial Class frmCompPagos
         'fechaPago
         '
         Me.fechaPago.DateTime = New Date(2013, 12, 3, 0, 0, 0, 0)
-        Me.fechaPago.Location = New System.Drawing.Point(178, 74)
+        Me.fechaPago.Location = New System.Drawing.Point(170, 128)
         Me.fechaPago.Name = "fechaPago"
         Me.fechaPago.Size = New System.Drawing.Size(113, 21)
         Me.fechaPago.TabIndex = 125
@@ -417,7 +479,7 @@ Partial Class frmCompPagos
         '
         'txtCtaBeneficiario
         '
-        Me.txtCtaBeneficiario.Location = New System.Drawing.Point(173, 22)
+        Me.txtCtaBeneficiario.Location = New System.Drawing.Point(165, 76)
         Me.txtCtaBeneficiario.Name = "txtCtaBeneficiario"
         Me.txtCtaBeneficiario.Size = New System.Drawing.Size(136, 20)
         Me.txtCtaBeneficiario.TabIndex = 72
@@ -431,7 +493,7 @@ Partial Class frmCompPagos
         Me.UltraLabel5.Appearance = Appearance6
         Me.UltraLabel5.AutoSize = True
         Me.UltraLabel5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UltraLabel5.Location = New System.Drawing.Point(171, 5)
+        Me.UltraLabel5.Location = New System.Drawing.Point(163, 59)
         Me.UltraLabel5.Name = "UltraLabel5"
         Me.UltraLabel5.Size = New System.Drawing.Size(112, 14)
         Me.UltraLabel5.TabIndex = 71
@@ -443,7 +505,7 @@ Partial Class frmCompPagos
         Me.btnAplicarPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAplicarPago.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAplicarPago.ForeColor = System.Drawing.Color.White
-        Me.btnAplicarPago.Location = New System.Drawing.Point(312, 48)
+        Me.btnAplicarPago.Location = New System.Drawing.Point(304, 102)
         Me.btnAplicarPago.Name = "btnAplicarPago"
         Me.btnAplicarPago.Size = New System.Drawing.Size(160, 47)
         Me.btnAplicarPago.TabIndex = 186
@@ -452,7 +514,7 @@ Partial Class frmCompPagos
         '
         'txtCtaOrdenante
         '
-        Me.txtCtaOrdenante.Location = New System.Drawing.Point(36, 74)
+        Me.txtCtaOrdenante.Location = New System.Drawing.Point(28, 128)
         Me.txtCtaOrdenante.Name = "txtCtaOrdenante"
         Me.txtCtaOrdenante.Size = New System.Drawing.Size(100, 20)
         Me.txtCtaOrdenante.TabIndex = 70
@@ -466,7 +528,7 @@ Partial Class frmCompPagos
         Me.UltraLabel4.Appearance = Appearance39
         Me.UltraLabel4.AutoSize = True
         Me.UltraLabel4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UltraLabel4.Location = New System.Drawing.Point(36, 54)
+        Me.UltraLabel4.Location = New System.Drawing.Point(28, 108)
         Me.UltraLabel4.Name = "UltraLabel4"
         Me.UltraLabel4.Size = New System.Drawing.Size(106, 14)
         Me.UltraLabel4.TabIndex = 69
@@ -477,7 +539,7 @@ Partial Class frmCompPagos
         Appearance7.BackColor = System.Drawing.Color.Transparent
         Me.UltraLabel3.Appearance = Appearance7
         Me.UltraLabel3.AutoSize = True
-        Me.UltraLabel3.Location = New System.Drawing.Point(163, 30)
+        Me.UltraLabel3.Location = New System.Drawing.Point(155, 84)
         Me.UltraLabel3.Name = "UltraLabel3"
         Me.UltraLabel3.Size = New System.Drawing.Size(0, 0)
         Me.UltraLabel3.TabIndex = 68
@@ -486,7 +548,7 @@ Partial Class frmCompPagos
         '
         Me.grbBancos.FormattingEnabled = True
         Me.grbBancos.Items.AddRange(New Object() {"Santander", "BBVA Bancomer", "Banorte", "Banamex", "HSBC", "Scotiabank", "Inbursa", "Interacciones", "Banco del Bajío", "Afirme"})
-        Me.grbBancos.Location = New System.Drawing.Point(323, 21)
+        Me.grbBancos.Location = New System.Drawing.Point(315, 75)
         Me.grbBancos.Name = "grbBancos"
         Me.grbBancos.Size = New System.Drawing.Size(124, 21)
         Me.grbBancos.TabIndex = 67
@@ -499,7 +561,7 @@ Partial Class frmCompPagos
         Me.UltraLabel1.Appearance = Appearance8
         Me.UltraLabel1.AutoSize = True
         Me.UltraLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UltraLabel1.Location = New System.Drawing.Point(323, 6)
+        Me.UltraLabel1.Location = New System.Drawing.Point(315, 60)
         Me.UltraLabel1.Name = "UltraLabel1"
         Me.UltraLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.UltraLabel1.Size = New System.Drawing.Size(96, 14)
@@ -508,11 +570,11 @@ Partial Class frmCompPagos
         '
         'UltraLabel2
         '
-        Appearance9.BackColor = System.Drawing.Color.Transparent
-        Me.UltraLabel2.Appearance = Appearance9
+        Appearance35.BackColor = System.Drawing.Color.Transparent
+        Me.UltraLabel2.Appearance = Appearance35
         Me.UltraLabel2.AutoSize = True
         Me.UltraLabel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UltraLabel2.Location = New System.Drawing.Point(31, 4)
+        Me.UltraLabel2.Location = New System.Drawing.Point(23, 58)
         Me.UltraLabel2.Name = "UltraLabel2"
         Me.UltraLabel2.Size = New System.Drawing.Size(96, 14)
         Me.UltraLabel2.TabIndex = 64
@@ -541,7 +603,7 @@ Partial Class frmCompPagos
         'upb
         '
         Me.upb.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.upb.Location = New System.Drawing.Point(0, 579)
+        Me.upb.Location = New System.Drawing.Point(0, 638)
         Me.upb.Name = "upb"
         Me.upb.Size = New System.Drawing.Size(1115, 27)
         Me.upb.TabIndex = 183
@@ -826,7 +888,7 @@ Partial Class frmCompPagos
         Me.UltraGroupBox1.ForeColor = System.Drawing.Color.White
         Me.UltraGroupBox1.Location = New System.Drawing.Point(0, 83)
         Me.UltraGroupBox1.Name = "UltraGroupBox1"
-        Me.UltraGroupBox1.Size = New System.Drawing.Size(1115, 220)
+        Me.UltraGroupBox1.Size = New System.Drawing.Size(1115, 222)
         Me.UltraGroupBox1.TabIndex = 195
         '
         'Label6
@@ -1110,7 +1172,7 @@ Partial Class frmCompPagos
         Me.Ugr.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!)
         Me.Ugr.Location = New System.Drawing.Point(3, 0)
         Me.Ugr.Name = "Ugr"
-        Me.Ugr.Size = New System.Drawing.Size(620, 217)
+        Me.Ugr.Size = New System.Drawing.Size(620, 219)
         Me.Ugr.TabIndex = 184
         Me.Ugr.Text = "Relación de pagos"
         Me.Ugr.UpdateMode = Infragistics.Win.UltraWinGrid.UpdateMode.OnCellChangeOrLostFocus
@@ -1123,9 +1185,9 @@ Partial Class frmCompPagos
         Me.ugbox2.Controls.Add(Me.ugrselect)
         Me.ugbox2.Dock = System.Windows.Forms.DockStyle.Left
         Me.ugbox2.ForeColor = System.Drawing.Color.Black
-        Me.ugbox2.Location = New System.Drawing.Point(0, 303)
+        Me.ugbox2.Location = New System.Drawing.Point(0, 305)
         Me.ugbox2.Name = "ugbox2"
-        Me.ugbox2.Size = New System.Drawing.Size(623, 276)
+        Me.ugbox2.Size = New System.Drawing.Size(623, 333)
         Me.ugbox2.TabIndex = 196
         '
         'ugrselect
@@ -1153,7 +1215,7 @@ Partial Class frmCompPagos
         Me.ugrselect.Dock = System.Windows.Forms.DockStyle.Left
         Me.ugrselect.Location = New System.Drawing.Point(3, 0)
         Me.ugrselect.Name = "ugrselect"
-        Me.ugrselect.Size = New System.Drawing.Size(617, 273)
+        Me.ugrselect.Size = New System.Drawing.Size(617, 330)
         Me.ugrselect.TabIndex = 187
         Me.ugrselect.Text = "Facturas seleccionadas"
         Me.ugrselect.UseWaitCursor = True
@@ -1212,13 +1274,13 @@ Partial Class frmCompPagos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1115, 606)
+        Me.ClientSize = New System.Drawing.Size(1115, 665)
         Me.Controls.Add(Me.Tsaldo)
+        Me.Controls.Add(Me.gpoDatos)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.TAbono)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.ugbox2)
-        Me.Controls.Add(Me.gpoDatos)
         Me.Controls.Add(Me.UltraGroupBox1)
         Me.Controls.Add(Me.ugbox1)
         Me.Controls.Add(Me.upb)
@@ -1326,4 +1388,9 @@ Partial Class frmCompPagos
     Friend WithEvents umsg As Infragistics.Win.UltraWinToolTip.UltraToolTipManager
     Friend WithEvents Tsaldo As Infragistics.Win.UltraWinEditors.UltraCurrencyEditor
     Friend WithEvents Label7 As Label
+    Friend WithEvents chkdatos As CheckBox
+    Friend WithEvents RFCOrdenante As TextBox
+    Friend WithEvents RFCBeneficiario As TextBox
+    Friend WithEvents UltraLabel13 As Infragistics.Win.Misc.UltraLabel
+    Friend WithEvents UltraLabel12 As Infragistics.Win.Misc.UltraLabel
 End Class

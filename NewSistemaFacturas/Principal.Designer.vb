@@ -49,7 +49,6 @@ Partial Class Principal
         Dim RibbonGroup20 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup1")
         Dim Appearance38 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ButtonTool30 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("rb1Factura Clientes Boutique")
-        Dim ButtonTool99 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Complemento Pago Boutique")
         Dim RibbonGroup21 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup2")
         Dim Appearance39 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ButtonTool31 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Clientes Boutique")
@@ -70,61 +69,73 @@ Partial Class Principal
         Dim RibbonGroup26 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup6")
         Dim Appearance89 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ButtonTool121 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Borrar Ventas")
+        Dim RibbonGroup27 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup7")
+        Dim Appearance100 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim ButtonTool140 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Complemento Pago Boutique")
         Dim Appearance32 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim RibbonTab8 As Infragistics.Win.UltraWinToolbars.RibbonTab = New Infragistics.Win.UltraWinToolbars.RibbonTab("r2")
-        Dim RibbonGroup27 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup1")
+        Dim RibbonGroup28 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup1")
         Dim Appearance35 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ButtonTool35 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Factura Clientes Bosco")
-        Dim RibbonGroup28 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup2")
+        Dim RibbonGroup29 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup2")
         Dim Appearance33 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ButtonTool36 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Clientes Bosco")
-        Dim RibbonGroup29 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup3")
+        Dim RibbonGroup30 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup3")
         Dim ButtonTool37 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Reenvío Factura por Correo Bosco")
-        Dim RibbonGroup30 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup4")
+        Dim RibbonGroup31 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup4")
         Dim ButtonTool59 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Re-Imprimir Facturas Bosco")
-        Dim RibbonGroup31 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup5")
+        Dim RibbonGroup32 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup5")
         Dim ButtonTool43 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Nota de Credito Bosco")
         Dim Appearance34 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim RibbonTab9 As Infragistics.Win.UltraWinToolbars.RibbonTab = New Infragistics.Win.UltraWinToolbars.RibbonTab("r6")
-        Dim RibbonGroup32 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup1")
+        Dim RibbonGroup33 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup1")
         Dim Appearance55 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ButtonTool61 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Factura Clientes Cafeteria")
-        Dim RibbonGroup33 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup2")
+        Dim RibbonGroup34 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup2")
         Dim Appearance53 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ButtonTool63 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Clientes de Cafeteria")
-        Dim RibbonGroup34 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup3")
+        Dim RibbonGroup35 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup3")
         Dim ButtonTool65 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Reenvio de Factura por Correo de Cafeteria")
-        Dim RibbonGroup35 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup4")
+        Dim RibbonGroup36 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup4")
         Dim ButtonTool67 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Re-Imprimir Factura Cafeteria")
-        Dim RibbonGroup36 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup5")
-        Dim ButtonTool75 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Nota de Credito Cafeterias")
         Dim RibbonGroup37 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("Factura Cierre Cafeteria")
         Dim Appearance86 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ButtonTool111 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Cierre Diario Cafeteria")
         Dim ButtonTool112 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Factura Global Cafeteria")
+        Dim RibbonGroup38 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("Facturas Churreria")
+        Dim Appearance98 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance99 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim ButtonTool137 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Facturas en Conceptos Cafeterias")
+        Dim ButtonTool129 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Factura Conceptos Global Cafeteria")
+        Dim RibbonGroup39 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("Complemento de Pago")
+        Dim Appearance101 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim ButtonTool141 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool(" ComplementoCoffe")
         Dim Appearance56 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim RibbonTab10 As Infragistics.Win.UltraWinToolbars.RibbonTab = New Infragistics.Win.UltraWinToolbars.RibbonTab("r3")
-        Dim RibbonGroup38 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup1")
+        Dim RibbonGroup40 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup1")
         Dim ButtonTool38 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Factura Global Boutique")
         Dim ButtonTool77 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Factura Global Repeco")
-        Dim RibbonGroup39 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup2")
+        Dim RibbonGroup41 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup2")
         Dim ButtonTool39 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Factura Global Contado Bosco")
         Dim ButtonTool123 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Factura Global Credito Bosco")
         Dim ButtonTool95 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Nota Credito Oficinas Bosco")
         Dim ButtonTool118 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Nota Crédito RELACIONADA")
-        Dim RibbonGroup40 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup3")
+        Dim RibbonGroup42 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup3")
         Dim ButtonTool40 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Factura de Honorarios")
-        Dim ButtonTool41 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Complemento de Pagos")
-        Dim RibbonGroup41 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup4")
+        Dim RibbonGroup43 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup4")
         Dim ButtonTool34 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Factura en Conceptos")
         Dim ButtonTool73 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Factura en Conceptos BOUTIQUE")
-        Dim RibbonGroup42 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup5")
+        Dim RibbonGroup44 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup5")
         Dim ButtonTool79 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Importar Ventas Nutrisa")
         Dim ButtonTool81 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Factura Global Nutrisa")
+        Dim RibbonGroup45 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("Complementos de Pago")
+        Dim Appearance102 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim ButtonTool75 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Complemento de Pagos")
+        Dim ButtonTool99 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Complemento Pago Boutique")
         Dim Appearance16 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance36 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim RibbonTab11 As Infragistics.Win.UltraWinToolbars.RibbonTab = New Infragistics.Win.UltraWinToolbars.RibbonTab("r4")
-        Dim RibbonGroup43 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup1")
+        Dim RibbonGroup46 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup1")
         Dim ButtonTool42 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Arrendamiento")
         Dim Appearance37 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ButtonTool44 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("rb1Factura Clientes Boutique")
@@ -232,6 +243,14 @@ Partial Class Principal
         Dim Appearance94 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim ButtonTool124 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Nota Crédito RELACIONADA")
         Dim Appearance95 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim ButtonTool128 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Facturas en Conceptos Cafeterias")
+        Dim Appearance96 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim ButtonTool130 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Factura Conceptos Global Cafeteria")
+        Dim Appearance97 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim ButtonTool132 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("FacturaGlobalCoffe")
+        Dim ButtonTool133 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool(" ComplementoCoffe")
+        Dim Appearance108 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance109 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim RibbonTab1 As Infragistics.Win.UltraWinToolbars.RibbonTab = New Infragistics.Win.UltraWinToolbars.RibbonTab("r1")
         Dim RibbonGroup1 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup1")
         Dim ButtonTool1 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("rb1Factura Clientes Boutique")
@@ -394,8 +413,7 @@ Partial Class Principal
         RibbonGroup20.Settings.CaptionAppearance = Appearance38
         ButtonTool30.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool30.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        ButtonTool99.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup20.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool30, ButtonTool99})
+        RibbonGroup20.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool30})
         RibbonGroup21.Caption = "Catalogo de Clientes Boutique"
         Appearance39.BackColor = System.Drawing.Color.LimeGreen
         Appearance39.BackColor2 = System.Drawing.Color.White
@@ -437,75 +455,77 @@ Partial Class Principal
         RibbonGroup26.Settings.CaptionAppearance = Appearance89
         ButtonTool121.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         RibbonGroup26.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool121})
-        RibbonTab7.Groups.AddRange(New Infragistics.Win.UltraWinToolbars.RibbonGroup() {RibbonGroup20, RibbonGroup21, RibbonGroup22, RibbonGroup23, RibbonGroup24, RibbonGroup25, RibbonGroup26})
+        RibbonGroup27.Caption = "Complemento de Pagos"
+        Appearance100.BackColor = System.Drawing.Color.Aqua
+        RibbonGroup27.Settings.CaptionAppearance = Appearance100
+        ButtonTool140.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
+        RibbonGroup27.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool140})
+        RibbonTab7.Groups.AddRange(New Infragistics.Win.UltraWinToolbars.RibbonGroup() {RibbonGroup20, RibbonGroup21, RibbonGroup22, RibbonGroup23, RibbonGroup24, RibbonGroup25, RibbonGroup26, RibbonGroup27})
         Appearance32.BackColor = System.Drawing.Color.Red
         Appearance32.BackColor2 = System.Drawing.Color.White
         Appearance32.BackGradientStyle = Infragistics.Win.GradientStyle.BackwardDiagonal
         RibbonTab7.Settings.SelectedTabItemAppearance = Appearance32
         RibbonTab8.Caption = "Facturas Bosco"
-        RibbonGroup27.Caption = "Factura a Clientes Bosco"
-        RibbonGroup27.LayoutAlignment = Infragistics.Win.UltraWinToolbars.RibbonGroupLayoutAlignment.Center
-        RibbonGroup27.PreferredToolSize = Infragistics.Win.UltraWinToolbars.RibbonToolSize.ImageOnly
+        RibbonGroup28.Caption = "Factura a Clientes Bosco"
+        RibbonGroup28.LayoutAlignment = Infragistics.Win.UltraWinToolbars.RibbonGroupLayoutAlignment.Center
+        RibbonGroup28.PreferredToolSize = Infragistics.Win.UltraWinToolbars.RibbonToolSize.ImageOnly
         Appearance35.BackColor = System.Drawing.Color.Yellow
         Appearance35.BackColor2 = System.Drawing.Color.White
         Appearance35.BackGradientStyle = Infragistics.Win.GradientStyle.BackwardDiagonal
-        RibbonGroup27.Settings.CaptionAppearance = Appearance35
+        RibbonGroup28.Settings.CaptionAppearance = Appearance35
         ButtonTool35.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool35.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup27.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool35})
-        RibbonGroup28.Caption = "Catalogo de Clientes Bosco"
-        RibbonGroup28.LayoutAlignment = Infragistics.Win.UltraWinToolbars.RibbonGroupLayoutAlignment.Center
-        RibbonGroup28.PreferredToolSize = Infragistics.Win.UltraWinToolbars.RibbonToolSize.ImageOnly
+        RibbonGroup28.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool35})
+        RibbonGroup29.Caption = "Catalogo de Clientes Bosco"
+        RibbonGroup29.LayoutAlignment = Infragistics.Win.UltraWinToolbars.RibbonGroupLayoutAlignment.Center
+        RibbonGroup29.PreferredToolSize = Infragistics.Win.UltraWinToolbars.RibbonToolSize.ImageOnly
         Appearance33.BackColor = System.Drawing.Color.Red
         Appearance33.BackColor2 = System.Drawing.Color.White
         Appearance33.BackGradientStyle = Infragistics.Win.GradientStyle.BackwardDiagonal
-        RibbonGroup28.Settings.CaptionAppearance = Appearance33
+        RibbonGroup29.Settings.CaptionAppearance = Appearance33
         ButtonTool36.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool36.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup28.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool36})
-        RibbonGroup29.Caption = "Reenvío Factura Bosco"
+        RibbonGroup29.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool36})
+        RibbonGroup30.Caption = "Reenvío Factura Bosco"
         ButtonTool37.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup29.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool37})
-        RibbonGroup30.Caption = "Re-Imprimir Facturas Bosco"
-        RibbonGroup30.LayoutAlignment = Infragistics.Win.UltraWinToolbars.RibbonGroupLayoutAlignment.Center
-        RibbonGroup30.PreferredToolSize = Infragistics.Win.UltraWinToolbars.RibbonToolSize.ImageOnly
+        RibbonGroup30.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool37})
+        RibbonGroup31.Caption = "Re-Imprimir Facturas Bosco"
+        RibbonGroup31.LayoutAlignment = Infragistics.Win.UltraWinToolbars.RibbonGroupLayoutAlignment.Center
+        RibbonGroup31.PreferredToolSize = Infragistics.Win.UltraWinToolbars.RibbonToolSize.ImageOnly
         ButtonTool59.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup30.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool59})
-        RibbonGroup31.Caption = "Nota de Crdito Bosco"
+        RibbonGroup31.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool59})
+        RibbonGroup32.Caption = "Nota de Crdito Bosco"
         ButtonTool43.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup31.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool43})
-        RibbonTab8.Groups.AddRange(New Infragistics.Win.UltraWinToolbars.RibbonGroup() {RibbonGroup27, RibbonGroup28, RibbonGroup29, RibbonGroup30, RibbonGroup31})
+        RibbonGroup32.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool43})
+        RibbonTab8.Groups.AddRange(New Infragistics.Win.UltraWinToolbars.RibbonGroup() {RibbonGroup28, RibbonGroup29, RibbonGroup30, RibbonGroup31, RibbonGroup32})
         Appearance34.BackColor = System.Drawing.Color.Red
         Appearance34.BackColor2 = System.Drawing.Color.White
         Appearance34.BackGradientStyle = Infragistics.Win.GradientStyle.BackwardDiagonal
         RibbonTab8.Settings.SelectedTabItemAppearance = Appearance34
         RibbonTab9.Caption = "Facturas Cafeterias"
-        RibbonGroup32.Caption = "Factura Clientes Cafeteria"
+        RibbonGroup33.Caption = "Factura Clientes Cafeteria"
         Appearance55.BackColor = System.Drawing.Color.Yellow
         Appearance55.BackColor2 = System.Drawing.Color.White
         Appearance55.BackGradientStyle = Infragistics.Win.GradientStyle.BackwardDiagonal
-        RibbonGroup32.Settings.CaptionAppearance = Appearance55
+        RibbonGroup33.Settings.CaptionAppearance = Appearance55
         ButtonTool61.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup32.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool61})
-        RibbonGroup33.Caption = "Datos del Cliente de Cafeteria"
+        RibbonGroup33.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool61})
+        RibbonGroup34.Caption = "Datos del Cliente de Cafeteria"
         Appearance53.BackColor = System.Drawing.Color.Red
         Appearance53.BackColor2 = System.Drawing.Color.White
         Appearance53.BackGradientStyle = Infragistics.Win.GradientStyle.BackwardDiagonal
-        RibbonGroup33.Settings.CaptionAppearance = Appearance53
+        RibbonGroup34.Settings.CaptionAppearance = Appearance53
         ButtonTool63.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool63.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup33.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool63})
-        RibbonGroup34.Caption = "Renevio de Factura por Correo de Cafeteria"
+        RibbonGroup34.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool63})
+        RibbonGroup35.Caption = "Renevio de Factura por Correo de Cafeteria"
         ButtonTool65.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool65.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup34.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool65})
-        RibbonGroup35.Caption = "Re-Imprimir Factura Cafeteria"
+        RibbonGroup35.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool65})
+        RibbonGroup36.Caption = "Re-Imprimir Factura Cafeteria"
         ButtonTool67.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool67.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup35.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool67})
-        RibbonGroup36.Caption = "Nota de Credito Cafeteria"
-        ButtonTool75.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup36.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool75})
+        RibbonGroup36.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool67})
         RibbonGroup37.Caption = "Factura Cierre Cafeteria"
         Appearance86.BackColor = System.Drawing.Color.OrangeRed
         Appearance86.BackColor2 = System.Drawing.Color.White
@@ -514,41 +534,59 @@ Partial Class Principal
         ButtonTool111.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool112.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         RibbonGroup37.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool111, ButtonTool112})
-        RibbonTab9.Groups.AddRange(New Infragistics.Win.UltraWinToolbars.RibbonGroup() {RibbonGroup32, RibbonGroup33, RibbonGroup34, RibbonGroup35, RibbonGroup36, RibbonGroup37})
+        RibbonGroup38.Caption = "Facturas Churreria"
+        Appearance98.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        RibbonGroup38.Settings.Appearance = Appearance98
+        Appearance99.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        RibbonGroup38.Settings.CaptionAppearance = Appearance99
+        ButtonTool137.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
+        ButtonTool129.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
+        RibbonGroup38.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool137, ButtonTool129})
+        RibbonGroup39.Caption = "Complemento de Pago"
+        Appearance101.BackColor = System.Drawing.Color.Aqua
+        RibbonGroup39.Settings.CaptionAppearance = Appearance101
+        ButtonTool141.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
+        RibbonGroup39.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool141})
+        RibbonTab9.Groups.AddRange(New Infragistics.Win.UltraWinToolbars.RibbonGroup() {RibbonGroup33, RibbonGroup34, RibbonGroup35, RibbonGroup36, RibbonGroup37, RibbonGroup38, RibbonGroup39})
         Appearance56.BackColor = System.Drawing.Color.Red
         Appearance56.BackColor2 = System.Drawing.Color.White
         Appearance56.BackGradientStyle = Infragistics.Win.GradientStyle.BackwardDiagonal
         RibbonTab9.Settings.SelectedTabItemAppearance = Appearance56
         RibbonTab10.Caption = "Factura Oficinas"
-        RibbonGroup38.Caption = "Factura Global Boutique"
+        RibbonGroup40.Caption = "Factura Global Boutique"
         ButtonTool38.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool38.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool77.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool77.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup38.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool38, ButtonTool77})
-        RibbonGroup39.Caption = "Factura Global Bosco"
+        RibbonGroup40.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool38, ButtonTool77})
+        RibbonGroup41.Caption = "Factura Global Bosco"
         ButtonTool39.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool39.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool123.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool95.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool118.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup39.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool39, ButtonTool123, ButtonTool95, ButtonTool118})
-        RibbonGroup40.Caption = "Factura de Honorarios"
+        RibbonGroup41.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool39, ButtonTool123, ButtonTool95, ButtonTool118})
+        RibbonGroup42.Caption = "Factura de Honorarios"
         ButtonTool40.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool40.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        ButtonTool41.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup40.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool40, ButtonTool41})
-        RibbonGroup41.Caption = "Factura de Conceptos"
+        RibbonGroup42.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool40})
+        RibbonGroup43.Caption = "Factura de Conceptos"
         ButtonTool34.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool73.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup41.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool34, ButtonTool73})
-        RibbonGroup42.Caption = "Nutrisa"
+        RibbonGroup43.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool34, ButtonTool73})
+        RibbonGroup44.Caption = "Nutrisa"
         ButtonTool79.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool79.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool81.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool81.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup42.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool79, ButtonTool81})
-        RibbonTab10.Groups.AddRange(New Infragistics.Win.UltraWinToolbars.RibbonGroup() {RibbonGroup38, RibbonGroup39, RibbonGroup40, RibbonGroup41, RibbonGroup42})
+        RibbonGroup44.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool79, ButtonTool81})
+        RibbonGroup45.Caption = "Complementos de Pago"
+        Appearance102.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        RibbonGroup45.Settings.Appearance = Appearance102
+        ButtonTool75.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
+        ButtonTool99.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
+        RibbonGroup45.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool75, ButtonTool99})
+        RibbonTab10.Groups.AddRange(New Infragistics.Win.UltraWinToolbars.RibbonGroup() {RibbonGroup40, RibbonGroup41, RibbonGroup42, RibbonGroup43, RibbonGroup44, RibbonGroup45})
         Appearance16.ImageBackgroundStretchMargins = New Infragistics.Win.ImageBackgroundStretchMargins(0, 30, 0, 10)
         RibbonTab10.Settings.Appearance = Appearance16
         Appearance36.BackColor = System.Drawing.Color.Red
@@ -556,10 +594,10 @@ Partial Class Principal
         Appearance36.BackGradientStyle = Infragistics.Win.GradientStyle.BackwardDiagonal
         RibbonTab10.Settings.SelectedTabItemAppearance = Appearance36
         RibbonTab11.Caption = "Arrendamiento"
-        RibbonGroup43.Caption = "Arrendamiento"
+        RibbonGroup46.Caption = "Arrendamiento"
         ButtonTool42.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup43.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool42})
-        RibbonTab11.Groups.AddRange(New Infragistics.Win.UltraWinToolbars.RibbonGroup() {RibbonGroup43})
+        RibbonGroup46.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool42})
+        RibbonTab11.Groups.AddRange(New Infragistics.Win.UltraWinToolbars.RibbonGroup() {RibbonGroup46})
         Appearance37.BackColor = System.Drawing.Color.Red
         Appearance37.BackColor2 = System.Drawing.Color.White
         Appearance37.BackGradientStyle = Infragistics.Win.GradientStyle.BackwardDiagonal
@@ -614,7 +652,7 @@ Partial Class Principal
         ButtonTool60.SharedProps.Caption = "Re-Imprimir Facturas Bosco"
         Appearance54.Image = CType(resources.GetObject("Appearance54.Image"), Object)
         ButtonTool62.SharedProps.AppearancesLarge.Appearance = Appearance54
-        ButtonTool62.SharedProps.Caption = "Factura Clientes Cafeteria"
+        ButtonTool62.SharedProps.Caption = "Factura Clientes Cafeteria Deli"
         Appearance59.Image = CType(resources.GetObject("Appearance59.Image"), Object)
         ButtonTool64.SharedProps.AppearancesLarge.Appearance = Appearance59
         ButtonTool64.SharedProps.Caption = "Clientes de Cafeteria"
@@ -675,7 +713,7 @@ Partial Class Principal
         ButtonTool100.SharedProps.Caption = "Complemento Pago Boutique"
         Appearance77.Image = CType(resources.GetObject("Appearance77.Image"), Object)
         ButtonTool104.SharedProps.AppearancesSmall.Appearance = Appearance77
-        ButtonTool104.SharedProps.Caption = "Cierre de Ventas del Día"
+        ButtonTool104.SharedProps.Caption = "Carga / Cierre de Ventas del Día"
         Appearance78.Image = CType(resources.GetObject("Appearance78.Image"), Object)
         ButtonTool106.SharedProps.AppearancesSmall.Appearance = Appearance78
         ButtonTool106.SharedProps.Caption = "Factura Global Boutique"
@@ -691,10 +729,10 @@ Partial Class Principal
         ButtonTool110.SharedProps.Caption = "Factura Global Diaria"
         Appearance83.Image = CType(resources.GetObject("Appearance83.Image"), Object)
         ButtonTool113.SharedProps.AppearancesLarge.Appearance = Appearance83
-        ButtonTool113.SharedProps.Caption = "Cierre Diario Cafeteria"
+        ButtonTool113.SharedProps.Caption = "Cierre Diario Cafeteria Deli"
         Appearance84.Image = CType(resources.GetObject("Appearance84.Image"), Object)
         ButtonTool114.SharedProps.AppearancesLarge.Appearance = Appearance84
-        ButtonTool114.SharedProps.Caption = "Factura Global Cafeteria"
+        ButtonTool114.SharedProps.Caption = "Factura Global Cafeteria Deli"
         Appearance87.Image = CType(resources.GetObject("Appearance87.Image"), Object)
         ButtonTool116.SharedProps.AppearancesLarge.Appearance = Appearance87
         ButtonTool116.SharedProps.Caption = "Cierre Diario Nutrisa"
@@ -721,7 +759,19 @@ Partial Class Principal
         Appearance95.Image = CType(resources.GetObject("Appearance95.Image"), Object)
         ButtonTool124.SharedProps.AppearancesSmall.Appearance = Appearance95
         ButtonTool124.SharedProps.Caption = "Nota Crédito RELACIONADA"
-        Me.UTBM.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool44, ButtonTool45, ButtonTool46, ButtonTool47, ButtonTool48, ButtonTool49, ButtonTool50, ButtonTool51, ButtonTool52, ButtonTool53, ButtonTool54, ButtonTool55, ButtonTool56, ButtonTool57, ButtonTool58, ButtonTool60, ButtonTool62, ButtonTool64, ButtonTool66, ButtonTool68, ButtonTool69, ButtonTool72, ButtonTool74, ButtonTool76, ButtonTool78, ButtonTool80, ButtonTool82, ButtonTool84, ButtonTool86, ButtonTool88, ButtonTool90, ButtonTool92, ButtonTool94, ButtonTool96, ButtonTool98, ButtonTool100, ButtonTool102, ButtonTool104, ButtonTool106, ButtonTool107, ButtonTool71, ButtonTool108, ButtonTool110, ButtonTool113, ButtonTool114, ButtonTool116, ButtonTool117, ButtonTool119, ButtonTool109, ButtonTool120, ButtonTool122, ButtonTool125, ButtonTool126, ButtonTool124})
+        Appearance96.Image = CType(resources.GetObject("Appearance96.Image"), Object)
+        ButtonTool128.SharedProps.AppearancesLarge.Appearance = Appearance96
+        ButtonTool128.SharedProps.Caption = "Facturas en Conceptos Churreria"
+        Appearance97.Image = CType(resources.GetObject("Appearance97.Image"), Object)
+        ButtonTool130.SharedProps.AppearancesLarge.Appearance = Appearance97
+        ButtonTool130.SharedProps.Caption = "Factura Conceptos Global Churreria"
+        Appearance108.Image = CType(resources.GetObject("Appearance108.Image"), Object)
+        ButtonTool133.SharedProps.AppearancesLarge.Appearance = Appearance108
+        Appearance109.Image = CType(resources.GetObject("Appearance109.Image"), Object)
+        ButtonTool133.SharedProps.AppearancesSmall.Appearance = Appearance109
+        ButtonTool133.SharedProps.Caption = "Complemento de Pago Churreria"
+        Me.UTBM.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool44, ButtonTool45, ButtonTool46, ButtonTool47, ButtonTool48, ButtonTool49, ButtonTool50, ButtonTool51, ButtonTool52, ButtonTool53, ButtonTool54, ButtonTool55, ButtonTool56, ButtonTool57, ButtonTool58, ButtonTool60, ButtonTool62, ButtonTool64, ButtonTool66, ButtonTool68, ButtonTool69, ButtonTool72, ButtonTool74, ButtonTool76, ButtonTool78, ButtonTool80, ButtonTool82, ButtonTool84, ButtonTool86, ButtonTool88, ButtonTool90, ButtonTool92, ButtonTool94, ButtonTool96, ButtonTool98, ButtonTool100, ButtonTool102, ButtonTool104, ButtonTool106, ButtonTool107, ButtonTool71, ButtonTool108, ButtonTool110, ButtonTool113, ButtonTool114, ButtonTool116, ButtonTool117, ButtonTool119, ButtonTool109, ButtonTool120, ButtonTool122, ButtonTool125, ButtonTool126, ButtonTool124, ButtonTool128, ButtonTool130, ButtonTool132, ButtonTool133})
+        Me.UTBM.ToolTipDisplayStyle = Infragistics.Win.UltraWinToolbars.ToolTipDisplayStyle.Standard
         '
         '_Principal_Toolbars_Dock_Area_Right
         '

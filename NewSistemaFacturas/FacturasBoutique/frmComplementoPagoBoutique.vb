@@ -15,7 +15,7 @@
 #End Region
 
     Private Sub frmComplementoPagoBoutique_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        objpro.CargaCombos(grbTienda, "Select tId, trSocial FROM CatTien ", 0, 1, Motor)
+        objpro.CargaCombos(grbTienda, "Select tId, trSocial FROM CatTien where ttipo3 = 'P'", 0, 1, Motor)
 
         Me.grbMes.Text = UCase(MonthName(Now.Date.Month))
         Me.grbPeriodo.Text = Now.Date.Year
@@ -63,13 +63,26 @@
             FechaInicio = FechaBusqueda & "01"
             Dim bf = DateSerial(grbPeriodo.Text, objfun.EscojeMes(Me.grbMes.Text) + 1, 0)
             FechaFin = FechaBusqueda & bf.ToString.Substring(0, 2)
-            objpro.LLenaGrid(Ugr, "SELECT feId as Id,  feuuid AS uuid, FEncabezado.FeFact as factura,FEncabezado.fefecha as fecha,FEncabezado.FeSerie as Serie,FEncabezado.FeEstatu as Estado, " & _
-                             " FEncabezado.Cid,FEncabezado.FeTerm as Terminal,Clientes.crfc as rfc_Clientes,Clientes.cRSocial as Clientes,FEncabezado.FeSubt as Subtotal, " & _
-                             " FEncabezado.fepdesc1 as Descuento ,FEncabezado.FeIva as Iva,FEncabezado.FeTotal as Total,FEncabezado.tid, FEncabezado.feabonos as Abono FROM FEncabez as FEncabezado " & _
-                             " left join CatClie as Clientes on FEncabezado.Cid = Clientes.Cid " & _
-                             " Where (FEncabezado.FeReg >= " & FechaInicio & " and FEncabezado.FeReg <= " & FechaFin & ") and FEncabezado.Tid = " & Me.grbTienda.Value & " and " & _
-                             " FEncabezado.Sid = " & grbSucursal.Value & " order by FEncabezado.FeSerie,FEncabezado.FeFact", "FEncabez", Motor)
+            objpro.LLenaGrid(Ugr, "SELECT feid as Id, feuuid AS uuid, FEncabezado.FeFact as factura,FEncabezado.feReg as fechaVenta,FEncabezado.FeSerie as Serie, FEncabezado.FeTotal as Total, FEncabezado.feabonos as Abono, FEncabezado.FeEstatu as Estado, " &
+                             " FEncabezado.Cid,FEncabezado.FeTerm as Terminal,Clientes.crfc as rfc_Clientes,Clientes.cRSocial as Clientes,FEncabezado.FeSubt as Subtotal, " &
+                             " FEncabezado.fepdesc1 as Descuento ,FEncabezado.FeIva as Iva,FEncabezado.tid FROM FEncabez as FEncabezado " &
+                             " left join CatClie as Clientes on FEncabezado.Cid = Clientes.Cid " &
+                             " Where (FEncabezado.FeReg >= " & FechaInicio & " and FEncabezado.FeReg <= " & FechaFin & ") and FEncabezado.fformpag = '99' and FEncabezado.fetip <> 'P' and FEncabezado.fetip <> 'F' and FEncabezado.fetip <> 'N' and FEncabezado.Tid = " & Me.grbTienda.Value & " and " &
+                             " FEncabezado.Sid = " & grbSucursal.Value & " and FEncabezado.FeEstatu = 1 order by FEncabezado.FeSerie,FEncabezado.FeFact", "FEncabez", Motor)
             Me.Ugr.DataBind()
+
+            For i = 0 To Me.Ugr.Rows.Count - 1
+                'Dim Tfac As Double = 0
+                'Tfac = Ugr.Rows(i).Cells("Total").Value
+                If Format(Ugr.Rows(i).Cells("Abono").Value, "######.00") = Format(Ugr.Rows(i).Cells("Total").Value, "######.00") Then
+                    Ugr.Rows(i).Appearance.BackColor = Color.GreenYellow
+
+                Else
+                    If Ugr.Rows(i).Cells("Abono").Value <> 0 Then
+                        Ugr.Rows(i).Appearance.BackColor = Color.Gold
+                    End If
+                End If
+            Next
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Information, "Facturacion .. ")
         End Try
@@ -77,42 +90,59 @@
 
     Private Sub Ugr_InitializeLayout(sender As Object, e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) Handles Ugr.InitializeLayout
         With Ugr
-            .DisplayLayout.Bands(0).Columns(0).Hidden = True
-            .DisplayLayout.Bands(0).Columns(1).Width = 180
-            .DisplayLayout.Bands(0).Columns(2).Width = 40
-            .DisplayLayout.Bands(0).Columns(3).Width = 70
-            .DisplayLayout.Bands(0).Columns(4).Hidden = True
-            .DisplayLayout.Bands(0).Columns(5).Hidden = True
-            .DisplayLayout.Bands(0).Columns(6).Hidden = True
-            .DisplayLayout.Bands(0).Columns(7).Hidden = True
-            .DisplayLayout.Bands(0).Columns(8).Width = 70
-            .DisplayLayout.Bands(0).Columns(9).Width = 130
-            .DisplayLayout.Bands(0).Columns(10).Width = 80
-            .DisplayLayout.Bands(0).Columns(11).Width = 80
-            .DisplayLayout.Bands(0).Columns(12).Width = 70
+            .DisplayLayout.Bands(0).Columns(0).Hidden = False
+            .DisplayLayout.Bands(0).Columns(0).Width = 5
+            .DisplayLayout.Bands(0).Columns(1).Width = 300
+            .DisplayLayout.Bands(0).Columns(2).Width = 60
+            .DisplayLayout.Bands(0).Columns(3).Width = 80
+            .DisplayLayout.Bands(0).Columns(4).Width = 50
+            .DisplayLayout.Bands(0).Columns(5).Width = 80
+            .DisplayLayout.Bands(0).Columns(6).Width = 80
+            .DisplayLayout.Bands(0).Columns(7).Width = 40
+            .DisplayLayout.Bands(0).Columns(8).Width = 40
+            .DisplayLayout.Bands(0).Columns(9).Width = 40
+            .DisplayLayout.Bands(0).Columns(10).Width = 100
+            .DisplayLayout.Bands(0).Columns(11).Width = 250
+            .DisplayLayout.Bands(0).Columns(12).Width = 80
             .DisplayLayout.Bands(0).Columns(13).Width = 80
-            .DisplayLayout.Bands(0).Columns(14).Hidden = True
-            .DisplayLayout.Bands(0).Columns(15).Width = 80
+            .DisplayLayout.Bands(0).Columns(14).Width = 80
+            .DisplayLayout.Bands(0).Columns(15).Hidden = True
+
         End With
     End Sub
 
     Private Sub Ugr_DoubleClick(sender As Object, e As EventArgs) Handles Ugr.DoubleClick
         Pagos_Datos()
         Try
-            P_Id = Ugr.ActiveRow.Cells("Id").Value
-            P_Tid = grbTienda.Value
-            P_Suc = grbSucursal.Value
-            P_Term = Ugr.ActiveRow.Cells("Terminal").Value
-            P_Fact = Ugr.ActiveRow.Cells("Factura").Value
-            P_Serie = Ugr.ActiveRow.Cells("Serie").Value.ToString
 
-            txtFactura.Text = Format(Ugr.ActiveRow.Cells("Factura").Value, "00000")
-            txtSerie.Text = Ugr.ActiveRow.Cells("Serie").Value.ToString
-            txtFechaFactura.Value = Ugr.ActiveRow.Cells("Fecha").Value.ToString
-            txtUUID.Text = Ugr.ActiveRow.Cells("UUID").Value.ToString
-            Total.Value = Ugr.ActiveRow.Cells("Total").Value.ToString
-            Abono.Value = Ugr.ActiveRow.Cells("Abono").Value.ToString
-            Saldo.Value = (Total.Value - Abono.Value)
+            If Format(Ugr.ActiveRow.Cells("Abono").Value, "######.00") <> Format(Ugr.ActiveRow.Cells("Total").Value, "######.00") Then
+
+                P_Id = Ugr.ActiveRow.Cells("Id").Value
+                P_Tid = grbTienda.Value
+                P_Suc = grbSucursal.Value
+                P_Term = Ugr.ActiveRow.Cells("Terminal").Value
+                P_Fact = Ugr.ActiveRow.Cells("Factura").Value
+                P_Serie = Ugr.ActiveRow.Cells("Serie").Value.ToString
+
+                txtFactura.Text = Format(Ugr.ActiveRow.Cells("Factura").Value, "00000")
+                txtSerie.Text = Ugr.ActiveRow.Cells("Serie").Value.ToString
+                Dim ventaf, fevta As String
+                ventaf = Ugr.ActiveRow.Cells("FechaVenta").Value.ToString
+                fevta = ventaf.Substring(6, 2) & "/" & ventaf.Substring(4, 2) & "/" & ventaf.Substring(0, 4)
+                txtFechaFactura.Value = CDate(fevta)
+                txtUUID.Text = Ugr.ActiveRow.Cells("UUID").Value.ToString
+                Total.Value = Ugr.ActiveRow.Cells("Total").Value.ToString
+                Abono.Value = Ugr.ActiveRow.Cells("Abono").Value.ToString
+                'If Ugr.ActiveRow.Cells("Abono").Value = 0 Then
+                '    Saldo.Value = Format((Abono.Value), "######.00")
+                'Else
+                Saldo.Value = Format((Total.Value - Abono.Value), "######.00")
+                'End If
+
+            Else
+                MsgBox("Esta factura ya ha sido cubierta en su Totalidad ", MsgBoxStyle.Information, "Facturación.. ")
+            End If
+
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Information, "Facturación.. ")
         End Try
@@ -129,25 +159,40 @@
 
     Private Sub btnAplicarPago_Click(sender As Object, e As EventArgs) Handles btnAplicarPago.Click
         If txtUUID.Text <> "" Then
-            If Saldo.Value <> 0 Then
-                Formulario(frmPagosBoutique)
-                Pagos_Datos()
+            If P_Serie.Trim <> "" Then
+                If Saldo.Value <> 0 Then
+                    Formulario(frmPagosBoutique)
+                    'Pagos_Datos()
+                    Inicializa_Totales()
+                    CargaGrid()
+                Else
+                    MsgBox("La factura ya se cubrio en su totalidad ", MsgBoxStyle.Information, "Facturación ..")
+                End If
             Else
-                MsgBox("La factura ya se cubrio en su totalidad ", MsgBoxStyle.Information, "Facturación ..")
+                MsgBox("No ha seleccionado una factura para complemento de pago ", MsgBoxStyle.Information, "Facturación ..")
             End If
+
         Else
             MsgBox("No hay UUID relacionado para el pago ", MsgBoxStyle.Information, "Facturación ..")
         End If
     End Sub
+
+    'Private Sub frmPagosBoutique_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+    '    ' Código que se llama después de cerrar la ventana
+    '    Inicializa_Totales()
+    '    CargaGrid()
+    'End Sub
+
 
     Public Function Formulario(ByVal form As Form) As Boolean
         form.ShowDialog()
         Return False
     End Function
 
-    Private Sub grbSucursal_ValueChanged(sender As Object, e As EventArgs) Handles grbSucursal.ValueChanged
+    Private Sub grbSucursal_ValueChanged(sender As Object, e As EventArgs)
         btnBuscar.Focus()
     End Sub
+
 
     Private Sub frmComplementoPagoBoutique_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Me.Dispose()

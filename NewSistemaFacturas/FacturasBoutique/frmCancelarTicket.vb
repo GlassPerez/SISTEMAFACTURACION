@@ -23,11 +23,13 @@ Public Class frmCancelarTicket
                 Try
                     Application.DoEvents()
                     ''ELIMINO DETALLE
-                    upb.Value += 25
                     fecha = Date.Now.ToString.Substring(0, 10) ''"27/02/2024"
-                    objpro.Indicacion("UPDATE VTAPOS SET VPSTSF = '' WHERE VPSUC = " & CInt(suc) & " And VPFOL = " & folio & " And VPTER = " & terminal & " ", MotorBoutique)
+                    objpro.Indicacion("UPDATE VTAPOS SET VPSTSF = '' WHERE VPSUC = " & CInt(suc) & " And VPFOL = " & folio & " And VPTER = " & terminal & "and day(VPFEC) = " & fecha.ToString.Substring(0, 2) & " and month(VPFEC) = " & fecha.ToString.Substring(3, 2) & " and year(VPFEC) = " & fecha.ToString.Substring(6, 4) & " ", MotorBoutique)
                     upb.Value += 25
+                    ''EN CASO DE QUE YA SE HAYA PASO LA INFO AL MAESTRO
+                    objpro.Indicacion("UPDATE MVTAPOS SET MVPSTSF = '' WHERE MVPSUC = " & CInt(suc) & " And MVPFOL = " & folio & " And MVPTER = " & terminal & "and day(MVPFEC) = " & fecha.ToString.Substring(0, 2) & " and month(MVPFEC) = " & fecha.ToString.Substring(3, 2) & " and year(MVPFEC) = " & fecha.ToString.Substring(6, 4) & " ", MotorBoutique)
                     Application.DoEvents()
+                    upb.Value += 25
                     ''ELIMINA DETALLE
                     objpro.Indicacion("DELETE FROM VENTADET WHERE Sid = " & Sucursal & " And VDIDFOLV = " & folio & " And VDTERM = " & terminal & " and day(vdfecha) = " & fecha.ToString.Substring(0, 2) & " and month(vdfecha) = " & fecha.ToString.Substring(3, 2) & " and year(vdfecha) = " & fecha.ToString.Substring(6, 4) & "", MotorBoutique)
                     upb.Value += 25
@@ -148,9 +150,12 @@ Public Class frmCancelarTicket
 
         suc = objpro.DatoString("CSUNUM", "CATCIA", "CCSUCFE = " & CInt(Sucursal) & " ", MotorBoutique)
         fecha = Date.Now.ToString.Substring(0, 10) ''"27/02/2024"
-        objpro.LLenaGrid(Me.UGTicket, "Select VTAPOS.VPTER AS TERMINAL,  VTAPOS.VPFOL AS FOLIO, VTAPOS.VPFEC AS FECHA, VTAPOS.VPSTSF AS ESTATUS, VTAPOS.VPTOTP AS TOTAL, VENTAENC.VEFAC AS NUM_FACTURA  from VTAPOS inner join VENTAENC ON VENTAENC.VEIDFOLV = VTAPOS.VPFOL where VTAPOS.VPSUC = " & CInt(suc) & " and " &
-                         " day(VTAPOS.VPFEC) = " & fecha.Substring(0, 2) & " and month(VTAPOS.VPFEC) = " & fecha.Substring(3, 2) & " and year(VTAPOS.VPFEC) = " & fecha.Substring(6, 4) & " AND VTAPOS.VPSTS = 'P' AND VTAPOS.VPSTSF = 'S' ", " ", MotorBoutique)
+        'objpro.LLenaGrid(Me.UGTicket, "Select VTAPOS.VPTER AS TERMINAL,  VTAPOS.VPFOL AS FOLIO, VTAPOS.VPFEC AS FECHA, VTAPOS.VPSTSF AS ESTATUS, VTAPOS.VPTOTP AS TOTAL, VENTAENC.VEFAC AS NUM_FACTURA  from VTAPOS inner join VENTAENC ON VENTAENC.VEIDFOLV = VTAPOS.VPFOL where VTAPOS.VPSUC = " & CInt(suc) & " and " &
+        '                 " day(VTAPOS.VPFEC) = " & fecha.Substring(0, 2) & " and month(VTAPOS.VPFEC) = " & fecha.Substring(3, 2) & " and year(VTAPOS.VPFEC) = " & fecha.Substring(6, 4) & " AND VTAPOS.VPSTS = 'P' AND VTAPOS.VPSTSF = 'S' ", " ", MotorBoutique)
 
+        '20260428
+        objpro.LLenaGrid(Me.UGTicket, "Select VENTAENC.VETERM AS TERMINAL,  VENTAENC.VEIDFOLV AS FOLIO, VENTAENC.VEFECHA AS FECHA, VENTAENC.VEESTATU AS ESTATUS, VENTAENC.VETOTAL AS TOTAL, VENTAENC.VEFAC AS NUM_FACTURA  from VENTAENC  where VENTAENC.VEFOLIO = " & CInt(grbTienda.Value) & " and " &
+                         " day(VENTAENC.VEFECHA) = " & fecha.Substring(0, 2) & " and month(VENTAENC.VEFECHA) = " & fecha.Substring(3, 2) & " and year(VENTAENC.VEFECHA) = " & fecha.Substring(6, 4) & " AND VENTAENC.VEESTATU = 0 AND VENTAENC.VEFAC = '0' ", " ", MotorBoutique)
         If UGTicket.Rows.Count <> 0 Then
             'For Each column In UGTicket.DisplayLayout.Bands(0).Columns
             '    If column.ToString = "NUM_FACTURA" Then

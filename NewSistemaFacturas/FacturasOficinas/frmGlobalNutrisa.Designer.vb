@@ -22,10 +22,10 @@ Partial Class frmGlobalNutrisa
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim Appearance15 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance16 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance19 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance42 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance39 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance29 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance40 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance41 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance50 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -36,23 +36,22 @@ Partial Class frmGlobalNutrisa
         Dim Appearance49 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance48 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance46 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance30 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance14 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance27 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance15 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance17 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance20 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance21 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance22 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance23 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance24 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance25 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance26 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance28 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance29 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance38 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance33 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance32 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance31 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance35 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance37 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance36 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance34 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance18 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance1 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmGlobalNutrisa))
-        Dim Appearance3 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance4 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance5 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance6 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -62,7 +61,7 @@ Partial Class frmGlobalNutrisa
         Dim Appearance10 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance11 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance12 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance14 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance30 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance51 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance52 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance53 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -70,8 +69,8 @@ Partial Class frmGlobalNutrisa
         Dim Appearance54 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance55 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance13 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance57 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance58 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance31 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance32 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance69 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance70 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance71 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -100,6 +99,7 @@ Partial Class frmGlobalNutrisa
         Me.grbTienda = New Infragistics.Win.UltraWinGrid.UltraCombo()
         Me.UltraLabel3 = New Infragistics.Win.Misc.UltraLabel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.DevIps = New Infragistics.Win.UltraWinEditors.UltraCurrencyEditor()
         Me.DevIva = New Infragistics.Win.UltraWinEditors.UltraCurrencyEditor()
@@ -129,6 +129,18 @@ Partial Class frmGlobalNutrisa
         Me.UgrTicket = New Infragistics.Win.UltraWinGrid.UltraGrid()
         Me.grbPagos = New Infragistics.Win.UltraWinGrid.UltraCombo()
         Me.UltraLabel5 = New Infragistics.Win.Misc.UltraLabel()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.DGFacturas = New System.Windows.Forms.DataGridView()
+        Me.Ticket = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Total_Facturado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Subtotal_Fac = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descuento_Fac = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descuento_Ieps = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descuento_Cero = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Iva_Fac = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Ieps_Fac = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.txtFechaVenta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grbSucursal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grbTienda, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -148,19 +160,22 @@ Partial Class frmGlobalNutrisa
         Me.gpoNotas.SuspendLayout()
         CType(Me.UgrTicket, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grbPagos, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
+        Me.Panel3.SuspendLayout()
+        CType(Me.DGFacturas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'upb
         '
-        Appearance15.BackColorAlpha = Infragistics.Win.Alpha.Transparent
-        Appearance15.FontData.BoldAsString = "True"
-        Appearance15.ForeColor = System.Drawing.Color.Black
-        Me.upb.Appearance = Appearance15
+        Appearance16.BackColorAlpha = Infragistics.Win.Alpha.Transparent
+        Appearance16.FontData.BoldAsString = "True"
+        Appearance16.ForeColor = System.Drawing.Color.Black
+        Me.upb.Appearance = Appearance16
         Me.upb.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.upb.Location = New System.Drawing.Point(0, 620)
+        Me.upb.Location = New System.Drawing.Point(0, 788)
         Me.upb.Maximum = 0
         Me.upb.Name = "upb"
-        Me.upb.Size = New System.Drawing.Size(1137, 31)
+        Me.upb.Size = New System.Drawing.Size(1197, 19)
         Me.upb.TabIndex = 6
         Me.upb.Text = "[Value]"
         '
@@ -170,9 +185,9 @@ Partial Class frmGlobalNutrisa
         Me.btnFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnFactura.ForeColor = System.Drawing.Color.White
-        Me.btnFactura.Location = New System.Drawing.Point(986, 48)
+        Me.btnFactura.Location = New System.Drawing.Point(19, 62)
         Me.btnFactura.Name = "btnFactura"
-        Me.btnFactura.Size = New System.Drawing.Size(138, 38)
+        Me.btnFactura.Size = New System.Drawing.Size(216, 30)
         Me.btnFactura.TabIndex = 85
         Me.btnFactura.Text = "Mostrar detalle de la Venta"
         Me.btnFactura.UseVisualStyleBackColor = False
@@ -180,7 +195,7 @@ Partial Class frmGlobalNutrisa
         'txtFechaVenta
         '
         Me.txtFechaVenta.DateTime = New Date(2013, 12, 3, 0, 0, 0, 0)
-        Me.txtFechaVenta.Location = New System.Drawing.Point(1011, 15)
+        Me.txtFechaVenta.Location = New System.Drawing.Point(122, 24)
         Me.txtFechaVenta.Name = "txtFechaVenta"
         Me.txtFechaVenta.Size = New System.Drawing.Size(113, 21)
         Me.txtFechaVenta.TabIndex = 84
@@ -192,7 +207,7 @@ Partial Class frmGlobalNutrisa
         Me.UltraLabel2.Appearance = Appearance19
         Me.UltraLabel2.AutoSize = True
         Me.UltraLabel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UltraLabel2.Location = New System.Drawing.Point(908, 19)
+        Me.UltraLabel2.Location = New System.Drawing.Point(19, 28)
         Me.UltraLabel2.Name = "UltraLabel2"
         Me.UltraLabel2.Size = New System.Drawing.Size(97, 14)
         Me.UltraLabel2.TabIndex = 83
@@ -203,9 +218,9 @@ Partial Class frmGlobalNutrisa
         Me.grbMes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grbMes.FormattingEnabled = True
         Me.grbMes.Items.AddRange(New Object() {"ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"})
-        Me.grbMes.Location = New System.Drawing.Point(160, 65)
+        Me.grbMes.Location = New System.Drawing.Point(194, 78)
         Me.grbMes.Name = "grbMes"
-        Me.grbMes.Size = New System.Drawing.Size(121, 21)
+        Me.grbMes.Size = New System.Drawing.Size(147, 21)
         Me.grbMes.TabIndex = 82
         '
         'Label2
@@ -214,7 +229,7 @@ Partial Class frmGlobalNutrisa
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(160, 49)
+        Me.Label2.Location = New System.Drawing.Point(191, 62)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(101, 13)
         Me.Label2.TabIndex = 81
@@ -226,7 +241,7 @@ Partial Class frmGlobalNutrisa
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(12, 49)
+        Me.Label1.Location = New System.Drawing.Point(20, 62)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(100, 13)
         Me.Label1.TabIndex = 80
@@ -238,9 +253,9 @@ Partial Class frmGlobalNutrisa
         Me.grbPeriodo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grbPeriodo.FormattingEnabled = True
         Me.grbPeriodo.Items.AddRange(New Object() {"2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"})
-        Me.grbPeriodo.Location = New System.Drawing.Point(15, 65)
+        Me.grbPeriodo.Location = New System.Drawing.Point(26, 78)
         Me.grbPeriodo.Name = "grbPeriodo"
-        Me.grbPeriodo.Size = New System.Drawing.Size(94, 21)
+        Me.grbPeriodo.Size = New System.Drawing.Size(131, 21)
         Me.grbPeriodo.TabIndex = 79
         '
         'btnConsultar
@@ -249,9 +264,9 @@ Partial Class frmGlobalNutrisa
         Me.btnConsultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnConsultar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnConsultar.ForeColor = System.Drawing.Color.White
-        Me.btnConsultar.Location = New System.Drawing.Point(598, 19)
+        Me.btnConsultar.Location = New System.Drawing.Point(404, 65)
         Me.btnConsultar.Name = "btnConsultar"
-        Me.btnConsultar.Size = New System.Drawing.Size(227, 53)
+        Me.btnConsultar.Size = New System.Drawing.Size(167, 34)
         Me.btnConsultar.TabIndex = 78
         Me.btnConsultar.Text = "Consultar Dias Facturados"
         Me.btnConsultar.UseVisualStyleBackColor = False
@@ -262,7 +277,7 @@ Partial Class frmGlobalNutrisa
         Me.lblSucursal.BackColor = System.Drawing.Color.Transparent
         Me.lblSucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSucursal.ForeColor = System.Drawing.Color.Black
-        Me.lblSucursal.Location = New System.Drawing.Point(296, 17)
+        Me.lblSucursal.Location = New System.Drawing.Point(191, 12)
         Me.lblSucursal.Name = "lblSucursal"
         Me.lblSucursal.Size = New System.Drawing.Size(60, 13)
         Me.lblSucursal.TabIndex = 77
@@ -277,11 +292,11 @@ Partial Class frmGlobalNutrisa
         Me.grbSucursal.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ExtendLastColumn
         Me.grbSucursal.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
         Me.grbSucursal.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.[False]
-        Appearance39.BackColor = System.Drawing.SystemColors.ActiveBorder
-        Appearance39.BackColor2 = System.Drawing.SystemColors.ControlDark
-        Appearance39.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical
-        Appearance39.BorderColor = System.Drawing.SystemColors.Window
-        Me.grbSucursal.DisplayLayout.GroupByBox.Appearance = Appearance39
+        Appearance29.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Appearance29.BackColor2 = System.Drawing.SystemColors.ControlDark
+        Appearance29.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical
+        Appearance29.BorderColor = System.Drawing.SystemColors.Window
+        Me.grbSucursal.DisplayLayout.GroupByBox.Appearance = Appearance29
         Appearance40.ForeColor = System.Drawing.SystemColors.GrayText
         Me.grbSucursal.DisplayLayout.GroupByBox.BandLabelAppearance = Appearance40
         Me.grbSucursal.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
@@ -327,9 +342,9 @@ Partial Class frmGlobalNutrisa
         Me.grbSucursal.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.grbSucursal.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
         Me.grbSucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grbSucursal.Location = New System.Drawing.Point(362, 8)
+        Me.grbSucursal.Location = New System.Drawing.Point(194, 28)
         Me.grbSucursal.Name = "grbSucursal"
-        Me.grbSucursal.Size = New System.Drawing.Size(202, 22)
+        Me.grbSucursal.Size = New System.Drawing.Size(187, 22)
         Me.grbSucursal.TabIndex = 76
         '
         'lblTienda
@@ -338,7 +353,7 @@ Partial Class frmGlobalNutrisa
         Me.lblTienda.BackColor = System.Drawing.Color.Transparent
         Me.lblTienda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTienda.ForeColor = System.Drawing.Color.Black
-        Me.lblTienda.Location = New System.Drawing.Point(12, 17)
+        Me.lblTienda.Location = New System.Drawing.Point(20, 12)
         Me.lblTienda.Name = "lblTienda"
         Me.lblTienda.Size = New System.Drawing.Size(50, 13)
         Me.lblTienda.TabIndex = 75
@@ -347,9 +362,9 @@ Partial Class frmGlobalNutrisa
         'grbTienda
         '
         Me.grbTienda.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal
-        Appearance30.BackColor = System.Drawing.SystemColors.Window
-        Appearance30.BorderColor = System.Drawing.SystemColors.InactiveCaption
-        Me.grbTienda.DisplayLayout.Appearance = Appearance30
+        Appearance14.BackColor = System.Drawing.SystemColors.Window
+        Appearance14.BorderColor = System.Drawing.SystemColors.InactiveCaption
+        Me.grbTienda.DisplayLayout.Appearance = Appearance14
         Me.grbTienda.DisplayLayout.AutoFitStyle = Infragistics.Win.UltraWinGrid.AutoFitStyle.ExtendLastColumn
         Me.grbTienda.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
         Me.grbTienda.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.[False]
@@ -358,70 +373,71 @@ Partial Class frmGlobalNutrisa
         Appearance27.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical
         Appearance27.BorderColor = System.Drawing.SystemColors.Window
         Me.grbTienda.DisplayLayout.GroupByBox.Appearance = Appearance27
-        Appearance28.ForeColor = System.Drawing.SystemColors.GrayText
-        Me.grbTienda.DisplayLayout.GroupByBox.BandLabelAppearance = Appearance28
+        Appearance15.ForeColor = System.Drawing.SystemColors.GrayText
+        Me.grbTienda.DisplayLayout.GroupByBox.BandLabelAppearance = Appearance15
         Me.grbTienda.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid
-        Appearance29.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Appearance29.BackColor2 = System.Drawing.SystemColors.Control
-        Appearance29.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal
-        Appearance29.ForeColor = System.Drawing.SystemColors.GrayText
-        Me.grbTienda.DisplayLayout.GroupByBox.PromptAppearance = Appearance29
+        Appearance17.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Appearance17.BackColor2 = System.Drawing.SystemColors.Control
+        Appearance17.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal
+        Appearance17.ForeColor = System.Drawing.SystemColors.GrayText
+        Me.grbTienda.DisplayLayout.GroupByBox.PromptAppearance = Appearance17
         Me.grbTienda.DisplayLayout.MaxColScrollRegions = 1
         Me.grbTienda.DisplayLayout.MaxRowScrollRegions = 1
-        Appearance38.BackColor = System.Drawing.SystemColors.Window
-        Appearance38.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.grbTienda.DisplayLayout.Override.ActiveCellAppearance = Appearance38
-        Appearance33.BackColor = System.Drawing.SystemColors.Highlight
-        Appearance33.ForeColor = System.Drawing.SystemColors.HighlightText
-        Me.grbTienda.DisplayLayout.Override.ActiveRowAppearance = Appearance33
+        Appearance20.BackColor = System.Drawing.SystemColors.Window
+        Appearance20.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.grbTienda.DisplayLayout.Override.ActiveCellAppearance = Appearance20
+        Appearance21.BackColor = System.Drawing.SystemColors.Highlight
+        Appearance21.ForeColor = System.Drawing.SystemColors.HighlightText
+        Me.grbTienda.DisplayLayout.Override.ActiveRowAppearance = Appearance21
         Me.grbTienda.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted
         Me.grbTienda.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted
-        Appearance32.BackColor = System.Drawing.SystemColors.Window
-        Me.grbTienda.DisplayLayout.Override.CardAreaAppearance = Appearance32
-        Appearance31.BorderColor = System.Drawing.Color.Silver
-        Appearance31.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter
-        Me.grbTienda.DisplayLayout.Override.CellAppearance = Appearance31
+        Appearance22.BackColor = System.Drawing.SystemColors.Window
+        Me.grbTienda.DisplayLayout.Override.CardAreaAppearance = Appearance22
+        Appearance23.BorderColor = System.Drawing.Color.Silver
+        Appearance23.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter
+        Me.grbTienda.DisplayLayout.Override.CellAppearance = Appearance23
         Me.grbTienda.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText
         Me.grbTienda.DisplayLayout.Override.CellPadding = 0
-        Appearance35.BackColor = System.Drawing.SystemColors.Control
-        Appearance35.BackColor2 = System.Drawing.SystemColors.ControlDark
-        Appearance35.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element
-        Appearance35.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal
-        Appearance35.BorderColor = System.Drawing.SystemColors.Window
-        Me.grbTienda.DisplayLayout.Override.GroupByRowAppearance = Appearance35
-        Appearance37.TextHAlignAsString = "Left"
-        Me.grbTienda.DisplayLayout.Override.HeaderAppearance = Appearance37
+        Appearance24.BackColor = System.Drawing.SystemColors.Control
+        Appearance24.BackColor2 = System.Drawing.SystemColors.ControlDark
+        Appearance24.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element
+        Appearance24.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal
+        Appearance24.BorderColor = System.Drawing.SystemColors.Window
+        Me.grbTienda.DisplayLayout.Override.GroupByRowAppearance = Appearance24
+        Appearance25.TextHAlignAsString = "Left"
+        Me.grbTienda.DisplayLayout.Override.HeaderAppearance = Appearance25
         Me.grbTienda.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti
         Me.grbTienda.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand
-        Appearance36.BackColor = System.Drawing.SystemColors.Window
-        Appearance36.BorderColor = System.Drawing.Color.Silver
-        Me.grbTienda.DisplayLayout.Override.RowAppearance = Appearance36
+        Appearance26.BackColor = System.Drawing.SystemColors.Window
+        Appearance26.BorderColor = System.Drawing.Color.Silver
+        Me.grbTienda.DisplayLayout.Override.RowAppearance = Appearance26
         Me.grbTienda.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.[False]
-        Appearance34.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.grbTienda.DisplayLayout.Override.TemplateAddRowAppearance = Appearance34
+        Appearance28.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.grbTienda.DisplayLayout.Override.TemplateAddRowAppearance = Appearance28
         Me.grbTienda.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill
         Me.grbTienda.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.grbTienda.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
         Me.grbTienda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grbTienda.Location = New System.Drawing.Point(62, 11)
+        Me.grbTienda.Location = New System.Drawing.Point(23, 28)
         Me.grbTienda.Name = "grbTienda"
-        Me.grbTienda.Size = New System.Drawing.Size(219, 22)
+        Me.grbTienda.Size = New System.Drawing.Size(151, 22)
         Me.grbTienda.TabIndex = 74
         '
         'UltraLabel3
         '
         Appearance18.BackColor = System.Drawing.Color.White
         Appearance18.BackColor2 = System.Drawing.Color.White
-        Appearance18.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical
+        Appearance18.BackGradientStyle = Infragistics.Win.GradientStyle.None
         Me.UltraLabel3.Appearance = Appearance18
         Me.UltraLabel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.UltraLabel3.Location = New System.Drawing.Point(0, 0)
         Me.UltraLabel3.Name = "UltraLabel3"
-        Me.UltraLabel3.Size = New System.Drawing.Size(1137, 92)
+        Me.UltraLabel3.Size = New System.Drawing.Size(1197, 111)
         Me.UltraLabel3.TabIndex = 86
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Button2)
         Me.GroupBox1.Controls.Add(Me.Panel2)
         Me.GroupBox1.Controls.Add(Me.Subtotal)
         Me.GroupBox1.Controls.Add(Me.lblSubtotal)
@@ -438,11 +454,22 @@ Partial Class frmGlobalNutrisa
         Me.GroupBox1.Controls.Add(Me.lblDescuento)
         Me.GroupBox1.Controls.Add(Me.Descuento)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 92)
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 111)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1137, 104)
+        Me.GroupBox1.Size = New System.Drawing.Size(1197, 102)
         Me.GroupBox1.TabIndex = 87
         Me.GroupBox1.TabStop = False
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.Yellow
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Location = New System.Drawing.Point(1088, 12)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(97, 44)
+        Me.Button2.TabIndex = 49
+        Me.Button2.Text = "Actualiza Totales"
+        Me.Button2.UseVisualStyleBackColor = False
         '
         'Panel2
         '
@@ -456,9 +483,9 @@ Partial Class frmGlobalNutrisa
         Me.Panel2.Controls.Add(Me.Label4)
         Me.Panel2.Controls.Add(Me.Label5)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(3, 68)
+        Me.Panel2.Location = New System.Drawing.Point(3, 62)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1131, 33)
+        Me.Panel2.Size = New System.Drawing.Size(1191, 37)
         Me.Panel2.TabIndex = 48
         '
         'DevIps
@@ -536,7 +563,7 @@ Partial Class frmGlobalNutrisa
         'Subtotal
         '
         Me.Subtotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Subtotal.Location = New System.Drawing.Point(224, 25)
+        Me.Subtotal.Location = New System.Drawing.Point(230, 25)
         Me.Subtotal.Name = "Subtotal"
         Me.Subtotal.ReadOnly = True
         Me.Subtotal.Size = New System.Drawing.Size(132, 24)
@@ -569,7 +596,7 @@ Partial Class frmGlobalNutrisa
         Me.lblFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblFactura.Location = New System.Drawing.Point(6, 10)
         Me.lblFactura.Name = "lblFactura"
-        Me.lblFactura.Size = New System.Drawing.Size(46, 36)
+        Me.lblFactura.Size = New System.Drawing.Size(50, 36)
         Me.lblFactura.TabIndex = 46
         Me.lblFactura.Text = "Día de Factura:"
         Me.lblFactura.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -577,7 +604,7 @@ Partial Class frmGlobalNutrisa
         'Traslado
         '
         Me.Traslado.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Traslado.Location = New System.Drawing.Point(850, 25)
+        Me.Traslado.Location = New System.Drawing.Point(792, 22)
         Me.Traslado.Name = "Traslado"
         Me.Traslado.ReadOnly = True
         Me.Traslado.Size = New System.Drawing.Size(130, 24)
@@ -587,7 +614,7 @@ Partial Class frmGlobalNutrisa
         '
         Me.lblTraslado.AutoSize = True
         Me.lblTraslado.BackColor = System.Drawing.Color.Transparent
-        Me.lblTraslado.Location = New System.Drawing.Point(847, 6)
+        Me.lblTraslado.Location = New System.Drawing.Point(806, 10)
         Me.lblTraslado.Name = "lblTraslado"
         Me.lblTraslado.Size = New System.Drawing.Size(75, 13)
         Me.lblTraslado.TabIndex = 44
@@ -597,7 +624,7 @@ Partial Class frmGlobalNutrisa
         '
         Me.lblTotal.AutoSize = True
         Me.lblTotal.BackColor = System.Drawing.Color.Transparent
-        Me.lblTotal.Location = New System.Drawing.Point(998, 7)
+        Me.lblTotal.Location = New System.Drawing.Point(935, 6)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(31, 13)
         Me.lblTotal.TabIndex = 42
@@ -606,7 +633,7 @@ Partial Class frmGlobalNutrisa
         'Total
         '
         Me.Total.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Total.Location = New System.Drawing.Point(999, 25)
+        Me.Total.Location = New System.Drawing.Point(928, 22)
         Me.Total.Name = "Total"
         Me.Total.ReadOnly = True
         Me.Total.Size = New System.Drawing.Size(132, 24)
@@ -615,7 +642,7 @@ Partial Class frmGlobalNutrisa
         'IEPS
         '
         Me.IEPS.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.IEPS.Location = New System.Drawing.Point(693, 25)
+        Me.IEPS.Location = New System.Drawing.Point(654, 22)
         Me.IEPS.Name = "IEPS"
         Me.IEPS.ReadOnly = True
         Me.IEPS.Size = New System.Drawing.Size(132, 24)
@@ -625,7 +652,7 @@ Partial Class frmGlobalNutrisa
         '
         Me.lblIeps.AutoSize = True
         Me.lblIeps.BackColor = System.Drawing.Color.Transparent
-        Me.lblIeps.Location = New System.Drawing.Point(690, 8)
+        Me.lblIeps.Location = New System.Drawing.Point(661, 6)
         Me.lblIeps.Name = "lblIeps"
         Me.lblIeps.Size = New System.Drawing.Size(31, 13)
         Me.lblIeps.TabIndex = 40
@@ -635,7 +662,7 @@ Partial Class frmGlobalNutrisa
         '
         Me.lblIva.AutoSize = True
         Me.lblIva.BackColor = System.Drawing.Color.Transparent
-        Me.lblIva.Location = New System.Drawing.Point(533, 7)
+        Me.lblIva.Location = New System.Drawing.Point(508, 9)
         Me.lblIva.Name = "lblIva"
         Me.lblIva.Size = New System.Drawing.Size(22, 13)
         Me.lblIva.TabIndex = 38
@@ -644,7 +671,7 @@ Partial Class frmGlobalNutrisa
         'Iva
         '
         Me.Iva.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Iva.Location = New System.Drawing.Point(536, 25)
+        Me.Iva.Location = New System.Drawing.Point(501, 25)
         Me.Iva.Name = "Iva"
         Me.Iva.ReadOnly = True
         Me.Iva.Size = New System.Drawing.Size(132, 24)
@@ -654,7 +681,7 @@ Partial Class frmGlobalNutrisa
         '
         Me.lblDescuento.AutoSize = True
         Me.lblDescuento.BackColor = System.Drawing.Color.Transparent
-        Me.lblDescuento.Location = New System.Drawing.Point(375, 8)
+        Me.lblDescuento.Location = New System.Drawing.Point(374, 8)
         Me.lblDescuento.Name = "lblDescuento"
         Me.lblDescuento.Size = New System.Drawing.Size(59, 13)
         Me.lblDescuento.TabIndex = 36
@@ -663,7 +690,7 @@ Partial Class frmGlobalNutrisa
         'Descuento
         '
         Me.Descuento.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Descuento.Location = New System.Drawing.Point(378, 25)
+        Me.Descuento.Location = New System.Drawing.Point(368, 25)
         Me.Descuento.Name = "Descuento"
         Me.Descuento.ReadOnly = True
         Me.Descuento.Size = New System.Drawing.Size(127, 24)
@@ -675,9 +702,9 @@ Partial Class frmGlobalNutrisa
         Me.btnFacturar.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.btnFacturar.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnFacturar.ForeColor = System.Drawing.Color.White
-        Me.btnFacturar.Location = New System.Drawing.Point(0, 578)
+        Me.btnFacturar.Location = New System.Drawing.Point(0, 746)
         Me.btnFacturar.Name = "btnFacturar"
-        Me.btnFacturar.Size = New System.Drawing.Size(1137, 42)
+        Me.btnFacturar.Size = New System.Drawing.Size(1197, 42)
         Me.btnFacturar.TabIndex = 88
         Me.btnFacturar.Text = "Generar factura"
         Me.btnFacturar.UseVisualStyleBackColor = False
@@ -688,9 +715,9 @@ Partial Class frmGlobalNutrisa
         Me.gpoNotas.Controls.Add(Me.ChlisFact)
         Me.gpoNotas.Dock = System.Windows.Forms.DockStyle.Left
         Me.gpoNotas.ForeColor = System.Drawing.Color.White
-        Me.gpoNotas.Location = New System.Drawing.Point(0, 196)
+        Me.gpoNotas.Location = New System.Drawing.Point(0, 213)
         Me.gpoNotas.Name = "gpoNotas"
-        Me.gpoNotas.Size = New System.Drawing.Size(216, 382)
+        Me.gpoNotas.Size = New System.Drawing.Size(216, 533)
         Me.gpoNotas.TabIndex = 89
         Me.gpoNotas.TabStop = False
         Me.gpoNotas.Text = "Archivos de Ventas"
@@ -706,7 +733,7 @@ Partial Class frmGlobalNutrisa
         Me.ChlisFact.Location = New System.Drawing.Point(3, 16)
         Me.ChlisFact.MultiColumn = True
         Me.ChlisFact.Name = "ChlisFact"
-        Me.ChlisFact.Size = New System.Drawing.Size(210, 363)
+        Me.ChlisFact.Size = New System.Drawing.Size(210, 514)
         Me.ChlisFact.TabIndex = 2
         '
         'UgrTicket
@@ -725,8 +752,6 @@ Partial Class frmGlobalNutrisa
         Me.UgrTicket.DisplayLayout.AddNewBox.ButtonAppearance = Appearance2
         Me.UgrTicket.DisplayLayout.AddNewBox.ButtonConnectorColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(27, Byte), Integer), CType(CType(85, Byte), Integer))
         Me.UgrTicket.DisplayLayout.AddNewBox.ButtonStyle = Infragistics.Win.UIElementButtonStyle.FlatBorderless
-        Appearance3.BackColor = System.Drawing.Color.White
-        Me.UgrTicket.DisplayLayout.Appearance = Appearance3
         Appearance4.BackColor = System.Drawing.Color.SteelBlue
         Appearance4.BackColor2 = System.Drawing.Color.Cyan
         Appearance4.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical
@@ -787,8 +812,8 @@ Partial Class frmGlobalNutrisa
         Me.UgrTicket.DisplayLayout.Override.HeaderAppearance = Appearance12
         Me.UgrTicket.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti
         Me.UgrTicket.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.XPThemed
-        Appearance14.BorderColor = System.Drawing.Color.Transparent
-        Me.UgrTicket.DisplayLayout.Override.RowAppearance = Appearance14
+        Appearance30.BorderColor = System.Drawing.Color.Transparent
+        Me.UgrTicket.DisplayLayout.Override.RowAppearance = Appearance30
         Appearance51.BackColor = System.Drawing.Color.White
         Me.UgrTicket.DisplayLayout.Override.RowSelectorAppearance = Appearance51
         Appearance52.BorderColor = System.Drawing.Color.Transparent
@@ -810,21 +835,21 @@ Partial Class frmGlobalNutrisa
         Appearance13.ImageBackgroundStretchMargins = New Infragistics.Win.ImageBackgroundStretchMargins(2, 3, 2, 3)
         Appearance13.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Stretched
         ScrollBarLook1.AppearanceVertical = Appearance13
-        Appearance57.ImageBackground = CType(resources.GetObject("Appearance57.ImageBackground"), System.Drawing.Image)
-        Appearance57.ImageBackgroundStretchMargins = New Infragistics.Win.ImageBackgroundStretchMargins(0, 2, 0, 1)
-        ScrollBarLook1.TrackAppearanceHorizontal = Appearance57
-        Appearance58.ImageBackground = CType(resources.GetObject("Appearance58.ImageBackground"), System.Drawing.Image)
-        Appearance58.ImageBackgroundStretchMargins = New Infragistics.Win.ImageBackgroundStretchMargins(2, 0, 1, 0)
-        Appearance58.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Stretched
-        ScrollBarLook1.TrackAppearanceVertical = Appearance58
+        Appearance31.ImageBackground = CType(resources.GetObject("Appearance31.ImageBackground"), System.Drawing.Image)
+        Appearance31.ImageBackgroundStretchMargins = New Infragistics.Win.ImageBackgroundStretchMargins(0, 2, 0, 1)
+        ScrollBarLook1.TrackAppearanceHorizontal = Appearance31
+        Appearance32.ImageBackground = CType(resources.GetObject("Appearance32.ImageBackground"), System.Drawing.Image)
+        Appearance32.ImageBackgroundStretchMargins = New Infragistics.Win.ImageBackgroundStretchMargins(2, 0, 1, 0)
+        Appearance32.ImageBackgroundStyle = Infragistics.Win.ImageBackgroundStyle.Stretched
+        ScrollBarLook1.TrackAppearanceVertical = Appearance32
         Me.UgrTicket.DisplayLayout.ScrollBarLook = ScrollBarLook1
         Me.UgrTicket.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill
         Me.UgrTicket.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.UgrTicket.Dock = System.Windows.Forms.DockStyle.Fill
         Me.UgrTicket.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.UgrTicket.Location = New System.Drawing.Point(216, 196)
+        Me.UgrTicket.Location = New System.Drawing.Point(216, 213)
         Me.UgrTicket.Name = "UgrTicket"
-        Me.UgrTicket.Size = New System.Drawing.Size(921, 382)
+        Me.UgrTicket.Size = New System.Drawing.Size(981, 533)
         Me.UgrTicket.TabIndex = 90
         Me.UgrTicket.Text = "Reporte de Ventas"
         Me.UgrTicket.UseOsThemes = Infragistics.Win.DefaultableBoolean.[False]
@@ -888,9 +913,9 @@ Partial Class frmGlobalNutrisa
         Me.grbPagos.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.grbPagos.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
         Me.grbPagos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grbPagos.Location = New System.Drawing.Point(308, 65)
+        Me.grbPagos.Location = New System.Drawing.Point(404, 28)
         Me.grbPagos.Name = "grbPagos"
-        Me.grbPagos.Size = New System.Drawing.Size(256, 22)
+        Me.grbPagos.Size = New System.Drawing.Size(192, 22)
         Me.grbPagos.TabIndex = 175
         '
         'UltraLabel5
@@ -899,28 +924,116 @@ Partial Class frmGlobalNutrisa
         Appearance56.TextHAlignAsString = "Right"
         Me.UltraLabel5.Appearance = Appearance56
         Me.UltraLabel5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UltraLabel5.Location = New System.Drawing.Point(308, 49)
+        Me.UltraLabel5.Location = New System.Drawing.Point(394, 12)
         Me.UltraLabel5.Name = "UltraLabel5"
         Me.UltraLabel5.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.UltraLabel5.Size = New System.Drawing.Size(101, 17)
         Me.UltraLabel5.TabIndex = 174
         Me.UltraLabel5.Text = "Metodo de pago"
         '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Lavender
+        Me.Panel1.Controls.Add(Me.btnFactura)
+        Me.Panel1.Controls.Add(Me.UltraLabel2)
+        Me.Panel1.Controls.Add(Me.txtFechaVenta)
+        Me.Panel1.Location = New System.Drawing.Point(611, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(251, 111)
+        Me.Panel1.TabIndex = 176
+        '
+        'Panel3
+        '
+        Me.Panel3.Controls.Add(Me.DGFacturas)
+        Me.Panel3.Controls.Add(Me.Button1)
+        Me.Panel3.Location = New System.Drawing.Point(865, 0)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(329, 114)
+        Me.Panel3.TabIndex = 177
+        '
+        'DGFacturas
+        '
+        Me.DGFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DGFacturas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Ticket, Me.Total_Facturado, Me.Subtotal_Fac, Me.Descuento_Fac, Me.Descuento_Ieps, Me.Descuento_Cero, Me.Iva_Fac, Me.Ieps_Fac})
+        Me.DGFacturas.Location = New System.Drawing.Point(73, 3)
+        Me.DGFacturas.Name = "DGFacturas"
+        Me.DGFacturas.Size = New System.Drawing.Size(326, 108)
+        Me.DGFacturas.TabIndex = 1
+        '
+        'Ticket
+        '
+        Me.Ticket.HeaderText = "Ticket"
+        Me.Ticket.Name = "Ticket"
+        Me.Ticket.ReadOnly = True
+        '
+        'Total_Facturado
+        '
+        Me.Total_Facturado.HeaderText = "Total_Facturado"
+        Me.Total_Facturado.Name = "Total_Facturado"
+        Me.Total_Facturado.ReadOnly = True
+        '
+        'Subtotal_Fac
+        '
+        Me.Subtotal_Fac.HeaderText = "Subtotal_Fac"
+        Me.Subtotal_Fac.Name = "Subtotal_Fac"
+        Me.Subtotal_Fac.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Subtotal_Fac.Visible = False
+        '
+        'Descuento_Fac
+        '
+        Me.Descuento_Fac.HeaderText = "Descuento_Fac"
+        Me.Descuento_Fac.Name = "Descuento_Fac"
+        Me.Descuento_Fac.Visible = False
+        '
+        'Descuento_Ieps
+        '
+        Me.Descuento_Ieps.HeaderText = "Descuento_Ieps"
+        Me.Descuento_Ieps.Name = "Descuento_Ieps"
+        Me.Descuento_Ieps.Visible = False
+        '
+        'Descuento_Cero
+        '
+        Me.Descuento_Cero.HeaderText = "Descuento_Cero"
+        Me.Descuento_Cero.Name = "Descuento_Cero"
+        Me.Descuento_Cero.Visible = False
+        '
+        'Iva_Fac
+        '
+        Me.Iva_Fac.HeaderText = "Iva_Fac"
+        Me.Iva_Fac.Name = "Iva_Fac"
+        Me.Iva_Fac.Visible = False
+        '
+        'Ieps_Fac
+        '
+        Me.Ieps_Fac.HeaderText = "Ieps_Fac"
+        Me.Ieps_Fac.Name = "Ieps_Fac"
+        Me.Ieps_Fac.Visible = False
+        '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.Azure
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(3, 0)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(70, 114)
+        Me.Button1.TabIndex = 0
+        Me.Button1.Text = "+ Factura de Cliente"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
         'frmGlobalNutrisa
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1137, 651)
+        Me.ClientSize = New System.Drawing.Size(1197, 807)
+        Me.Controls.Add(Me.Panel3)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.grbPagos)
         Me.Controls.Add(Me.UltraLabel5)
         Me.Controls.Add(Me.UgrTicket)
         Me.Controls.Add(Me.gpoNotas)
         Me.Controls.Add(Me.btnFacturar)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.btnFactura)
-        Me.Controls.Add(Me.txtFechaVenta)
-        Me.Controls.Add(Me.UltraLabel2)
         Me.Controls.Add(Me.grbMes)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -956,6 +1069,10 @@ Partial Class frmGlobalNutrisa
         Me.gpoNotas.ResumeLayout(False)
         CType(Me.UgrTicket, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grbPagos, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        Me.Panel3.ResumeLayout(False)
+        CType(Me.DGFacturas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1004,4 +1121,17 @@ Partial Class frmGlobalNutrisa
     Friend WithEvents UgrTicket As Infragistics.Win.UltraWinGrid.UltraGrid
     Friend WithEvents grbPagos As Infragistics.Win.UltraWinGrid.UltraCombo
     Friend WithEvents UltraLabel5 As Infragistics.Win.Misc.UltraLabel
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents DGFacturas As DataGridView
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Ticket As DataGridViewTextBoxColumn
+    Friend WithEvents Total_Facturado As DataGridViewTextBoxColumn
+    Friend WithEvents Subtotal_Fac As DataGridViewTextBoxColumn
+    Friend WithEvents Descuento_Fac As DataGridViewTextBoxColumn
+    Friend WithEvents Descuento_Ieps As DataGridViewTextBoxColumn
+    Friend WithEvents Descuento_Cero As DataGridViewTextBoxColumn
+    Friend WithEvents Iva_Fac As DataGridViewTextBoxColumn
+    Friend WithEvents Ieps_Fac As DataGridViewTextBoxColumn
 End Class
