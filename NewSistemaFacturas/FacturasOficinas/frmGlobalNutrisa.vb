@@ -72,6 +72,8 @@ Public Class frmGlobalNutrisa
     Dim ivaG As Double = 0
     Dim iepsG As Double = 0
     Dim toG As Double = 0
+    Dim iptG As Double = 0
+    Dim t0G As Double = 0
 
     Dim subtk As Double = 0
     Dim dectk As Double = 0
@@ -87,6 +89,7 @@ Public Class frmGlobalNutrisa
     Dim DesRegimen As String
     Dim Sat_UsoCFDI As String
     Dim e_uuid As String
+    Dim f1, f2, f3 As String
 #End Region
 
     Private Sub frmGlobalNutrisa_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -195,6 +198,13 @@ Public Class frmGlobalNutrisa
         Application.DoEvents()
         UgrTicket.DataSource = Nothing
         inicializa()
+        iptG = 0
+        subG = 0
+        decG = 0
+        ivaG = 0
+        iepsG = 0
+        toG = 0
+        t0G = 0
         DGFacturas.Rows.Clear()
         If grbTienda.Text <> "" Then
             If grbSucursal.Text <> "" Then
@@ -205,10 +215,14 @@ Public Class frmGlobalNutrisa
                         Application.DoEvents()
                         objpro.LLenaGrid(Me.UgrTicket, "select Cantidad,UnidadMedida as Unidad,ClaveProducto as Clave,DescripcionProducto as Descripcion," &
                         "PrecioVenta as PrecioUnitario, DV_Subtotal as Importe, DV_Descuento as descu, ieps8, Iva, DV_Total, claveSat as codsat, tipo_factura, NoTicket " &
-                        "from nutrisa where clavesucursal = " & grbSucursal.Value & " and ClaveProducto <> '535102' and  DV_Total > 0 and" &
+                        "from nutrisa where clavesucursal = " & grbSucursal.Value & " and ClaveProducto <> '535102' and" &
                         " day(FechaTicket) = " & txtFechaVenta.Value.ToString.Substring(0, 2) & " and month(FechaTicket) = " & txtFechaVenta.Value.ToString.Substring(3, 2) & " and year(FechaTicket) = " & txtFechaVenta.Value.ToString.Substring(6, 4) & " order by NoTicket desc ", "nutrisa", MotorBoutique)
                         Application.DoEvents()
-
+                        'objpro.LLenaGrid(Me.UgrTicket, "select Cantidad,UnidadMedida as Unidad,ClaveProducto as Clave,DescripcionProducto as Descripcion," &
+                        '"PrecioVenta as PrecioUnitario, DV_Subtotal as Importe, DV_Descuento as descu, ieps8, Iva, DV_Total, claveSat as codsat, tipo_factura, NoTicket " &
+                        '"from nutrisa where clavesucursal = " & grbSucursal.Value & " and ClaveProducto <> '535102' and  DV_Total > 0 and" &
+                        '" day(FechaTicket) = " & txtFechaVenta.Value.ToString.Substring(0, 2) & " and month(FechaTicket) = " & txtFechaVenta.Value.ToString.Substring(3, 2) & " and year(FechaTicket) = " & txtFechaVenta.Value.ToString.Substring(6, 4) & " order by NoTicket desc ", "nutrisa", MotorBoutique)
+                        'Application.DoEvents()
                         If UgrTicket.Rows.Count <> 0 Then
                             TIP = "VG"
                             TSucursal = objpro.ObtenDatos("SELECT * FROM Serie Where tid = " & Me.grbTienda.Value & " AND sid = " & Me.grbSucursal.Value & " and seTipo = '" & TIP & "' and seEstat = 1 ", Motor).Tables(0)
@@ -218,23 +232,70 @@ Public Class frmGlobalNutrisa
                             txtAmoAprob = TSucursal.Rows(0).Item("seAmoAp").ToString
                             txtLugarExpedicion = TSucursal.Rows(0).Item("seLugarExp").ToString
 
+                            Dim desiva, IEPSIVA, otrabase, descero, desipes, subiep, subt2 As Double
+                            desiva = 0
+                            descero = 0
+                            desipes = 0
+                            subiep = 0
+                            IEPSIVA = 0
+                            otrabase = 0
+                            subt2 = 0
                             'inicializa()
                             lblDiaFactura.Text = txtFechaVenta.Value.ToString.Substring(0, 2) & "/" & txtFechaVenta.Value.ToString.Substring(3, 2) & "/" & txtFechaVenta.Value.ToString.Substring(6, 4)
                             For Each row In UgrTicket.Rows
-                                Subtotal.Value += Format(CDbl(row.Cells("Importe").Value), "###,###.00")
-                                Descuento.Value += Format(CDbl(row.Cells("Descu").Value), "###,###.00")
-                                Iva.Value += Format(CDbl(row.Cells("iva").Value), "###,###.00")
-                                IEPS.Value += Format(CDbl(row.Cells("ieps8").Value), "###,###.00")
-                                Total.Value += Format(CDbl(row.Cells("DV_Total").Value), "###,###.00")
+                                Subtotal.Value += Format(CDbl(row.Cells("Importe").Value - row.Cells("Descu").Value), "###,###.00")
+                                subt2 += Format(CDbl((row.Cells("Importe").Value - row.Cells("Descu").Value) + row.Cells("ieps8").Value), "###,###.00")
+                                If row.Cells("iva").Value = 0 Then
+                                    Iva.Value += 0
+                                Else
+                                    Iva.Value += Format(CDbl((row.Cells("iva").Value - row.Cells("IEPS8").Value)), "###,###.00")
+                                End If
+
+                                Select Case row.Cells("tipo_factura").Value
+                                    Case "Iva Tasa16"
+                                        'Subtotal.Value += Format(CDbl(row.Cells("Importe").Value - row.Cells("Descu").Value), "###,###.00")
+                                        'Iva.Value += Format(CDbl((row.Cells("Importe").Value - row.Cells("Descu").Value) * 0.16), "###,###.00") 'Format(CDbl(row.Cells("iva").Value), "###,###.00")
+                                        desiva += Format(CDbl(row.Cells("Descu").Value), "###,###.00")
+
+                                    Case "Iva Tasa0"
+                                        'Traslado.Value += Format(CDbl(row.Cells("Importe").Value - row.Cells("Descu").Value), "###,###.00")
+                                        descero += Format(CDbl(row.Cells("Descu").Value), "###,###.00")
+                                    Case "IEPS"
+                                        'Subtotal.Value += Format(CDbl(row.Cells("Importe").Value - row.Cells("Descu").Value), "###,###.00")
+                                        'Iva.Value += Format(CDbl(row.Cells("iva").Value), "###,###.00")
+                                        desipes += Format(CDbl(row.Cells("Descu").Value), "###,###.00")
+                                        If row.Cells("IVA").Value <> 0 Then
+                                            subiep += Format(CDbl(row.Cells("Importe").Value - row.Cells("Descu").Value), "###,###.00")
+                                            otrabase += Format(CDbl((row.Cells("Importe").Value - row.Cells("Descu").Value) + row.Cells("ieps8").Value), "###,###.00") 'PARA SACAR LAS BASES DE LOS OTROS IMPUESTOS
+                                            'IEPSIVA += Format(CDbl(row.Cells("IVA").Value), "###,###.00")
+                                        Else
+                                            subiep += Format(CDbl(row.Cells("Importe").Value - row.Cells("Descu").Value), "###,###.00")
+                                        End If
+                                        'subiep += Format(CDbl(row.Cells("Importe").Value - row.Cells("Descu").Value), "###,###.00")
+
+                                End Select
+
+                                Timporte.Value += Format(CDbl(row.Cells("Importe").Value), "###,###.00")
                                 Application.DoEvents()
                             Next
+                            Descuento.Value = desiva + descero + desipes
+                            'Subtotal.Value += otrabase
+                            'Iva.Value += IEPSIVA
+                            Dim iep8 As Double
+                            iep8 = 0
+                            iep8 = ((subiep) * 0.08)
+                            IEPS.Value = iep8
+                            'Total.Value = Format(CDbl((Timporte.Value - Descuento.Value) + iep8 + Iva.Value), "###,###.00")
+                            Total.Value = Format(CDbl(subt2 + iep8 + Iva.Value), "###,###.00") 'Format(CDbl((Subtotal.Value - Descuento.Value) + IEPS.Value + Iva.Value), "###,###.00")
                             Traslado.Value = (Iva.Value + IEPS.Value)
                         End If
+                        iptG = Timporte.Value
                         subG = Subtotal.Value
                         decG = Descuento.Value
                         ivaG = Iva.Value
                         iepsG = IEPS.Value
                         toG = Total.Value
+                        t0G = Traslado.Value
                     Else
                         MsgBox("La nota ya fue facturada ", MsgBoxStyle.Information, "Facturación .. ")
                     End If
@@ -255,6 +316,7 @@ Public Class frmGlobalNutrisa
         IEPS.Value = 0
         Traslado.Value = 0
         Total.Value = 0
+        Timporte.Value = 0
 
         DevVenta.Value = 0
         DevIeps.Value = 0
@@ -267,7 +329,7 @@ Public Class frmGlobalNutrisa
     End Sub
 
 
-    Private Sub btnFacturar_Click(sender As Object, e As EventArgs) Handles btnFacturar.Click
+    Private Sub btnFacturar_Click(sender As Object, e As EventArgs)
         btnFacturar.Visible = False
         Timbra()
     End Sub
@@ -299,7 +361,6 @@ Public Class frmGlobalNutrisa
     End Function
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        upb.Value = 0
         Application.DoEvents()
         inicializa()
         If grbTienda.Text <> "" Then
@@ -353,12 +414,14 @@ Public Class frmGlobalNutrisa
                             End If
                         Next
                         'SACO POR DIFERENCIA LOS NUEVOS TOTALES
-                        Subtotal.Value = subG - subtk
+                        'Timporte.Value = iptG
+                        Subtotal.Value = subG - subtk '(subtk - dectk)
                         Descuento.Value = decG - dectk '- decieps - decero
                         Iva.Value = ivaG - ivatk
                         IEPS.Value = iepsG - iepstk
                         Total.Value = toG - totk
                         Traslado.Value = (Iva.Value + IEPS.Value)
+                        Timporte.Value = Subtotal.Value + Descuento.Value + IEPS.Value
                         MsgBox("Los totales se actualizaron correctamente ", MsgBoxStyle.Information, "Facturación .. ")
                         btnFacturar.Visible = True
                     Else
@@ -420,7 +483,7 @@ Public Class frmGlobalNutrisa
                 CarpSucursal = TablaTienda.Rows(0).Item("sCsuc").ToString
                 Directorios = TablaTienda.Rows(0).Item("sUbic").ToString
 
-                Dim f1, f2, f3, freal, hr As String
+                Dim freal, hr As String
                 f1 = txtFechaVenta.Text.ToString.Substring(0, 2)
                 f2 = txtFechaVenta.Text.ToString.Substring(3, 2)
                 f3 = txtFechaVenta.Text.ToString.Substring(6, 4)
@@ -627,75 +690,115 @@ Public Class frmGlobalNutrisa
                     Next
                     If bandera = "NO" Or DGFacturas.Rows.Count = 1 Then
 
-                        Select Case Me.UgrTicket.Rows(i).Cells("tipo_factura").Value
-                            Case "Iva Tasa16"
-                                Dim puniv As Double = Format(Me.UgrTicket.Rows(i).Cells("PrecioUnitario").Value, "###,###.00")
-                                NumPiezas = Me.UgrTicket.Rows(i).Cells("Cantidad").Value
-                                T16 += puniv * NumPiezas
+                        If Me.UgrTicket.Rows(i).Cells("tipo_factura").Value = "Iva Tasa16" Then
+                            T16 += Format(Me.UgrTicket.Rows(i).Cells("Importe").Value, "###,###.00") 'puniv * NumPiezas
+                            'If Format(Me.UgrTicket.Rows(i).Cells("Importe").Value, "###,###.00") - Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") > 0 Then
+                            Descu16 += Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00")
+                            'Else
+                            '    Descu16 += (Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") - 0.1)
+                            'End If
+                        End If
 
-                                If Format(Me.UgrTicket.Rows(i).Cells("Importe").Value, "###,###.00") - Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") > 0 Then
-                                    Descu16 += Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00")
-                                Else
-                                    Descu16 += (Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") - 0.1)
-                                End If
-                            Case "Iva Tasa0"
-                                Dim punce As Double = Format(Me.UgrTicket.Rows(i).Cells("PrecioUnitario").Value, "###,###.00")
-                                NumPiezas = Me.UgrTicket.Rows(i).Cells("Cantidad").Value
-                                TCERO += punce * NumPiezas
-                                If Format(Me.UgrTicket.Rows(i).Cells("Importe").Value, "###,###.00") - Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") > 0 Then
-                                    Descucero += Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00")
-                                Else
-                                    Descucero += (Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") - 0.1)
-                                End If
+                        If Me.UgrTicket.Rows(i).Cells("tipo_factura").Value = "Iva Tasa0" Then
+                            TCERO += Format(Me.UgrTicket.Rows(i).Cells("Importe").Value, "###,###.00") 'punce * NumPiezas
+                            'If Format(Me.UgrTicket.Rows(i).Cells("Importe").Value, "###,###.00") - Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") > 0 Then
+                            Descucero += Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00")
+                                'Else
+                                '    Descucero += (Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") - 0.1)
+                                'End If
                                 flag2 = 0
-                            Case "IEPS"
-                                Dim punie As Double = Format(Me.UgrTicket.Rows(i).Cells("PrecioUnitario").Value, "###,###.00")
-                                NumPiezas = Me.UgrTicket.Rows(i).Cells("Cantidad").Value
-                                TIEPS += punie * NumPiezas
-                                If Format(Me.UgrTicket.Rows(i).Cells("Importe").Value, "###,###.00") - Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") > 0 Then
-                                    Descuieps += Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00")
-                                Else
-                                    Descuieps += (Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") - 0.1)
-                                End If
-                        End Select
+                        End If
+
+                        If Me.UgrTicket.Rows(i).Cells("ieps8").Value > 0 Then
+                            TIEPS += Format(Me.UgrTicket.Rows(i).Cells("Importe").Value, "###,###.00") 'Format(Me.UgrTicket.Rows(i).Cells("ieps8").Value, "###,###.00") 'punie * NumPiezas
+                            If Me.UgrTicket.Rows(i).Cells("tipo_factura").Value = "IEPS" Then
+                                'If Format(Me.UgrTicket.Rows(i).Cells("Importe").Value, "###,###.00") - Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") > 0 Then
+                                Descuieps += Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00")
+                                'Else
+                                '    Descuieps += (Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") - 0.1)
+                                'End If
+                            End If
+                        End If
+
+                        ''If Me.UgrTicket.Rows(i).Cells("tipo_factura").Value <> "Iva Tasa0" Then
+                        ''    T16 += Format(Me.UgrTicket.Rows(i).Cells("Importe").Value, "###,###.00") 'puniv * NumPiezas
+                        ''    If Format(Me.UgrTicket.Rows(i).Cells("Importe").Value, "###,###.00") - Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") > 0 Then
+                        ''        Descu16 += Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00")
+                        ''    Else
+                        ''        Descu16 += (Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") - 0.1)
+                        ''    End If
+                        ''End If
+
+                        'Select Case Me.UgrTicket.Rows(i).Cells("tipo_factura").Value
+                        '    Case "Iva Tasa16"
+                        '        Dim puniv As Double = Format(Me.UgrTicket.Rows(i).Cells("PrecioUnitario").Value, "###,###.00")
+                        '        NumPiezas = Me.UgrTicket.Rows(i).Cells("Cantidad").Value
+                        '        T16 += puniv * NumPiezas
+
+                        '        If Format(Me.UgrTicket.Rows(i).Cells("Importe").Value, "###,###.00") - Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") > 0 Then
+                        '            Descu16 += Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00")
+                        '        Else
+                        '            Descu16 += (Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") - 0.1)
+                        '        End If
+                        '    Case "Iva Tasa0"
+                        '        Dim punce As Double = Format(Me.UgrTicket.Rows(i).Cells("PrecioUnitario").Value, "###,###.00")
+                        '        NumPiezas = Me.UgrTicket.Rows(i).Cells("Cantidad").Value
+                        '        TCERO += punce * NumPiezas
+                        '        If Format(Me.UgrTicket.Rows(i).Cells("Importe").Value, "###,###.00") - Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") > 0 Then
+                        '            Descucero += Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00")
+                        '        Else
+                        '            Descucero += (Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") - 0.1)
+                        '        End If
+                        '        flag2 = 0
+                        '    Case "IEPS"
+                        '        Dim punie As Double = Format(Me.UgrTicket.Rows(i).Cells("PrecioUnitario").Value, "###,###.00")
+                        '        NumPiezas = Me.UgrTicket.Rows(i).Cells("Cantidad").Value
+                        '        TIEPS += punie * NumPiezas
+                        '        If Format(Me.UgrTicket.Rows(i).Cells("Importe").Value, "###,###.00") - Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") > 0 Then
+                        '            Descuieps += Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00")
+                        '        Else
+                        '            Descuieps += (Format(Me.UgrTicket.Rows(i).Cells("Descu").Value, "###,###.00") - 0.1)
+                        '        End If
+                        'End Select
                     End If
                 Next
                 des = Descu16 + Descucero + Descuieps
-                    If Me.Iva.Value <> 0 Then
-                        Imp = 0
-                        If (Format(T16, "###,###.00") - Format(Descu16, "###,###.00")) <> 0 Then
-                            bas = Format((T16 - Descu16), "######.00")
-                            Imp = Format(((T16 - Descu16) * 0.16), "######.00")
-                            iv += Imp
-                            If Descu16 <> 0 Then
-                                EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((T16), "######.00"), Format(T16, "######.00"), Format((Descu16), "######.00"))
-                            Else
-                                EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((T16), "######.00"), Format(T16, "######.00"), "")
-                            End If
-                            EasyOne_cfdi33_SetConcepto40(p, "02")
-                            EasyOne_cfdi33_AddTraslado(p, Format(bas, "######.00"), "002", "Tasa", "0.160000", Format(Imp, "######.00"))
+                If Me.Iva.Value <> 0 Then
+                    Imp = 0
+                    If (Format(T16, "###,###.00") - Format(Descu16, "###,###.00")) <> 0 Then
+                        bas = Format((T16 - Descu16), "######.00")
+                        Imp = Format(((T16 - Descu16) * 0.16), "######.00")
+                        iv += Imp
+                        If Descu16 <> 0 Then
+                            EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((T16), "######.00"), Format(T16, "######.00"), Format((Descu16), "######.00"))
                         Else
-                            bas = Format((T16 - Descu16) - 0.1, "######.00")
-                            Imp = Format(((T16 - Descu16) * 0.16), "###,###.00")
-                            iv += Imp
-                            If Descu16 <> 0 Then
-                                EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((T16), "######.00"), Format(T16, "######.00"), Format((Descu16), "######.00"))
-                            Else
-                                EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((T16), "######.00"), Format(T16, "######.00"), "")
-                            End If
-                            EasyOne_cfdi33_SetConcepto40(p, "02")
-                            EasyOne_cfdi33_AddTraslado(p, Format(bas, "######.00"), "002", "Tasa", "0.160000", Format(Imp, "######.00"))
+                            EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((T16), "######.00"), Format(T16, "######.00"), "")
                         End If
-                        Fila2 = DS.Tables(1).NewRow() ' Acá insertas una fila nueva
-                        Fila2("Cantidad") = "1"
-                        Fila2("Unidad") = "ACT"
-                        Fila2("UniSAT") = Format(Descu16, "###,###.00")
-                        Fila2("Descrip") = "VENTA"
-                        Fila2("Punitario") = Format(T16, "###,###.00")
-                        Fila2("Importe") = Format(T16, "###,###.00")
-                        DS.Tables(1).Rows.Add(Fila2)
+                        EasyOne_cfdi33_SetConcepto40(p, "02")
+                        EasyOne_cfdi33_AddTraslado(p, Format(bas, "######.00"), "002", "Tasa", "0.160000", Format(Imp, "######.00"))
+                    Else
+                        bas = Format((T16 - Descu16) - 0.1, "######.00")
+                        Imp = Format(((T16 - Descu16) * 0.16), "###,###.00")
+                        iv += Imp
+                        If Descu16 <> 0 Then
+                            EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((T16), "######.00"), Format(T16, "######.00"), Format((Descu16), "######.00"))
+                        Else
+                            EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((T16), "######.00"), Format(T16, "######.00"), "")
+                        End If
+                        EasyOne_cfdi33_SetConcepto40(p, "02")
+                        EasyOne_cfdi33_AddTraslado(p, Format(bas, "######.00"), "002", "Tasa", "0.160000", Format(Imp, "######.00"))
                     End If
-                    If flag2 = 0 Then
+                    Fila2 = DS.Tables(1).NewRow() ' Acá insertas una fila nueva
+                    Fila2("Cantidad") = "1"
+                    Fila2("Unidad") = "ACT"
+                    Fila2("UniSAT") = Format(Descu16, "###,###.00")
+                    Fila2("Descrip") = "VENTA IVA 16"
+                    Fila2("Punitario") = Format(T16, "###,###.00")
+                    Fila2("Importe") = Format(T16, "###,###.00")
+                    DS.Tables(1).Rows.Add(Fila2)
+                End If
+
+                If flag2 = 0 Then
                         Imp = 0
                         If (Format(TCERO, "###,###.00") - Format(Descucero, "###,###.00")) <> 0 Then
                             bas = (TCERO - Descucero)
@@ -726,8 +829,8 @@ Public Class frmGlobalNutrisa
                         Fila2("Cantidad") = "1"
                         Fila2("Unidad") = "ACT"
                         Fila2("UniSAT") = Format(Descucero, "###,###.00")
-                        Fila2("Descrip") = "VENTA"
-                        Fila2("Punitario") = Format(TCERO, "###,###.00")
+                    Fila2("Descrip") = "VENTA IVA TASA 0"
+                    Fila2("Punitario") = Format(TCERO, "###,###.00")
                         Fila2("Importe") = Format(TCERO, "###,###.00")
                         DS.Tables(1).Rows.Add(Fila2)
                     End If
@@ -754,7 +857,7 @@ Public Class frmGlobalNutrisa
                                 EasyOne_cfdi33_AddConcepto(p, "01010101", FeReg.ToString, "1", "ACT", "", "Venta", Format((TIEPS), "######.00"), Format(TIEPS, "######.00"), "")
                             End If
                             EasyOne_cfdi33_SetConcepto40(p, "02")
-                            If Imp < 0 Then
+                            If Imp <0 Then
                                 Dim completa As String
                                 completa = "0" & Imp.ToString
                                 EasyOne_cfdi33_AddTraslado(p, bas.ToString, "003", "Tasa", "0.080000", completa)
@@ -766,8 +869,8 @@ Public Class frmGlobalNutrisa
                         Fila2("Cantidad") = "1"
                         Fila2("Unidad") = "ACT"
                         Fila2("UniSAT") = Format(Descuieps, "###,###.00")
-                        Fila2("Descrip") = "VENTA"
-                        Fila2("Punitario") = Format(TIEPS, "###,###.00")
+                    Fila2("Descrip") = "VENTA IEPS"
+                    Fila2("Punitario") = Format(TIEPS, "###,###.00")
                         Fila2("Importe") = Format(TIEPS, "###,###.00")
                         DS.Tables(1).Rows.Add(Fila2)
                     End If
@@ -862,8 +965,8 @@ Public Class frmGlobalNutrisa
 
                             'Enviamos el CFDI al metodo de PRUEBAS
                             'En la siguiente línea es necesario incluir la Clave de Integración que se proporciona en la Guía de Implementación (Menú "Ayuda" de su Oficina Virtual).
-                            'EasyOne_SetInvoiceOneFachadaInfoPrueba(p, "RHUUMRGL", "RHUUMRGL")
-                            EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
+                            EasyOne_SetInvoiceOneFachadaInfoPrueba(p, "RHUUMRGL", "RHUUMRGL")
+                            'EasyOne_SetInvoiceOneFachadaInfo(p, "RHUUMRGL", "RHUUMRGL")
 
                             Dim b As Integer
                                 b = p
@@ -873,8 +976,8 @@ Public Class frmGlobalNutrisa
                                 Thread.Sleep(10000) 'espera por 10 segundos
                                 If x = 0 Then
 
-                                objpro.Indicacion("update facnutrisa set facsts = 'A' where facsucursal = " & grbSucursal.Value & " and day(facfecha) = " & txtFechaVenta.Value.ToString.Substring(0, 2) & " and Month(facfecha) = " & txtFechaVenta.Value.ToString.Substring(3, 2) & " and year(facfecha) = " & txtFechaVenta.Value.ToString.Substring(6, 4) & "   ", Motor)
-                                objpro.Indicacion("Update Serie set seCant = " & CInt(txtFactura) & " Where seSerie = '" & txtSerie & "' and  SId = " & Me.grbSucursal.Value & " and tid = " & Me.grbTienda.Value & "  and seEstat = 1", Motor)
+                                'objpro.Indicacion("update facnutrisa set facsts = 'A' where facsucursal = " & grbSucursal.Value & " and day(facfecha) = " & txtFechaVenta.Value.ToString.Substring(0, 2) & " and Month(facfecha) = " & txtFechaVenta.Value.ToString.Substring(3, 2) & " and year(facfecha) = " & txtFechaVenta.Value.ToString.Substring(6, 4) & "   ", Motor)
+                                'objpro.Indicacion("Update Serie set seCant = " & CInt(txtFactura) & " Where seSerie = '" & txtSerie & "' and  SId = " & Me.grbSucursal.Value & " and tid = " & Me.grbTienda.Value & "  and seEstat = 1", Motor)
                                 upb.Value += 10 'Suma 60
 
                                 Dim resultadoXML As String = [String].Empty
@@ -1192,6 +1295,8 @@ Public Class frmGlobalNutrisa
         'EXPORTACION: 01 - NO APLICA
         EasyOne_cfdi33_SetCfdi40(pN, "01", "")
 
+        EasyOne_cfdi33_SetInformacionGlobal40(pN, "01", f2, f3)
+
         '######################## PROCESO DE CANCELACION
         'Iniciamos el proceso de cancelacion
         'Certificado Sello Digital .cer
@@ -1434,7 +1539,7 @@ Public Class frmGlobalNutrisa
                     Thread.Sleep(10000) 'espera por 10 segundos
                     If nc = 0 Then
                         '''''''''''''''''''''''''''''''''''''''''''''''''''
-                        objpro.Indicacion("Update Serie set seCant = " & CInt(n_notacredito) & " Where seSerie = '" & n_serie & "' and  SId = " & Me.grbSucursal.Value & " and tid = " & Me.grbTienda.Value & " and seTipo = '" & TIP & " and seEstat = 1", Motor)
+                        objpro.Indicacion("Update Serie set seCant = " & CInt(n_notacredito) & " Where seSerie = '" & n_serie & "' and  SId = " & Me.grbSucursal.Value & " and tid = " & Me.grbTienda.Value & " and seTipo = '" & TIP & "' and seEstat = 1", Motor)
                         '''''nuevoooooooooooooooooooooooooooooooooooooooooo
                         Dim resultadoXMLNC As String = [String].Empty
 

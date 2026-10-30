@@ -225,6 +225,18 @@
     <Compile Include="Clases\Module1.vb" />
     <Compile Include="Clases\Procedures.vb" />
     <Compile Include="Clases\VarGlobales.vb" />
+    <Compile Include="FacturasBosco\frmFacturasRealizadas2.Designer.vb">
+      <DependentUpon>frmFacturasRealizadas2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBosco\frmFacturasRealizadas2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmFacturasTienda.Designer.vb">
+      <DependentUpon>frmFacturasTienda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FacturasBoutique\frmFacturasTienda.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FacturasOficinas\frmTicketCte.Designer.vb">
       <DependentUpon>frmTicketCte.vb</DependentUpon>
     </Compile>
@@ -700,6 +712,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Arrendamiento\frmArrendamiento.resx">
       <DependentUpon>frmArrendamiento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBosco\frmFacturasRealizadas2.resx">
+      <DependentUpon>frmFacturasRealizadas2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturasBoutique\frmFacturasTienda.resx">
+      <DependentUpon>frmFacturasTienda.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FacturasOficinas\frmTicketCte.resx">
       <DependentUpon>frmTicketCte.vb</DependentUpon>

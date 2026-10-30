@@ -91,6 +91,9 @@ Public Class frmPreparaInfo
         FechaFactura = Date.Now.ToString.Substring(0, 10)
 
         objpro.CargaCombos(grbTienda, "Select tId, trSocial FROM CatTien ", 0, 1, Motor)
+        Me.grbTienda.Value = Tienda
+        objpro.CargaCombos(grbSucursal, "Select sId,sCsuc FROM CatSucu Where tid = " & Me.grbTienda.Value & " ", 0, 1, Motor)
+        Me.grbSucursal.Value = Sucursal
         'Me.grbMes.Text = UCase(MonthName(Now.Date.Month))
         'Me.grbPeriodo.Text = Now.Date.Year
         fechventa = Now.Date.Day.ToString + "/" + Now.Date.Month.ToString + "/" + Now.Date.Year.ToString

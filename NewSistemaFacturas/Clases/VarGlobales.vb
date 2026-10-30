@@ -26,6 +26,9 @@ Module VarGlobales
     Public PASSWRD As String = ConfigurationManager.AppSettings("PASW")
     Public LIIB As String
     Public FecVenta As String
+    Public filtroP As String
+    Public Tienda400 As Integer
+    Public Suc400 As Integer
 #End Region
 
 #Region "Var Solicitante"

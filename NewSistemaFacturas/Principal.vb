@@ -23,7 +23,7 @@
                 UTBM.Tools.Item(37).SharedProps.Enabled = True
                 UTBM.Tools.Item(38).SharedProps.Enabled = True
                 UTBM.Tools.Item(34).SharedProps.Enabled = True
-                UTBM.Tools.Item(39).SharedProps.Enabled = True
+                'UTBM.Tools.Item(39).SharedProps.Enabled = True
                 UTBM.Tools.Item(40).SharedProps.Enabled = True
                 UTBM.Tools.Item(41).SharedProps.Enabled = True
                 UTBM.Tools.Item(49).SharedProps.Enabled = True
@@ -73,6 +73,7 @@
                 UTBM.Tools.Item(26).SharedProps.Enabled = True
                 UTBM.Tools.Item(33).SharedProps.Enabled = True
                 UTBM.Tools.Item(35).SharedProps.Enabled = True
+                UTBM.Tools.Item(39).SharedProps.Enabled = True
                 'UTBM.Tools.Item(34).SharedProps.Enabled = True
                 UTBM.Tools.Item(39).SharedProps.Enabled = True
                 UTBM.Tools.Item(51).SharedProps.Enabled = True 'Nota Crédito RELACIONADA
@@ -96,6 +97,7 @@
         UTBM.Tools.Item(36).SharedProps.Enabled = False
         UTBM.Tools.Item(37).SharedProps.Enabled = False
         UTBM.Tools.Item(38).SharedProps.Enabled = False
+        UTBM.Tools.Item(39).SharedProps.Enabled = False
         UTBM.Tools.Item(40).SharedProps.Enabled = False
         UTBM.Tools.Item(43).SharedProps.Enabled = False
         UTBM.Tools.Item(44).SharedProps.Enabled = False

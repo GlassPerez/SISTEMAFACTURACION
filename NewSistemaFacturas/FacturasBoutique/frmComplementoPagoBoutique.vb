@@ -16,7 +16,9 @@
 
     Private Sub frmComplementoPagoBoutique_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         objpro.CargaCombos(grbTienda, "Select tId, trSocial FROM CatTien where ttipo3 = 'P'", 0, 1, Motor)
-
+        Me.grbTienda.Value = Tienda
+        objpro.CargaCombos(grbSucursal, "Select sId,sCsuc FROM CatSucu Where tid = " & Me.grbTienda.Value & " ", 0, 1, Motor)
+        Me.grbSucursal.Value = Sucursal
         Me.grbMes.Text = UCase(MonthName(Now.Date.Month))
         Me.grbPeriodo.Text = Now.Date.Year
     End Sub
@@ -28,11 +30,14 @@
         End With
     End Sub
 
-    Private Sub grbTienda_TextChanged(sender As Object, e As EventArgs) Handles grbTienda.TextChanged
-        objpro.CargaCombos(grbSucursal, "Select sId, sCsuc FROM CatSucu Where tid = " & Me.grbTienda.Value & " ", 0, 1, Motor)
-        grbSucursal.Focus()
-        grbSucursal.Select()
-    End Sub
+    'Private Sub grbTienda_TextChanged(sender As Object, e As EventArgs) Handles grbTienda.TextChanged
+    '    'objpro.CargaCombos(grbSucursal, "Select sId, sCsuc FROM CatSucu Where tid = " & Me.grbTienda.Value & " ", 0, 1, Motor)
+    '    'Me.grbTienda.Value = Tienda
+    '    objpro.CargaCombos(grbSucursal, "Select sId,sCsuc FROM CatSucu Where tid = " & Me.grbTienda.Value & " ", 0, 1, Motor)
+    '    Me.grbSucursal.Value = Sucursal
+    '    'grbSucursal.Focus()
+    '    'grbSucursal.Select()
+    'End Sub
 
     Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         If grbTienda.Text <> "" Then

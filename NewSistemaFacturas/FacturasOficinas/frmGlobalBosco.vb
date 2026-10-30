@@ -1045,6 +1045,8 @@ Public Class frmGlobalBosco
         'EXPORTACION: 01 - NO APLICA
         EasyOne_cfdi33_SetCfdi40(pN, "01", "")
 
+        EasyOne_cfdi33_SetInformacionGlobal40(pN, "01", m, a)
+
         '######################## PROCESO DE CANCELACION
         'Iniciamos el proceso de cancelacion
         'Certificado Sello Digital .cer

@@ -79,7 +79,10 @@ Public Class frmFacClientes
     Dim metodoPago As String
 #End Region
 
+    Private WithEvents ventana2 As frmFacturasTienda
+
     Private Sub frmFacClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        filtroP = "'F' "
         txtclvUsoCfdi.Text = ""
         txtUsoCfdi.Text = ""
         verNumCta(False)
@@ -178,6 +181,7 @@ Public Class frmFacClientes
 
     Private Sub btnBuscarNota_Click(sender As Object, e As EventArgs) Handles btnBuscarNota.Click
         Dim chkglobal As String = ""
+        InicializaGrid()
         ''consulto si la factura global ya se hio contra la fecha del tickt que quieren facturar
         chkglobal = objpro.Dato("veEstatu", "VentaEnc", "veFolio = " & grbTienda.Value & " and sid = " & Me.grbSucursal.Value & " and VeIdFolv = 1 and veEstado = 1 and day(veFecha) = " & txtFechaVenta.Value.ToString.Substring(0, 2) & " and Month(veFecha) = " & txtFechaVenta.Value.ToString.Substring(3, 2) & " and year(veFecha) = " & txtFechaVenta.Value.ToString.Substring(6, 4) & " ", Motor)
         If chkglobal = 0 Then
@@ -441,6 +445,8 @@ Public Class frmFacClientes
                             Tabla1.Columns.Add("rcomdir")
                             Tabla1.Columns.Add("rusocfdi")
                             Tabla1.Columns.Add("nocuenta")
+                            Tabla1.Columns.Add("UUIDRel")
+                            Tabla1.Columns.Add("TipoRel")
 
                             Dim Fila As DataRow
 
@@ -771,6 +777,26 @@ Public Class frmFacClientes
                             End If
                             Fila("formpago") = fp
 
+                            If DGFacturas.Rows.Count > 1 Then
+                                EasyOne_cfdi33_SetCfdiRelacionados(p, "04")
+                                Fila("TipoRel") = "Tipo de Relación: 04 - Sustitución de los CFDI previos"
+                                For dg = 0 To Me.DGFacturas.Rows.Count - 1
+                                    If Me.DGFacturas.Rows(dg).Cells("UUIDR").Value IsNot Nothing Then
+                                        Try
+                                            Dim uuidref As String
+                                            uuidref = Me.DGFacturas.Rows(dg).Cells("UUIDR").Value
+                                            EasyOne_cfdi33_AddCfdiRelacionado(p, uuidref.Trim.ToUpper)
+                                            Fila("UUIDRel") += uuidref & vbCrLf & ""
+                                        Catch ex As Exception
+                                            MsgBox(ex.ToString)
+                                        End Try
+                                    End If
+                                Next
+                            Else
+                                Fila("TipoRel") = ""
+                                Fila("UUIDRel") = ""
+                            End If
+
                             Application.DoEvents()
                             upb.Value += 30  'Suma 40
 
@@ -810,9 +836,9 @@ Public Class frmFacClientes
                                             b = 0
                                             Thread.Sleep(10000) 'espera por 10 segundos
                                             If x = 0 Then
-                                                'objpro.Indicacion("Update VentaEnc set veEstatu = 1, veFac = '" & CInt(Me.txtFactura.Text) & "' Where veFolio = " & Me.grbTienda.Value & " and  veIdFolv = " & Transaccion & " and sid = " & Me.grbSucursal.Value & " and veTerm = " & Terminal & " and  veEstado = 1 ", MotorBoutique)
+                                                objpro.Indicacion("Update VentaEnc set veEstatu = 1, veFac = '" & CInt(Me.txtFactura.Text) & "' Where veFolio = " & Me.grbTienda.Value & " and  veIdFolv = " & Transaccion & " and sid = " & Me.grbSucursal.Value & " and veTerm = " & Terminal & " and  veEstado = 1 ", MotorBoutique)
                                                 Application.DoEvents()
-                                                'objpro.Indicacion("Update Serie set seCant = " & CInt(Me.txtFactura.Text) & " Where seSerie = '" & Me.txtSerie.Text & "' and  SId = " & Me.grbSucursal.Value & " and tid = " & Me.grbTienda.Value & "  and seEstat = 1", Motor)
+                                                objpro.Indicacion("Update Serie set seCant = " & CInt(Me.txtFactura.Text) & " Where seSerie = '" & Me.txtSerie.Text & "' and  SId = " & Me.grbSucursal.Value & " and tid = " & Me.grbTienda.Value & "  and seEstat = 1", Motor)
                                                 Application.DoEvents()
                                                 Dim resultadoXML As String = [String].Empty
                                                 resultadoXML = EasyOne_LeeResultado(p, 8)
@@ -934,13 +960,29 @@ Public Class frmFacClientes
 
                                                         Dim feAbonos As Double = 0
                                                         Estatus = 1
-                                                        'objpro.Indicacion("Insert into FEncabez (FeId, tId, FeTerm, FeFact, feSerie, sid, feFecha, feHora, Cid, FeSubt, fePorIva, FeIva, " &
-                                                        '"FeDesc1, FePDesc1, FeDesc2, FePDesc2, FeTotal, FeCanlet, FeAbonos, FeEstatu, FeReg, feTip, feuuid, fformpag) " &
-                                                        '"values (" & CInt(Mid(Me.txtTransaccion.Text, 5, Len(Me.txtTransaccion.Text))) & ", " & Me.grbTienda.Value & ", " & CInt(Mid(Trim(Me.txtTransaccion.Text), 1, 3)) & "," & CInt(Me.txtFactura.Text) & ",'" & Me.txtSerie.Text & "'," & Me.grbSucursal.Value & ",'" & fechareal & "', " &
-                                                        '" '" & Trim(FechaHora) & "', " & CInt(ExisteClave) & ", '" & Subtotal & "', " & PorIva & ",'" & Iva & "', '" & Descuento & "','" & Descuento & "', '" & Descuento & "', '" & Descuento & "', " &
-                                                        '" '" & Total2 & "', '" & cantletra & "', 0 ," & Estatus & ",'" & FeRegistro & "', '" & Tipo & "', '" & uuid & "', '" & Me.grbformaPago.Value & "')", Motor)
+                                                        objpro.Indicacion("Insert into FEncabez (FeId, tId, FeTerm, FeFact, feSerie, sid, feFecha, feHora, Cid, FeSubt, fePorIva, FeIva, " &
+                                                        "FeDesc1, FePDesc1, FeDesc2, FePDesc2, FeTotal, FeCanlet, FeAbonos, FeEstatu, FeReg, feTip, feuuid, fformpag) " &
+                                                        "values (" & CInt(Mid(Me.txtTransaccion.Text, 5, Len(Me.txtTransaccion.Text))) & ", " & Me.grbTienda.Value & ", " & CInt(Mid(Trim(Me.txtTransaccion.Text), 1, 3)) & "," & CInt(Me.txtFactura.Text) & ",'" & Me.txtSerie.Text & "'," & Me.grbSucursal.Value & ",'" & fechareal & "', " &
+                                                        " '" & Trim(FechaHora) & "', " & CInt(ExisteClave) & ", '" & Subtotal & "', " & PorIva & ",'" & Iva & "', '" & Descuento & "','" & Descuento & "', '" & Descuento & "', '" & Descuento & "', " &
+                                                        " '" & Total2 & "', '" & cantletra & "', 0 ," & Estatus & ",'" & FeRegistro & "', '" & Tipo & "', '" & uuid & "', '" & Me.grbformaPago.Value & "')", Motor)
 
                                                         Application.DoEvents()
+
+                                                        If DGFacturas.Rows.Count > 1 Then
+                                                            For dtg = 0 To Me.DGFacturas.Rows.Count - 1
+                                                                If Me.DGFacturas.Rows(dtg).Cells("UUIDR").Value IsNot Nothing Then
+                                                                    Try
+                                                                        Dim serier As String
+                                                                        Dim fac As Integer
+                                                                        serier = Me.DGFacturas.Rows(dtg).Cells("serieR").Value
+                                                                        fac = Me.DGFacturas.Rows(dtg).Cells("nofacR").Value
+                                                                        objpro.Indicacion("update fencabez set FeEstatu = 0,  FeFecCan = '" & fechareal & "' where tid = " & Me.grbTienda.Value & " and sid = " & Me.grbSucursal.Value & " and feserie = '" & serier & "' and fefact = " & fac & " ", Motor)
+                                                                    Catch ex As Exception
+                                                                        MsgBox(ex.ToString)
+                                                                    End Try
+                                                                End If
+                                                            Next
+                                                        End If
 
                                                         ''''''nuevoooooooooooooooooooooooooooooooooooooooooo
 
@@ -988,6 +1030,7 @@ Public Class frmFacClientes
                                                         btnFacturar.Visible = True
                                                         yafac.Reset()
                                                         facturado.Reset()
+                                                        DGFacturas.Rows.Clear()
                                                     Else
                                                         MsgBox("Archivo XML no es una factura version 4.0")
                                                     End If
@@ -1109,6 +1152,87 @@ Public Class frmFacClientes
         lblNumCuenta.Visible = opcion
         txtNumCuenta.Visible = opcion
     End Sub
+
+    Private Sub btn_Rel_Fac_Click(sender As Object, e As EventArgs) Handles btn_Rel_Fac.Click
+        If ventana2 Is Nothing OrElse ventana2.IsDisposed Then
+            ventana2 = New frmFacturasTienda()
+            ventana2.Show()
+        Else
+            ventana2.BringToFront()
+            'Formulariofac(frmFacturasTienda)
+        End If
+    End Sub
+
+    Private Sub AlCerrarVentana2(ByVal nofac As String, ByVal serie As String, ByVal uuid As String, ByVal fetim As String, ByVal fevta As String, ByVal tipof As String) Handles ventana2.FormularioCerrandose
+        Dim d As String = txtFechaVenta.Value.ToString.Substring(0, 2)
+        Dim m As String = txtFechaVenta.Value.ToString.Substring(3, 2)
+        Dim a As String = txtFechaVenta.Value.ToString.Substring(6, 4)
+        Dim FecVentasel As String = a & m & d
+        ' Aquí procesas la información que devolvió la segunda pantalla
+        If String.IsNullOrEmpty(uuid) Then
+            'LabelResultado.Text = "La pantalla se cerró sin seleccionar información."
+        Else
+            If DGFacturas.Rows.Count > 1 Then
+                For dg = 0 To Me.DGFacturas.Rows.Count - 1
+                    If Me.DGFacturas.Rows(dg).Cells("uuidR").Value IsNot Nothing Then
+                        If Me.DGFacturas.Rows(dg).Cells("uuidR").Value <> uuid Then
+                            If Me.DGFacturas.Rows(dg).Cells("feVTAR").Value = FecVentasel Then
+                                Dim n = DGFacturas.Rows.Add()
+                                DGFacturas.Rows(n).Cells(0).Value = nofac
+                                DGFacturas.Rows(n).Cells(1).Value = serie
+                                DGFacturas.Rows(n).Cells(2).Value = uuid
+                                DGFacturas.Rows(n).Cells(3).Value = fetim
+                                DGFacturas.Rows(n).Cells(4).Value = fevta
+                                DGFacturas.Rows(n).Cells(5).Value = tipof
+
+                                DGFacturas.Refresh()
+                            Else
+                                Dim tickt As String
+                                tickt = Me.DGFacturas.Rows(dg).Cells("nofacR").Value
+                                MsgBox("No se puede relacionar una factura con diferente Fecha de venta, verifique la factura  " + tickt + " seleccionada", MsgBoxStyle.Information, "Facturación.. ")
+                            End If
+                        Else
+                            Dim tickt As String
+                            tickt = Me.DGFacturas.Rows(dg).Cells("nofacR").Value
+                            MessageBox.Show("La factura seleccionada " + tickt + " esta repetida, favor de verificar los datos.", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        End If
+                    End If
+                Next
+            Else
+                If fevta = FecVentasel Then
+                    Dim n = DGFacturas.Rows.Add()
+                    DGFacturas.Rows(n).Cells(0).Value = nofac
+                    DGFacturas.Rows(n).Cells(1).Value = serie
+                    DGFacturas.Rows(n).Cells(2).Value = uuid
+                    DGFacturas.Rows(n).Cells(3).Value = fetim
+                    DGFacturas.Rows(n).Cells(4).Value = fevta
+                    DGFacturas.Rows(n).Cells(5).Value = tipof
+
+                    DGFacturas.Refresh()
+                Else
+                    MsgBox("No se puede relacionar una factura con diferente fecha de venta, verifique la factura  " + nofac + " seleccionada", MsgBoxStyle.Information, "Facturación.. ")
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Function TieneDatosRepetidos(dgv As DataGridView, nombreColumna As String) As Boolean
+        Dim valoresUnicos As New HashSet(Of String)()
+
+        For Each row As DataGridViewRow In dgv.Rows
+            ' Ignorar la fila nueva en blanco si el control la permite
+            If row.IsNewRow Then Continue For
+
+            Dim valor As String = Convert.ToString(row.Cells(nombreColumna).Value)
+
+            ' Si Add devuelve falso, el valor ya existía en el HashSet
+            If Not valoresUnicos.Add(valor) Then
+                Return True ' Hay datos repetidos
+            End If
+        Next
+
+        Return False ' No hay duplicados
+    End Function
 
     Private Sub btnInicializa_Click(sender As Object, e As EventArgs) Handles btnInicializa.Click
         DatClientes()

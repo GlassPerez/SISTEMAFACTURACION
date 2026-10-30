@@ -60,39 +60,46 @@ Public Class frmTicketCte
         desctoieps = 0
         desctocero = 0
         If Ticket.Text.Trim <> "" Then
-            Detalle = objpro.ObtenDatos("SELECT * FROM Nutrisa Where ClaveProducto <> '535102' and  DV_Total > 0 and clavesucursal = " & grbSucursal.Value & " and noticket = " & Ticket.Text & "and day(fechaticket) = " & txtFechaVenta.Value.ToString.Substring(0, 2) & " and month(fechaticket)= " & txtFechaVenta.Value.ToString.Substring(3, 2) & " and year(fechaticket)= " & txtFechaVenta.Value.ToString.Substring(6, 4) & " ", MotorBoutique).Tables(0)
+            Detalle = objpro.ObtenDatos("SELECT * FROM Nutrisa Where ClaveProducto <> '535102' and clavesucursal = " & grbSucursal.Value & " and noticket = " & Ticket.Text & "and day(fechaticket) = " & txtFechaVenta.Value.ToString.Substring(0, 2) & " and month(fechaticket)= " & txtFechaVenta.Value.ToString.Substring(3, 2) & " and year(fechaticket)= " & txtFechaVenta.Value.ToString.Substring(6, 4) & " ", MotorBoutique).Tables(0)
 
-
+            Dim subt As Double = 0
             If Detalle.Rows.Count Then
                 For Each r In Detalle.Rows
                     Dim sucur As String = r("clavesucursal").ToString
                     Dim ticket As String = r("noticket").ToString
                     Dim tipo As String = r("Tipo_Factura").ToString
+
+
+                    'subt += (CDbl(r("DV_Subtotal").ToString)) - (CDbl(r("DV_Descuento").ToString))
+
                     If tipo.Trim <> "Iva Tasa16" Then
                         If tipo.Trim = "IEPS" Then
-                            Dim vunit As Double = (CDbl(r("PrecioVenta").ToString))
-                            Dim cant As Integer = (CInt(r("Cantidad").ToString))
-                            Dim subt As Double = 0
-                            subt = (vunit * cant) - (CDbl(r("DV_Descuento").ToString))
+                            'Dim vunit As Double = (CDbl(r("PrecioVenta").ToString))
+                            'Dim cant As Integer = (CInt(r("Cantidad").ToString))
+                            'Dim subt As Double = 0
+                            subt = (CDbl(r("DV_Subtotal").ToString)) - (CDbl(r("DV_Descuento").ToString)) ' (vunit * cant) - (CDbl(r("DV_Descuento").ToString))
                             descto += (CDbl(r("DV_Descuento").ToString))
                             subtot += subt
+                            iva += (CDbl(r("Iva").ToString))
                             ieps += (CDbl(r("ieps8").ToString))
-                            total += subt + (CDbl(r("ieps8").ToString))
+                            total += subt + (CDbl(r("ieps8").ToString)) + (CDbl(r("Iva").ToString))
                         Else
-                            Dim vunit As Double = (CDbl(r("PrecioVenta").ToString))
-                            Dim cant As Integer = (CInt(r("Cantidad").ToString))
-                            Dim subt As Double = 0
-                            subt = (vunit * cant) - (CDbl(r("DV_Descuento").ToString))
+                            'Dim vunit As Double = (CDbl(r("PrecioVenta").ToString))
+                            'Dim cant As Integer = (CInt(r("Cantidad").ToString))
+                            'Dim subt As Double = 0
+                            'subt = (vunit * cant) - (CDbl(r("DV_Descuento").ToString))
+                            subt = (CDbl(r("DV_Subtotal").ToString)) - (CDbl(r("DV_Descuento").ToString))
                             descto += (CDbl(r("DV_Descuento").ToString))
                             subtot += subt
-                            total += subt
+                            total += subt '- descto
                         End If
 
                     Else
-                        Dim vunit As Double = (CDbl(r("PrecioVenta").ToString))
-                        Dim cant As Integer = (CInt(r("Cantidad").ToString))
-                        Dim subt As Double = 0
-                        subt = (vunit * cant) - (CDbl(r("DV_Descuento").ToString))
+                        'Dim vunit As Double = (CDbl(r("PrecioVenta").ToString))
+                        'Dim cant As Integer = (CInt(r("Cantidad").ToString))
+                        'Dim subt As Double = 0
+                        'subt = (vunit * cant) - (CDbl(r("DV_Descuento").ToString))
+                        subt = (CDbl(r("DV_Subtotal").ToString)) - (CDbl(r("DV_Descuento").ToString))
                         descto += (CDbl(r("DV_Descuento").ToString))
                         subtot += subt
                         iva += (CDbl(r("Iva").ToString))

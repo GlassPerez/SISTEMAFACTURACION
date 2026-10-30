@@ -58,7 +58,6 @@ Partial Class Principal
         Dim ButtonTool33 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Re-Imprimir Factura Boutique")
         Dim RibbonGroup24 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup5")
         Dim Appearance92 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim ButtonTool105 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Nota de Credito Boutique")
         Dim ButtonTool97 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Nota de Credito a Detalle Boutique")
         Dim ButtonTool103 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Cancelar Ticket Para Facturar")
         Dim RibbonGroup25 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("Factura de Cierre Diario")
@@ -115,6 +114,7 @@ Partial Class Principal
         Dim RibbonGroup40 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup1")
         Dim ButtonTool38 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Factura Global Boutique")
         Dim ButtonTool77 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Factura Global Repeco")
+        Dim ButtonTool127 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Nota de Credito Boutique")
         Dim RibbonGroup41 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroup2")
         Dim ButtonTool39 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Factura Global Contado Bosco")
         Dim ButtonTool123 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("Factura Global Credito Bosco")
@@ -369,9 +369,9 @@ Partial Class Principal
         Me._Principal_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left
         Me._Principal_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText
         Me._Principal_Toolbars_Dock_Area_Left.InitialResizeAreaExtent = 4
-        Me._Principal_Toolbars_Dock_Area_Left.Location = New System.Drawing.Point(0, 158)
+        Me._Principal_Toolbars_Dock_Area_Left.Location = New System.Drawing.Point(0, 187)
         Me._Principal_Toolbars_Dock_Area_Left.Name = "_Principal_Toolbars_Dock_Area_Left"
-        Me._Principal_Toolbars_Dock_Area_Left.Size = New System.Drawing.Size(4, 475)
+        Me._Principal_Toolbars_Dock_Area_Left.Size = New System.Drawing.Size(4, 446)
         Me._Principal_Toolbars_Dock_Area_Left.ToolbarsManager = Me.UTBM
         '
         'UTBM
@@ -435,10 +435,9 @@ Partial Class Principal
         Appearance92.BackColor2 = System.Drawing.Color.White
         Appearance92.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical
         RibbonGroup24.Settings.CaptionAppearance = Appearance92
-        ButtonTool105.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool97.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool103.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup24.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool105, ButtonTool97, ButtonTool103})
+        RibbonGroup24.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool97, ButtonTool103})
         RibbonGroup25.Caption = "Factura de Cierre Diario"
         Appearance52.BackColor = System.Drawing.Color.DarkOrange
         Appearance52.BackColor2 = System.Drawing.Color.White
@@ -558,7 +557,8 @@ Partial Class Principal
         ButtonTool38.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool77.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool77.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup40.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool38, ButtonTool77})
+        ButtonTool127.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
+        RibbonGroup40.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool38, ButtonTool77, ButtonTool127})
         RibbonGroup41.Caption = "Factura Global Bosco"
         ButtonTool39.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool39.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
@@ -780,9 +780,9 @@ Partial Class Principal
         Me._Principal_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right
         Me._Principal_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText
         Me._Principal_Toolbars_Dock_Area_Right.InitialResizeAreaExtent = 4
-        Me._Principal_Toolbars_Dock_Area_Right.Location = New System.Drawing.Point(1226, 158)
+        Me._Principal_Toolbars_Dock_Area_Right.Location = New System.Drawing.Point(1226, 187)
         Me._Principal_Toolbars_Dock_Area_Right.Name = "_Principal_Toolbars_Dock_Area_Right"
-        Me._Principal_Toolbars_Dock_Area_Right.Size = New System.Drawing.Size(4, 475)
+        Me._Principal_Toolbars_Dock_Area_Right.Size = New System.Drawing.Size(4, 446)
         Me._Principal_Toolbars_Dock_Area_Right.ToolbarsManager = Me.UTBM
         '
         '_Principal_Toolbars_Dock_Area_Top
@@ -793,7 +793,7 @@ Partial Class Principal
         Me._Principal_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText
         Me._Principal_Toolbars_Dock_Area_Top.Location = New System.Drawing.Point(0, 0)
         Me._Principal_Toolbars_Dock_Area_Top.Name = "_Principal_Toolbars_Dock_Area_Top"
-        Me._Principal_Toolbars_Dock_Area_Top.Size = New System.Drawing.Size(1230, 158)
+        Me._Principal_Toolbars_Dock_Area_Top.Size = New System.Drawing.Size(1230, 187)
         Me._Principal_Toolbars_Dock_Area_Top.ToolbarsManager = Me.UTBM
         '
         '_Principal_Toolbars_Dock_Area_Bottom
@@ -919,7 +919,7 @@ Partial Class Principal
         Me.UltraToolbarsDockArea1.BackColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(219, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.UltraToolbarsDockArea1.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Top
         Me.UltraToolbarsDockArea1.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.UltraToolbarsDockArea1.Location = New System.Drawing.Point(0, 158)
+        Me.UltraToolbarsDockArea1.Location = New System.Drawing.Point(0, 187)
         Me.UltraToolbarsDockArea1.Name = "UltraToolbarsDockArea1"
         Me.UltraToolbarsDockArea1.Size = New System.Drawing.Size(1230, 0)
         Me.UltraToolbarsDockArea1.ToolbarsManager = Me.UltraToolbarsManager1
@@ -941,9 +941,9 @@ Partial Class Principal
         Me.UltraToolbarsDockArea3.BackColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(219, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.UltraToolbarsDockArea3.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left
         Me.UltraToolbarsDockArea3.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.UltraToolbarsDockArea3.Location = New System.Drawing.Point(4, 158)
+        Me.UltraToolbarsDockArea3.Location = New System.Drawing.Point(4, 187)
         Me.UltraToolbarsDockArea3.Name = "UltraToolbarsDockArea3"
-        Me.UltraToolbarsDockArea3.Size = New System.Drawing.Size(0, 475)
+        Me.UltraToolbarsDockArea3.Size = New System.Drawing.Size(0, 446)
         Me.UltraToolbarsDockArea3.ToolbarsManager = Me.UltraToolbarsManager1
         '
         'UltraToolbarsDockArea4
@@ -952,9 +952,9 @@ Partial Class Principal
         Me.UltraToolbarsDockArea4.BackColor = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(219, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.UltraToolbarsDockArea4.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right
         Me.UltraToolbarsDockArea4.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.UltraToolbarsDockArea4.Location = New System.Drawing.Point(1226, 158)
+        Me.UltraToolbarsDockArea4.Location = New System.Drawing.Point(1226, 187)
         Me.UltraToolbarsDockArea4.Name = "UltraToolbarsDockArea4"
-        Me.UltraToolbarsDockArea4.Size = New System.Drawing.Size(0, 475)
+        Me.UltraToolbarsDockArea4.Size = New System.Drawing.Size(0, 446)
         Me.UltraToolbarsDockArea4.ToolbarsManager = Me.UltraToolbarsManager1
         '
         'umsg
@@ -971,9 +971,9 @@ Partial Class Principal
         Me.Principal_Fill_Panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.Principal_Fill_Panel.Cursor = System.Windows.Forms.Cursors.Default
         Me.Principal_Fill_Panel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Principal_Fill_Panel.Location = New System.Drawing.Point(4, 158)
+        Me.Principal_Fill_Panel.Location = New System.Drawing.Point(4, 187)
         Me.Principal_Fill_Panel.Name = "Principal_Fill_Panel"
-        Me.Principal_Fill_Panel.Size = New System.Drawing.Size(1222, 475)
+        Me.Principal_Fill_Panel.Size = New System.Drawing.Size(1222, 446)
         Me.Principal_Fill_Panel.TabIndex = 5
         '
         'Principal

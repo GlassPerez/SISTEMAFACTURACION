@@ -54,6 +54,9 @@ Public Class frmCancelarTicket
         Inicializa()
         UGDetalle.DataSource = Nothing
         objpro.CargaCombos(grbTienda, "Select tId, trSocial as Tienda FROM CatTien", 0, 1, Motor)
+        Me.grbTienda.Value = Tienda
+        objpro.CargaCombos(grbSucursal, "Select sId,sCsuc FROM CatSucu Where tid = " & Me.grbTienda.Value & " ", 0, 1, Motor)
+        Me.grbSucursal.Value = Sucursal
         Application.DoEvents()
     End Sub
 

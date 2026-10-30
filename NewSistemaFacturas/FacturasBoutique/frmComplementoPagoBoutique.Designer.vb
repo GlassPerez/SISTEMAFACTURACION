@@ -172,11 +172,11 @@ Partial Class frmComplementoPagoBoutique
         'ToolStripContainer1.ContentPanel
         '
         Me.ToolStripContainer1.ContentPanel.Controls.Add(Me.SplitContainer1)
-        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(986, 541)
+        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(939, 524)
         Me.ToolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolStripContainer1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStripContainer1.Name = "ToolStripContainer1"
-        Me.ToolStripContainer1.Size = New System.Drawing.Size(986, 566)
+        Me.ToolStripContainer1.Size = New System.Drawing.Size(939, 549)
         Me.ToolStripContainer1.TabIndex = 1
         Me.ToolStripContainer1.Text = "ToolStripContainer1"
         '
@@ -195,8 +195,8 @@ Partial Class frmComplementoPagoBoutique
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.gpoEnvio)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Ugr)
-        Me.SplitContainer1.Size = New System.Drawing.Size(986, 541)
-        Me.SplitContainer1.SplitterDistance = 107
+        Me.SplitContainer1.Size = New System.Drawing.Size(939, 524)
+        Me.SplitContainer1.SplitterDistance = 103
         Me.SplitContainer1.TabIndex = 0
         '
         'ugbox1
@@ -218,7 +218,7 @@ Partial Class frmComplementoPagoBoutique
         Me.ugbox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.ugbox1.Location = New System.Drawing.Point(0, 0)
         Me.ugbox1.Name = "ugbox1"
-        Me.ugbox1.Size = New System.Drawing.Size(986, 119)
+        Me.ugbox1.Size = New System.Drawing.Size(939, 101)
         Me.ugbox1.TabIndex = 5
         '
         'UltraLabel4
@@ -232,10 +232,10 @@ Partial Class frmComplementoPagoBoutique
         Me.UltraLabel4.Appearance = Appearance14
         Me.UltraLabel4.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.UltraLabel4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UltraLabel4.Location = New System.Drawing.Point(3, 84)
+        Me.UltraLabel4.Location = New System.Drawing.Point(3, 66)
         Me.UltraLabel4.Margin = New System.Windows.Forms.Padding(2)
         Me.UltraLabel4.Name = "UltraLabel4"
-        Me.UltraLabel4.Size = New System.Drawing.Size(980, 32)
+        Me.UltraLabel4.Size = New System.Drawing.Size(933, 32)
         Me.UltraLabel4.TabIndex = 65
         Me.UltraLabel4.Text = "** Para realizar el complemento da doble click sobre la factura deseada .. **"
         '
@@ -245,7 +245,7 @@ Partial Class frmComplementoPagoBoutique
         Me.UltraLabel3.Appearance = Appearance12
         Me.UltraLabel3.AutoSize = True
         Me.UltraLabel3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UltraLabel3.Location = New System.Drawing.Point(661, 15)
+        Me.UltraLabel3.Location = New System.Drawing.Point(632, 16)
         Me.UltraLabel3.Name = "UltraLabel3"
         Me.UltraLabel3.Size = New System.Drawing.Size(92, 14)
         Me.UltraLabel3.TabIndex = 64
@@ -257,7 +257,7 @@ Partial Class frmComplementoPagoBoutique
         Me.UltraLabel2.Appearance = Appearance1
         Me.UltraLabel2.AutoSize = True
         Me.UltraLabel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UltraLabel2.Location = New System.Drawing.Point(522, 15)
+        Me.UltraLabel2.Location = New System.Drawing.Point(493, 16)
         Me.UltraLabel2.Name = "UltraLabel2"
         Me.UltraLabel2.Size = New System.Drawing.Size(91, 14)
         Me.UltraLabel2.TabIndex = 63
@@ -269,7 +269,7 @@ Partial Class frmComplementoPagoBoutique
         Me.UltraLabel1.Appearance = Appearance54
         Me.UltraLabel1.AutoSize = True
         Me.UltraLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UltraLabel1.Location = New System.Drawing.Point(214, 15)
+        Me.UltraLabel1.Location = New System.Drawing.Point(193, 16)
         Me.UltraLabel1.Name = "UltraLabel1"
         Me.UltraLabel1.Size = New System.Drawing.Size(53, 14)
         Me.UltraLabel1.TabIndex = 62
@@ -281,7 +281,7 @@ Partial Class frmComplementoPagoBoutique
         Me.UltraLabel8.Appearance = Appearance3
         Me.UltraLabel8.AutoSize = True
         Me.UltraLabel8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UltraLabel8.Location = New System.Drawing.Point(38, 15)
+        Me.UltraLabel8.Location = New System.Drawing.Point(17, 16)
         Me.UltraLabel8.Name = "UltraLabel8"
         Me.UltraLabel8.Size = New System.Drawing.Size(44, 14)
         Me.UltraLabel8.TabIndex = 61
@@ -292,7 +292,7 @@ Partial Class frmComplementoPagoBoutique
         Me.grbMes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grbMes.FormattingEnabled = True
         Me.grbMes.Items.AddRange(New Object() {"ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"})
-        Me.grbMes.Location = New System.Drawing.Point(661, 36)
+        Me.grbMes.Location = New System.Drawing.Point(632, 37)
         Me.grbMes.Name = "grbMes"
         Me.grbMes.Size = New System.Drawing.Size(121, 21)
         Me.grbMes.TabIndex = 60
@@ -302,7 +302,7 @@ Partial Class frmComplementoPagoBoutique
         Me.grbPeriodo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grbPeriodo.FormattingEnabled = True
         Me.grbPeriodo.Items.AddRange(New Object() {"2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020"})
-        Me.grbPeriodo.Location = New System.Drawing.Point(519, 35)
+        Me.grbPeriodo.Location = New System.Drawing.Point(490, 36)
         Me.grbPeriodo.Name = "grbPeriodo"
         Me.grbPeriodo.Size = New System.Drawing.Size(94, 21)
         Me.grbPeriodo.TabIndex = 59
@@ -313,7 +313,7 @@ Partial Class frmComplementoPagoBoutique
         Me.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnBuscar.ForeColor = System.Drawing.Color.White
-        Me.btnBuscar.Location = New System.Drawing.Point(837, 23)
+        Me.btnBuscar.Location = New System.Drawing.Point(780, 16)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(138, 37)
         Me.btnBuscar.TabIndex = 56
@@ -379,7 +379,7 @@ Partial Class frmComplementoPagoBoutique
         Me.grbSucursal.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.grbSucursal.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
         Me.grbSucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grbSucursal.Location = New System.Drawing.Point(214, 35)
+        Me.grbSucursal.Location = New System.Drawing.Point(193, 36)
         Me.grbSucursal.Name = "grbSucursal"
         Me.grbSucursal.Size = New System.Drawing.Size(276, 22)
         Me.grbSucursal.TabIndex = 5
@@ -443,7 +443,7 @@ Partial Class frmComplementoPagoBoutique
         Me.grbTienda.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.grbTienda.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
         Me.grbTienda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grbTienda.Location = New System.Drawing.Point(38, 34)
+        Me.grbTienda.Location = New System.Drawing.Point(17, 35)
         Me.grbTienda.Name = "grbTienda"
         Me.grbTienda.Size = New System.Drawing.Size(162, 22)
         Me.grbTienda.TabIndex = 4
@@ -471,7 +471,7 @@ Partial Class frmComplementoPagoBoutique
         Me.gpoEnvio.Dock = System.Windows.Forms.DockStyle.Fill
         Me.gpoEnvio.Location = New System.Drawing.Point(0, 255)
         Me.gpoEnvio.Name = "gpoEnvio"
-        Me.gpoEnvio.Size = New System.Drawing.Size(986, 175)
+        Me.gpoEnvio.Size = New System.Drawing.Size(939, 162)
         Me.gpoEnvio.TabIndex = 7
         Me.gpoEnvio.TabStop = False
         '
@@ -552,7 +552,7 @@ Partial Class frmComplementoPagoBoutique
         Me.btnAplicarPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAplicarPago.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAplicarPago.ForeColor = System.Drawing.Color.White
-        Me.btnAplicarPago.Location = New System.Drawing.Point(815, 85)
+        Me.btnAplicarPago.Location = New System.Drawing.Point(758, 82)
         Me.btnAplicarPago.Name = "btnAplicarPago"
         Me.btnAplicarPago.Size = New System.Drawing.Size(145, 47)
         Me.btnAplicarPago.TabIndex = 33
@@ -651,7 +651,7 @@ Partial Class frmComplementoPagoBoutique
         Me.UltraLabel5.Location = New System.Drawing.Point(3, 16)
         Me.UltraLabel5.Margin = New System.Windows.Forms.Padding(2)
         Me.UltraLabel5.Name = "UltraLabel5"
-        Me.UltraLabel5.Size = New System.Drawing.Size(980, 27)
+        Me.UltraLabel5.Size = New System.Drawing.Size(933, 27)
         Me.UltraLabel5.TabIndex = 18
         Me.UltraLabel5.Text = "Complemento para pago seleccionado"
         '
@@ -768,7 +768,7 @@ Partial Class frmComplementoPagoBoutique
         Me.Ugr.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.Ugr.Location = New System.Drawing.Point(0, 0)
         Me.Ugr.Name = "Ugr"
-        Me.Ugr.Size = New System.Drawing.Size(986, 255)
+        Me.Ugr.Size = New System.Drawing.Size(939, 255)
         Me.Ugr.TabIndex = 12
         Me.Ugr.Text = "Facturas PPD"
         Me.Ugr.UseOsThemes = Infragistics.Win.DefaultableBoolean.[False]
@@ -778,7 +778,7 @@ Partial Class frmComplementoPagoBoutique
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(986, 566)
+        Me.ClientSize = New System.Drawing.Size(939, 549)
         Me.Controls.Add(Me.ToolStripContainer1)
         Me.Name = "frmComplementoPagoBoutique"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

@@ -428,6 +428,8 @@ Public Class frmCompPagos
         Tabla1.Columns.Add("rcomdir")
         Tabla1.Columns.Add("rusocfdi")
         Tabla1.Columns.Add("nocuenta")
+        Tabla1.Columns.Add("UUIDRel")
+        Tabla1.Columns.Add("TipoRel")
 
         Dim Fila As DataRow
 
@@ -681,6 +683,12 @@ Public Class frmCompPagos
             EasyOne_pago10_AddTrasladoP20(p, Format(basep, "######.00"), "002", "Tasa", "0.160000", Format(ImporteP, "######.00"))
         End If
 
+        Dim cantletra As String
+        cantletra = Letras(Format(Importe.Value, "######.00"))
+        Fila("cantidadl") = cantletra
+
+        Fila("TipoRel") = ""
+        Fila("UUIDRel") = ""
 
         ''Se agrega el complemento al comprobante
         EasyOne_AddComplemento(c, p)

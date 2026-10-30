@@ -99,8 +99,14 @@ Partial Class frmGlobalNutrisa
         Me.grbTienda = New Infragistics.Win.UltraWinGrid.UltraCombo()
         Me.UltraLabel3 = New Infragistics.Win.Misc.UltraLabel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Traslado = New Infragistics.Win.UltraWinEditors.UltraCurrencyEditor()
+        Me.IEPS = New Infragistics.Win.UltraWinEditors.UltraCurrencyEditor()
+        Me.Subtotal = New Infragistics.Win.UltraWinEditors.UltraCurrencyEditor()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Timporte = New Infragistics.Win.UltraWinEditors.UltraCurrencyEditor()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btnFacturar = New System.Windows.Forms.Button()
         Me.DevIps = New Infragistics.Win.UltraWinEditors.UltraCurrencyEditor()
         Me.DevIva = New Infragistics.Win.UltraWinEditors.UltraCurrencyEditor()
         Me.DevVenta0 = New Infragistics.Win.UltraWinEditors.UltraCurrencyEditor()
@@ -109,21 +115,17 @@ Partial Class frmGlobalNutrisa
         Me.DevVenta = New Infragistics.Win.UltraWinEditors.UltraCurrencyEditor()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Subtotal = New Infragistics.Win.UltraWinEditors.UltraCurrencyEditor()
         Me.lblSubtotal = New System.Windows.Forms.Label()
         Me.lblDiaFactura = New System.Windows.Forms.Label()
         Me.lblFactura = New System.Windows.Forms.Label()
-        Me.Traslado = New Infragistics.Win.UltraWinEditors.UltraCurrencyEditor()
         Me.lblTraslado = New System.Windows.Forms.Label()
         Me.lblTotal = New System.Windows.Forms.Label()
         Me.Total = New Infragistics.Win.UltraWinEditors.UltraCurrencyEditor()
-        Me.IEPS = New Infragistics.Win.UltraWinEditors.UltraCurrencyEditor()
         Me.lblIeps = New System.Windows.Forms.Label()
         Me.lblIva = New System.Windows.Forms.Label()
         Me.Iva = New Infragistics.Win.UltraWinEditors.UltraCurrencyEditor()
         Me.lblDescuento = New System.Windows.Forms.Label()
         Me.Descuento = New Infragistics.Win.UltraWinEditors.UltraCurrencyEditor()
-        Me.btnFacturar = New System.Windows.Forms.Button()
         Me.gpoNotas = New System.Windows.Forms.GroupBox()
         Me.ChlisFact = New System.Windows.Forms.CheckedListBox()
         Me.UgrTicket = New Infragistics.Win.UltraWinGrid.UltraGrid()
@@ -145,16 +147,17 @@ Partial Class frmGlobalNutrisa
         CType(Me.grbSucursal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grbTienda, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.Traslado, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.IEPS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Subtotal, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Timporte, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         CType(Me.DevIps, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DevIva, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DevVenta0, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DevIeps, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DevVenta, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Subtotal, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Traslado, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Total, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.IEPS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Iva, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Descuento, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gpoNotas.SuspendLayout()
@@ -172,10 +175,10 @@ Partial Class frmGlobalNutrisa
         Appearance16.ForeColor = System.Drawing.Color.Black
         Me.upb.Appearance = Appearance16
         Me.upb.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.upb.Location = New System.Drawing.Point(0, 788)
+        Me.upb.Location = New System.Drawing.Point(0, 667)
         Me.upb.Maximum = 0
         Me.upb.Name = "upb"
-        Me.upb.Size = New System.Drawing.Size(1197, 19)
+        Me.upb.Size = New System.Drawing.Size(1197, 27)
         Me.upb.TabIndex = 6
         Me.upb.Text = "[Value]"
         '
@@ -185,7 +188,7 @@ Partial Class frmGlobalNutrisa
         Me.btnFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnFactura.ForeColor = System.Drawing.Color.White
-        Me.btnFactura.Location = New System.Drawing.Point(19, 62)
+        Me.btnFactura.Location = New System.Drawing.Point(19, 40)
         Me.btnFactura.Name = "btnFactura"
         Me.btnFactura.Size = New System.Drawing.Size(216, 30)
         Me.btnFactura.TabIndex = 85
@@ -195,7 +198,7 @@ Partial Class frmGlobalNutrisa
         'txtFechaVenta
         '
         Me.txtFechaVenta.DateTime = New Date(2013, 12, 3, 0, 0, 0, 0)
-        Me.txtFechaVenta.Location = New System.Drawing.Point(122, 24)
+        Me.txtFechaVenta.Location = New System.Drawing.Point(122, 9)
         Me.txtFechaVenta.Name = "txtFechaVenta"
         Me.txtFechaVenta.Size = New System.Drawing.Size(113, 21)
         Me.txtFechaVenta.TabIndex = 84
@@ -207,7 +210,7 @@ Partial Class frmGlobalNutrisa
         Me.UltraLabel2.Appearance = Appearance19
         Me.UltraLabel2.AutoSize = True
         Me.UltraLabel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UltraLabel2.Location = New System.Drawing.Point(19, 28)
+        Me.UltraLabel2.Location = New System.Drawing.Point(19, 13)
         Me.UltraLabel2.Name = "UltraLabel2"
         Me.UltraLabel2.Size = New System.Drawing.Size(97, 14)
         Me.UltraLabel2.TabIndex = 83
@@ -218,7 +221,7 @@ Partial Class frmGlobalNutrisa
         Me.grbMes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grbMes.FormattingEnabled = True
         Me.grbMes.Items.AddRange(New Object() {"ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"})
-        Me.grbMes.Location = New System.Drawing.Point(194, 78)
+        Me.grbMes.Location = New System.Drawing.Point(194, 61)
         Me.grbMes.Name = "grbMes"
         Me.grbMes.Size = New System.Drawing.Size(147, 21)
         Me.grbMes.TabIndex = 82
@@ -229,7 +232,7 @@ Partial Class frmGlobalNutrisa
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(191, 62)
+        Me.Label2.Location = New System.Drawing.Point(191, 45)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(101, 13)
         Me.Label2.TabIndex = 81
@@ -241,7 +244,7 @@ Partial Class frmGlobalNutrisa
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(20, 62)
+        Me.Label1.Location = New System.Drawing.Point(20, 45)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(100, 13)
         Me.Label1.TabIndex = 80
@@ -253,7 +256,7 @@ Partial Class frmGlobalNutrisa
         Me.grbPeriodo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grbPeriodo.FormattingEnabled = True
         Me.grbPeriodo.Items.AddRange(New Object() {"2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"})
-        Me.grbPeriodo.Location = New System.Drawing.Point(26, 78)
+        Me.grbPeriodo.Location = New System.Drawing.Point(26, 61)
         Me.grbPeriodo.Name = "grbPeriodo"
         Me.grbPeriodo.Size = New System.Drawing.Size(131, 21)
         Me.grbPeriodo.TabIndex = 79
@@ -264,9 +267,9 @@ Partial Class frmGlobalNutrisa
         Me.btnConsultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnConsultar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnConsultar.ForeColor = System.Drawing.Color.White
-        Me.btnConsultar.Location = New System.Drawing.Point(404, 65)
+        Me.btnConsultar.Location = New System.Drawing.Point(404, 47)
         Me.btnConsultar.Name = "btnConsultar"
-        Me.btnConsultar.Size = New System.Drawing.Size(167, 34)
+        Me.btnConsultar.Size = New System.Drawing.Size(167, 35)
         Me.btnConsultar.TabIndex = 78
         Me.btnConsultar.Text = "Consultar Dias Facturados"
         Me.btnConsultar.UseVisualStyleBackColor = False
@@ -277,7 +280,7 @@ Partial Class frmGlobalNutrisa
         Me.lblSucursal.BackColor = System.Drawing.Color.Transparent
         Me.lblSucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSucursal.ForeColor = System.Drawing.Color.Black
-        Me.lblSucursal.Location = New System.Drawing.Point(191, 12)
+        Me.lblSucursal.Location = New System.Drawing.Point(191, 2)
         Me.lblSucursal.Name = "lblSucursal"
         Me.lblSucursal.Size = New System.Drawing.Size(60, 13)
         Me.lblSucursal.TabIndex = 77
@@ -342,7 +345,7 @@ Partial Class frmGlobalNutrisa
         Me.grbSucursal.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.grbSucursal.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
         Me.grbSucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grbSucursal.Location = New System.Drawing.Point(194, 28)
+        Me.grbSucursal.Location = New System.Drawing.Point(194, 18)
         Me.grbSucursal.Name = "grbSucursal"
         Me.grbSucursal.Size = New System.Drawing.Size(187, 22)
         Me.grbSucursal.TabIndex = 76
@@ -353,7 +356,7 @@ Partial Class frmGlobalNutrisa
         Me.lblTienda.BackColor = System.Drawing.Color.Transparent
         Me.lblTienda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTienda.ForeColor = System.Drawing.Color.Black
-        Me.lblTienda.Location = New System.Drawing.Point(20, 12)
+        Me.lblTienda.Location = New System.Drawing.Point(20, 2)
         Me.lblTienda.Name = "lblTienda"
         Me.lblTienda.Size = New System.Drawing.Size(50, 13)
         Me.lblTienda.TabIndex = 75
@@ -418,62 +421,110 @@ Partial Class frmGlobalNutrisa
         Me.grbTienda.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.grbTienda.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
         Me.grbTienda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grbTienda.Location = New System.Drawing.Point(23, 28)
+        Me.grbTienda.Location = New System.Drawing.Point(23, 18)
         Me.grbTienda.Name = "grbTienda"
         Me.grbTienda.Size = New System.Drawing.Size(151, 22)
         Me.grbTienda.TabIndex = 74
         '
         'UltraLabel3
         '
-        Appearance18.BackColor = System.Drawing.Color.White
-        Appearance18.BackColor2 = System.Drawing.Color.White
-        Appearance18.BackGradientStyle = Infragistics.Win.GradientStyle.None
+        Appearance18.BackColor = System.Drawing.Color.Transparent
+        Appearance18.BackColor2 = System.Drawing.Color.Transparent
         Me.UltraLabel3.Appearance = Appearance18
         Me.UltraLabel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.UltraLabel3.Location = New System.Drawing.Point(0, 0)
         Me.UltraLabel3.Name = "UltraLabel3"
-        Me.UltraLabel3.Size = New System.Drawing.Size(1197, 111)
+        Me.UltraLabel3.Size = New System.Drawing.Size(1197, 90)
         Me.UltraLabel3.TabIndex = 86
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Traslado)
+        Me.GroupBox1.Controls.Add(Me.IEPS)
+        Me.GroupBox1.Controls.Add(Me.Subtotal)
+        Me.GroupBox1.Controls.Add(Me.Label6)
+        Me.GroupBox1.Controls.Add(Me.Timporte)
         Me.GroupBox1.Controls.Add(Me.Button2)
         Me.GroupBox1.Controls.Add(Me.Panel2)
-        Me.GroupBox1.Controls.Add(Me.Subtotal)
         Me.GroupBox1.Controls.Add(Me.lblSubtotal)
         Me.GroupBox1.Controls.Add(Me.lblDiaFactura)
         Me.GroupBox1.Controls.Add(Me.lblFactura)
-        Me.GroupBox1.Controls.Add(Me.Traslado)
         Me.GroupBox1.Controls.Add(Me.lblTraslado)
         Me.GroupBox1.Controls.Add(Me.lblTotal)
         Me.GroupBox1.Controls.Add(Me.Total)
-        Me.GroupBox1.Controls.Add(Me.IEPS)
         Me.GroupBox1.Controls.Add(Me.lblIeps)
         Me.GroupBox1.Controls.Add(Me.lblIva)
         Me.GroupBox1.Controls.Add(Me.Iva)
         Me.GroupBox1.Controls.Add(Me.lblDescuento)
         Me.GroupBox1.Controls.Add(Me.Descuento)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 111)
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 90)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1197, 102)
+        Me.GroupBox1.Size = New System.Drawing.Size(1197, 100)
         Me.GroupBox1.TabIndex = 87
         Me.GroupBox1.TabStop = False
+        '
+        'Traslado
+        '
+        Me.Traslado.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Traslado.Location = New System.Drawing.Point(843, 22)
+        Me.Traslado.Name = "Traslado"
+        Me.Traslado.ReadOnly = True
+        Me.Traslado.Size = New System.Drawing.Size(122, 24)
+        Me.Traslado.TabIndex = 54
+        '
+        'IEPS
+        '
+        Me.IEPS.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.IEPS.Location = New System.Drawing.Point(724, 22)
+        Me.IEPS.Name = "IEPS"
+        Me.IEPS.ReadOnly = True
+        Me.IEPS.Size = New System.Drawing.Size(112, 24)
+        Me.IEPS.TabIndex = 53
+        '
+        'Subtotal
+        '
+        Me.Subtotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Subtotal.Location = New System.Drawing.Point(350, 22)
+        Me.Subtotal.Name = "Subtotal"
+        Me.Subtotal.ReadOnly = True
+        Me.Subtotal.Size = New System.Drawing.Size(121, 24)
+        Me.Subtotal.TabIndex = 52
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.BackColor = System.Drawing.Color.Transparent
+        Me.Label6.Location = New System.Drawing.Point(354, 8)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(46, 13)
+        Me.Label6.TabIndex = 51
+        Me.Label6.Text = "Subtotal"
+        '
+        'Timporte
+        '
+        Me.Timporte.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Timporte.Location = New System.Drawing.Point(225, 22)
+        Me.Timporte.Name = "Timporte"
+        Me.Timporte.ReadOnly = True
+        Me.Timporte.Size = New System.Drawing.Size(121, 24)
+        Me.Timporte.TabIndex = 50
         '
         'Button2
         '
         Me.Button2.BackColor = System.Drawing.Color.Yellow
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(1088, 12)
+        Me.Button2.Location = New System.Drawing.Point(1104, 5)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(97, 44)
+        Me.Button2.Size = New System.Drawing.Size(84, 44)
         Me.Button2.TabIndex = 49
         Me.Button2.Text = "Actualiza Totales"
         Me.Button2.UseVisualStyleBackColor = False
         '
         'Panel2
         '
-        Me.Panel2.BackColor = System.Drawing.Color.Black
+        Me.Panel2.BackColor = System.Drawing.Color.DarkBlue
+        Me.Panel2.Controls.Add(Me.btnFacturar)
         Me.Panel2.Controls.Add(Me.DevIps)
         Me.Panel2.Controls.Add(Me.DevIva)
         Me.Panel2.Controls.Add(Me.DevVenta0)
@@ -483,15 +534,27 @@ Partial Class frmGlobalNutrisa
         Me.Panel2.Controls.Add(Me.Label4)
         Me.Panel2.Controls.Add(Me.Label5)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(3, 62)
+        Me.Panel2.Location = New System.Drawing.Point(3, 53)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1191, 37)
+        Me.Panel2.Size = New System.Drawing.Size(1191, 44)
         Me.Panel2.TabIndex = 48
+        '
+        'btnFacturar
+        '
+        Me.btnFacturar.BackColor = System.Drawing.Color.Black
+        Me.btnFacturar.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnFacturar.ForeColor = System.Drawing.Color.White
+        Me.btnFacturar.Location = New System.Drawing.Point(927, 1)
+        Me.btnFacturar.Name = "btnFacturar"
+        Me.btnFacturar.Size = New System.Drawing.Size(264, 42)
+        Me.btnFacturar.TabIndex = 89
+        Me.btnFacturar.Text = "Generar factura"
+        Me.btnFacturar.UseVisualStyleBackColor = False
         '
         'DevIps
         '
         Me.DevIps.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DevIps.Location = New System.Drawing.Point(670, 3)
+        Me.DevIps.Location = New System.Drawing.Point(569, 9)
         Me.DevIps.Name = "DevIps"
         Me.DevIps.ReadOnly = True
         Me.DevIps.Size = New System.Drawing.Size(119, 24)
@@ -500,7 +563,7 @@ Partial Class frmGlobalNutrisa
         'DevIva
         '
         Me.DevIva.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DevIva.Location = New System.Drawing.Point(281, 5)
+        Me.DevIva.Location = New System.Drawing.Point(229, 11)
         Me.DevIva.Name = "DevIva"
         Me.DevIva.ReadOnly = True
         Me.DevIva.Size = New System.Drawing.Size(119, 24)
@@ -509,25 +572,24 @@ Partial Class frmGlobalNutrisa
         'DevVenta0
         '
         Me.DevVenta0.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DevVenta0.Location = New System.Drawing.Point(953, 5)
+        Me.DevVenta0.Location = New System.Drawing.Point(790, 8)
         Me.DevVenta0.Name = "DevVenta0"
         Me.DevVenta0.Size = New System.Drawing.Size(118, 24)
         Me.DevVenta0.TabIndex = 23
         '
         'Label3
         '
-        Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(803, 9)
+        Me.Label3.Location = New System.Drawing.Point(700, 7)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(139, 13)
+        Me.Label3.Size = New System.Drawing.Size(85, 26)
         Me.Label3.TabIndex = 22
         Me.Label3.Text = "Devoluciones Ventas al 0 %"
         '
         'DevIeps
         '
         Me.DevIeps.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DevIeps.Location = New System.Drawing.Point(549, 3)
+        Me.DevIeps.Location = New System.Drawing.Point(448, 9)
         Me.DevIeps.Name = "DevIeps"
         Me.DevIeps.Size = New System.Drawing.Size(118, 24)
         Me.DevIeps.TabIndex = 21
@@ -535,49 +597,38 @@ Partial Class frmGlobalNutrisa
         'DevVenta
         '
         Me.DevVenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DevVenta.Location = New System.Drawing.Point(160, 5)
+        Me.DevVenta.Location = New System.Drawing.Point(108, 11)
         Me.DevVenta.Name = "DevVenta"
         Me.DevVenta.Size = New System.Drawing.Size(118, 24)
         Me.DevVenta.TabIndex = 20
         '
         'Label4
         '
-        Me.Label4.AutoSize = True
         Me.Label4.BackColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(444, 11)
+        Me.Label4.Location = New System.Drawing.Point(365, 9)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(99, 13)
+        Me.Label4.Size = New System.Drawing.Size(77, 26)
         Me.Label4.TabIndex = 19
         Me.Label4.Text = "Devoluciones IEPS"
         '
         'Label5
         '
-        Me.Label5.AutoSize = True
         Me.Label5.BackColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(9, 11)
+        Me.Label5.Location = New System.Drawing.Point(7, 9)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(145, 13)
+        Me.Label5.Size = New System.Drawing.Size(96, 26)
         Me.Label5.TabIndex = 18
         Me.Label5.Text = "Devoluciones Ventas al 16 %"
-        '
-        'Subtotal
-        '
-        Me.Subtotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Subtotal.Location = New System.Drawing.Point(230, 25)
-        Me.Subtotal.Name = "Subtotal"
-        Me.Subtotal.ReadOnly = True
-        Me.Subtotal.Size = New System.Drawing.Size(132, 24)
-        Me.Subtotal.TabIndex = 34
         '
         'lblSubtotal
         '
         Me.lblSubtotal.AutoSize = True
         Me.lblSubtotal.BackColor = System.Drawing.Color.Transparent
-        Me.lblSubtotal.Location = New System.Drawing.Point(227, 10)
+        Me.lblSubtotal.Location = New System.Drawing.Point(232, 8)
         Me.lblSubtotal.Name = "lblSubtotal"
-        Me.lblSubtotal.Size = New System.Drawing.Size(46, 13)
+        Me.lblSubtotal.Size = New System.Drawing.Size(42, 13)
         Me.lblSubtotal.TabIndex = 30
-        Me.lblSubtotal.Text = "Subtotal"
+        Me.lblSubtotal.Text = "Importe"
         '
         'lblDiaFactura
         '
@@ -601,30 +652,21 @@ Partial Class frmGlobalNutrisa
         Me.lblFactura.Text = "Día de Factura:"
         Me.lblFactura.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'Traslado
-        '
-        Me.Traslado.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Traslado.Location = New System.Drawing.Point(792, 22)
-        Me.Traslado.Name = "Traslado"
-        Me.Traslado.ReadOnly = True
-        Me.Traslado.Size = New System.Drawing.Size(130, 24)
-        Me.Traslado.TabIndex = 45
-        '
         'lblTraslado
         '
         Me.lblTraslado.AutoSize = True
         Me.lblTraslado.BackColor = System.Drawing.Color.Transparent
-        Me.lblTraslado.Location = New System.Drawing.Point(806, 10)
+        Me.lblTraslado.Location = New System.Drawing.Point(854, 9)
         Me.lblTraslado.Name = "lblTraslado"
-        Me.lblTraslado.Size = New System.Drawing.Size(75, 13)
+        Me.lblTraslado.Size = New System.Drawing.Size(53, 13)
         Me.lblTraslado.TabIndex = 44
-        Me.lblTraslado.Text = "Total Traslado"
+        Me.lblTraslado.Text = "Traslados"
         '
         'lblTotal
         '
         Me.lblTotal.AutoSize = True
         Me.lblTotal.BackColor = System.Drawing.Color.Transparent
-        Me.lblTotal.Location = New System.Drawing.Point(935, 6)
+        Me.lblTotal.Location = New System.Drawing.Point(973, 6)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(31, 13)
         Me.lblTotal.TabIndex = 42
@@ -633,26 +675,17 @@ Partial Class frmGlobalNutrisa
         'Total
         '
         Me.Total.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Total.Location = New System.Drawing.Point(928, 22)
+        Me.Total.Location = New System.Drawing.Point(971, 22)
         Me.Total.Name = "Total"
         Me.Total.ReadOnly = True
-        Me.Total.Size = New System.Drawing.Size(132, 24)
+        Me.Total.Size = New System.Drawing.Size(127, 24)
         Me.Total.TabIndex = 43
-        '
-        'IEPS
-        '
-        Me.IEPS.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.IEPS.Location = New System.Drawing.Point(654, 22)
-        Me.IEPS.Name = "IEPS"
-        Me.IEPS.ReadOnly = True
-        Me.IEPS.Size = New System.Drawing.Size(132, 24)
-        Me.IEPS.TabIndex = 41
         '
         'lblIeps
         '
         Me.lblIeps.AutoSize = True
         Me.lblIeps.BackColor = System.Drawing.Color.Transparent
-        Me.lblIeps.Location = New System.Drawing.Point(661, 6)
+        Me.lblIeps.Location = New System.Drawing.Point(721, 8)
         Me.lblIeps.Name = "lblIeps"
         Me.lblIeps.Size = New System.Drawing.Size(31, 13)
         Me.lblIeps.TabIndex = 40
@@ -662,7 +695,7 @@ Partial Class frmGlobalNutrisa
         '
         Me.lblIva.AutoSize = True
         Me.lblIva.BackColor = System.Drawing.Color.Transparent
-        Me.lblIva.Location = New System.Drawing.Point(508, 9)
+        Me.lblIva.Location = New System.Drawing.Point(602, 6)
         Me.lblIva.Name = "lblIva"
         Me.lblIva.Size = New System.Drawing.Size(22, 13)
         Me.lblIva.TabIndex = 38
@@ -671,17 +704,17 @@ Partial Class frmGlobalNutrisa
         'Iva
         '
         Me.Iva.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Iva.Location = New System.Drawing.Point(501, 25)
+        Me.Iva.Location = New System.Drawing.Point(598, 22)
         Me.Iva.Name = "Iva"
         Me.Iva.ReadOnly = True
-        Me.Iva.Size = New System.Drawing.Size(132, 24)
+        Me.Iva.Size = New System.Drawing.Size(120, 24)
         Me.Iva.TabIndex = 39
         '
         'lblDescuento
         '
         Me.lblDescuento.AutoSize = True
         Me.lblDescuento.BackColor = System.Drawing.Color.Transparent
-        Me.lblDescuento.Location = New System.Drawing.Point(374, 8)
+        Me.lblDescuento.Location = New System.Drawing.Point(479, 8)
         Me.lblDescuento.Name = "lblDescuento"
         Me.lblDescuento.Size = New System.Drawing.Size(59, 13)
         Me.lblDescuento.TabIndex = 36
@@ -690,24 +723,11 @@ Partial Class frmGlobalNutrisa
         'Descuento
         '
         Me.Descuento.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Descuento.Location = New System.Drawing.Point(368, 25)
+        Me.Descuento.Location = New System.Drawing.Point(474, 22)
         Me.Descuento.Name = "Descuento"
         Me.Descuento.ReadOnly = True
-        Me.Descuento.Size = New System.Drawing.Size(127, 24)
+        Me.Descuento.Size = New System.Drawing.Size(118, 24)
         Me.Descuento.TabIndex = 37
-        '
-        'btnFacturar
-        '
-        Me.btnFacturar.BackColor = System.Drawing.Color.Black
-        Me.btnFacturar.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.btnFacturar.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnFacturar.ForeColor = System.Drawing.Color.White
-        Me.btnFacturar.Location = New System.Drawing.Point(0, 746)
-        Me.btnFacturar.Name = "btnFacturar"
-        Me.btnFacturar.Size = New System.Drawing.Size(1197, 42)
-        Me.btnFacturar.TabIndex = 88
-        Me.btnFacturar.Text = "Generar factura"
-        Me.btnFacturar.UseVisualStyleBackColor = False
         '
         'gpoNotas
         '
@@ -715,9 +735,9 @@ Partial Class frmGlobalNutrisa
         Me.gpoNotas.Controls.Add(Me.ChlisFact)
         Me.gpoNotas.Dock = System.Windows.Forms.DockStyle.Left
         Me.gpoNotas.ForeColor = System.Drawing.Color.White
-        Me.gpoNotas.Location = New System.Drawing.Point(0, 213)
+        Me.gpoNotas.Location = New System.Drawing.Point(0, 190)
         Me.gpoNotas.Name = "gpoNotas"
-        Me.gpoNotas.Size = New System.Drawing.Size(216, 533)
+        Me.gpoNotas.Size = New System.Drawing.Size(216, 477)
         Me.gpoNotas.TabIndex = 89
         Me.gpoNotas.TabStop = False
         Me.gpoNotas.Text = "Archivos de Ventas"
@@ -725,15 +745,14 @@ Partial Class frmGlobalNutrisa
         'ChlisFact
         '
         Me.ChlisFact.ColumnWidth = 292
-        Me.ChlisFact.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ChlisFact.Enabled = False
         Me.ChlisFact.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChlisFact.FormattingEnabled = True
         Me.ChlisFact.HorizontalScrollbar = True
-        Me.ChlisFact.Location = New System.Drawing.Point(3, 16)
+        Me.ChlisFact.Location = New System.Drawing.Point(3, 0)
         Me.ChlisFact.MultiColumn = True
         Me.ChlisFact.Name = "ChlisFact"
-        Me.ChlisFact.Size = New System.Drawing.Size(210, 514)
+        Me.ChlisFact.Size = New System.Drawing.Size(207, 469)
         Me.ChlisFact.TabIndex = 2
         '
         'UgrTicket
@@ -847,9 +866,9 @@ Partial Class frmGlobalNutrisa
         Me.UgrTicket.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.UgrTicket.Dock = System.Windows.Forms.DockStyle.Fill
         Me.UgrTicket.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.UgrTicket.Location = New System.Drawing.Point(216, 213)
+        Me.UgrTicket.Location = New System.Drawing.Point(216, 190)
         Me.UgrTicket.Name = "UgrTicket"
-        Me.UgrTicket.Size = New System.Drawing.Size(981, 533)
+        Me.UgrTicket.Size = New System.Drawing.Size(981, 477)
         Me.UgrTicket.TabIndex = 90
         Me.UgrTicket.Text = "Reporte de Ventas"
         Me.UgrTicket.UseOsThemes = Infragistics.Win.DefaultableBoolean.[False]
@@ -913,7 +932,7 @@ Partial Class frmGlobalNutrisa
         Me.grbPagos.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate
         Me.grbPagos.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy
         Me.grbPagos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grbPagos.Location = New System.Drawing.Point(404, 28)
+        Me.grbPagos.Location = New System.Drawing.Point(404, 18)
         Me.grbPagos.Name = "grbPagos"
         Me.grbPagos.Size = New System.Drawing.Size(192, 22)
         Me.grbPagos.TabIndex = 175
@@ -924,7 +943,7 @@ Partial Class frmGlobalNutrisa
         Appearance56.TextHAlignAsString = "Right"
         Me.UltraLabel5.Appearance = Appearance56
         Me.UltraLabel5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UltraLabel5.Location = New System.Drawing.Point(394, 12)
+        Me.UltraLabel5.Location = New System.Drawing.Point(394, 2)
         Me.UltraLabel5.Name = "UltraLabel5"
         Me.UltraLabel5.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.UltraLabel5.Size = New System.Drawing.Size(101, 17)
@@ -939,7 +958,7 @@ Partial Class frmGlobalNutrisa
         Me.Panel1.Controls.Add(Me.txtFechaVenta)
         Me.Panel1.Location = New System.Drawing.Point(611, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(251, 111)
+        Me.Panel1.Size = New System.Drawing.Size(251, 90)
         Me.Panel1.TabIndex = 176
         '
         'Panel3
@@ -948,16 +967,16 @@ Partial Class frmGlobalNutrisa
         Me.Panel3.Controls.Add(Me.Button1)
         Me.Panel3.Location = New System.Drawing.Point(865, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(329, 114)
+        Me.Panel3.Size = New System.Drawing.Size(329, 93)
         Me.Panel3.TabIndex = 177
         '
         'DGFacturas
         '
         Me.DGFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGFacturas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Ticket, Me.Total_Facturado, Me.Subtotal_Fac, Me.Descuento_Fac, Me.Descuento_Ieps, Me.Descuento_Cero, Me.Iva_Fac, Me.Ieps_Fac})
-        Me.DGFacturas.Location = New System.Drawing.Point(73, 3)
+        Me.DGFacturas.Location = New System.Drawing.Point(73, 0)
         Me.DGFacturas.Name = "DGFacturas"
-        Me.DGFacturas.Size = New System.Drawing.Size(326, 108)
+        Me.DGFacturas.Size = New System.Drawing.Size(253, 84)
         Me.DGFacturas.TabIndex = 1
         '
         'Ticket
@@ -1011,11 +1030,11 @@ Partial Class frmGlobalNutrisa
         '
         'Button1
         '
-        Me.Button1.BackColor = System.Drawing.Color.Azure
+        Me.Button1.BackColor = System.Drawing.Color.DarkGray
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Location = New System.Drawing.Point(3, 0)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(70, 114)
+        Me.Button1.Size = New System.Drawing.Size(70, 90)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "+ Factura de Cliente"
         Me.Button1.UseVisualStyleBackColor = False
@@ -1025,14 +1044,13 @@ Partial Class frmGlobalNutrisa
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1197, 807)
+        Me.ClientSize = New System.Drawing.Size(1197, 694)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.grbPagos)
         Me.Controls.Add(Me.UltraLabel5)
         Me.Controls.Add(Me.UgrTicket)
         Me.Controls.Add(Me.gpoNotas)
-        Me.Controls.Add(Me.btnFacturar)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.grbMes)
         Me.Controls.Add(Me.Label2)
@@ -1053,6 +1071,10 @@ Partial Class frmGlobalNutrisa
         CType(Me.grbTienda, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.Traslado, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.IEPS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Subtotal, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Timporte, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.DevIps, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1060,10 +1082,7 @@ Partial Class frmGlobalNutrisa
         CType(Me.DevVenta0, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DevIeps, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DevVenta, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Subtotal, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Traslado, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Total, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.IEPS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Iva, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Descuento, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gpoNotas.ResumeLayout(False)
@@ -1101,21 +1120,17 @@ Partial Class frmGlobalNutrisa
     Friend WithEvents DevVenta As Infragistics.Win.UltraWinEditors.UltraCurrencyEditor
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Subtotal As Infragistics.Win.UltraWinEditors.UltraCurrencyEditor
     Friend WithEvents lblSubtotal As System.Windows.Forms.Label
     Friend WithEvents lblDiaFactura As System.Windows.Forms.Label
     Friend WithEvents lblFactura As System.Windows.Forms.Label
-    Friend WithEvents Traslado As Infragistics.Win.UltraWinEditors.UltraCurrencyEditor
     Friend WithEvents lblTraslado As System.Windows.Forms.Label
     Friend WithEvents lblTotal As System.Windows.Forms.Label
     Friend WithEvents Total As Infragistics.Win.UltraWinEditors.UltraCurrencyEditor
-    Friend WithEvents IEPS As Infragistics.Win.UltraWinEditors.UltraCurrencyEditor
     Friend WithEvents lblIeps As System.Windows.Forms.Label
     Friend WithEvents lblIva As System.Windows.Forms.Label
     Friend WithEvents Iva As Infragistics.Win.UltraWinEditors.UltraCurrencyEditor
     Friend WithEvents lblDescuento As System.Windows.Forms.Label
     Friend WithEvents Descuento As Infragistics.Win.UltraWinEditors.UltraCurrencyEditor
-    Friend WithEvents btnFacturar As System.Windows.Forms.Button
     Friend WithEvents gpoNotas As System.Windows.Forms.GroupBox
     Friend WithEvents ChlisFact As System.Windows.Forms.CheckedListBox
     Friend WithEvents UgrTicket As Infragistics.Win.UltraWinGrid.UltraGrid
@@ -1134,4 +1149,10 @@ Partial Class frmGlobalNutrisa
     Friend WithEvents Descuento_Cero As DataGridViewTextBoxColumn
     Friend WithEvents Iva_Fac As DataGridViewTextBoxColumn
     Friend WithEvents Ieps_Fac As DataGridViewTextBoxColumn
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Timporte As Infragistics.Win.UltraWinEditors.UltraCurrencyEditor
+    Friend WithEvents btnFacturar As Button
+    Friend WithEvents Traslado As Infragistics.Win.UltraWinEditors.UltraCurrencyEditor
+    Friend WithEvents IEPS As Infragistics.Win.UltraWinEditors.UltraCurrencyEditor
+    Friend WithEvents Subtotal As Infragistics.Win.UltraWinEditors.UltraCurrencyEditor
 End Class
