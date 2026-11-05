@@ -1007,7 +1007,7 @@ Public Class frmBosFacClientes
                                     End If
 
                                     btnFacturar.Visible = True
-                                    MsgBox("Intenta tmbrar nuevamente con el mismo FILO Y SERIE !!! Serie: " & serie & "   Folio: " & folio, MsgBoxStyle.Information).ToString()
+                                    MsgBox("Intenta timbrar nuevamente con el mismo FILO Y SERIE !!! Serie: " & serie & "   Folio: " & folio, MsgBoxStyle.Information).ToString()
                                 End If
                             Else
                                 btnFacturar.Visible = True

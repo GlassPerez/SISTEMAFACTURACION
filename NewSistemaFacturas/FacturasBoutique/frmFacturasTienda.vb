@@ -37,14 +37,14 @@
         Next
     End Sub
 
-    Private Sub Ugr_InitializeLayout(sender As Object, e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs)
+    Private Sub Ugr_InitializeLayout(sender As Object, e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) Handles Ugr.InitializeLayout
         With Ugr
-            .DisplayLayout.Bands(0).Columns(0).Width = 200
-            .DisplayLayout.Bands(0).Columns(1).Width = 18
-            .DisplayLayout.Bands(0).Columns(2).Width = 18
+            .DisplayLayout.Bands(0).Columns(0).Width = 300
+            .DisplayLayout.Bands(0).Columns(1).Width = 50
+            .DisplayLayout.Bands(0).Columns(2).Width = 40
             .DisplayLayout.Bands(0).Columns(3).Width = 80
             .DisplayLayout.Bands(0).Columns(4).Width = 80
-            .DisplayLayout.Bands(0).Columns(5).Width = 30
+            .DisplayLayout.Bands(0).Columns(5).Width = 50
             .DisplayLayout.Bands(0).Columns(6).Hidden = True
             .DisplayLayout.Bands(0).Columns(7).Width = 50
             .DisplayLayout.Bands(0).Columns(8).Width = 60
@@ -54,8 +54,6 @@
             .DisplayLayout.Bands(0).Columns(12).Width = 60
             .DisplayLayout.Bands(0).Columns(13).Width = 100
             .DisplayLayout.Bands(0).Columns(14).Width = 180
-            .DisplayLayout.Bands(0).Columns(15).Width = 100
-            .DisplayLayout.Bands(0).Columns(16).Hidden = True
         End With
     End Sub
 

@@ -38,6 +38,9 @@ Partial Class frmPagosBoutique
         Dim Appearance52 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance54 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance55 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim Appearance1 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance15 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -110,7 +113,7 @@ Partial Class frmPagosBoutique
         Me.UltraLabel7.Appearance = Appearance5
         Me.UltraLabel7.AutoSize = True
         Me.UltraLabel7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UltraLabel7.Location = New System.Drawing.Point(89, 227)
+        Me.UltraLabel7.Location = New System.Drawing.Point(89, 231)
         Me.UltraLabel7.Name = "UltraLabel7"
         Me.UltraLabel7.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.UltraLabel7.Size = New System.Drawing.Size(94, 16)
@@ -120,7 +123,7 @@ Partial Class frmPagosBoutique
         'upb
         '
         Me.upb.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.upb.Location = New System.Drawing.Point(0, 409)
+        Me.upb.Location = New System.Drawing.Point(0, 424)
         Me.upb.Name = "upb"
         Me.upb.Size = New System.Drawing.Size(569, 29)
         Me.upb.TabIndex = 199
@@ -130,7 +133,7 @@ Partial Class frmPagosBoutique
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(11, 371)
+        Me.Label3.Location = New System.Drawing.Point(11, 388)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(174, 13)
         Me.Label3.TabIndex = 200
@@ -142,7 +145,7 @@ Partial Class frmPagosBoutique
         Me.btnAplicarPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAplicarPago.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAplicarPago.ForeColor = System.Drawing.Color.White
-        Me.btnAplicarPago.Location = New System.Drawing.Point(344, 365)
+        Me.btnAplicarPago.Location = New System.Drawing.Point(344, 382)
         Me.btnAplicarPago.Name = "btnAplicarPago"
         Me.btnAplicarPago.Size = New System.Drawing.Size(210, 27)
         Me.btnAplicarPago.TabIndex = 202
@@ -307,18 +310,42 @@ Partial Class frmPagosBoutique
         '
         Me.Panel3.Controls.Add(Me.DGFacturas)
         Me.Panel3.Controls.Add(Me.btn_Rel_Fac)
-        Me.Panel3.Location = New System.Drawing.Point(0, 250)
+        Me.Panel3.Location = New System.Drawing.Point(0, 261)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(566, 99)
         Me.Panel3.TabIndex = 203
         '
         'DGFacturas
         '
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGFacturas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DGFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGFacturas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.nofacR, Me.serieR, Me.uuidR, Me.fetimR, Me.fevtaR, Me.Descuento_Cero})
-        Me.DGFacturas.Location = New System.Drawing.Point(104, 0)
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGFacturas.DefaultCellStyle = DataGridViewCellStyle2
+        Me.DGFacturas.Location = New System.Drawing.Point(116, 0)
         Me.DGFacturas.Name = "DGFacturas"
-        Me.DGFacturas.Size = New System.Drawing.Size(459, 96)
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGFacturas.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        Me.DGFacturas.Size = New System.Drawing.Size(447, 96)
         Me.DGFacturas.TabIndex = 1
         '
         'nofacR
@@ -364,7 +391,7 @@ Partial Class frmPagosBoutique
         Me.btn_Rel_Fac.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_Rel_Fac.Location = New System.Drawing.Point(3, 0)
         Me.btn_Rel_Fac.Name = "btn_Rel_Fac"
-        Me.btn_Rel_Fac.Size = New System.Drawing.Size(107, 96)
+        Me.btn_Rel_Fac.Size = New System.Drawing.Size(110, 98)
         Me.btn_Rel_Fac.TabIndex = 0
         Me.btn_Rel_Fac.Text = "+ Complemento de Pago (Relacionado)"
         Me.btn_Rel_Fac.UseVisualStyleBackColor = False
@@ -492,9 +519,9 @@ Partial Class frmPagosBoutique
         Me.UltraGroupBox1.HeaderAppearance = Appearance19
         Me.UltraGroupBox1.Location = New System.Drawing.Point(358, 95)
         Me.UltraGroupBox1.Name = "UltraGroupBox1"
-        Me.UltraGroupBox1.Size = New System.Drawing.Size(208, 148)
+        Me.UltraGroupBox1.Size = New System.Drawing.Size(208, 160)
         Me.UltraGroupBox1.TabIndex = 207
-        Me.UltraGroupBox1.Text = "Importes de venta"
+        Me.UltraGroupBox1.Text = "Importes de Factura Principal"
         Me.UltraGroupBox1.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2007
         '
         'Label4
@@ -502,7 +529,7 @@ Partial Class frmPagosBoutique
         Me.Label4.AutoSize = True
         Me.Label4.BackColor = System.Drawing.Color.Transparent
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(187, 86)
+        Me.Label4.Location = New System.Drawing.Point(187, 57)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(14, 13)
         Me.Label4.TabIndex = 206
@@ -512,7 +539,7 @@ Partial Class frmPagosBoutique
         'Saldo
         '
         Me.Saldo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Saldo.Location = New System.Drawing.Point(60, 102)
+        Me.Saldo.Location = New System.Drawing.Point(60, 113)
         Me.Saldo.Name = "Saldo"
         Me.Saldo.ReadOnly = True
         Me.Saldo.Size = New System.Drawing.Size(123, 24)
@@ -523,7 +550,7 @@ Partial Class frmPagosBoutique
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(8, 105)
+        Me.Label2.Location = New System.Drawing.Point(8, 116)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(39, 13)
         Me.Label2.TabIndex = 204
@@ -532,7 +559,7 @@ Partial Class frmPagosBoutique
         '
         'UltraLabel6
         '
-        Me.UltraLabel6.Location = New System.Drawing.Point(45, 86)
+        Me.UltraLabel6.Location = New System.Drawing.Point(45, 97)
         Me.UltraLabel6.Name = "UltraLabel6"
         Me.UltraLabel6.Size = New System.Drawing.Size(147, 10)
         Me.UltraLabel6.TabIndex = 203
@@ -543,7 +570,7 @@ Partial Class frmPagosBoutique
         Me.Label11.AutoSize = True
         Me.Label11.BackColor = System.Drawing.Color.Transparent
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(17, 41)
+        Me.Label11.Location = New System.Drawing.Point(17, 43)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(34, 13)
         Me.Label11.TabIndex = 202
@@ -555,7 +582,7 @@ Partial Class frmPagosBoutique
         Me.Label8.AutoSize = True
         Me.Label8.BackColor = System.Drawing.Color.Transparent
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(8, 71)
+        Me.Label8.Location = New System.Drawing.Point(8, 76)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(43, 13)
         Me.Label8.TabIndex = 201
@@ -565,7 +592,7 @@ Partial Class frmPagosBoutique
         'Abono
         '
         Me.Abono.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Abono.Location = New System.Drawing.Point(60, 64)
+        Me.Abono.Location = New System.Drawing.Point(60, 69)
         Me.Abono.Name = "Abono"
         Me.Abono.ReadOnly = True
         Me.Abono.Size = New System.Drawing.Size(121, 24)
@@ -574,7 +601,7 @@ Partial Class frmPagosBoutique
         'Total
         '
         Me.Total.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Total.Location = New System.Drawing.Point(59, 34)
+        Me.Total.Location = New System.Drawing.Point(59, 36)
         Me.Total.Name = "Total"
         Me.Total.ReadOnly = True
         Me.Total.Size = New System.Drawing.Size(124, 24)
@@ -584,8 +611,9 @@ Partial Class frmPagosBoutique
         '
         Appearance3.BackColor = System.Drawing.Color.YellowGreen
         Me.Importe.Appearance = Appearance3
+        Me.Importe.BackColor = System.Drawing.Color.YellowGreen
         Me.Importe.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Importe.Location = New System.Drawing.Point(198, 366)
+        Me.Importe.Location = New System.Drawing.Point(198, 383)
         Me.Importe.Name = "Importe"
         Me.Importe.Size = New System.Drawing.Size(123, 24)
         Me.Importe.TabIndex = 208
@@ -594,8 +622,9 @@ Partial Class frmPagosBoutique
         '
         Appearance7.BackColor = System.Drawing.Color.YellowGreen
         Me.fechaPago.Appearance = Appearance7
+        Me.fechaPago.BackColor = System.Drawing.Color.YellowGreen
         Me.fechaPago.DateTime = New Date(2013, 12, 3, 0, 0, 0, 0)
-        Me.fechaPago.Location = New System.Drawing.Point(189, 223)
+        Me.fechaPago.Location = New System.Drawing.Point(189, 227)
         Me.fechaPago.Name = "fechaPago"
         Me.fechaPago.Size = New System.Drawing.Size(123, 21)
         Me.fechaPago.TabIndex = 209
@@ -606,7 +635,7 @@ Partial Class frmPagosBoutique
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(569, 438)
+        Me.ClientSize = New System.Drawing.Size(569, 453)
         Me.Controls.Add(Me.fechaPago)
         Me.Controls.Add(Me.Importe)
         Me.Controls.Add(Me.UltraGroupBox1)

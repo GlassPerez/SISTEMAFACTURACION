@@ -206,31 +206,59 @@ Public Class frmPagosBoutique
         Else
             'LabelResultado.Text = "Información recibida de Form2: " & informacionRecibida
             If DGFacturas.Rows.Count > 1 Then
+                Dim encuentra As Integer
+                Dim tickt As String
+                encuentra = 0
                 For dg = 0 To Me.DGFacturas.Rows.Count - 1
                     If Me.DGFacturas.Rows(dg).Cells("uuidR").Value IsNot Nothing Then
-                        If Me.DGFacturas.Rows(dg).Cells("uuidR").Value <> uuid Then
-                            'If Me.DGFacturas.Rows(dg).Cells("feVTAR").Value = FecVentasel Then
-                            Dim n = DGFacturas.Rows.Add()
-                                DGFacturas.Rows(n).Cells(0).Value = nofac
-                                DGFacturas.Rows(n).Cells(1).Value = serie
-                                DGFacturas.Rows(n).Cells(2).Value = uuid
-                                DGFacturas.Rows(n).Cells(3).Value = fetim
-                                DGFacturas.Rows(n).Cells(4).Value = fevta
-                                DGFacturas.Rows(n).Cells(5).Value = tipof
+                        If Me.DGFacturas.Rows(dg).Cells("uuidR").Value = uuid Then
+                            encuentra = 1
 
-                                DGFacturas.Refresh()
-                            'Else
-                            '    Dim tickt As String
-                            '    tickt = Me.DGFacturas.Rows(dg).Cells("nofacR").Value
-                            '    MsgBox("No se puede relacionar una factura con diferente Fecha de venta, verifique la factura  " + tickt + " seleccionada", MsgBoxStyle.Information, "Facturación.. ")
-                            'End If
-                        Else
-                            Dim tickt As String
                             tickt = Me.DGFacturas.Rows(dg).Cells("nofacR").Value
-                            MessageBox.Show("La factura seleccionada " + tickt + " esta repetida, favor de verificar los datos.", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                            Exit For
                         End If
                     End If
                 Next
+
+                If encuentra = 0 Then
+                    Dim n = DGFacturas.Rows.Add()
+                    DGFacturas.Rows(n).Cells(0).Value = nofac
+                    DGFacturas.Rows(n).Cells(1).Value = serie
+                    DGFacturas.Rows(n).Cells(2).Value = uuid
+                    DGFacturas.Rows(n).Cells(3).Value = fetim
+                    DGFacturas.Rows(n).Cells(4).Value = fevta
+                    DGFacturas.Rows(n).Cells(5).Value = tipof
+
+                    DGFacturas.Refresh()
+                Else
+                    MessageBox.Show("La factura seleccionada " + tickt + " esta repetida, favor de verificar los datos.", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    tickt = ""
+                End If
+                'For dg = 0 To Me.DGFacturas.Rows.Count - 1
+                '    If Me.DGFacturas.Rows(dg).Cells("uuidR").Value IsNot Nothing Then
+                '        If Me.DGFacturas.Rows(dg).Cells("uuidR").Value <> uuid Then
+                '            'If Me.DGFacturas.Rows(dg).Cells("feVTAR").Value = FecVentasel Then
+                '            Dim n = DGFacturas.Rows.Add()
+                '                DGFacturas.Rows(n).Cells(0).Value = nofac
+                '                DGFacturas.Rows(n).Cells(1).Value = serie
+                '                DGFacturas.Rows(n).Cells(2).Value = uuid
+                '                DGFacturas.Rows(n).Cells(3).Value = fetim
+                '                DGFacturas.Rows(n).Cells(4).Value = fevta
+                '                DGFacturas.Rows(n).Cells(5).Value = tipof
+
+                '                DGFacturas.Refresh()
+                '            'Else
+                '            '    Dim tickt As String
+                '            '    tickt = Me.DGFacturas.Rows(dg).Cells("nofacR").Value
+                '            '    MsgBox("No se puede relacionar una factura con diferente Fecha de venta, verifique la factura  " + tickt + " seleccionada", MsgBoxStyle.Information, "Facturación.. ")
+                '            'End If
+                '        Else
+                '            Dim tickt As String
+                '            tickt = Me.DGFacturas.Rows(dg).Cells("nofacR").Value
+                '            MessageBox.Show("La factura seleccionada " + tickt + " esta repetida, favor de verificar los datos.", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                '        End If
+                '    End If
+                'Next
             Else
                 'If fevta = FecVentasel Then
                 Dim n = DGFacturas.Rows.Add()
@@ -356,8 +384,8 @@ Public Class frmPagosBoutique
                     If Importe.Value <= Saldo.Value Then
                         Dim sumSaldo As Double = 0
                         sumSaldo = Importe.Value + Abono.Value
-                        If sumSaldo > Saldo.Value Then
-                            MsgBox("Importe + Abono, no puede ser mayor a saldo .. ", MsgBoxStyle.Information, "Facturación .. ")
+                        If sumSaldo > Format((Total.Value), "######.00") Then
+                            MsgBox("Importe + Abono, no puede ser mayor al Total de la Factura Principal .. ", MsgBoxStyle.Information, "Facturación .. ")
                         Else
                             If txtRfc.Text <> "" Then
                                 If txtRazonSocial.Text <> "" Then
@@ -370,7 +398,7 @@ Public Class frmPagosBoutique
                             End If
                         End If
                     Else
-                        MsgBox("Importe no puede ser mayor a saldo .. ", MsgBoxStyle.Information, "Facturación .. ")
+                        MsgBox("Importe no puede ser mayor al Saldo .. ", MsgBoxStyle.Information, "Facturación .. ")
                     End If
                 End If
             Else
@@ -380,6 +408,7 @@ Public Class frmPagosBoutique
             MsgBox("Falta UUID relacionado ", MsgBoxStyle.Information, "Facturación")
         End If
     End Sub
+
 
     Private Sub Pago()
         upb.Value = 0
@@ -993,6 +1022,8 @@ Public Class frmPagosBoutique
                                 rpFact.Close()
                                 rpFact.Dispose()
                                 Inicializa()
+                                fechaPago.Value = fechareal
+                                txtFechaFactura.Value = "01/01/1900"
                                 Application.DoEvents()
 
                                 ''Ejecuta el archivo .exe especificado PARA OFICINAS NO

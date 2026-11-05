@@ -471,7 +471,7 @@ Partial Class frmGlobalBoutv2
         Me.ugbox2.Dock = System.Windows.Forms.DockStyle.Left
         Me.ugbox2.Location = New System.Drawing.Point(0, 82)
         Me.ugbox2.Name = "ugbox2"
-        Me.ugbox2.Size = New System.Drawing.Size(390, 522)
+        Me.ugbox2.Size = New System.Drawing.Size(390, 535)
         Me.ugbox2.TabIndex = 14
         Me.ugbox2.Text = "Dias que se Facturan!!"
         Me.ugbox2.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2007
@@ -486,7 +486,7 @@ Partial Class frmGlobalBoutv2
         Me.ChlisNota.MultiColumn = True
         Me.ChlisNota.Name = "ChlisNota"
         Me.ChlisNota.ScrollAlwaysVisible = True
-        Me.ChlisNota.Size = New System.Drawing.Size(182, 484)
+        Me.ChlisNota.Size = New System.Drawing.Size(182, 499)
         Me.ChlisNota.TabIndex = 2
         '
         'UltraGroupBox2
@@ -503,7 +503,7 @@ Partial Class frmGlobalBoutv2
         Me.UltraGroupBox1.Dock = System.Windows.Forms.DockStyle.Left
         Me.UltraGroupBox1.Location = New System.Drawing.Point(3, 16)
         Me.UltraGroupBox1.Name = "UltraGroupBox1"
-        Me.UltraGroupBox1.Size = New System.Drawing.Size(185, 503)
+        Me.UltraGroupBox1.Size = New System.Drawing.Size(185, 516)
         Me.UltraGroupBox1.TabIndex = 0
         Me.UltraGroupBox1.Text = "Facturas"
         '
@@ -517,7 +517,7 @@ Partial Class frmGlobalBoutv2
         Me.ChlisFact.MultiColumn = True
         Me.ChlisFact.Name = "ChlisFact"
         Me.ChlisFact.ScrollAlwaysVisible = True
-        Me.ChlisFact.Size = New System.Drawing.Size(178, 484)
+        Me.ChlisFact.Size = New System.Drawing.Size(178, 499)
         Me.ChlisFact.TabIndex = 1
         '
         'ugboxImporte
@@ -538,7 +538,7 @@ Partial Class frmGlobalBoutv2
         Me.ugboxImporte.Controls.Add(Me.Descuento)
         Me.ugboxImporte.Controls.Add(Me.Total)
         Me.ugboxImporte.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ugboxImporte.Location = New System.Drawing.Point(390, 307)
+        Me.ugboxImporte.Location = New System.Drawing.Point(390, 320)
         Me.ugboxImporte.Name = "ugboxImporte"
         Me.ugboxImporte.Size = New System.Drawing.Size(472, 297)
         Me.ugboxImporte.TabIndex = 20
@@ -812,7 +812,7 @@ Partial Class frmGlobalBoutv2
         Me.btnFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnFactura.ForeColor = System.Drawing.Color.White
-        Me.btnFactura.Location = New System.Drawing.Point(297, 48)
+        Me.btnFactura.Location = New System.Drawing.Point(297, 53)
         Me.btnFactura.Name = "btnFactura"
         Me.btnFactura.Size = New System.Drawing.Size(138, 24)
         Me.btnFactura.TabIndex = 68
@@ -822,7 +822,7 @@ Partial Class frmGlobalBoutv2
         'txtFechaVenta
         '
         Me.txtFechaVenta.DateTime = New Date(2013, 12, 3, 0, 0, 0, 0)
-        Me.txtFechaVenta.Location = New System.Drawing.Point(174, 51)
+        Me.txtFechaVenta.Location = New System.Drawing.Point(174, 56)
         Me.txtFechaVenta.Name = "txtFechaVenta"
         Me.txtFechaVenta.Size = New System.Drawing.Size(113, 21)
         Me.txtFechaVenta.TabIndex = 67
@@ -834,7 +834,7 @@ Partial Class frmGlobalBoutv2
         Me.UltraLabel4.Appearance = Appearance3
         Me.UltraLabel4.AutoSize = True
         Me.UltraLabel4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UltraLabel4.Location = New System.Drawing.Point(72, 54)
+        Me.UltraLabel4.Location = New System.Drawing.Point(72, 59)
         Me.UltraLabel4.Name = "UltraLabel4"
         Me.UltraLabel4.Size = New System.Drawing.Size(97, 14)
         Me.UltraLabel4.TabIndex = 66
@@ -846,16 +846,16 @@ Partial Class frmGlobalBoutv2
         Me.Panel3.Controls.Add(Me.btn_Rel_Fac)
         Me.Panel3.Location = New System.Drawing.Point(391, 205)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(468, 99)
+        Me.Panel3.Size = New System.Drawing.Size(468, 116)
         Me.Panel3.TabIndex = 204
         '
         'DGFacturas
         '
         Me.DGFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGFacturas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.nofacR, Me.serieR, Me.uuidR, Me.fetimR, Me.fevtaR, Me.TipoR})
-        Me.DGFacturas.Location = New System.Drawing.Point(112, 0)
+        Me.DGFacturas.Location = New System.Drawing.Point(118, 0)
         Me.DGFacturas.Name = "DGFacturas"
-        Me.DGFacturas.Size = New System.Drawing.Size(353, 96)
+        Me.DGFacturas.Size = New System.Drawing.Size(347, 111)
         Me.DGFacturas.TabIndex = 1
         '
         'nofacR
@@ -901,7 +901,7 @@ Partial Class frmGlobalBoutv2
         Me.btn_Rel_Fac.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_Rel_Fac.Location = New System.Drawing.Point(3, 0)
         Me.btn_Rel_Fac.Name = "btn_Rel_Fac"
-        Me.btn_Rel_Fac.Size = New System.Drawing.Size(111, 96)
+        Me.btn_Rel_Fac.Size = New System.Drawing.Size(110, 111)
         Me.btn_Rel_Fac.TabIndex = 0
         Me.btn_Rel_Fac.Text = "+ Factura Global (Relacionada)"
         Me.btn_Rel_Fac.UseVisualStyleBackColor = False
@@ -910,7 +910,7 @@ Partial Class frmGlobalBoutv2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(862, 604)
+        Me.ClientSize = New System.Drawing.Size(862, 617)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.ugboxImporte)
         Me.Controls.Add(Me.ugbox3)

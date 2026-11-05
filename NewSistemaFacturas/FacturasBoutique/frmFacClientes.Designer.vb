@@ -829,7 +829,7 @@ Partial Class frmFacClientes
         'lblSerie
         '
         Me.lblSerie.AutoSize = True
-        Me.lblSerie.Location = New System.Drawing.Point(186, 17)
+        Me.lblSerie.Location = New System.Drawing.Point(189, 17)
         Me.lblSerie.Name = "lblSerie"
         Me.lblSerie.Size = New System.Drawing.Size(31, 13)
         Me.lblSerie.TabIndex = 26
@@ -849,7 +849,7 @@ Partial Class frmFacClientes
         '
         'lblNumFactura
         '
-        Me.lblNumFactura.Location = New System.Drawing.Point(21, 8)
+        Me.lblNumFactura.Location = New System.Drawing.Point(21, 7)
         Me.lblNumFactura.Name = "lblNumFactura"
         Me.lblNumFactura.Size = New System.Drawing.Size(49, 26)
         Me.lblNumFactura.TabIndex = 25
@@ -921,7 +921,7 @@ Partial Class frmFacClientes
         'txtSerie
         '
         Me.txtSerie.BackColor = System.Drawing.Color.White
-        Me.txtSerie.Location = New System.Drawing.Point(223, 14)
+        Me.txtSerie.Location = New System.Drawing.Point(223, 12)
         Me.txtSerie.Name = "txtSerie"
         Me.txtSerie.ReadOnly = True
         Me.txtSerie.Size = New System.Drawing.Size(100, 20)
@@ -1036,16 +1036,16 @@ Partial Class frmFacClientes
         Me.Panel3.Controls.Add(Me.btn_Rel_Fac)
         Me.Panel3.Location = New System.Drawing.Point(3, 3)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(468, 99)
+        Me.Panel3.Size = New System.Drawing.Size(468, 106)
         Me.Panel3.TabIndex = 205
         '
         'DGFacturas
         '
         Me.DGFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGFacturas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.nofacR, Me.serieR, Me.uuidR, Me.fetimR, Me.fevtaR, Me.Descuento_Cero})
-        Me.DGFacturas.Location = New System.Drawing.Point(110, 0)
+        Me.DGFacturas.Location = New System.Drawing.Point(115, 0)
         Me.DGFacturas.Name = "DGFacturas"
-        Me.DGFacturas.Size = New System.Drawing.Size(355, 96)
+        Me.DGFacturas.Size = New System.Drawing.Size(350, 103)
         Me.DGFacturas.TabIndex = 1
         '
         'nofacR
@@ -1091,7 +1091,7 @@ Partial Class frmFacClientes
         Me.btn_Rel_Fac.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_Rel_Fac.Location = New System.Drawing.Point(3, 0)
         Me.btn_Rel_Fac.Name = "btn_Rel_Fac"
-        Me.btn_Rel_Fac.Size = New System.Drawing.Size(108, 96)
+        Me.btn_Rel_Fac.Size = New System.Drawing.Size(108, 106)
         Me.btn_Rel_Fac.TabIndex = 0
         Me.btn_Rel_Fac.Text = "+ Factura de Cliente (Relacionada)"
         Me.btn_Rel_Fac.UseVisualStyleBackColor = False

@@ -216,49 +216,55 @@ Public Class frmGlobalBoutv2
             'LabelResultado.Text = "La pantalla se cerró sin seleccionar información."
         Else
             'LabelResultado.Text = "Información recibida de Form2: " & informacionRecibida
-            If DGFacturas.Rows.Count > 1 Then
-                For dg = 0 To Me.DGFacturas.Rows.Count - 1
-                    If Me.DGFacturas.Rows(dg).Cells("uuidR").Value IsNot Nothing Then
-                        If Me.DGFacturas.Rows(dg).Cells("uuidR").Value <> uuid Then
-                            If Me.DGFacturas.Rows(dg).Cells("feVTAR").Value = FecVentasel Then
-                                Dim n = DGFacturas.Rows.Add()
-                                DGFacturas.Rows(n).Cells(0).Value = nofac
-                                DGFacturas.Rows(n).Cells(1).Value = serie
-                                DGFacturas.Rows(n).Cells(2).Value = uuid
-                                DGFacturas.Rows(n).Cells(3).Value = fetim
-                                DGFacturas.Rows(n).Cells(4).Value = fevta
-                                DGFacturas.Rows(n).Cells(5).Value = tipof
+            If fevta = FecVentasel Then
+                If DGFacturas.Rows.Count > 1 Then
+                    Dim encuentra As Integer
+                    Dim tickt As String
+                    encuentra = 0
+                    For dg = 0 To Me.DGFacturas.Rows.Count - 1
+                        If Me.DGFacturas.Rows(dg).Cells("uuidR").Value IsNot Nothing Then
+                            If Me.DGFacturas.Rows(dg).Cells("uuidR").Value = uuid Then
+                                encuentra = 1
 
-                                DGFacturas.Refresh()
-                            Else
-                                Dim tickt As String
                                 tickt = Me.DGFacturas.Rows(dg).Cells("nofacR").Value
-                                MsgBox("No se puede Relacionar una factura con diferente Fecha de Venta, verifique la factura  " + tickt + " seleccionada", MsgBoxStyle.Information, "Facturación.. ")
+                                Exit For
                             End If
-                        Else
-                            Dim tickt As String
-                            tickt = Me.DGFacturas.Rows(dg).Cells("nofacR").Value
-                            MessageBox.Show("La factura seleccionada " + tickt + " esta repetida, favor de verificar los datos.", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                         End If
+                    Next
+
+                    If encuentra = 0 Then
+                        Dim n = DGFacturas.Rows.Add()
+                        DGFacturas.Rows(n).Cells(0).Value = nofac
+                        DGFacturas.Rows(n).Cells(1).Value = serie
+                        DGFacturas.Rows(n).Cells(2).Value = uuid
+                        DGFacturas.Rows(n).Cells(3).Value = fetim
+                        DGFacturas.Rows(n).Cells(4).Value = fevta
+                        DGFacturas.Rows(n).Cells(5).Value = tipof
+
+                        DGFacturas.Refresh()
+                    Else
+                        MessageBox.Show("La factura seleccionada " + tickt + " esta repetida, favor de verificar los datos.", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        tickt = ""
                     End If
-                Next
-            Else
-                If fevta = FecVentasel Then
-                    Dim n = DGFacturas.Rows.Add()
-                    DGFacturas.Rows(n).Cells(0).Value = nofac
-                    DGFacturas.Rows(n).Cells(1).Value = serie
-                    DGFacturas.Rows(n).Cells(2).Value = uuid
-                    DGFacturas.Rows(n).Cells(3).Value = fetim
-                    DGFacturas.Rows(n).Cells(4).Value = fevta
-                    DGFacturas.Rows(n).Cells(5).Value = tipof
 
-                    DGFacturas.Refresh()
                 Else
-                    MsgBox("No se puede Relacionar una factura con diferente Fecha de Venta, verifique la factura  " + nofac + " seleccionada", MsgBoxStyle.Information, "Facturación.. ")
+                        If fevta = FecVentasel Then
+                        Dim n = DGFacturas.Rows.Add()
+                        DGFacturas.Rows(n).Cells(0).Value = nofac
+                        DGFacturas.Rows(n).Cells(1).Value = serie
+                        DGFacturas.Rows(n).Cells(2).Value = uuid
+                        DGFacturas.Rows(n).Cells(3).Value = fetim
+                        DGFacturas.Rows(n).Cells(4).Value = fevta
+                        DGFacturas.Rows(n).Cells(5).Value = tipof
+
+                        DGFacturas.Refresh()
+                    Else
+                        MsgBox("No se puede Relacionar una factura con diferente Fecha de Venta, verifique la factura  " + nofac + " seleccionada", MsgBoxStyle.Information, "Facturación.. ")
+                    End If
                 End If
+            Else
+                MsgBox("No se puede Relacionar una factura con diferente Fecha de Venta, verifique la factura  " + nofac + " seleccionada", MsgBoxStyle.Information, "Facturación.. ")
             End If
-
-
 
             'Dim n = DGFacturas.Rows.Add()
             'DGFacturas.Rows(n).Cells(0).Value = nofac
@@ -573,16 +579,56 @@ Public Class frmGlobalBoutv2
     End Sub
 
     Private Sub btnGenerarFactura_Click_1(sender As Object, e As EventArgs) Handles btnGenerarFactura.Click
+        If DGFacturas.Rows.Count > 1 Then
+            If Devoluciones.Value > 0 Then
+                Dim Gok, Nok As Integer
+                Gok = 0
+                Nok = 0
+                For dg = 0 To Me.DGFacturas.Rows.Count - 1
+                    If Me.DGFacturas.Rows(dg).Cells("TIPOR").Value = "G" Then
+                        Gok = 1
+                    End If
+                Next
+                For dg = 0 To Me.DGFacturas.Rows.Count - 1
+                    If Me.DGFacturas.Rows(dg).Cells("TIPOR").Value = "N" Then
+                        Nok = 1
+                    End If
+                Next
 
-        If Me.Total.Value <> 0 Then
-            btnGenerarFactura.Visible = False
-            Factura()
-            consulta_registros()
+                If Gok = 1 Then
+                    If Nok = 1 Then
+                        If Me.Total.Value <> 0 Then
+                            btnGenerarFactura.Visible = False
+                            Factura()
+                            consulta_registros()
 
+                        Else
+                            MsgBox("No se puede facturar con los importes en ceros ", MsgBoxStyle.Information, "Facturación.. ")
+                            btnGenerarFactura.Visible = True
+                        End If
+                    Else
+                        MsgBox("La factura Global que va a Re-facturar incluye una Nota de Credito (Devolución). Asegurese de seleccionar las facturas tipo 'N' para su relación", MsgBoxStyle.Information, "Facturación.. ")
+                    End If
+                Else
+                    MsgBox("La factura Global que va a Re-facturar no incluye la factura tipo 'G' para relacionar", MsgBoxStyle.Information, "Facturación.. ")
+
+                End If
+            End If
         Else
-            MsgBox("No se puede facturar con los importes en ceros ", MsgBoxStyle.Information, "Facturación.. ")
-            btnGenerarFactura.Visible = True
+            If Me.Total.Value <> 0 Then
+                btnGenerarFactura.Visible = False
+                Factura()
+                consulta_registros()
+
+            Else
+                MsgBox("No se puede facturar con los importes en ceros ", MsgBoxStyle.Information, "Facturación.. ")
+                btnGenerarFactura.Visible = True
+            End If
         End If
+
+
+
+
     End Sub
 
     Public Function Factura()

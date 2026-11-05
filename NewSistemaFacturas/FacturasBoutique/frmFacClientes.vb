@@ -346,8 +346,13 @@ Public Class frmFacClientes
     End Sub
 
     Private Sub btnFacturar_Click(sender As Object, e As EventArgs) Handles btnFacturar.Click
-        btnFacturar.Visible = False
-        Timbra()
+        If UgrTicket.Rows.Count = 0 Then
+            MsgBox("Seleccione una nota para faturar", MsgBoxStyle.Information, "Facturación.. ")
+        Else
+            btnFacturar.Visible = False
+            Timbra()
+        End If
+
     End Sub
 
     Private Sub Timbra()
@@ -1172,47 +1177,96 @@ Public Class frmFacClientes
         If String.IsNullOrEmpty(uuid) Then
             'LabelResultado.Text = "La pantalla se cerró sin seleccionar información."
         Else
-            If DGFacturas.Rows.Count > 1 Then
-                For dg = 0 To Me.DGFacturas.Rows.Count - 1
-                    If Me.DGFacturas.Rows(dg).Cells("uuidR").Value IsNot Nothing Then
-                        If Me.DGFacturas.Rows(dg).Cells("uuidR").Value <> uuid Then
-                            If Me.DGFacturas.Rows(dg).Cells("feVTAR").Value = FecVentasel Then
-                                Dim n = DGFacturas.Rows.Add()
-                                DGFacturas.Rows(n).Cells(0).Value = nofac
-                                DGFacturas.Rows(n).Cells(1).Value = serie
-                                DGFacturas.Rows(n).Cells(2).Value = uuid
-                                DGFacturas.Rows(n).Cells(3).Value = fetim
-                                DGFacturas.Rows(n).Cells(4).Value = fevta
-                                DGFacturas.Rows(n).Cells(5).Value = tipof
+            If fevta = FecVentasel Then
+                If DGFacturas.Rows.Count > 1 Then
+                    Dim encuentra As Integer
+                    Dim tickt As String
+                    encuentra = 0
+                    For dg = 0 To Me.DGFacturas.Rows.Count - 1
+                        If Me.DGFacturas.Rows(dg).Cells("uuidR").Value IsNot Nothing Then
+                            If Me.DGFacturas.Rows(dg).Cells("uuidR").Value = uuid Then
+                                encuentra = 1
 
-                                DGFacturas.Refresh()
-                            Else
-                                Dim tickt As String
                                 tickt = Me.DGFacturas.Rows(dg).Cells("nofacR").Value
-                                MsgBox("No se puede relacionar una factura con diferente Fecha de venta, verifique la factura  " + tickt + " seleccionada", MsgBoxStyle.Information, "Facturación.. ")
+                                Exit For
                             End If
-                        Else
-                            Dim tickt As String
-                            tickt = Me.DGFacturas.Rows(dg).Cells("nofacR").Value
-                            MessageBox.Show("La factura seleccionada " + tickt + " esta repetida, favor de verificar los datos.", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                         End If
-                    End If
-                Next
-            Else
-                If fevta = FecVentasel Then
-                    Dim n = DGFacturas.Rows.Add()
-                    DGFacturas.Rows(n).Cells(0).Value = nofac
-                    DGFacturas.Rows(n).Cells(1).Value = serie
-                    DGFacturas.Rows(n).Cells(2).Value = uuid
-                    DGFacturas.Rows(n).Cells(3).Value = fetim
-                    DGFacturas.Rows(n).Cells(4).Value = fevta
-                    DGFacturas.Rows(n).Cells(5).Value = tipof
+                    Next
 
-                    DGFacturas.Refresh()
+                    If encuentra = 0 Then
+                        Dim n = DGFacturas.Rows.Add()
+                        DGFacturas.Rows(n).Cells(0).Value = nofac
+                        DGFacturas.Rows(n).Cells(1).Value = serie
+                        DGFacturas.Rows(n).Cells(2).Value = uuid
+                        DGFacturas.Rows(n).Cells(3).Value = fetim
+                        DGFacturas.Rows(n).Cells(4).Value = fevta
+                        DGFacturas.Rows(n).Cells(5).Value = tipof
+
+                        DGFacturas.Refresh()
+                    Else
+                        MessageBox.Show("La factura seleccionada " + tickt + " esta repetida, favor de verificar los datos.", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        tickt = ""
+                    End If
+
                 Else
-                    MsgBox("No se puede relacionar una factura con diferente fecha de venta, verifique la factura  " + nofac + " seleccionada", MsgBoxStyle.Information, "Facturación.. ")
+                    If fevta = FecVentasel Then
+                        Dim n = DGFacturas.Rows.Add()
+                        DGFacturas.Rows(n).Cells(0).Value = nofac
+                        DGFacturas.Rows(n).Cells(1).Value = serie
+                        DGFacturas.Rows(n).Cells(2).Value = uuid
+                        DGFacturas.Rows(n).Cells(3).Value = fetim
+                        DGFacturas.Rows(n).Cells(4).Value = fevta
+                        DGFacturas.Rows(n).Cells(5).Value = tipof
+
+                        DGFacturas.Refresh()
+                    Else
+                        MsgBox("No se puede Relacionar una factura con diferente Fecha de Venta, verifique la factura  " + nofac + " seleccionada", MsgBoxStyle.Information, "Facturación.. ")
+                    End If
                 End If
+            Else
+                MsgBox("No se puede Relacionar una factura con diferente Fecha de Venta, verifique la factura  " + nofac + " seleccionada", MsgBoxStyle.Information, "Facturación.. ")
             End If
+            'If DGFacturas.Rows.Count > 1 Then
+            '    For dg = 0 To Me.DGFacturas.Rows.Count - 1
+            '        If Me.DGFacturas.Rows(dg).Cells("uuidR").Value IsNot Nothing Then
+            '            If Me.DGFacturas.Rows(dg).Cells("uuidR").Value <> uuid Then
+            '                If fevta = FecVentasel Then
+            '                    Dim n = DGFacturas.Rows.Add()
+            '                    DGFacturas.Rows(n).Cells(0).Value = nofac
+            '                    DGFacturas.Rows(n).Cells(1).Value = serie
+            '                    DGFacturas.Rows(n).Cells(2).Value = uuid
+            '                    DGFacturas.Rows(n).Cells(3).Value = fetim
+            '                    DGFacturas.Rows(n).Cells(4).Value = fevta
+            '                    DGFacturas.Rows(n).Cells(5).Value = tipof
+
+            '                    DGFacturas.Refresh()
+            '                Else
+            '                    Dim tickt As String
+            '                    tickt = Me.DGFacturas.Rows(dg).Cells("nofacR").Value
+            '                    MsgBox("No se puede relacionar una factura con diferente Fecha de venta, verifique la factura  " + tickt + " seleccionada", MsgBoxStyle.Information, "Facturación.. ")
+            '                End If
+            '            Else
+            '                Dim tickt As String
+            '                tickt = Me.DGFacturas.Rows(dg).Cells("nofacR").Value
+            '                MessageBox.Show("La factura seleccionada " + tickt + " esta repetida, favor de verificar los datos.", "Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            '            End If
+            '        End If
+            '    Next
+            'Else
+            '    If fevta = FecVentasel Then
+            '        Dim n = DGFacturas.Rows.Add()
+            '        DGFacturas.Rows(n).Cells(0).Value = nofac
+            '        DGFacturas.Rows(n).Cells(1).Value = serie
+            '        DGFacturas.Rows(n).Cells(2).Value = uuid
+            '        DGFacturas.Rows(n).Cells(3).Value = fetim
+            '        DGFacturas.Rows(n).Cells(4).Value = fevta
+            '        DGFacturas.Rows(n).Cells(5).Value = tipof
+
+            '        DGFacturas.Refresh()
+            '    Else
+            '        MsgBox("No se puede relacionar una factura con diferente fecha de venta, verifique la factura  " + nofac + " seleccionada", MsgBoxStyle.Information, "Facturación.. ")
+            '    End If
+            'End If
         End If
     End Sub
 
