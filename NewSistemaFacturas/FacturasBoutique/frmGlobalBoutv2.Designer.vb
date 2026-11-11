@@ -696,7 +696,7 @@ Partial Class frmGlobalBoutv2
         '
         Me.lblDescuento.AutoSize = True
         Me.lblDescuento.BackColor = System.Drawing.Color.Transparent
-        Me.lblDescuento.Location = New System.Drawing.Point(316, 28)
+        Me.lblDescuento.Location = New System.Drawing.Point(322, 28)
         Me.lblDescuento.Name = "lblDescuento"
         Me.lblDescuento.Size = New System.Drawing.Size(59, 13)
         Me.lblDescuento.TabIndex = 31

@@ -196,7 +196,7 @@ Partial Class frmComplementoPagoBoutique
         Me.SplitContainer1.Panel2.Controls.Add(Me.gpoEnvio)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Ugr)
         Me.SplitContainer1.Size = New System.Drawing.Size(939, 524)
-        Me.SplitContainer1.SplitterDistance = 103
+        Me.SplitContainer1.SplitterDistance = 102
         Me.SplitContainer1.TabIndex = 0
         '
         'ugbox1
@@ -471,7 +471,7 @@ Partial Class frmComplementoPagoBoutique
         Me.gpoEnvio.Dock = System.Windows.Forms.DockStyle.Fill
         Me.gpoEnvio.Location = New System.Drawing.Point(0, 255)
         Me.gpoEnvio.Name = "gpoEnvio"
-        Me.gpoEnvio.Size = New System.Drawing.Size(939, 162)
+        Me.gpoEnvio.Size = New System.Drawing.Size(939, 163)
         Me.gpoEnvio.TabIndex = 7
         Me.gpoEnvio.TabStop = False
         '
@@ -556,7 +556,7 @@ Partial Class frmComplementoPagoBoutique
         Me.btnAplicarPago.Name = "btnAplicarPago"
         Me.btnAplicarPago.Size = New System.Drawing.Size(145, 47)
         Me.btnAplicarPago.TabIndex = 33
-        Me.btnAplicarPago.Text = "Generar Pago Relacionado"
+        Me.btnAplicarPago.Text = "Generar Complemento de Pago"
         Me.btnAplicarPago.UseVisualStyleBackColor = False
         '
         'txtUUID
